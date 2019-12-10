@@ -1,0 +1,131 @@
+'SCALE 6.2.1 hack to get perturbed decay data into transport/depletion
+'-------------------------------------------------------------------------
+=csas-mg  parm=bonami
+Fake csas-mg to get an ampx lib
+v7-56
+read composition
+uranium  1 den=10.2  1  1200  92235 5.0 92238 95.0  end
+end composition
+read celldata
+  infhommedium 1  end
+end celldata
+end
+'-------------------------------------------------------------------------
+'origen_filenames
+'17    yields              17
+'27    decay               27
+'21    end7dec             21
+'74    jeff252g            74
+'75    jeff56g             75
+'80    jeff238g            80
+=couple
+Fake couple to get transition library
+
+0$$ a3 75 21 4 33 e
+1$$ a4 1 a6 1 a13 1 e
+t
+done
+end
+'-------------------------------------------------------------------------
+=shell
+mv ft33f001 transition.def
+end
+
+'end hack (we need transition.def with perturbed end7dec inside)
+'-------------------------------------------------------------------------
+=t-depl
+Pin TAP MSR
+'Library either 56 or 252===================================================================
+v7-56
+'Comp definition=============================================================================
+read composition
+' Fuel salt
+wtptzrh 10 5.66 7 40090 49.793 40091 10.98 40092 16.967 40094 17.569 40096 2.8908 1001 1.8007 1002 0.00041389 1.0 900 end
+wtptsic 20 3.21 4 14028 64.365 14029 3.3866 14030 2.312 6000 29.936 1.0 900 end
+wtptfuel 30 4.9602 5 3006 0.0002148 3007 4.83577563 9019 32.96428341 92235 3.10998496 92238 59.0897142 1.0 900 end
+end composition
+'Cell data for NEWT, it is important for self-shielding======================
+' SVF at BOL is 0.907268. Square side must be 2*3.63781
+read celldata
+latticecell squarepitch hpitch=3.63781 30 fuelr=1.15 10 cladr=1.25 20 end
+end celldata
+'=============================================================================
+'What is the material number to be depleted?==================================
+read depletion
+30
+end depletion
+'Burnup history similar to Serpent=============================================
+read burndata
+'power=18.5438 burn=30.0 down=0 end
+power=9.13479 burn=10950.0 nlib=30 end
+end burndata
+'=============================================================================
+' opus card is if you want to manually track and add specific isotopes which will be printed
+' in the .plt file, if not added, then default isotopes will be printed.
+' This card is not added to other lattice files, please copy it if you need.
+read opus
+    matl = 30 end
+    title= 'isotope tracking'
+    units=gram
+    time=days
+    typarms=nucl
+    libtype=all
+    nrank = 2000
+    sort=no
+end opus
+'=============================================================================
+read model
+Infinite-lattice pin model
+' Parameters related to NEWT calcs, just leave as default
+read parm
+echo=yes
+xnlib=4 run=yes collapse=yes prtmxsec=no prtbroad=yes
+sn=4 inners=4 outers=200 epsilon=1e-4 epseigen=1e-3
+end parm
+
+'This card is for cross-section homegnization, just redefine all your materials similarily
+read materials
+  mix=10 pn=2 com='Moderator (ZrH)'   end
+  mix=20 pn=2 com='SiC cladding'  end
+  mix=30 pn=1 com='Fuel salt'     end
+end materials
+
+' Geometry definition
+read geom
+global unit 1
+cylinder 10 1.15 chord +x=0 chord +y=0 sides=64
+cylinder 20 1.25 chord +x=0 chord +y=0 sides=64
+cuboid 40 3.63781 0. 3.63781 0.
+media 10 1 10
+media 20 1 20 -10
+media 30 1 40 -20
+boundary 40 8 8
+end geom
+'===============================================================================
+'This card is for cross-section homengization,
+' collapse to 2-energy groups, where first 40 groups become fast, and last 16 becomes thermal
+read collapse
+    8r1 2r2 3 3r4 5 5r6 6r7 2r8 3r9 4r10 4r11 12 13 10r14 3r15 16 6r17
+    3r18 18r19 2r20 6r21 22 3r23 24 7r25 26 16r27 2r28 11r29 30 31 14r32
+    33 2r34 35 3r36 35r37 5r38 7r39 11r40 4r41 2r42 43 44 3r45 2r46 2r47 2r48
+    2r49 2r50 51 52 2r53 54 3r55 10r56
+end collapse
+'================================================================================
+' Material to be homogenized (fuel basically)
+read homog
+ 500 all 10 20 30 end
+end homog
+'===============================================================================
+' BC: reflective in all directions
+read bounds
+all=refl
+end bounds
+end model
+end
+
+' this will return the homogenized file to your directory which contains many useful info
+' Homo XS, kinetic paramters, kinf, etc. Two commands for Windows/Linux
+=shell
+  cp txtfile16 $RTNDIR/${CASE_NAME}.t16
+  cp txtfile16 %RTNDIR%/%{CASE_NAME}%.t16
+end

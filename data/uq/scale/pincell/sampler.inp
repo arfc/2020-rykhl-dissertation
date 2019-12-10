@@ -1,0 +1,62 @@
+'hint: use shell to copy desired input to my.inp
+=shell
+cp "${INPDIR}/input_test.inp" "my.inp"
+end
+
+=sampler
+
+'hint: what do you want to perturb and how many perturbations?
+read parameters
+  n_samples = 1000
+  run_cases=no
+  force_run=no
+  library="v7-56"
+  perturb_xs=yes
+  perturb_yields=yes
+  perturb_decay=yes
+' uncomment this option only if you compiled with kinetics modifications
+'  perturb_kinetics=yes
+end parameters
+
+'hint: must have a corresponding shell to make "my.inp" exist.
+read case[c1]
+  import = "my.inp"
+end case
+
+'hint: add nuclides of interest, output extraction
+'read response[conc]
+'  type=origen_nuclides
+'  nuclides = u235 pu239 u238 end
+'  mixture = 30
+'end response
+
+'only finds first one
+read response[kinf0d]
+  type = grep
+  regexp = "k-eff = *:scale.number:"
+  regexp = ":scale.number:"
+end response
+
+'in order to find second one we match time
+read response[kinf15d]
+  type = grep
+  regexp = "k-eff = *:scale.number: *Time=     15.00d"
+  regexp = "k-eff = *:scale.number:"
+  regexp = ":scale.number:"
+end response
+
+read response[kinf30d]
+  type = grep
+  regexp = "k-eff = *:scale.number: *Time=     30.00d"
+  regexp = "k-eff = *:scale.number:"
+  regexp = ":scale.number:"
+end response
+
+'in order to find delayed neutron fraction
+read response[total-beta]
+  type = grep
+  regexp = "Total Beta   *:scale.number:"
+  regexp = "*:scale.number:"
+end response
+
+end
