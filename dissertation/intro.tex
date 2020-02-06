@@ -119,16 +119,14 @@ efforts along with the main features of the employed methods and software.
 
 \begin{table}[htbp]
 	\fontsize{9}{11}\selectfont
-	\caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt 
-	depletion 
-		analysis.}
+	\caption{Tools and methods for liquid-fueled \glspl{MSR} fuel salt 	
+	depletion analysis.}
 	\begin{tabularx}{\textwidth}{p{0.13\textwidth} p{0.18\textwidth} 	
 	p{0.18\textwidth} p{0.15\textwidth} p{0.2\textwidth}} 
 	\hline
 	&Nuttin \emph{et al.}, 2005 \cite{nuttin_potential_2005}& Aufiero 
 	\emph{et al.}, 2013 \cite{aufiero_extended_2013} & Betzler \emph{et al.}, 
-	2018 \cite{betzler_fuel_2018}&Proposed work \\
-	\hline
+	2018 \cite{betzler_fuel_2018}&Present work \\ \hline
 	Neutronics&\gls{MCNP}&Serpent 2 &SCALE6.2     &Serpent 2 \\
 	software  & REM      &          &ORIGEN-S     &			       \\
          	  &stochastic&stochastic&deterministic&stochastic      \\[10pt]
@@ -308,12 +306,11 @@ reactivity changes due to temperature increase in the core and was calculated
 in that 
 work as:
 \begin{align}\label{eq:feedback}
-	& \qquad\qquad\qquad\quad\quad \alpha = \frac{k_{1200} - k_{900}}{\delta 
+	& \qquad\qquad\qquad \alpha = \frac{k_{1200} - k_{900}}{\delta 
 	T} \\
 	\intertext{where}
-	k_{900}, k_{1200}  &= \mbox{the multiplication 
-	coefficients at 900K and 
-		1200K, respectively} 
+	k_{900}, k_{1200}  &= \mbox{multiplication coefficients at 900K and 
+		1200K;} 
 	\nonumber \\
 	\delta T &= 1200K-900K.\nonumber
 \end{align}
@@ -355,9 +352,9 @@ accumulation (e.g., $^{135}$Xe) in the fuel salt during short-term transients
 
 \section{Background Summary}
 State-of-the-Art software packages for depletion analysis and evolution of 
-safety parameters in liquid-fueled \gls{MSR} are reviewed in this Chapter. 
-Based on this summary, I have identified a few possible directions for 
-the improvement of \gls{MSR} tools:
+safety parameters in liquid-fueled \gls{MSR} are reviewed in 
+Section~\ref{sec:litreview}. Based on this summary, I have identified a few 
+possible directions for the improvement of \gls{MSR} tools:
 \paragraph{Reproducibility/Availability.}
 Serpent is the only contemporary nuclear 
 contemporary nuclear 
@@ -398,7 +395,7 @@ significantly shift neutron energy spectrum. Neutron energy hardening might
 worsen the core safety during operation. The impact of the fuel salt evolution 
 on the \gls{MSR} safety parameters must be carefully investigated and reported.
 
-This work aims to overcome these issues and demonstrate the tool capabilities 
+This work aims to overcome these issues and demonstrates the tool capabilities 
 for a two promising \gls{MSR} concept.
 
 
@@ -417,8 +414,10 @@ review, providing background on fuel burnup, online fuel reprocessing
 approaches, safety parameter evolution during reactor operation, and how these 
 concepts have been applied to a wide range of \glspl{MSR} in the literature. 
 Chapter 2 covers modeling online reprocessing details and proposed computation 
-tool architecture. In an attempt to avoid the pitfalls ofa black box 
-understanding and to identify method limitations at an earlystage, governing 
+tool architecture. In an attempt to avoid the pitfalls of
+a black box 
+understanding and to identify method limitations at an early
+stage, governing 
 equations and working principles are stated and discussed. Chapter 3 presents 
 an equilibrium-seeking results for \gls{MSBR} as well as important operational 
 and safety parameters for both the initial and equilibrium states. 
@@ -430,4 +429,5 @@ safety parameter overview and their evolution during \gls{TAP} lifetime-long
 reactor operation. Moreover, the safety parameters dynamics during short-term 
 transients has been evaluated at the end of chapter 5. The last chapter
 summarizes the contribution of this work to the nuclear community and a 
-conclusion is offered togetherwith an outlook for future work on the topic.
+conclusion is offered together
+with an outlook for future work on the topic.
