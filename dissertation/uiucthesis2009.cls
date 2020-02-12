@@ -1,46 +1,31 @@
 %%
-%% This is file `uiucecethesis09.cls',
+%% This is file `uiucthesis2009.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% uiucecethesis09.dtx  (with options: `class')
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% WARNING: This version is modified WITHOUT change to the .dtx file
-%%% 3.09 option fullpagesingle for 1" margins without 1.5 line spacing
-%%% 3.10 option littlecaptions for \scriptsize captions
-%%% Jerome Colburn 6/23/2010
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% uiucthesis2009.dtx  (with options: `class')
 %% 
 %% IMPORTANT NOTICE:
 %% 
 %% For the copyright see the source file.
 %% 
 %% Any modified versions of this file must be renamed
-%% with new filenames distinct from uiucecethesis09.cls.
+%% with new filenames distinct from uiucthesis2009.cls.
 %% 
 %% For distribution of the original source see the terms
-%% for copying and modification in the file uiucecethesis09.dtx.
+%% for copying and modification in the file uiucthesis2009.dtx.
 %% 
 %% This generated file may be distributed as long as the
 %% original source files, as listed above, are part of the
 %% same distribution. (The sources need not necessarily be
 %% in the same archive or directory.)
-\def\fileversion{ECE3.10} \def\filedate{2010/06/23}
-%%% 3.08 fix more obvious title page bug 8/27/2009
-%%% 3.07 fix nonobvious title page bug 8/7/2009
-%%% 3.06 fix obvious title page bug 8/7/2009
-%%% 3.05 fix copyright page text 7/16/2009
-%%% 3.04 fix neglected change in "THESIS" block position 7/13/2009
-%%% 3.03 make the largecaps option work 7/10/2009
-%%% 3.02 make the title page top margin correct 7/08/2009
-%% Package and Class "uiucecethesis09" for use with LaTeX2e.
+\def\fileversion{v2.25a} \def\filedate{2009/10/10}
+%% Package and Class "uiucthesis2009" for use with LaTeX2e.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uiucecethesis09}
+\ProvidesClass{uiucthesis2009}
          [\filedate\ \fileversion\ UIUC Thesis (PJC)]
-
 \RequirePackage{setspace}
-\RequirePackage{calc} %% 3.07
 \expandafter\ifx\csname @ifundefined\endcsname\relax
   \def\@ifundefined#1{%
     \expandafter\ifx\csname#1\endcsname\relax
@@ -52,35 +37,20 @@
 \@ifundefined{MakeUppercase}{\let\MakeUppercase=\uppercase}{}
 \newif\if@thesisdraft \@thesisdraftfalse
 \newif\if@thesisfancy \@thesisfancyfalse
-\newif\if@fullpagesingle \@fullpagesinglefalse	%% 3.09
 \newif\if@fullpage \@fullpagefalse
-\newif\if@on@inchm@rgin \@on@inchm@rginfalse %% 3.09
 \newif\if@largecaps \@largecapsfalse
 \newif\if@proquest \@proquestfalse
 \newif\if@edeposit \@edepositfalse
 \newif\if@thesisoffcenter \@thesisoffcenterfalse
 \newif\if@centerchapter \@centerchapterfalse
-\newif\if@doctoral\@doctoralfalse
-\newif\if@c@mmitt@@\@c@mmitt@@false
-\newif\if@t@cn@sub\@t@cn@subfalse
-\newif\if@r@gright\@r@grighttrue
-\newif\if@mixc@sech@p \@mixc@sech@pfalse
-\newif\if@littlecaptions\@littlecaptionsfalse  %% 3.10
-\newdimen\thesis@parindent
 \DeclareOption{draftthesis}{\@thesisdrafttrue}
 \DeclareOption{fancy}{\@thesisfancytrue}
-%%%%\DeclareOption{fullpage}{\@fullpagetrue}
-\DeclareOption{fullpage}{\@fullpagetrue\@fullpagesinglefalse} %% 3.09
-\DeclareOption{fullpagesingle}{\@fullpagesingletrue\@fullpagefalse} %% 3.09
-\DeclareOption{littlecaptions}{\@littlecaptionstrue} %% 3.10
+\DeclareOption{fullpage}{\@fullpagetrue}
 \DeclareOption{proquest}{\@proquesttrue}
 \DeclareOption{toclabels}{\AtBeginDocument{\toclabels}}
-\DeclareOption{tocnosub}{\@t@cn@subtrue}
 \DeclareOption{edeposit}{\@edeposittrue}
 \DeclareOption{offcenter}{\@thesisoffcentertrue}
 \DeclareOption{centerchapter}{\@centerchaptertrue}
-\DeclareOption{mixcasechap}{\@mixc@sech@ptrue}
-\DeclareOption{noragright}{\@r@grightfalse}
 \DeclareOption{largecaps}{\@largecapstrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \PassOptionsToClass{letterpaper,oneside}{book}
@@ -91,7 +61,6 @@
     \def\makeindex{}
     \@thesisfancyfalse
     \@fullpagetrue
-    \@fullpagesinglefalse %% 3.09
 \fi
 \if@thesisdraft
   \newcount\timehh\newcount\timemm
@@ -109,55 +78,47 @@
 \def\title#1{\gdef\@title{#1}\MakeUppercase{\protect\@mkuptitle{#1}}}
 \def\@mkupauthor#1{\gdef\@Uauthor{#1}}
 \def\author#1{\gdef\@author{#1}\MakeUppercase{\protect\@mkupauthor{#1}}}
+\def\phdthesis{\def\@degree{Doctor of Philosophy}
+    \def\degree{Ph.D.}
+    \def\@thesisname{DISSERTATION}
+    \def\@committeename{Doctoral Committee:}
+    }
+\def\msthesis{\def\@degree{Master of Science}
+    \def\degree{M.S.}
+    \def\@thesisname{THESIS}
+    \def\@committeename{Master's Committee:}
+    }
 \newcommand{\otherdoctorate}[2]{\def\@degree{#1}
     \def\degree{#2}
     \def\@thesisname{DISSERTATION}
-    \@doctoraltrue
+    \def\@committeename{Doctoral Committee:}
     }
 \newcommand{\othermasters}[2]{\def\@degree{#1}
     \def\degree{#2}
-    \def\@thesisname{PRELIMINARY EXAMINATION}
-    \@doctoralfalse
+    \def\@thesisname{THESIS}
+    \def\@committeename{Master's Committee:}
     }
-\newcommand\phdthesis{\otherdoctorate{Doctor of Philosophy}{Ph.D.}
-    }
-\newcommand\msthesis{\othermasters{Doctor of Philosophy}{Ph.D.}
-    }
-\def\degreeyear#1{\def\@degreeyear{#1}}
 \def\department#1{\def\@dept{#1}}
 \def\college#1{\def\@college{#1}}
 \def\schools#1{\def\@schools{#1}}
-\newcommand{\committee}[1]{\gdef\@committee{#1}\@c@mmitt@@true}
-\gdef\@committee{%
-  \if@doctoral
-    \ClassError{uiucecethesis09}{Committee needed for doctorates}%
-    {Use \protect\committee\space with members separated by \protect\\'s.}
-  \fi}
-\newcommand*{\advisor}[1]{\gdef\@advisor{#1}}
-\newcommand*{\adviser}[1]{\gdef\@advisor{#1}}
-\gdef\@advisor{%
-  \if@doctoral{
-    \ClassError{uiucecethesis09}{Adviser needed for ProQuest abstract}%
-  }\else{
-    \if@c@mmitt@@\else
-    \ClassError{uiucecethesis09}{Adviser must be specified}%
-  \fi}
-\fi}
+\def\degreeyear#1{\def\@degreeyear{#1}}
+\newcommand{\committee}[1]{\gdef\@committee{#1}}
 \newcommand*{\volume}[1]{\gdef\thesis@volume{VOLUME~#1}}
 \newcommand*{\thesis@volume}{}
-%%% \def\copyrightnotice{\copyright~\@degreeyear~by \@author. All rights reserved.} % 3.05
-\def\copyrightnotice{\copyright~\@degreeyear~\@author}
+\if@edeposit
+  \gdef\@committee{%
+    \ClassError{uiucthesis2009}{A committee must be specified for e-deposit dissertations.}%
+    {Use \protect\committee\space with members separated by \protect\\'s.}}
+\fi
+\def\copyrightnotice{\copyright~\@degreeyear~by \@author. All rights reserved.}
 \newif\if@thesiscrpage \@thesiscrpagetrue
 \let\nocopyrightpage\@thesiscrpagefalse
 \if@thesisdraft\nocopyrightpage\fi
-\msthesis
-\department{Electrical and Computer Engineering}
+\phdthesis
+\department{Computer Science}
 \college{Graduate College}
 \def\@schools{}
 \def\@degreeyear{\number\year}
-\newlength{\degree@dept@max}   %% v 3.07
-\newlength{\degree@dept@wid}
-\newsavebox{\degree@dept@test} %% ^ 3.07
 \renewcommand\maketitle{
     \if@thesiscrpage
         \newpage
@@ -172,90 +133,83 @@
     \enlargethispage{1in}%
     \begingroup
     \def\baselinestretch{1}
-    \ifnum \@ptsize>1 %% 3.07
+    \ifnum \@ptsize=2
         \@normalsize
         \newcommand{\thesis@small}{\small}
     \else
         \large
         \newcommand{\thesis@small}{\@normalsize}
     \fi
-    \sbox{\degree@dept@test}{Doctor of PhilosophElectrical and Computer Engineerin}
-    \setlength{\degree@dept@max}{\wd\degree@dept@test}
-    \sbox{\degree@dept@test}{\@degree\@dept}
-    \setlength{\degree@dept@wid}{\wd\degree@dept@test}
-    \ifdim\degree@dept@wid>\degree@dept@max
-      \thesis@small
-    \fi
     \headheight=0pt \headsep=0pt
-    \topmargin=1in %% had been 1in if edeposit, 0in otherwise
+    \topmargin=0in
     \@tempdima=\paperwidth
     \advance\@tempdima by -\textwidth
     \divide\@tempdima by 2
     \advance\@tempdima by -1in
     \oddsidemargin=\@tempdima
     \let\evensidemargin=\oddsidemargin
+
     \newdimen\thesis@dim
-    \thesis@dim=1.5in %% ECE: edit to adjust margin (SR)
+    \if@edeposit
+        \thesis@dim=1.5in
+    \else
+        \thesis@dim=1.5in
+    \fi
+    \newdimen\ct@dim
+    \newdimen\cn@dim
+    \ct@dim=\oddsidemargin
+    \advance\ct@dim by -0.3125in
+    \cn@dim=\oddsidemargin
+    \advance\cn@dim by -0.6875in
     \if@largecaps
-       \def\lc@selectfont{\large\selectfont}%
-%%%        \def\lc@selectfont{\fontshape{lc}\selectfont}%
+        \def\lc@selectfont{\fontshape{lc}\selectfont}%
     \else
         \def\lc@selectfont{}%
     \fi
     \begin{center}
-      \vbox to \thesis@dim{%
-          {\lc@selectfont\@Utitle}
-         \if@thesisdraft
-         \\[12pt]
-         \draftheader
-         \fi
-          \vfil}%
-     \vbox to 2.5in{%
-%%%     \vbox to 2in{% wrong, corrected rev. 3.04
-%%%          {\lc@selectfont BY}\\[12pt]
-          BY\linebreak\linebreak %% 3.06
-         {\lc@selectfont\@Uauthor}\\[12pt]
-          \begin{tabular}{c}\@schools\end{tabular}}%\vfil}%
-     \vbox to -1.0in{\thesis@volume\vfil} %% ECE: edit to adjust title page spacing (SR)
-      \vskip-0.72in %% ECE: edit to adjust title page spacing {SR)
-      \vbox to 2.5in{%
-%%%        {\lc@selectfont \@thesisname}\\[12pt]
-        \@thesisname\\[12pt] % [12pt] added back 3.08
+    \if@edeposit
+        \vbox to 1in{}
+    \else
+        \vbox to 1in{}
+    \fi
+    \vbox to \thesis@dim{%
+        {\lc@selectfont\@Utitle}
+        \if@thesisdraft
+        \\[12pt]
+        \draftheader
+        \fi
+        \vfil}%
+    \vbox to 1.5in{%
+        {\lc@selectfont BY}\\[12pt]
+        {\lc@selectfont\@Uauthor}\\[12pt]
+        \vfil}%
+    \vbox to 0.5in{\thesis@volume\vfil}
+    \vbox to 2.0in{%
+        {\lc@selectfont \@thesisname}\\[12pt]
         Submitted in partial fulfillment of the requirements\\
         for the degree of \@degree\ in \@dept\\
         in the \@college\ of the\\
-        University of Illinois at Urbana-Champaign, \@degreeyear}%\vfil}%
-     \vskip-0.60in %% ECE: edit to adjust title page spacing (SR)
-       Urbana, Illinois
-    \end{center} %% ECE: edit (SR)
-     \vskip 0.17in %% ECE: edit to adjust title page spacing (SR)
-        \vbox to 2.1in{
-      \if@doctoral
-        \hspace*{0.1in}Doctoral Committee:\\[12pt] %default is 0.2in
-        \hspace*{0.53in}\begin{tabular}{l}\@committee\end{tabular}%\vfil} %default is 0.6in
-      \else
-        \if@c@mmitt@@
-          \hspace*{0.1in}Committee:\\[12pt] %default is 0.2in
-         \hspace*{0.53in}\begin{tabular}{l}\@committee\end{tabular}%\vfil} %default is 0.6in
-        \else
-        \hspace*{0.1in}Adviser:\\[12pt] %default is 0.2in
-         \hspace*{0.53in}\@advisor%\vfil} %default is 0.6in
-        \fi
-      \fi}
-    \newpage
+        University of Illinois at Urbana-Champaign, \@degreeyear\vfil}
+ \vskip -2ex
+ \vbox to 0.35in{
+ Urbana, Illinois}
+ \end{center}
+\begin{flushleft}
+        \vbox to 0.3in{
+        \hspace{-\ct@dim}\@committeename\\}
+        \hspace{-\cn@dim}\begin{tabular}{l}\@committee\end{tabular}\vfil
+\end{flushleft}
     \endgroup
 }
 \let\thesis@frontmatter=\frontmatter
 \def\frontmatter{%
     \thesis@frontmatter
-    \setcounter{page}{2}
-    \if@r@gright
-      \thesis@parindent\parindent
-      \raggedright
-      \parindent\thesis@parindent
-    \fi
-    }
-\renewcommand\contentsname{\if@mixc@sech@p Table of Contents\else TABLE OF CONTENTS\fi} %% SR, JSC
+    \if@edeposit
+        \setcounter{page}{2}
+    \else
+        \setcounter{page}{3}
+    \fi}
+\renewcommand\contentsname{Table of Contents}
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -264,7 +218,7 @@
     \begingroup
       \leftskip \z@ \rightskip \@tocrmarg \parfillskip -\rightskip
       \parindent \z@
-      \leavevmode %%\bfseries
+      \leavevmode \bfseries
       \advance\leftskip\@tempdima
       \hskip -\leftskip
       #1\nobreak
@@ -273,31 +227,24 @@
       \penalty\@highpenalty
     \endgroup
   \fi}
-\if@t@cn@sub
-\renewcommand\l@subsection{\@gobbletwo}
-\renewcommand\l@subsubsection{\@gobbletwo}
-\fi
-\def\listtablename{List of Tables}
-\def\listfigurename{List of Figures}
 \let\thesis@tableofcontents=\tableofcontents
 \def\tableofcontents{{\singlespacing\thesis@tableofcontents}}
 \let\thesis@listoftables=\listoftables
-\let\thesis@listtablename=\listtablename % JSC
 \def\listoftables{\newpage%
-\def\listtablename{\if@mixc@sech@p\thesis@listtablename
-\else\MakeUppercase{\thesis@listtablename}\fi} %% JSC
     \addcontentsline{toc}{chapter}{\listtablename}%
     {\singlespacing\thesis@listoftables}}
 \let\thesis@listoffigures=\listoffigures
-\let\thesis@listfigurename=\listfigurename % JSC
 \def\listoffigures{\newpage%
-\def\listfigurename{\if@mixc@sech@p\thesis@listfigurename
-\else\MakeUppercase{\thesis@listfigurename}\fi} %% JSC
     \addcontentsline{toc}{chapter}{\listfigurename}%
     {\singlespacing\thesis@listoffigures}}
-\def\abstractname{Abstract} %% all caps (SR)
+\newcommand*{\advisor}[1]{\gdef\@advisor{#1}}
+\newcommand*{\adviser}[1]{\gdef\@advisor{#1}}
+\def\abstractname{Abstract}
 \if@proquest
  \def\maketitle{}
+ \def\@advisor{%
+    \ClassError{uiucthesis2009}{An advisor must be specified for the ProQuest abstract}%
+    {Use \protect\advisor\space to specify a name}}
  \newenvironment{abstract}{%
     \newpage
     \pagestyle{empty}
@@ -328,10 +275,6 @@
     \vfill
     \newpage
     }
-%added acknowledgments environment 11/23/2009 by Brian Johnson
-\def\acknowledgmentsname{Acknowledgments} %%all caps (SR)
-\newenvironment{acknowledgments}{\chapter*{\acknowledgmentsname}}{}
-\newpage
 \newenvironment*{symbollist}[1][1in]{
     \begin{list}{}{\singlespacing
      \setlength{\leftmargin}{#1}
@@ -349,29 +292,28 @@
   \font\cminch=cminch at 60pt
   \newcommand\chapternumberfont{\cminch}
 \else
-  \newcommand\chapternumberfont{\LARGE} %% (SR)
+  \newcommand\chapternumberfont{\huge\bfseries}
 \fi
-\newcommand\chaptertitlefont{\LARGE} %% (SR)
+\newcommand\chaptertitlefont{\Huge\bfseries}
 \def\@chapter[#1]#2{%
-\def\c@pch@ptitl@{\if@mixc@sech@p#1\else\MakeUppercase{#1}\fi} %% (JSC)
   \ifnum \c@secnumdepth >\m@ne
     \if@mainmatter
       \refstepcounter{chapter}%
       \typeout{\@chapapp\space\thechapter.}%
       \if@thesisfancy
         \addcontentsline{toc}{chapter}%
-          {\protect\numberline{\thechapter}\c@pch@ptitl@}%
+          {\protect\numberline{\thechapter}#1}%
       \else
         \addcontentsline{toc}{chapter}%
-          {\@chapapp\ \thechapter\quad \c@pch@ptitl@}%
+          {\@chapapp\ \thechapter\quad #1}%
       \fi
     \else
-      \addcontentsline{toc}{chapter}{\c@pch@ptitl@}%
+      \addcontentsline{toc}{chapter}{#1}%
     \fi
   \else
-    \addcontentsline{toc}{chapter}{\c@pch@ptitl@}%
+    \addcontentsline{toc}{chapter}{#1}%
   \fi
-  \chaptermark{\c@pch@ptitl@}%
+  \chaptermark{#1}%
   \addtocontents{lof}{\protect\addvspace{10\p@}}%
   \addtocontents{lot}{\protect\addvspace{10\p@}}%
   \if@twocolumn
@@ -412,7 +354,6 @@
   \setlength{\chaptertitleheight}{1.85in}
 \fi
 \def\@makechapterhead#1{%
-  \def\capchaptitle{\if@mixc@sech@p#1\else\MakeUppercase{#1}\fi} %% (JSC)
   \vbox to \chaptertitleheight{
     \def\baselinestretch{1}\@normalsize
     \parindent \z@ \raggedright \normalfont
@@ -435,13 +376,12 @@
     \fi
     \interlinepenalty\@M
     \vspace*{\thesis@chapskip}%
-    \chaptertitlefont \capchaptitle %% JSC
+    \chaptertitlefont #1
     \vfil
   }%
   \par\nobreak%
   }
 \def\@makeschapterhead#1{%
-  \def\capchaptitle{\if@mixc@sech@p#1\else\MakeUppercase{#1}\fi} %% (JSC)
   \vbox to \chaptertitleheight{
     \def\baselinestretch{1}\@normalsize
     \parindent \z@ \raggedright \normalfont
@@ -450,29 +390,29 @@
     \fi
     \interlinepenalty\@M
     \vspace*{\thesis@chapskip}
-    \chaptertitlefont \capchaptitle %% JSC
+    \chaptertitlefont #1
     \vfil
   }%
   \par\nobreak%
   }
-\newcommand{\sectiontitlefont}{\Large} %% (SR)
-\newcommand{\subsectiontitlefont}{\large} %% (SR)
-\newcommand{\subsubsectiontitlefont}{\normalsize} %% (SR)
+\newcommand{\sectiontitlefont}{\Large\bfseries}
+\newcommand{\subsectiontitlefont}{\large\bfseries}
+\newcommand{\subsubsectiontitlefont}{\normalsize\bfseries}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
   {-3.5ex \@plus -1ex \@minus -.2ex}%
   {2.3ex \@plus.2ex}%
-  {\singlespacing\raggedright\normalfont\sectiontitlefont}} %% (SR)
+  {\raggedright\normalfont\sectiontitlefont}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
   {-3.25ex\@plus -1ex \@minus -.2ex}%
   {1.5ex \@plus .2ex}%
-  {\singlespacing\raggedright\normalfont\subsectiontitlefont}} %% (SR)
+  {\raggedright\normalfont\subsectiontitlefont}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
   {-3.25ex\@plus -1ex \@minus -.2ex}%
   {1.5ex \@plus .2ex}%
-  {\singlespacing\raggedright\normalfont\subsubsectiontitlefont}} %% (SR)
+  {\raggedright\normalfont\subsubsectiontitlefont}}
 \let\thesis@appendix\appendix
 \renewcommand\appendix{\thesis@appendix\@ifstar{\gdef\thechapter{}}{}}
-\renewcommand\bibname{\if@mixc@sech@p References\else REFERENCES\fi} %% JSC
+\renewcommand\bibname{References}
 \AtBeginDocument{\let\thesis@thebib\thebibliography
     \let\thesis@endbib\endthebibliography
     \def\thebibliography{\begingroup\singlespacing%
@@ -490,20 +430,8 @@
 \advance \topmargin by -\headsep
 \textheight 8.9in
 \if@fullpage
-  \@on@inchm@rgintrue %% v 3.09
-\else\if@fullpagesingle
-    \@on@inchm@rgintrue
-  \else
-    \@on@inchm@rginfalse
-  \fi
-\fi
-\if@on@inchm@rgin     %% ^ 3.09 
   \setlength{\textwidth}{\paperwidth}
-  \if@thesisoffcenter
-    \addtolength{\textwidth}{-2.75in}
-  \else
-    \addtolength{\textwidth}{-2in}
-  \fi
+  \addtolength{\textwidth}{-2in}
   \@settopoint\textwidth
 \fi
 \setlength{\@tempdima}{\paperwidth}
@@ -511,7 +439,8 @@
 \setlength{\oddsidemargin}{.5\@tempdima}
 \addtolength{\oddsidemargin}{-1in}
 \if@thesisoffcenter
-  \addtolength{\oddsidemargin}{0.25in}
+  \addtolength{\oddsidemargin}{0.5in}
+  \addtolength{\textwidth}{-0.5in}
   \reversemarginpar
 \fi
 \setlength{\marginparwidth}{\oddsidemargin}
@@ -527,7 +456,7 @@
     \newcommand{\note}[1]{}
     \let\thesis@marginpar\marginpar
     \def\marginpar{%
-        \ClassWarning{uiucecethesis09}{Margin paragraphs fall outside the allowed margins\MessageBreak
+        \ClassWarning{uiucthesis2009}{Margin paragraphs fall outside the allowed margins\MessageBreak
             for UIUC Theses, use \protect\note\space instead of \protect\marginpar.}%
         \thesis@marginpar}
 \fi
@@ -625,37 +554,17 @@
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter}
-\renewcommand\chaptername{\if@mixc@sech@p Chapter\else CHAPTER\fi}
-\renewcommand\appendixname{\if@mixc@sech@p Appendix\else APPENDIX\fi}
-\newcommand\aubioname{Author's Biography} %% instead of Vita for ECE
-\newcommand\aubio{
-  \chapter{\aubioname}%
-}
 \newcommand\vitaname{Vita}
 \newcommand\vita{
   \chapter{\vitaname}%
 }
-\def\thesisspacing{\if@fullpage\setstretch{1.5}\else\onehalfspacing\fi}
+\def\thesisspacing{\if@fullpage\doublespacing\else\onehalfspacing\fi}
 \pagenumbering{roman}
 \AtBeginDocument{\thesisspacing}
 \def\preliminary{\frontmatter}
 \let\endpreliminary=\relax
 \def\thesis{\mainmatter}
 \let\endthesis=\relax
-\renewcommand{\@tocrmarg}{4.00em}
-\if@r@gright
-  \if@littlecaptions     %% v 3.10
-    \usepackage[justification=raggedright,font=scriptsize]{caption}
-  \else
-    \usepackage[justification=raggedright]{caption}
-  \fi
-\else
-  \if@littlecaptions
-    \usepackage[font=scriptsize]{caption}
-  \fi                    %% ^ 3.10
-\fi
-\newcommand{\ignore}[1]{{}}
-\newcommand{\extraline}{\if@r@gright\linebreak\else\\\fi}
 \endinput
 %%
-%% End of file `uiucecethesis09.cls'.
+%% End of file `uiucthesis2009.cls'.
