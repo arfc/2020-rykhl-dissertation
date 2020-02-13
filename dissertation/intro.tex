@@ -1,16 +1,16 @@
-\chapter[Introduction]{Introduction}
+\chapter{Introduction}
 \section{Motivation}
 Humankind has only a few ways to generate reliable, nonintermittent baseload 
-power: fossil fuels, hydro-power, geothermal power, and nuclear energy. 
+power: fossil fuels, hydropower, geothermal power, and nuclear energy. 
 Because of increasing global climate change concerns, sources with negligible 
 CO$_2$ footprints are crucial measures for global temperature control. Thus, 
 from an environmental viewpoint, hydro and nuclear power are preferable ways 
-to generate reliable power. Nevertheless, the potential for a hydro-power is 
-strictly limited by local geographical conditions; hence, the only option left 
-is nuclear power. Nuclear power plants provided 10\% of global electricity 
-supply in 2018 \cite{iea_nuclear_2019}. Moreover, nuclear share in energy 
-generation is projected to stay constant through 2040, while electricity 
-demand will increase by 30\% \cite{noauthor_world_2017}. 
+to generate reliable power. However,  local geographical conditions limit the 
+potential for hydropower; hence, the only option left is nuclear power. 
+Nuclear power plants provided 10\% of the global electricity supply in 2018 
+\cite{iea_nuclear_2019}. Moreover, nuclear share in energy generation is 
+projected to stay constant through 2040, while electricity demand will 
+increase by 30\% \cite{noauthor_world_2017}. 
 
 The Generation IV International Forum (GIF) chose \glspl{MSR} among the six 
 advanced reactor concepts for further research and development. \glspl{MSR} 
@@ -18,21 +18,21 @@ offer significant improvements ``in the four broad areas of sustainability,
 economics, safety and reliability, and proliferation resistance and physical 
 protection" \cite{doe_technology_2002}. To achieve the goals formulated by the 
 GIF, \glspl{MSR} simplify the reactor core and improve inherent safety by 
-using liquid coolant which is also a fuel\footnote{Herein \glspl{MSR} are 
-assumed to be reactors with liquid fuel which simultaneously serves as 
+using liquid coolant, which is also a fuel\footnote{Herein \glspl{MSR} are 
+assumed to be reactors with liquid fuel, which simultaneously serves as a 
 coolant.}. In a thermal spectrum \gls{MSR}, liquid fuel consists of carrier 
-salt (i.e. LiF, LiF-BeF$_2$ or LiF-NaF-KF) and fluorides of fissile and/or 
-fertile materials (i.e. UF$_4$, PuF$_3$ and/or ThF$_4$). The fuel salt 
+salt (i.e., LiF, LiF-BeF$_2$, or LiF-NaF-KF) and fluorides of fissile and/or 
+fertile materials (i.e., UF$_4$, PuF$_3$ and/or ThF$_4$). The fuel salt 
 circulates in a loop-type primary circuit \cite{haubenreich_experience_1970}. 
-This innovation leads to immediate advantages over traditional, solid-fueled, 
+This innovation leads to immediate advantages over traditional, solid-fueled 
 reactors. These include near-atmospheric pressure in the primary loop, 
 relatively high coolant temperature, outstanding neutron economy, a high level 
 of inherent safety, reduced fuel preprocessing, the ability to continuously 
-remove fission products and add fissile and/or fertile elements without 
+remove fission products, and add fissile and/or fertile elements without 
 shutdown \cite{leblanc_molten_2010}. The possibility of continuously 
 removing neutron poisons increases the potential fuel burnup and thus 
 improves the resource utilization of \glspl{MSR}. Finally, the \gls{MSR} 
-also could be employed for transmutation of spent fuel from current 
+also could be employed for the transmutation of spent fuel from current 
 \glspl{LWR} \cite{fratoni_design_2004}.
 
 Recently, interest in \glspl{MSR} has resurged, with multiple new companies 
@@ -64,7 +64,7 @@ model of an online fuel reprocessing system.
 All liquid-fueled \gls{MSR} designs involve various levels of online fuel 
 processing. Minimally, volatile gaseous fission products (e.g., Kr, Xe) 
 escape from the fuel salt during routine reactor operation and must be 
-captured. Additional systems might be used to enhance the removal of those 
+captured. Other systems might be used to enhance the removal of those 
 elements. Most designs also call for the removal of rare earth metals from 
 the core since these metals act as neutron poisons. Some designs suggest a 
 more elaborate list of elements to process (figure~\ref{fig:periodic_tab}), 
@@ -91,7 +91,7 @@ to perform online fuel salt reprocessing improves the potential neutronics
 performance of liquid-fueled reactors. First, liquid-fueled reactors can 
 operate with a relatively small excess reactivity because fissile material is 
 continuously being added to the core. Second, continuously removing fission 
-products, including strong absorbers (poisons) should significantly improve 
+products, including strong absorbers (poisons), should significantly improve 
 fuel utilization and decrease parasitic neutron absorption. Third, online 
 reprocessing decreases the amount of decay heat, dissipating after shutdown.
 Finally, for a breeder\footnote{\gls{CR} 
@@ -109,12 +109,12 @@ simulation methods at \gls{ORNL}, which integrated neutronic and fuel cycle
 codes (i.e., Reactor Optimum Design (ROD) \cite{bauman_rod_1971}) into 
 operational plant tools (i.e., Multiregion Processing Plant (MRPP) 
 \cite{kee_mrpp_1976}) for \gls{MSR} fuel reprocessing system design. Extensive 
-research efforts in fast and thermal MSR analysis has yielded workable tools 
+research efforts in fast and thermal MSR analysis has yielded useful tools 
 for burnup calculations in liquid-fueled nuclear systems  
 \cite{fiorina_investigation_2013, sheu_depletion_2013, aufiero_extended_2013,
 heuer_towards_2014, park_whole_2015, betzler_molten_2017, 
 betzler_molten_2019}. Table~\ref{tab:msr_codes} presents a list of recent 
-efforts along with the main features of the employed methods and software.
+efforts, along with the main features of the employed methods and software.
 \FloatBarrier
 
 \begin{table}[htbp]
@@ -153,7 +153,7 @@ composition (after removal of discarded materials and addition of
 fissile/fertile materials). 
 
 \gls{ORNL} researchers have developed ChemTriton, a Python script for
-SCALE/TRITON which employs the batch-wise approach to simulate a continuous 
+SCALE/TRITON, which employs the batch-wise approach to simulate a continuous 
 reprocessing and refill for either single or multiple fluid designs.  
 ChemTriton models salt treatment, separations, discharge, and refill using  
 SCALE/TRITON depletion simulation over small time steps to simulate continuous 
@@ -206,12 +206,12 @@ The terms on the right-hand side of the equation represent:
 	system.
 \end{enumerate} 
 
-Nuttin \emph{et al.} developed in-house depletion code REM which directly 
+Nuttin \emph{et al.} developed in-house depletion code REM, which directly 
 couples with \gls{MCNP} \cite{werner_mcnp_2017-1} to simulate fuel salt 
 material evolution in a simplified \gls{MSBR}-like liquid-fueled system. That 
 work directly integrated the Bateman differential equations using neutron flux 
 from the \gls{MCNP}, tracking all the isotopes available in the data library, 
-and control reactivity to maintain reactor critical  
+and control reactivity to maintain the reactor critical  
 \cite{nuttin_potential_2005}.
 
 In a similar vein, Aufiero \emph{et al.} extended Serpent 2 for continuous 
@@ -229,17 +229,18 @@ More recently, Betzler \emph{et al.} added to SCALE/TRITON continuous removals
 capability for depletion simulation \cite{betzler_molten_2019}. Similarly to 
 Aufiero \emph{et al.} effort, the extended SCALE/TRITON directly adds feed and 
 removal terms in the burnup matrix and solves it using existing ORIGEN 
-capabilities. TRITON continuous reprocessing capability was validated against 
-batch-wise script ChemTriton for unit-cell \gls{MSRE}-like model. Unlike 
-ChemTriton, this new capability will be available for all SCALE users in 6.3 
-release. However, at the moment, it undergoes extensive testing and validation 
-procedures and does not available for external users.
+capabilities. TRITON's continuous reprocessing capability was validated 
+against batch-wise script ChemTriton for the unit-cell \gls{MSRE}-like model. 
+Unlike ChemTriton, this new capability will be available for all SCALE users 
+in 6.3 release. However, at the moment, it undergoes extensive testing and 
+validation procedures and does not available for external users.
 
 Most of the existing tools in the literature represented fuel salt 
-reprocessing plant as an invariable ``black box'' model which removes target 
+reprocessing plant as an invariable ``black box'' model, which removes target 
 elements all at once with a fixed efficiency, determined by the user before 
 starting the depletion simulation. Typically, such a ``black box'' model is 
-characterized by vector of removing elements and their extraction efficiencies:
+characterized by a vector of removing elements and their extraction 
+efficiencies:
 \begin{equation}
 \begin{bmatrix}
 N^{in}_{0} \\ \vdots \\ N^{in}_{e} \\ \vdots \\ N^{in}_{E} \\
@@ -252,29 +253,29 @@ N^{in}_{0} \\ \vdots \\ N^{in}_{e} \\ \vdots \\ N^{in}_{E} \\
 N^{out}_{0}\\ \vdots \\ N^{out}_{e} \\ \vdots \\N^{out}_{E}  \\
 \end{bmatrix}
 \end{equation}
-where $N^{in/out}$ is the number density of atoms and $\epsilon$ is the 
+where $N^{in/out}$ is the number density of atoms, and $\epsilon$ is the 
 extraction efficiency for all elements $e$ in $(0, 1)$. The main issues 
-related with static ``black box'' model assumptions in the literature include: 
+related to static ``black box'' model assumptions in the literature include: 
 \paragraph{Time-independent separation efficiency vector.} Realistically, 
 long-term reactor operation will require a time-dependent extraction 
 efficiency vector.
-\paragraph{The separation efficiency is independent of the reactor operational 
-	parameters.} In reality the extraction efficiency depends on temperature, 
-power level, current fuel salt isotopic composition, and material mass 
-flow rate.
+\paragraph{The separation efficiency is independent of the reactor's 
+operational parameters.} In reality, the extraction efficiency depends on 
+temperature, power level, current fuel salt isotopic composition, and material 
+mass flow rate.
 \paragraph{All reprocessing plant components are treated as a single ``black 
 	box'' component.} However, the fuel salt in a reprocessing plant undergoes 
 many separate components (e.g., helium bubbling, nickel mesh filter, etc.) 
-which target specific elements. Some of these components can be connected in 
+that target specific elements. Some of these components can be connected in 
 series, parallel, or series-parallel. The ``black box'' model (only single 
-process) requires massive pre-simulation analytic work from the user to 
-calculate lumped separation efficiency vector before a simulation is run and 
-cannot be adjusted during the simulation. Additionally, treating the 
+process) requires extensive pre-simulation analytic work from the user to 
+calculate the lumped separation efficiency vector before a simulation is run 
+and cannot be adjusted during the simulation. Additionally, treating the 
 processing system as a single ``black box'' may lose dynamics. Finally, the 
 waste stream from each component cannot be tracked separately, which is 
 necessary for fuel reprocessing system optimization.
 
-Some of the tools listed in table~\ref{tab:msr_codes} used major 
+Some of the tools listed in Table~\ref{tab:msr_codes} used significant  
 approximations that may lead to inaccurate fuel evolution predictions, and 
 others are not available for external users. This work introduces an 
 open-source simulation package, SaltProc, which expands the capability of the 
@@ -285,26 +286,23 @@ to determine fuel salt composition evolution.
 \section{Operational and safety parameters evolution} 
 \label{sec:saf-par-literature}
 In contrast with conventional solid-fueled reactors in which in-core fuel 
-residence time is 4-5 years\footnote{For the most common 
-	18-month cycle, during refueling personnel removing 1/3 of the fuel 
-	assemblies, re-arranging other assemblies, and loading fresh fuel into the 
-	core. Thus, each fuel assembly is kept in the core at most $3\times 18=54$ 
-	months.}, the initial fuel salt batch stays in the \gls{MSR} reactor 
-	primary 
-loop during the whole lifetime. Therefore, the fuel salt accumulates 
-\glspl{FP} not captured by fuel reprocessing system as well as transuranic 
-elements\footnote{The chemical elements with atomic numbers greater than 
-	uranium (92).}. Continuous fuel salt composition evolution has a 
-significant influence on the neutron energy spectrum and, consequently, 
-affects the reactor behavior, necessitating additional safety analysis.
+residence time is 4-5 years\footnote{For the typical 18-month cycle, during 
+refueling personnel removing 1/3 of the fuel assemblies, re-arranging other 
+assemblies, and loading fresh fuel into the core. Thus, each fuel assembly is 
+kept in the core at most $3\times 18=54$ months.}, the initial fuel salt batch 
+stays in the \gls{MSR} reactor's primary loop during the whole lifetime. 
+Therefore, the fuel salt accumulates \glspl{FP} not captured by the fuel 
+reprocessing system as well as transuranic elements\footnote{The chemical 
+elements with atomic numbers are greater than uranium (92).}. Continuous fuel 
+salt composition evolution has a significant influence on the neutron energy 
+spectrum and, consequently, affects the reactor behavior, necessitating 
+additional safety analysis.
 
-Nuttin \emph{et al.} studied evolution of a key safety parameter, the 
-temperature 
-reactivity feedback coefficient, estimating it for the \gls{MSBR} at startup 
-and at equilibrium. The temperature coefficient of reactivity quantifies 
-reactivity changes due to temperature increase in the core and was calculated 
-in that 
-work as:
+Nuttin \emph{et al.} studied the evolution of a key safety parameter, the 
+temperature reactivity feedback coefficient, estimating it for the \gls{MSBR} 
+at startup and equilibrium. The temperature coefficient of reactivity 
+quantified reactivity changes due to temperature increase in the core and was 
+calculated in that work as:
 \begin{align}\label{eq:feedback}
 	& \qquad\qquad\qquad \alpha = \frac{k_{1200} - k_{900}}{\delta 
 	T} \\
@@ -314,17 +312,17 @@ work as:
 	\nonumber \\
 	\delta T &= 1200K-900K.\nonumber
 \end{align}
-That work showed that the \gls{FTC} at startup and at equilibrium is $-1.5$ 
-and $-1.0pcm/K$, respectively. Per cent mille ($pcm$) is the unit of 
+That work showed that the \gls{FTC} at startup and equilibrium is $-1.5$ 
+and $-1.0pcm/K$, respectively. Percent mille ($pcm$) is the unit of 
 reactivity equal to $10^{-5}$ of $k_{eff}$. Nuttin \emph{et al.} also reported 
 a positive and time-invariant total temperature coefficient ($+0.8pcm/K$) 
 \cite{nuttin_potential_2005}. Recently, Park and colleagues expanded that 
 approach to a full-core high-fidelity \gls{MSBR} model and estimated safety 
 parameters evolution over 20 years of operation \cite{park_whole_2015}. These 
-calculations showed relatively large negative total temperature coefficient 
+calculations showed a relatively large negative total temperature coefficient 
 during 20 years of the reactor operation; the coefficient magnitude weakens 
-from $-3.21$ to $-1.41pcm/K$ at startup and at equilibrium composition, 
-respectively. Additionally, that work reported control rod worth deterioration 
+from $-3.21$ to $-1.41pcm/K$ at startup and equilibrium, respectively. 
+Additionally, that work reported a control rod worth deterioration 
 from $2099pcm$ to $1970pcm$ due to neutron spectrum hardening during reactor 
 operation. 
 
@@ -343,11 +341,11 @@ fuel composition.
 
 The evolution of control rod worth in the \gls{TAP} has not been reported in 
 the literature before. This dissertation work illuminated the evolution of  
-major safety parameters (fuel, moderator and total temperature coefficient, 
-control rod worth) for the \gls{TAP} \gls{MSR} at various moments during the 
-reactor operation. Additionally, I investigated the impact of neutron poison 
-accumulation (e.g., $^{135}$Xe) in the fuel salt during short-term transients 
-(i.e., load following) on major safety characteristics.
+essential safety parameters (fuel, moderator, and total temperature 
+coefficient, control rod worth) for the \gls{TAP} \gls{MSR} at various moments 
+during the reactor operation. Additionally, I investigated the impact of 
+neutron poison accumulation (e.g., $^{135}$Xe) in the fuel salt during 
+short-term transients (i.e., load following) on major safety characteristics.
 
 
 \section{Background Summary}
@@ -356,78 +354,73 @@ safety parameters in liquid-fueled \gls{MSR} are reviewed in
 Section~\ref{sec:litreview}. Based on this summary, I have identified a few 
 possible directions for the improvement of \gls{MSR} tools:
 \paragraph{Reproducibility/Availability.}
-Serpent is the only contemporary nuclear 
-contemporary nuclear 
-reactor physics software which can perform depletion calculations that can 
-take 
-into account online fuel salt reprocessing regimes. However, this built-in 
-online reprocessing routine is undocumented  and the discussion forum for 
-Serpent users is the only useful source of information at the moment. 
-Other mentioned tools are under the closed-source license or available for 
-internal users only. These issues can be a barrier to reuse of research 
-software and to reproduce scientific results. Thus, a new, open-source, 
-reproducible tool for fuel processing simulation would assist in the 
-production of reproducible research in the area of liquid-fueled reactor 
-modeling.
+Serpent is the only contemporary nuclear reactor physics software that can 
+perform depletion calculations that can take into account online fuel salt 
+reprocessing regimes. However, this built-in online reprocessing routine is 
+undocumented, and the discussion forum for Serpent users is the only useful 
+source of information at the moment. Other mentioned tools are under the 
+closed-source license or available for internal users only. These issues can 
+be a barrier to reuse of research software and to reproduce scientific 
+results. Thus, a new, open-source, reproducible tool for fuel processing 
+simulation would assist in the production of reproducible research in the area 
+of liquid-fueled reactor modeling.
 \paragraph{Realistic fuel reprocessing system model.} 
-Major approximations in fuel reprocessing parameters deteriorate fuel salt 
-composition predictions since the evolution of safety parameter accuracy is 
-strongly dependent on fuel salt composition. A realistic fuel reprocessing 
+Significant approximations in fuel reprocessing parameters deteriorate fuel 
+salt composition predictions since the evolution of safety parameter accuracy 
+is strongly dependent on fuel salt composition. A realistic fuel reprocessing 
 system model will allow reprocessing component parameter optimization,  
-increase fidelity of fuel and waste stream composition calculations, and 
+increase the fidelity of fuel and waste stream composition calculations, and 
 advance reprocessing system design.
 \paragraph{Variable extraction efficiency.} Most of the research efforts in 
 the literature assumed ideal 100\% extraction efficiency of all removed 
-elements, which stayed 
-constant during the whole reactor lifetime. But realistically the efficiency 
-is time-dependent and changes with respect to operational parameters: 
-temperature, power level, salt composition, etc. Thus, the ability to set up 
-dynamic separation efficiency must be added in \gls{MSR} simulation tools to 
-advance depletion calculations.
+elements, which stayed constant during the whole reactor lifetime. But 
+realistically the efficiency is time-dependent and changes with respect to 
+operational parameters: temperature, power level, salt composition, etc. Thus, 
+the ability to set up dynamic separation efficiency must be added in \gls{MSR} 
+simulation tools to advance depletion calculations.
 \paragraph{Reactivity control.} Reconfigurable moderator configuration in the 
 \gls{TAP} core presents a challenge because of the core geometry changes with 
-respect to time. The reactivity control module which adjusts the core geometry 
-to maintain criticality would be a great capability for simulating a new, more 
-advanced \gls{MSR} concepts and short-term transients.
+time. The reactivity control module which adjusts the core geometry 
+to maintain criticality would be an exceptional capability for simulating a 
+new, more advanced \gls{MSR} concepts and short-term transients.
 \paragraph{Safety characteristics evolution during reactor operation.} The 
-\gls{MSR} fuel salt  accumulates \gls{FP} and transuranic elements which 
-significantly shift neutron energy spectrum. Neutron energy hardening might 
-worsen the core safety during operation. The impact of the fuel salt evolution 
-on the \gls{MSR} safety parameters must be carefully investigated and reported.
+\gls{MSR} fuel salt  accumulates \gls{FP} and transuranic elements, which 
+significantly shift the neutron energy spectrum. Neutron energy hardening 
+might worsen the core safety during operation. The impact of the fuel salt 
+evolution on the \gls{MSR} safety parameters must be carefully investigated 
+and reported.
 
 This work aims to overcome these issues and demonstrates the tool capabilities 
 for a two promising \gls{MSR} concept.
 
 
 \section{Objectives and outline of the work}
-Most of existing \gls{MSR} depletion simulators usually assume ideal  
+Most of the existing \gls{MSR} depletion simulators usually assume ideal  
 efficiency (100\% of target nuclide is being removed) of the neutron poison 
 removal process (see Section~\ref{sec:litreview}). The main goal of this 
 dissertation is to develop a generic open-source tool, SaltProc, capable of 
 simulating a wide range of liquid-fueled systems --- including multi-fluid and 
-multi-region designs --- and to validate it against existing modeling efforts. 
+multi-region designs --- and validate it against existing modeling efforts. 
 Additionally, SaltProc enables poison extraction simulation based on a  
 realistic physics-based fuel processing model. 
 
 The structure of the thesis is as follows. Chapter 1 serves as a literature 
-review, providing background on fuel burnup, online fuel reprocessing 
+review, providing background on fuel burnup, online fuel reprocessing  
 approaches, safety parameter evolution during reactor operation, and how these 
 concepts have been applied to a wide range of \glspl{MSR} in the literature. 
 Chapter 2 covers modeling online reprocessing details and proposed computation 
-tool architecture. In an attempt to avoid the pitfalls of
-a black box 
-understanding and to identify method limitations at an early
-stage, governing 
+tool architecture. In an attempt to avoid the pitfalls of a ``black box''  
+understanding and to identify method limitations at an early stage, governing 
 equations and working principles are stated and discussed. Chapter 3 presents 
-an equilibrium-seeking results for \gls{MSBR} as well as important operational 
-and safety parameters for both the initial and equilibrium states. 
+equilibrium-seeking results for \gls{MSBR} as well as essential operational 
+and safety parameters for both the initial and equilibrium states.
+
 Additionally, benefits of continuous fission product removal for a thermal 
 \glspl{MSR} are evaluated at the end of chapter 3. Chapter 4 covers SaltProc 
-demonstration and validation efforts with focus on \gls{TAP} \gls{MSR} with 
+demonstration and validation efforts with a focus on \gls{TAP} \gls{MSR} with 
 taking into account adjustable moderator configuration. Chapter 5 gives the 
-safety parameter overview and their evolution during \gls{TAP} lifetime-long 
-reactor operation. Moreover, the safety parameters dynamics during short-term 
-transients has been evaluated at the end of chapter 5. The last chapter
-summarizes the contribution of this work to the nuclear community and a 
-conclusion is offered together
-with an outlook for future work on the topic.
+safety parameter overview and its evolution during the \gls{TAP} 
+lifetime-long reactor operation. Moreover, the safety parameters dynamics 
+during short-term transients have been evaluated at the end of chapter 5. The 
+final chapter summarizes this work contribution to the nuclear community, and 
+a conclusion is offered together with an outlook for future work on the topic.

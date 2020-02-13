@@ -1,11 +1,10 @@
-\chapter[Online reprocessing modeling approach]{Online reprocessing modeling 
-approach}
+\chapter{Online reprocessing modeling approach}
 \section{Fuel salt reprocessing overview} \label{sec:reproc-plant}
 Removing specific chemical elements from a molten salt is a complicated 
 task that requires intelligent design (e.g., chemical separations equipment 
 design, fuel salt flows to equipment). This section contains a brief overview 
 of a generic \gls{MSR} fuel salt reprocessing system. Modeling such systems is 
-the focus of current dissertation.
+the focus of the current dissertation.
 
 \subsection{Gas separation system} \label{sec:gas-separ}
 Gaseous fission products (e.g., Kr, Xe) must be removed from the fuel salt 
@@ -17,11 +16,10 @@ is produced directly from fission in about 0.3\% of $^{235}$U fissions
 produced by the decay of $^{135}$I and $^{135}$Te (table~\ref{tab:xe_gain}). 
 $^{135}$I and $^{135}$Te yields from fission are 
 $\gamma_{_{^{135}I}}\!=3.6$\% and $\gamma_{_{^{135}Te}}\!=2.5$\%, 
-respectively. Thus, total $^{135}$Xe production  
-from fission is about 6.4\% of fissions (of $^{235}$U), most of this is from 
-$^{135}$I and $^{135}$Te decay. Noble gases (e.g. tritium, xenon, and krypton) 
-can 
-be removed from the fuel salt as follows:
+respectively. Thus, the total $^{135}$Xe production from fission is about 
+6.4\% of fissions (of $^{235}$U), most of this is from $^{135}$I and 
+$^{135}$Te decay. Noble gases (e.g., tritium, xenon, and krypton) can be 
+removed from the fuel salt as follows:
 \begin{enumerate}[label=(\alph*)]
 	\item a bubble generator injects helium bubbles in the salt stream;
 	\item noble gases migrate promptly to the helium bubbles because 
@@ -56,15 +54,15 @@ be removed from the fuel salt as follows:
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Diagram~\ref{fig:xe_diagram} shows the key pathways for xenon production, 
-accumulation, and removal in a typical \gls{MSR}. 
-Figure~\ref{fig:gas_removal_system} shows the principal design of the  
+accumulation, and removal in a typical \gls{MSR}.  
+Figure~\ref{fig:gas_removal_system} shows the conceptual design of the  
 \gls{MSBR} gas separation system. Helium bubbles of a specific size are 
 introduced in a salt stream via the primary pump bowl. These bubbles absorb 
 noble gases before being separated from the salt by a gas separator. 
 \gls{ORNL} suggested that the \gls{MSBR} off-gas system would inject 
 $d=0.508$mm helium bubbles in the pump bowl, redirect 10\% of the fuel salt 
 flow through a bubble separator to remove the bubbles, and then return the 
-flow back into the pump suction. Robertson \emph{et al.} reported that helium 
+flow into the pump suction. Robertson \emph{et al.} reported that the helium 
 bubble size was approximately 25\% of the throat width (blue circle on 
 figure~\ref{fig:bubble_separator}) and was independent of the gas flow rate 
 \cite{robertson_conceptual_1971}. Consequently, it is possible to regulate the 
@@ -79,8 +77,8 @@ helium bubble size by changing the throat width in the bubble generator.
 	sparger) and separation (of gas in the entrainment separator), 
 	respectively. The orange color represents the fuel salt in the primary 
 	loop, the blue color represents the gas separation system, and the gray 
-	color is moderator in the core. Fission yields assume $^{235}$U fission 
-	only.}
+	color is the moderator in the core. Fission yields assume $^{235}$U 
+	fission 	only.}
 	\label{fig:xe_diagram}
 \end{figure}
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -113,7 +111,7 @@ helium bubble size by changing the throat width in the bubble generator.
 		constant	($\lambda$)		\\
 		\hline $^{135}$Xe burnup              &  Neutron flux 
 		($\phi$)		 					\\
-		dissolved xenon-135 burnup as it passes throught core  
+		dissolved xenon-135 burnup as it passes through the core  
 		& 			            \\		\hline $^{135}$Xe migrated to 
 		helium bubbles & Removal efficiency 
 		($\epsilon_m$)		\\
@@ -128,17 +126,18 @@ helium bubble size by changing the throat width in the bubble generator.
 \end{table}
 
 To realistically model the gas separation system, we need a mathematical model 
-which describes noble gas extraction efficiency during reactor operation. 
+that describes noble gas extraction efficiency during reactor operation. 
 Particularly, a model of xenon extraction efficiency as a function of sparger 
-design parameters is needed to accurately model $^{135}$Xe removal in a fuel 
-salt depletion simulation. The gain and loss terms for $^{135}$Xe dissolved in 
-the fuel salt are listed in Tables~\ref{tab:xe_gain} and \ref{tab:xe_loss}. 
-The removal efficiency for the xenon in the pump bowl was measured during 
-\gls{MSRE} operation, but the technical report ORNL-4069 by Kedl-Houtzeel only 
-stated its range (from 50 to 100\%) and concluded, ``It is probably a 
-complex parameter like the circulating-void fraction and depends on many 
-reactor operational variables.'' \cite{kedl_development_1967}. $^{135}$Xe 
-burnup and decay rates are well known. 
+design parameters is needed to accurately model the $^{135}$Xe removal in a 
+fuel salt depletion simulation. The gain and loss terms for $^{135}$Xe 
+dissolved in the fuel salt are listed in Tables~\ref{tab:xe_gain} and 
+\ref{tab:xe_loss}. The removal efficiency for the xenon in the pump bowl was 
+measured during \gls{MSRE} operation. However, the the technical report 
+ORNL-4069 by Kedl-Houtzeel only stated its range (from 50 to 100\%) and 
+concluded, ``It is probably a complex parameter like the circulating-void 
+fraction and depends on many reactor operational variables.'' 
+\cite{kedl_development_1967}. $^{135}$Xe burnup and decay rates are well 
+known. 
 
 Peebles \emph{et al.} in ORNL-TM-2245 has reported xenon removal efficiency 
 ($\epsilon_{Xe}$) in a gas separation system as a function of many parameters 
@@ -169,61 +168,63 @@ it is out of the scope of this work to accurately estimate mass transfer
 coefficient, this work seeks to provide a tool which would allow the user to 
 specify any mathematical model for a separation efficiency.
 
-Equation~\ref{eq:gas_eff} would apply to other noble gases (e.g., Kr, Ar) but 
-the Henry's law constant ($H$) and the mass transfer coefficient ($K_L$) would 
-be different. Current effort at the University of Illinois at Urbana-Champaign 
-namely, ``Enabling Load Following Capability in the Transatomic Power 
-\gls{MSR}" \cite{huff_enabling_2018}, has a goal to determine mass transfer 
-coefficients for various gaseous fission products (Ar, Kr, Xe) using 
-experiments, enabling \gls{CFD} and multiphysics simulations of such reactors. 
-As a result, the obtained mathematical model for gas removal efficiency might 
-be employed to inform a realistic physics-based fuel reprocessing model in 
-SaltProc.
+Equation~\ref{eq:gas_eff} would apply to other noble gases (e.g., Kr, Ar), but 
+Henry's law constant ($H$) and the mass transfer coefficient ($K_L$) would 
+be different. Current effort at the University of Illinois at 
+Urbana-Champaign, namely, ``Enabling Load Following Capability in the 
+Transatomic Power \gls{MSR}," \cite{huff_enabling_2018} has a goal to 
+determine mass transfer coefficients for various gaseous fission products (Ar, 
+Kr, Xe) using experiments, enabling \gls{CFD} and multi-physics simulations of 
+such reactors. As a result, the obtained mathematical model for gas removal 
+efficiency might be employed to inform a realistic physics-based fuel 
+reprocessing model in SaltProc.
 
 
 \subsection{Insoluble fission products filtering}
-Decay chain of approximately 40\% of fission products has a gaseous elements 
-in it. Some of non-gaseous \glspl{FP} produced in the \gls{MSR} core (e.g., 
+The decay chain of approximately 40\% of fission products has gaseous elements 
+in it. Some of the non-gaseous \glspl{FP} produced in the \gls{MSR} core 
+(e.g., 
 noble and semi-noble metals) have very low solubility in the molten salt. Some 
 fraction of noble and semi-noble solid fission products plate out onto the 
 internal surfaces of the primary loop equipment, complicating their removal 
 \cite{briggs_molten-salt_1964}. The remains noble and semi-noble metals can be 
-removed along with with corrosion products using mechanical filtration system 
-which ``consists largely of a high surface area mechanical filter, likely an 
+removed along with corrosion products using a mechanical filtration system, 
+which ``consists largely of a high surface area mechanical filter, likely a 
 nickel mesh, to promote deposition of suspended, undissolved fission and 
 corrosion products,'' stated Holcomb \emph{et al.} 
 \cite{holcomb_instrumentation_2018}. The filter is manufactured from porous 
 metal and located on a recirculating side stream of the side. The filter has 
 limited capacity, needs periodic replacement, and the dose rate on the used 
-filter is very high due to the undissolved fission products and residual 
-fuel salt remaining on the filter \cite{mcfarlane_review_2019-1}. Differential 
+filter is very high due to the undissolved fission products and residual fuel 
+salt remaining on the filter \cite{mcfarlane_review_2019-1}. Differential 
 pressure measurements before and after filters are required to determine when 
 the filters are full. 
 
 The historic \gls{MSRE} program provided basic information on the design and 
-performance of large mechanical filter. Figure~\ref{fig:large_filter_layout} 
-shows the piping layout of the filter, storage and processing tanks. The 
-filter pressure vessel is made of high-nickel alloy (Inconel) and accommodate 
-40-$\mu m$ pore size sintered Inconel fibers. This large molten salt filter 
-had total filtering area 0.8${m^2}$ and was designed to filter approximately 
-1 kg of the molten salt per minute but the removal efficiency has never been 
-reported. Also, the design of the filter, the filter holder, and the 
-remotely operated equipment for the filter replacement for commercial-scale 
-\gls{MSR} designs presents a significant engineering challenge 
+performance of the large mechanical filter. 
+Figure~\ref{fig:large_filter_layout} shows the piping layout of the filter, 
+storage, and processing tanks. The filter pressure vessel is made of 
+high-nickel alloy (Inconel) and accommodates 40-$\mu m$ pore size sintered 
+Inconel fibers. This large molten salt filter had a total filtering area of 
+0.8${m^2}$ and was designed to filter approximately 1 kg of the molten salt 
+per minute, but the removal efficiency has never been reported. Also, the 
+design of the filter, the filter holder, and the remotely operated equipment 
+for the filter replacement for commercial-scale \gls{MSR} designs presents a 
+significant engineering challenge 
 \cite{mcfarlane_review_2019-1}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=.75\textwidth]{ch2/large_molten_salt_filter_layout.png}
-	\caption{Schematic flow diagram of large molten salt mechanical filter 
+	\caption{Schematic flow diagram of the large molten salt mechanical filter 
 		designed and operated during the \gls{MSRE} (figure reproduced from 
 		Lindauer \emph{et al.} \cite{lindauer_design_1969}).}
 	\label{fig:large_filter_layout}
 \end{figure}
 
-In this work, separation efficiency in the filtering system is assumed to be 
-ideal and constant over reactor operation but in the future work 
-physics-driven mathematical formula can be used when the experimental data or 
-analytical model will be available.
+In this work, we assumed ideal and constant separation efficiency in the 
+filtering system. However, in the future, a physics-driven mathematical 
+formula can be used when the experimental data or analytical model will be 
+available.
 
 
 \subsection{Fuel chemical processing facility} \label{sec:chemical_processing}
@@ -234,13 +235,13 @@ guarantee normal operation. Meanwhile, lanthanides have relatively high
 solubility in the carrier salt and must be removed by chemical extraction. 
 
 In thorium-fueled \gls{MSR} designs, $^{232}$Th in the fuel salt absorbs 
-thermal neutrons and produces $^{233}$Pa which then decays into the fissile 
-$^{233}$U (figure~\ref{fig:th_u_reaction}). Protactinium presents a challenge, 
+thermal neutrons and produces $^{233}$Pa, which then decays into the fissile 
+$^{233}$U (Figure~\ref{fig:th_u_reaction}). Protactinium presents a challenge  
 since it has a large absorption cross section in the thermal energy spectrum. 
 Accordingly, $^{233}$Pa is continuously removed from the fuel salt into a 
 protactinium decay tank to allow $^{233}$Pa to decay to $^{233}$U without 
 poisoning the reactor. This feature allows the thorium-fueled \gls{MSR} to 
-avoid neutron losses to protactinium, keeps fission products to a very low 
+avoid neutron losses to protactinium, keeps fission products  on a trace 
 level, and increases the efficiency of $^{233}$U breeding. 
 
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -267,10 +268,10 @@ for cooling and decay of the shortest-lived fission products, then it is
 directed to the primary fluorinator. There, most of the uranium is removed by 
 fluorination to UF$_6$. After that, the salt is routed to an extraction column 
 where it is combined with a mixture containing metallic bismuth, lithium, and 
-thorium reductants. The remaining uranium and protactinium is  reductively 
+thorium reductants. The remaining uranium and protactinium are reductively 
 extracted to a bismuth solution, leaving a salt that only contains fission 
 products dissolved in carrier salt (base composition LiF-BeF$_2$-ThF$_4$). The 
-salt then goes through a reduction column where UF$_6$ is reduced to UF$_4$ 
+salt then goes through a reduction column where UF$_6$ is reduced to UF$_4$,  
 preparing it for return to the reactor. BeF$_2$ and ThF$_4$ are also added, 
 and all residual bismuth is removed from the salt. After a final cleanup step 
 and valence adjustment, the purified salt returns to the reactor 
@@ -293,7 +294,7 @@ salt contains UF$_4$, PaF$_4$, ThF$_4$ and fission products. Uranium produced
 after $^{233}$Pa decay is extracted and directed back into the reactor. Decay 
 salt is the precursor for the waste salt as it was periodically discarded  
 every 220 days \cite{robertson_conceptual_1971}.}. The decay salt, containing 
-UF$_4$, PaF$_4$, and ThF$_4$, passes into a decay tank where $^{233}$Pa is 
+UF$_4$, PaF$_4$, and ThF$_4$, passes into a decay tank where $^{233}$Pa 
 decays to $^{233}$U. The uranium generated by protactinium decay is removed 
 through fluorination to UF$_6$ and directed to the reduction column to refuel 
 the purified fuel salt. A  hydrofluorinator and a fluorinator can remove 
@@ -312,9 +313,9 @@ isolation system contains only traces of protactinium and uranium but contains
 practically all of the rare earths. A fraction of this salt stream is 
 redirected to a reductive extraction process for removing rare earths.  The 
 principal scheme of a rare earth removal system is shown in  
-Figure~\ref{fig:rare-earth-removal}. A molten salt flow which contains 
+Figure~\ref{fig:rare-earth-removal}. A molten salt flow that contains 
 rare earth fluorides is fed to the center of an extraction column. The salt 
-flows countercurrent to a liquid bismuth stream which contains thorium and 
+flows countercurrent to a liquid bismuth stream, which contains thorium and 
 lithium. In the upper part of the column, the rare earths are reduced and 
 transferred to the downflowing liquid metal stream. Below the feed point, the 
 rare earth concentration is increased in the salt and metal streams in order 
@@ -332,43 +333,43 @@ to produce a concentration high enough for disposal
 While it is out of the scope of this work to derive the accurate  
 chemistry-based mathematical formula for rare earths and protactinium 
 separation efficiency, this work seeks to provide a flexible tool that is able 
-to simulate chemical processes in significant detail with regard to key system 
+to simulate chemical processes in significant detail concerning vital system 
 design parameters.
 
 \section{Serpent overview}
 Serpent is a continuous-energy Monte Carlo neutronics software capable of 
 solving the neutron transport problem by tracking individual neutrons within 
-the problem geometry and using stochastic method to determine chain of events 
-for each neutron \cite{leppanen_serpent_2014}. Serpent is under active 
+the problem geometry and using the stochastic method to determine the chain of 
+events for each neutron \cite{leppanen_serpent_2014}. Serpent is under active 
 development at the VTT Technical Research Centre of Finland since 2004, where 
 it was initially conceived as a tool to simplify group constant generation in 
 a high-fidelity Monte Carlo environment. Serpent is now a widely used  
 transport code, used by more than 500 registered individuals in 155 
 organizations located in 37 countries around the world. The burnup calculation 
-capability in Serpent is based on built-in calculation routines, without using 
+capability in Serpent is based on built-in calculation routines without using 
 any external solvers. A restart feature enables fuel shuffling simulation or 
 applying any modifications to the input by dividing the calculation into 
 several parts, which is crucial for online reprocessing simulations.
 
 The latest version, Serpent 2, supports advanced geometries and has advanced 
-burnup capabilities, including online refueling capabilities which are 
+burnup capabilities, including online refueling capabilities, which are 
 necessary for neutronic computations of pebble-bed reactors and liquid-fueled 
 \glspl{MSR} \cite{aufiero_extended_2013}. Unfortunately, built-in online 
 refueling features are still under active development, undocumented and the 
 discussion forum for Serpent users is the only useful source of information at 
 the moment \cite{aufiero_extended_2013}. Additionally, multi-physics 
 simulations using Serpent 2 have been demonstrated, including  calculations 
-with thermal-hydraulics, \gls{CFD} and fuel performance codes 
+with thermal-hydraulics, \gls{CFD}, and fuel performance codes 
 \cite{leppanen_numerical_2015}. 
 
 Serpent 2 can be effectively run in parallel on computer clusters and 
 multi-core workstations. Parallelization is handled by thread-based OpenMP, 
-which enables all processsors to use shared memory space. Calculations can be 
+which enables all processors to use shared memory space. Calculations can be 
 divided into several nodes by distributed-memory \gls{MPI} parallelization. 
 Serpent 2  is an improvement upon Serpent 1, and contains a complete redesign 
 of memory management using hybrid OpenMP \cite{dagum_openmp_1998} + \gls{MPI} 
-parallelization.  This hybrid parallelization is important in depletion 
-calculations using computer clusters with multiple nodes, and allows to 
+parallelization.  This hybrid parallelization is substantial for depletion 
+calculations using computer clusters with multiple nodes and allows us to 
 achieve significant speed-up in depletion calculations on computer clusters 
 with more than 4,000 cores \cite{leppanen_serpent_2014}. 
 
@@ -381,7 +382,7 @@ for all calculations in this dissertation.
 
 \section{Simulation tool design and capabilities}\label{sec:tool_design}
 The first version of the SaltProc tool for calculating \gls{MSR} fuel 
-composition evolution, taking into account an online reprocessing system 
+composition evolution, taking into account an online reprocessing system,  
 was developed in 2018 as a part of the M.S. thesis  
 \cite{rykhlevskii_arfc/saltproc_2018, rykhlevskii_advanced_2018}. The tool was 
 designed to expand Serpent 2 depletion capabilities for modeling liquid-fueled 
@@ -432,7 +433,7 @@ reading the user's input file for the depletion software, initial material
 simulation (e.g., neutron population and number of cycles for Monte Carlo 
 neutron transport), and running the depletion code.
 \paragraph{Simulation.}\textit{Simulation} class runs Serpent depletion step, 
-creates and writes HDF5 database, tracks time and converts isotopic 
+creates and writes HDF5 database, tracks time, and converts isotopic 
 composition vector nuclide names from Serpent to human-readable format.
 \paragraph{MaterialFlow.}Each \textit{MaterialFlow} object represents the 
 material flowing between \textit{Process} objects  
@@ -469,18 +470,19 @@ Such a class structure provides outstanding flexibility in simulating
 various \gls{MSR} fuel processing system designs. I created a library of 
 various \textit{MaterialFlow} (e.g., fuel salt flow, fertile salt flow, 
 refueling salt flow) and \textit{Process} (e.g., helium sparging facility, gas 
-separator, nickel filter) objects examples to help a user to 
-quickly create a model of a desired reprocessing scheme. At runtime, the user
-should connect \textit{Process} objects in series, parallel or both with 
+separator, nickel filter) objects examples to help a user to create a model of 
+a desired reprocessing scheme quickly. At runtime, the user
+should connect \textit{Process} objects in series, parallel, or both with 
 \textit{MaterialFlow} objects to form a comprehensive reprocessing system. To 
-make the reprocessing system definition simple and self-explanatory, I 
-employed standardized graph description language, \emph{dot}, which is widely 
-used in Computer Science \cite{koutsofios_drawing_1996}. The reprocessing 
-plant structure described with \emph{dot} can be simply plotted using Graphviz 
-\cite{ellson_graphviz_2003} and those plots can be used for analysis, 
-optimization, and publications purposes. The user also had flexibility to 
-create custom objects with desired attributes and methods and contribute back 
-to the code package using GitHub (https://github.com/arfc/saltproc).	
+make the reprocessing system definition self-explanatory and straightforward, 
+I employed standardized graph description language, \emph{dot}, which is 
+widely used in Computer Science \cite{koutsofios_drawing_1996}. The 
+reprocessing plant structure described with \emph{dot} can be simply plotted 
+using Graphviz \cite{ellson_graphviz_2003}, and those plots can be used for 
+analysis, optimization, and publication purposes. The user also had the  
+flexibility to create custom objects with desired attributes and methods and 
+contribute back to the code package using GitHub  
+(https://github.com/arfc/saltproc).	
 
 \subsection{Tool flowchart}
 Figure~\ref{fig:saltproc_flow} illustrates the online reprocessing simulation 
@@ -490,10 +492,9 @@ software executable, neutron population and number of criticality cycles,
 depletion history, total heating power, and list of files with the core 
 geometry definition. To perform a depletion step, SaltProc v1.0 reads a 
 user-defined Serpent template file. This file contains input parameters such 
-as path to nuclear data library, material isotopic composition at startup, 
-burnup calculation parameters, and boundary conditions. SaltProc v1.0 
-fills in 
-the template file and runs Serpent single-step depletion. 
+as the path to a nuclear data library, material isotopic composition at 
+startup, burnup calculation parameters, and boundary conditions. SaltProc v1.0 
+fills in the template file and runs Serpent single-step depletion. 
 
 After the depletion calculation, SaltProc v1.0 reads the depleted fuel 
 composition file into the \textit{MaterialFlow} object 
@@ -503,15 +504,14 @@ total mass, mass flow rate, density, temperature, void fraction, etc. For the
 simplest reprocessing case, when all fuel processing components are located 
 in-line (100\% of total material flow goes through a chain of separation 
 components), the \textit{core\textunderscore outlet} object is flowing 
-sequentially between \textit{Processes} and each \textit{Process} is removing 
+sequentially between \textit{Processes}, and each \textit{Process} is removing 
 a mass fraction of target elements with specified extraction efficiency. 
 Afterward, the removed material mass is compensated by fresh fuel salt to 
 maintain the salt inventory in a primary loop. Finally, resulting isotopic 
-composition after reprocessing is stored in HDF5 database and dumped in a new 
-composition file for the next Serpent depletion run. SaltProc v1.0 also 
-stores 
-isotopic composition before reprocessing and waste stream from each fuel 
-processing component in HDF5 database. 
+composition after reprocessing is stored in the HDF5 database and dumped in a 
+new composition file for the next Serpent depletion run. SaltProc v1.0 also 
+stores isotopic composition before reprocessing and waste stream from each 
+fuel processing component in the HDF5 database. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\centering
 	\includegraphics[width=1.01\textwidth]{ch2/saltproc_flowchart.pdf}
@@ -524,19 +524,19 @@ For a more general case with multiple concurrent extraction processes, a
 separate \textit{MaterialFlow} object is created for each branch with a 
 user-defined mass flow rate (e.g., 90\% of total mass flow rate flows via left 
 branch and 10\% throughout a right branch). The total mass and isotopic 
-composition vector for each \textit{MaterialFlow} object is calculated as a 
+composition vector for each \textit{MaterialFlow} object are calculated as a 
 fraction of incoming \textit{core\textunderscore outlet} flow. Then each 
 \textit{MaterialFlow} object is passed via a cascade of \textit{Processes} to 
 separate selected chemical elements with specific efficiency. Finally, the 
 left-hand-side branch \textit{MaterialFlow} object is merged with the 
-right-hand-side and similarly to the previous case, fresh fuel salt feed 
-compensate the loss of mass in separation facilities and keep fuel salt mass 
+right-hand-side, and similarly to the previous case, fresh fuel salt feed 
+compensates the loss of mass in separation facilities and keeps fuel salt mass 
 in a primary loop constant.
 
-The class diagram (Figure~\ref{fig:saltproc_class}) allows to model the 
+The class diagram (figure~\ref{fig:saltproc_class}) allowing to model the 
 operation of a complex, multi-zone, multi-fluid \gls{MSR} and is sufficiently 
 general to represent myriad reactor systems. SaltProc v1.0 only stores and 
-edit the isotopic composition of the fuel stream, which makes it a flexible 
+changes the isotopic composition of the fuel stream, which makes it a flexible 
 tool to model any geometry: an infinite medium, a unit cell, a multi-zone 
 simplified assembly, or a full-core. This flexibility allows the user to 
 perform simulations of varying fidelity and computational intensity. 
@@ -552,30 +552,30 @@ in-reactor fuel cycle analysis as well as simulate many online refueling and
 fuel reprocessing systems.
 
 \subsection{Reactivity control module}
-Simulation of specific \gls{MSR} concepts require to change the reactor core 
+Simulation of specific \gls{MSR} concepts requires to change the reactor core 
 geometry during lifetime-long operation modeling. For instance, the \gls{TAP} 
 concept aims to increase the core lifetime by using continuous fresh fuel 
 feeds, removal of \glspl{FP}, and configurable moderator rod assemblies to 
-compensate negative reactivity insertion due to fissile material burnup. The 
-concept proposes to maintaining reactivity in the long term by replacing 
+compensate for negative reactivity insertion due to fissile material burnup. 
+The concept proposes to maintaining reactivity in the long term by replacing 
 stationary moderator assemblies with more highly populated lattices to 
 increase the moderator-to-fuel ratio \cite{betzler_assessment_2017-1}. 
-SaltProc v1.0 is able to switch from one file containing the core geometry to 
+SaltProc v1.0 can switch from one file containing the core geometry to 
 another core geometry (e.g., with larger moderator-to-fuel ratio) if effective 
 multiplication factor, $k_{eff}$, falls below a specific limit (e.g., 1.002). 
-This very unique capability allows SaltProc v1.0 analyze fuel cycle 
+This unique capability allows SaltProc v1.0 to analyze the fuel cycle 
 performance of any liquid-fueled \gls{MSR} system, including advanced designs 
-with moving moderator.
+with a moving moderator.
 
 %\section{Multi-component fuel salt reprocessing system}
 \section{Concluding remarks}
-In this chapter, the overview of fuel salt reprocessing plant has first been 
-presented. I described various components of the plant and the physical or 
-chemical mechanism responsible for neutron poisons extraction from the salt. 
-General core physics aspects and Serpent 2 depletion software capabilities 
-have then been discussed. I also introduced SaltProc, the Python package 
-developed and used to simulate continuous feeds and removals in various 
-\gls{MSR} designs.
+In this chapter, the overview of the fuel salt reprocessing plant has first 
+been presented. I described various components of the plant and the physical 
+or chemical mechanism responsible for neutron poisons extraction from the 
+salt. General core physics aspects and Serpent 2 depletion software 
+capabilities have then been discussed. I also introduced SaltProc, Python 
+package, developed and used to simulate continuous feeds and removals in 
+various \gls{MSR} designs.
 
 In the following chapters, SaltProc v1.0 will be demonstrated and validated 
-for a two liquid-fueled \gls{MSR} designs.
+for two liquid-fueled \gls{MSR} designs.
