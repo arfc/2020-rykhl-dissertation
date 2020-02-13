@@ -13,7 +13,7 @@ This is particularly true for $^{135}$Xe, with its extensive neutron capture
 cross section ($\approx10^6\dots10^7$ b in a thermal energy range). $^{135}$Xe 
 is produced directly from fission in about 0.3\% of $^{235}$U fissions 
 ($\gamma_{_{^{135}Xe}}$), but an even larger fraction of $^{135}$Xe is 
-produced by the decay of $^{135}$I and $^{135}$Te (table~\ref{tab:xe_gain}). 
+produced by the decay of $^{135}$I and $^{135}$Te (Table~\ref{tab:xe_gain}). 
 $^{135}$I and $^{135}$Te yields from fission are 
 $\gamma_{_{^{135}I}}\!=3.6$\% and $\gamma_{_{^{135}Te}}\!=2.5$\%, 
 respectively. Thus, the total $^{135}$Xe production from fission is about 
@@ -64,7 +64,7 @@ $d=0.508$mm helium bubbles in the pump bowl, redirect 10\% of the fuel salt
 flow through a bubble separator to remove the bubbles, and then return the 
 flow into the pump suction. Robertson \emph{et al.} reported that the helium 
 bubble size was approximately 25\% of the throat width (blue circle on 
-figure~\ref{fig:bubble_separator}) and was independent of the gas flow rate 
+Figure~\ref{fig:bubble_separator}) and was independent of the gas flow rate 
 \cite{robertson_conceptual_1971}. Consequently, it is possible to regulate the 
 helium bubble size by changing the throat width in the bubble generator.
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -85,41 +85,40 @@ helium bubble size by changing the throat width in the bubble generator.
 	\centering
 	\includegraphics[width=1.02\textwidth]{ch2/gas_separation.pdf}
 	\caption{Schematic flow diagram of the \gls{MSBR} gas separation system 
-		(figure reproduced from Robertson \emph{et al.} 
+		(reproduced from Robertson \emph{et al.} 
 		\cite{robertson_conceptual_1971}).}
 	\label{fig:gas_removal_system}
 \end{figure}
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.77\textwidth]{ch2/msbr_bubble_generator.png}
-	\caption{Preliminary concept of \gls{MSBR} bubble generator (figure 
-		reproduced from Robertson \emph{et al.} 
-		\cite{robertson_conceptual_1971}). 
-		The blue circle shows throat width, which determines bubble size.}
+	\caption{Preliminary concept of \gls{MSBR} bubble generator (reproduced 
+	from Robertson \emph{et al.} \cite{robertson_conceptual_1971}). 
+	The blue circle shows throat width, which determines bubble size.}
 	\vspace{-0.25in}
 	\label{fig:bubble_separator}
 \end{figure}
-\begin{table}[b]
+\begin{table}[t]
 	\caption{$^{135}$Xe loss terms and principal rate constants involved
 		(reproduced from Kedl \emph{et al.} \cite{kedl_development_1967}).}
 	\centering
 	\begin{tabularx}{\textwidth}{b b}
 		\hline \textbf{$^{135}$Xe loss mechanism}      & \textbf{Principal 
-			rate 
-			parameters involved}  	\\
+			rate parameters involved}  	\\[5pt]
 		\hline Decay of dissolved $^{135}$Xe ($\tau_{1/2}=9.1$ h)  & Decay 
-		constant	($\lambda$)		\\
+		constant	($\lambda$)		\\[5pt]
 		\hline $^{135}$Xe burnup              &  Neutron flux 
-		($\phi$)		 					\\
+		($\phi$)		 					\\[5pt]
 		dissolved xenon-135 burnup as it passes through the core  
-		& 			            \\		\hline $^{135}$Xe migrated to 
+		& 			            \\		
+		\hline $^{135}$Xe migrated to 
 		helium bubbles & Removal efficiency 
-		($\epsilon_m$)		\\
+		($\epsilon_m$)		\\[5pt]
 		\hline $^{135}$Xe transferred into circulating He bubbles; this xenon 
 		will eventually be burnup, decay, or stripped via bubble separator & 
 		Mass transfer coefficient ($h$), decay constant ($\lambda$), 
 		neutron flux ($\phi$), bubble removal efficiency 
-		($\epsilon_{es}$)		\\
+		($\epsilon_{es}$)		\\[5pt]
 		\hline 
 	\end{tabularx}
 	\label{tab:xe_loss}
@@ -143,19 +142,21 @@ Peebles \emph{et al.} in ORNL-TM-2245 has reported xenon removal efficiency
 ($\epsilon_{Xe}$) in a gas separation system as a function of many parameters 
 \cite{peebles_removal_1968}:
 \begin{align}\label{eq:gas_eff}
-& \qquad\qquad \epsilon_{Xe} = \frac{1-e^{-\beta}}{1+\alpha}
+& \epsilon_{Xe} = \frac{1-e^{-\beta}}{1+\alpha}
 \intertext{where}
 \alpha &= \frac{RTQ_{salt}}{HQ_{He}} \\
 \beta &= \frac{K_L a A_C L (1+\alpha)}{Q_{salt}} \\
-R &= \mbox{universal gas constant} \nonumber \\
-T &= \mbox{salt temperature} \nonumber \\
-Q_{salt}&= \mbox{volumetric salt flow rate} \nonumber \\
-Q_{He}&= \mbox{volumetric helium flow rate} \nonumber \\
-H &= \mbox{Henry's law constant for solute gas} \nonumber \\
-a &= \mbox{gas-liquid interfacial area} \nonumber \\
-A_C &= \mbox{contactor cross section} \nonumber \\
-L &= \mbox{contactor length} \nonumber \\
-K_L &= \mbox{liquid phase mass transfer coefficient.} \nonumber
+R &= \mbox{universal gas constant $[L\cdot Pa\cdot mol^{-1}\cdot K^{-1}]$} 
+\nonumber \\
+T &= \mbox{salt temperature $[K]$} \nonumber \\
+Q_{salt}&= \mbox{volumetric salt flow rate $[m^3/s]$} \nonumber \\
+Q_{He}&= \mbox{volumetric helium flow rate $[m^3/s]$} \nonumber \\
+H &= \mbox{Henry's law constant for solute gas $[Pa\cdot mol^{-1}\cdot L]$} 
+\nonumber \\
+a &= \mbox{gas-liquid interfacial area per unit volume $[m^{-1}]$} \nonumber \\
+A_C &= \mbox{contactor cross section $[m^2]$} \nonumber \\
+L &= \mbox{contactor length $[m]$} \nonumber \\
+K_L &= \mbox{liquid phase mass transfer coefficient $[m/s]$.} \nonumber
 \end{align}
 Most of the input parameters for that correlation are obvious and easy to 
 obtain from the system component design. The mass transfer coefficient for 
@@ -184,18 +185,18 @@ reprocessing model in SaltProc.
 The decay chain of approximately 40\% of fission products has gaseous elements 
 in it. Some of the non-gaseous \glspl{FP} produced in the \gls{MSR} core 
 (e.g., 
-noble and semi-noble metals) have very low solubility in the molten salt. Some 
-fraction of noble and semi-noble solid fission products plate out onto the 
-internal surfaces of the primary loop equipment, complicating their removal 
-\cite{briggs_molten-salt_1964}. The remains noble and semi-noble metals can be 
-removed along with corrosion products using a mechanical filtration system, 
-which ``consists largely of a high surface area mechanical filter, likely a 
-nickel mesh, to promote deposition of suspended, undissolved fission and 
-corrosion products,'' stated Holcomb \emph{et al.} 
+noble and semi-noble metals) have negligible solubility in the molten salt. 
+Some fraction of noble and semi-noble solid fission products plate out onto 
+the internal surfaces of the primary loop equipment, complicating their 
+removal \cite{briggs_molten-salt_1964}. The remains noble and semi-noble 
+metals can be removed along with corrosion products using a mechanical 
+filtration system, which ``consists largely of a high surface area mechanical 
+filter, likely a nickel mesh, to promote deposition of suspended, undissolved 
+fission and corrosion products,'' stated Holcomb \emph{et al.} 
 \cite{holcomb_instrumentation_2018}. The filter is manufactured from porous 
 metal and located on a recirculating side stream of the side. The filter has 
 limited capacity, needs periodic replacement, and the dose rate on the used 
-filter is very high due to the undissolved fission products and residual fuel 
+filter is huge due to the undissolved fission products and residual fuel 
 salt remaining on the filter \cite{mcfarlane_review_2019-1}. Differential 
 pressure measurements before and after filters are required to determine when 
 the filters are full. 
@@ -216,7 +217,7 @@ significant engineering challenge
 	\centering
 	\includegraphics[width=.75\textwidth]{ch2/large_molten_salt_filter_layout.png}
 	\caption{Schematic flow diagram of the large molten salt mechanical filter 
-		designed and operated during the \gls{MSRE} (figure reproduced from 
+		designed and operated during the \gls{MSRE} (reproduced from 
 		Lindauer \emph{et al.} \cite{lindauer_design_1969}).}
 	\label{fig:large_filter_layout}
 \end{figure}
@@ -325,7 +326,7 @@ to produce a concentration high enough for disposal
 	\centering
 	\includegraphics[width=0.45\textwidth]{ch2/rare-earths-removal-system.png}
 	\caption{Rare earth removal from a fuel salt by reductive extraction 
-		(figure reproduced from Briggs \emph{et al.} 
+		(reproduced from Briggs \emph{et al.} 		
 		\cite{briggs_molten-salt_1969}).}
 	\label{fig:rare-earth-removal}
 \end{figure}
@@ -437,7 +438,7 @@ creates and writes HDF5 database, tracks time, and converts isotopic
 composition vector nuclide names from Serpent to human-readable format.
 \paragraph{MaterialFlow.}Each \textit{MaterialFlow} object represents the 
 material flowing between \textit{Process} objects  
-(figure~\ref{fig:matflow_obj}). All instances of this class 
+(Figure~\ref{fig:matflow_obj}). All instances of this class 
 contain an isotopic composition vector stored in PyNE Material object, mass 
 flow rate, temperature, density, volume, and void fraction. Existing PyNE 
 Material capabilities convert the units of the isotopic composition vector 
@@ -498,10 +499,10 @@ fills in the template file and runs Serpent single-step depletion.
 
 After the depletion calculation, SaltProc v1.0 reads the depleted fuel 
 composition file into the \textit{MaterialFlow} object 
-(\textit{core\textunderscore outlet} in figure~\ref{fig:saltproc_flow}). This 
+(\textit{core\textunderscore outlet} in Figure~\ref{fig:saltproc_flow}). This 
 object contains an isotopic composition vector, total volume of material, 
 total mass, mass flow rate, density, temperature, void fraction, etc. For the 
-simplest reprocessing case, when all fuel processing components are located 
+simplest reprocessing case, if all fuel processing components are located 
 in-line (100\% of total material flow goes through a chain of separation 
 components), the \textit{core\textunderscore outlet} object is flowing 
 sequentially between \textit{Processes}, and each \textit{Process} is removing 
@@ -533,7 +534,7 @@ right-hand-side, and similarly to the previous case, fresh fuel salt feed
 compensates the loss of mass in separation facilities and keeps fuel salt mass 
 in a primary loop constant.
 
-The class diagram (figure~\ref{fig:saltproc_class}) allowing to model the 
+The class diagram (Figure~\ref{fig:saltproc_class}) allowing to model the 
 operation of a complex, multi-zone, multi-fluid \gls{MSR} and is sufficiently 
 general to represent myriad reactor systems. SaltProc v1.0 only stores and 
 changes the isotopic composition of the fuel stream, which makes it a flexible 

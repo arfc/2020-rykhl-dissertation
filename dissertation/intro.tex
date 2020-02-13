@@ -67,7 +67,7 @@ escape from the fuel salt during routine reactor operation and must be
 captured. Other systems might be used to enhance the removal of those 
 elements. Most designs also call for the removal of rare earth metals from 
 the core since these metals act as neutron poisons. Some designs suggest a 
-more elaborate list of elements to process (figure~\ref{fig:periodic_tab}), 
+more elaborate list of elements to process (Figure~\ref{fig:periodic_tab}), 
 including the temporary removal of protactinium from the salt or other 
 regulation of the actinide inventory in the fuel salt 
 \cite{ahmad_neutronics_2015}. Fresh fuel salt with dissolved fissile and/or 
@@ -77,7 +77,7 @@ removal and conserves the total mass in the primary loop.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{intr/periodic_map.png}
-	\caption{Processing options for \gls{MSR} fuels (figure reproduced from 
+	\caption{Processing options for \gls{MSR} fuels (reproduced from 
 		Ahmed \emph{et al.} \cite{ahmad_neutronics_2015}).}
 	\label{fig:periodic_tab}
 \end{figure}
@@ -176,22 +176,25 @@ each isotope, $i$, due to neutron induced reactions and decay processes
 	(5) \quad (6)
 	\nonumber
 	\intertext{where}
-	N_i &= \mbox{atom density of nuclide \emph{i}} \nonumber \\
-	M &= \mbox{number of nuclides} \nonumber \\
+	N_i &= \mbox{atom density of nuclide \emph{i} $[cm^{-3}]$} \nonumber \\
+	M &= \mbox{number of nuclides $[-]$} \nonumber \\
 	l_{im} &= \mbox{fraction of decays of nuclide \emph{m} that result in 
-	formation of nuclide \emph{i}} \nonumber \\
-	\lambda_i &= \mbox{radioactive decay constant of nuclide \emph{i}} 
+	formation of nuclide \emph{i} $[-]$} \nonumber \\
+	\lambda_i &= \mbox{radioactive decay constant of nuclide \emph{i} 
+	$[s^{-1}]$} 
 	\nonumber \\
-	\phi &= \mbox{neutron flux, averaged over position and energy} \nonumber \\
+	\phi &= \mbox{neutron flux, averaged over position and energy 
+	$[cm^{-2}s^{-1}]$} \nonumber \\
 	f_{im} &= \mbox{fraction of neutron absorption by nuclide \emph{m} 
-	leading to the formation of nuclide \emph{i}} \nonumber \\
+	leading to the formation of nuclide \emph{i} $[-]$} \nonumber \\
 	\sigma_m &= \mbox{average neutron absorption cross section of nuclide 
-	\emph{m}} \nonumber \\
+	\emph{m} $[cm^2]$} \nonumber \\
 	r_i &= \mbox{continuous removal rate of nuclide \emph{i} from the 
-	system} \nonumber \\
-	f_i &= \mbox{continuous feed rate of nuclide \emph{i}} \nonumber \\
+	system $[s^{-1}]$} \nonumber \\
+	f_i &= \mbox{continuous feed rate of nuclide \emph{i} $[s^{-1}]$} 
+	\nonumber \\
 	F_i &= \mbox{production rate of nuclide \emph{i} directly from 
-	fission}\nonumber
+	fission $[cm^{-3}\cdot s^{-1}]$.}\nonumber
 \end{align}
 The terms on the right-hand side of the equation represent:
 \begin{enumerate}[label=(\arabic*)]
@@ -233,7 +236,7 @@ capabilities. TRITON's continuous reprocessing capability was validated
 against batch-wise script ChemTriton for the unit-cell \gls{MSRE}-like model. 
 Unlike ChemTriton, this new capability will be available for all SCALE users 
 in 6.3 release. However, at the moment, it undergoes extensive testing and 
-validation procedures and does not available for external users.
+validation procedures and unavailable for external users.
 
 Most of the existing tools in the literature represented fuel salt 
 reprocessing plant as an invariable ``black box'' model, which removes target 
@@ -253,9 +256,10 @@ N^{in}_{0} \\ \vdots \\ N^{in}_{e} \\ \vdots \\ N^{in}_{E} \\
 N^{out}_{0}\\ \vdots \\ N^{out}_{e} \\ \vdots \\N^{out}_{E}  \\
 \end{bmatrix}
 \end{equation}
-where $N^{in/out}$ is the number density of atoms, and $\epsilon$ is the 
-extraction efficiency for all elements $e$ in $(0, 1)$. The main issues 
-related to static ``black box'' model assumptions in the literature include: 
+where $N^{in/out}$ is the number density $[cm^{-3}]$, and 
+$\epsilon$ is the extraction efficiency $[-]$ for all elements $e$ in $(0, 
+E)$. The main issues related to static ``black box'' model assumptions in the 
+literature include: 
 \paragraph{Time-independent separation efficiency vector.} Realistically, 
 long-term reactor operation will require a time-dependent extraction 
 efficiency vector.
@@ -277,7 +281,7 @@ necessary for fuel reprocessing system optimization.
 
 Some of the tools listed in Table~\ref{tab:msr_codes} used significant  
 approximations that may lead to inaccurate fuel evolution predictions, and 
-others are not available for external users. This work introduces an 
+others unavailable for external users. This work introduces an 
 open-source simulation package, SaltProc, which expands the capability of the 
 continuous-energy Monte Carlo Burnup calculation code, Serpent 2, for 
 depletion calculations with user-specified liquid-fueled \gls{MSR} parameters 
@@ -304,13 +308,12 @@ at startup and equilibrium. The temperature coefficient of reactivity
 quantified reactivity changes due to temperature increase in the core and was 
 calculated in that work as:
 \begin{align}\label{eq:feedback}
-	& \qquad\qquad\qquad \alpha = \frac{k_{1200} - k_{900}}{\delta 
+	& \alpha = \frac{k_{1200} - k_{900}}{\delta 
 	T} \\
 	\intertext{where}
 	k_{900}, k_{1200}  &= \mbox{multiplication coefficients at 900K and 
-		1200K;} 
-	\nonumber \\
-	\delta T &= 1200K-900K.\nonumber
+		1200K $[-]$} \nonumber \\
+	\delta T &= \mbox{300 $[K]$.}\nonumber
 \end{align}
 That work showed that the \gls{FTC} at startup and equilibrium is $-1.5$ 
 and $-1.0pcm/K$, respectively. Percent mille ($pcm$) is the unit of 

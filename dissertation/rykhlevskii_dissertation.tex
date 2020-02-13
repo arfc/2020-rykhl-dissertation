@@ -15,13 +15,13 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{placeins}
-\usepackage{caption}  % allows center figures caption
-\usepackage{booktabs} % nice rules (thick lines) for tables
+\usepackage{threeparttable,caption,tabularx,booktabs}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 \usepackage{array}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 %\captionsetup{width=1.0\textwidth,font={normalsize},skip=0.3cm,within=none,justification=centering}
 \usepackage{rotating}
-\usepackage{tabularx}
 \usepackage{amsmath}
 \allowdisplaybreaks
 \newcolumntype{b}{>{\hsize=1.0\hsize}X}
@@ -53,7 +53,7 @@
 \usepackage{wasysym}%
 \usepackage{adjustbox}
 \usepackage{footnotebackref}
-\usepackage[document]{ragged2e}
+%\usepackage[document]{ragged2e}
 
 % Uncomment the appropriate one of the following four lines:
 %\msthesis
