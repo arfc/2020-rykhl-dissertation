@@ -1,11 +1,11 @@
 \chapter{Tool demonstration: Molten Salt Breeder Reactor}
 
 This chapter describes the fuel cycle analysis of the \gls{MSBR} obtained 
-using the open-source python package, SaltProc. The development was initially 
+using the open-source Python package, SaltProc. The development was initially 
 started as a part of my master thesis \cite{rykhlevskii_advanced_2018} in 
 2017.  In this effort, for verification purposes, I assumed ideal extraction 
-efficiency (e.g., 100\% of target isotope mass extracted) because all 
-available in the literature results also rely on this assumption.
+efficiency (e.g., 100\% of target isotope mass extracted) because all results 
+available in the literature also rely on this assumption.
 
 The main results presented in this chapter have been published in: A. 
 Rykhlevskii, J.W. Bae, and K. D. Huff, ``Modeling and simulation of online 
@@ -61,16 +61,17 @@ Figure~\ref{fig:serpent_plan_view} shows the configuration of the \gls{MSBR}
 vessel, including the ``fission" (zone I) and ``breeding" (zone II) regions 
 inside the vessel. The core has two radial zones bounded by a solid  
 cylindrical graphite reflector and the vessel wall. The central zone, zone I, 
-in which 13\% of the volume is fuel salt and 87\% graphite, is composed of 
+in which 13\% of the volume is fuel salt and 87\% is graphite, is composed of 
 1,320 graphite cells, 2 graphite control rods, and 2 safety\footnote{ These 
 rods needed for emergency shutdown only.} rods. The under-moderated zone, zone 
-II, with 37\% fuel salt, and radial reflector, surrounds the zone I core 
-region and serves to diminish neutron leakage. Zones I and II are surrounded 
-radially and axially by fuel salt (Figure~\ref{fig:serpent_zoneII}). This 
-space for fuel is necessary for the injection and flow of molten salt.
+II, in which 37\% of the volume is fuel salt and 63\% is graphite, and radial 
+reflector, surrounds the zone I core region and serves to diminish neutron 
+leakage. Zones I and II are surrounded radially and axially by fuel salt 
+(Figure~\ref{fig:serpent_zoneII}); this space for fuel is necessary for the 
+injection and flow of molten salt.
 \begin{figure}[t] % replace 't' with 'b' to \centering
 	\includegraphics[width=\textwidth]{ch3/view_serpent.png}
-	\caption{$XY$ (left) and $XZ$ (right) views of Serpent \gls{MSBR} model 
+	\caption{$XY$ (left) and $XZ$ (right) views of a Serpent \gls{MSBR} model 
 	(reproduced from Rykhlevskii \emph{et al.} 
 	\cite{rykhlevskii_modeling_2019}).}
 	\label{fig:serpent_plan_view}
@@ -103,9 +104,9 @@ provides space for moving the core assembly, helps compensate for the
 elliptical dimensions of the reactor vessel, and serves to reduce the damaging 
 flux at the surface of the graphite reflector blocks. 
 
-$^{135}$Xe is a strong neutron poison, and some fraction of this gas is 
+$^{135}$Xe is a strong neutron poison, and some fraction of this gas is  
 absorbed by graphite during \gls{MSBR} operation. ORNL calculations showed 
-that for unsealed commercial graphite with helium permeability 10$^{-5}$ 
+that for unsealed commercial graphite with a helium permeability of 10$^{-5}$ 
 cm$^2$/s, the calculated poison fraction is less than 2\% 
 \cite{robertson_conceptual_1971}. This parameter can be improved by using 
 experimental graphite types or by applying sealing technology. The effect of 
@@ -128,7 +129,7 @@ elevation and plan views of graphite elements of zone I
 \cite{rykhlevskii_full-core_2017}.
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\includegraphics[width=\textwidth]{ch3/zone_I_element_ref.png}
-	\caption{Graphite moderator elements for zone I : reference design (left)
+	\caption{Graphite moderator elements for zone I: reference design (left)
 		\cite{robertson_conceptual_1971} and Serpent model (right) 
 		\cite{rykhlevskii_full-core_2017}.  Yellow 
 		represents fuel salt, purple represents graphite, and aqua represents 
@@ -160,12 +161,12 @@ leakage \cite{robertson_conceptual_1971}.
 
 The sophisticated, irregular shapes of the fuel elements challenge an accurate 
 representation of zone II-B. The suggested design 
-\cite{robertson_conceptual_1971} of zone II-B has 8 irregularly-shaped 
+\cite{robertson_conceptual_1971} of zone II-B has eight irregularly-shaped 
 graphite elements as well as dozens of salt channels. These graphite elements 
 were simplified into right-circular cylindrical shapes with central channels. 
 Figure~\ref{fig:serpent_zoneII} illustrates this core region in the Serpent 
-model. The volume of fuel salt in zone II was kept exactly at 37\%, so 
-this simplification unstrucks the core neutronics. 
+model. The volume of fuel salt in zone II was kept exactly at 37\% so 
+this simplification unaffected the core neutronics. 
 Simplifying the eight edge channels was the only simplification made to the 
 \gls{MSBR} geometry in this work. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
@@ -180,9 +181,9 @@ Simplifying the eight edge channels was the only simplification made to the
 \end{figure}
 
 \subsection{Material composition and normalization parameters}
-The fuel salt, reactor graphite, and modified Hastelloy-N
-are all materials created at \gls{ORNL} specifically for the \gls{MSBR}.
-The initial fuel salt used the same density (3.35 g/cm$^3$) and composition 
+The fuel salt, reactor graphite, and modified Hastelloy-N are all materials 
+created at \gls{ORNL} specifically for the \gls{MSBR}. The initial fuel salt 
+used the same density (3.35 g/cm$^3$) and composition  
 LiF-BeF$_2$-ThF$_4$-$^{233}$UF$_4$ (71.75-16-12-0.25 mole \%) as the 
 \gls{MSBR} design \cite{robertson_conceptual_1971}. The lithium in the molten 
 salt fuel is fully enriched to 100\% $^{7}$Li because $^{6}$Li is an extremely 
@@ -193,11 +194,11 @@ the reactor operation. The isotopic composition of each material at the
 initial state was described in detail in the MSBR conceptual design study 
 \cite{robertson_conceptual_1971} and has been applied to the Serpent model 
 without any modification. Table~\ref{tab:msbr_tab} is a summary of the major 
-\gls{MSBR} parameters used to inform Serpent model  
+\gls{MSBR} parameters used to inform the Serpent model  
 \cite{robertson_conceptual_1971}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
-	\caption{Summary of principal data for \gls{MSBR} (reproduced from 
+	\caption{Summary of principal data for the \gls{MSBR} (reproduced from 
 	Robertson \emph{et al.} \cite{robertson_conceptual_1971}).}
 	\begin{tabularx}{\textwidth}{ X  X}
 		\hline
@@ -221,9 +222,9 @@ without any modification. Table~\ref{tab:msbr_tab} is a summary of the major
 
 As mentioned in section~\ref{sec:reproc-plant}, the \gls{MSBR} design 
 requires online reprocessing to remove neutron gaseous \glspl{FP} (Xe, Kr) and 
-noble metals (e.g., Se, Nb, Mo) every 20 seconds.  The $^{232}$Th in the fuel 
-absorbs thermal neutrons and produces $^{233}$Pa, which then decays into the 
-fissile $^{233}$U. Protactinium presents a challenge since it has a large 
+noble metals (e.g., Se, Nb, and Mo) every 20 seconds.  The $^{232}$Th in the 
+fuel absorbs thermal neutrons and produces $^{233}$Pa, which then decays into 
+the fissile $^{233}$U. Protactinium presents a challenge since it has a large 
 absorption cross section in the thermal energy spectrum. Moreover, $^{233}$Pa 
 left in the core would produce $^{234}$Pa and $^{234}$U, neither of which are 
 useful as fuel. Accordingly, $^{233}$Pa is continuously removed from the fuel 
@@ -277,7 +278,7 @@ applications:
 the equilibrium core composition and fuel salt depletion, 
 (2) demonstrating that in a single-fluid two-region \gls{MSBR} conceptual 
 design the undermoderated outer core zone II works as a virtual ``blanket'', 
-reduces neutron leakage and improves breeding ratio due to neutron energy 
+reduces neutron leakage, and improves breeding ratio due to neutron energy 
 spectral shift,
 (3) studying operational and safety parameters evolution during \gls{MSBR} 
 operation, and
@@ -361,11 +362,11 @@ $^{235}$U) and non-fissile strong absorbers (e.g., $^{234}$U), kept
 accumulating in the core. Figure~\ref{fig:fissile_short} demonstrates the 
 production of fissile isotopes in the core. At the end of the considered 
 operational time, the core contained significant $^{235}$U ($\approx10^{-5}$ 
-atom/b-cm), $^{239}$Pu ($\approx5\times10^{-7}$ atom/b-cm), and $^{241}$Pu 
-($\approx 5\times10^{-7}$ atom/b-cm). Meanwhile, the equilibrium number 
+atoms/b-cm), $^{239}$Pu ($\approx5\times10^{-7}$ atoms/b-cm), and $^{241}$Pu 
+($\approx 5\times10^{-7}$ atoms/b-cm). Meanwhile, the equilibrium number 
 density of the target fissile isotope $^{233}$U was approximately 
-7.97$\times10^{-5}$ atom/b-cm. Small dips in neptunium and plutonium number 
-density every 16 years are caused by removing$^{237}$Np and $^{242}$Pu 
+7.97$\times10^{-5}$ atoms/b-cm. Small dips in neptunium and plutonium number 
+density every 16 years are caused by removing $^{237}$Np and $^{242}$Pu 
 (included in Processing group ``Higher nuclides'', see 
 Table~\ref{tab:reprocessing_list_msbr}) which decay into $^{235}$Np and 
 $^{239}$Pu, respectively. Thus, the production of new fissile materials in the 
@@ -401,16 +402,17 @@ operation.
 Figure~\ref{fig:spectrum_zones} shows that zone I produced more thermal  
 neutrons than zone II, corresponding to a majority of fissions occurring in 
 the central part of the core. In the undermoderated zone II, the neutron 
-energy spectrum is harder, which leads to more neutrons capture by $^{232}$Th 
-and helps achieve a relatively high breeding ratio. Moreover, the (n,$\gamma$) 
-resonance energy range in $^{232}$Th is from 10$^{-4}$ to 10$^{-2}$ MeV. 
-Therefore, the moderator-to-fuel ratio for zone II was chosen to shift the 
-neutron energy spectrum in this range. Furthermore, in the central core region 
-(zone I), the neutron energy spectrum shifts to a harder spectrum over 20 
-years of reactor operation. Meanwhile, in the outer core region (zone II), a 
-similar spectral shift takes place at a reduced scale. These results are in  
-good agreement with the original ORNL report \cite{robertson_conceptual_1971} 
-and the most recent whole-core steady-state study \cite{park_whole_2015}.
+energy spectrum is harder, which leads to more intensive neutron capture by 
+$^{232}$Th and helps achieve a relatively high breeding ratio. Moreover, the 
+(n,$\gamma$) resonance energy range in $^{232}$Th is from 10$^{-4}$ to 
+10$^{-2}$ MeV. Therefore, the moderator-to-fuel ratio for zone II was chosen 
+to shift the neutron energy spectrum in this range. Furthermore, in the 
+central core region (zone I), the neutron energy spectrum shifts to a harder 
+spectrum over 20 years of reactor operation; meanwhile, in the outer core 
+region (zone II), a similar spectral shift takes place at a reduced scale. 
+These results are in good agreement with the original ORNL report 
+\cite{robertson_conceptual_1971} and the most recent whole-core steady-state 
+study \cite{park_whole_2015}.
 \begin{figure}[htp!] % replace 't' with 'b'         to force it to 
 	\centering
 	\includegraphics[width=0.85\textwidth]{ch3/spectrum.png}
@@ -436,7 +438,7 @@ thorium and decrease absorptions in fissile and construction materials.
 
 \subsection{Neutron flux}
 Figure~\ref{fig:radial_flux} shows the radial distribution of fast and thermal 
-neutron flux for initial and equilibrium composition. The neutron fluxes have 
+neutron flux for initial and equilibrium compositions. The neutron fluxes have 
 similar shapes for both compositions, but the equilibrium case has a harder 
 spectrum. A significant spectral shift was observed in the central region of 
 the core (zone I), while for the outer region (zone II), it is negligible for 
@@ -448,7 +450,7 @@ studied when designing the reactivity control system.
 \begin{figure}[ht!] % replace 't' with 'b' to force it to \centering
 	\includegraphics[width=\textwidth]{ch3/radial_flux.png}
 	\caption{Radial neutron flux distribution for initial and equilibrium fuel 
-	salt composition (reproduced from Rykhlevskii \emph{et al.} 
+	salt compositions (reproduced from Rykhlevskii \emph{et al.} 
 	\cite{rykhlevskii_modeling_2019}).}
 	\label{fig:radial_flux}
 \end{figure}
@@ -487,14 +489,14 @@ generated in zone I at equilibrium (Table~\ref{tab:powgen_fraction}).
 \end{figure}
 
 Figure~\ref{fig:breeding_den} shows the distribution of the neutron capture 
-reaction rate for $^{232}$Th normalized by the total neutron flux for initial 
-and equilibrium states. The distribution reflects the spatial distribution of 
-$^{233}$U production in the core. $^{232}$Th neutron capture produces 
-$^{233}$Th, which then $\beta$-decays to $^{233}$Pa, the precursor for 
-$^{233}$U production. Accordingly, this characteristic represents the breeding 
-distribution in the \gls{MSBR} core. The power and breeding distribution 
-remained almost constant during the reactor operation. Even after 20 years of 
-operation, most of the power is still generated in zone I.
+reaction rate for $^{232}$Th normalized by the total neutron flux for the 
+initial and equilibrium states. The distribution reflects the spatial 
+distribution of $^{233}$U production in the core. $^{232}$Th neutron capture 
+produces $^{233}$Th, which then $\beta$-decays to $^{233}$Pa, the precursor 
+for $^{233}$U production. Accordingly, this characteristic represents the 
+breeding distribution in the \gls{MSBR} core. The power and breeding 
+distribution remained almost constant during the reactor operation. Even after 
+20 years of operation, most of the power is still generated in zone I.
 \begin{figure}[ht!] % replace 't' with 'b' to force it to 
 	\centering
 	\includegraphics[width=0.82\textwidth]{ch3/breeding_distribution_eq.png} 
@@ -515,8 +517,8 @@ as a result of the batch-wise nature of this online reprocessing approach.
 Figure~\ref{fig:th_refill_zoomed} shows a zoomed thorium feed rate for a short 
 150-EFPD interval. Note that the large spikes of up to 36 kg/day in a thorium 
 consumption occur every 3435 days. Those spikes happened due to strong 
-absorbers (Rb, Sr, Cs, Ba) removal at the end of the effective cycle (100\% of 
-these elements removing every 3435 days of operation). The corresponding 
+absorbers' (Rb, Sr, Cs, Ba) removal at the end of the effective cycle (100\% 
+of these elements removing every 3435 days of operation). The corresponding 
 effective multiplication factor increase (Figure~\ref{fig:keff}) and breeding  
 intensification leads to additional $^{232}$Th consumption.  
 \begin{figure}[ht!] % replace 't' with 'b' to force it to \centering
@@ -534,11 +536,11 @@ intensification leads to additional $^{232}$Th consumption.
 	\label{fig:th_refill_zoomed}
 \end{figure}
 
-The average thorium feed rate increases during the first 500 days of 
-operation, and steadily decreases due to spectrum hardening and accumulation 
-of absorbers in the core. As a result, the average $^{232}$Th feed rate over 
-60 years of operation is about 2.40 kg/day. This thorium consumption rate is 
-in good agreement with a recent online reprocessing study by \gls{ORNL} 
+The average thorium feed rate increases during the first 500 days of operation 
+and steadily decreases due to spectrum hardening and accumulation of absorbers 
+in the core. As a result, the average $^{232}$Th feed rate over 60 years of 
+operation is about 2.40 kg/day. This thorium consumption rate is in good 
+agreement with a recent online reprocessing study by \gls{ORNL}  
 \cite{betzler_molten_2017}. At equilibrium, the thorium feed rate is 
 determined by the reactor power, the energy released per fission, and the 
 neutron energy spectrum.
@@ -546,10 +548,10 @@ neutron energy spectrum.
 
 \section{Operational and safety parameters evolution}
 In Section~\ref{sec:equilibrium_search}, we reported how fuel salt composition 
-changes during the \gls{MSBR} operation. The number density of the most 
-important heavy isotopes, $^{233}$U, $^{232}$Th, was stable during 
+changes during \gls{MSBR} operation. The number density of the most 
+important heavy isotopes, $^{233}$U and $^{232}$Th, was stable while 
 transitioning from startup to equilibrium composition  
-(Figure~\ref{fig:adens_eq}). At the same time, the number of different 
+(Figure~\ref{fig:adens_eq}). At the same time, a number of different 
 actinides is being produced in the reactor core. Most of these nuclides 
 ($^{234}$U, $^{239}$Pu, $^{241}$Pu) have a much larger absorption cross 
 section than $^{233}$U and $^{232}$Th loaded initially into the core, which 
@@ -563,13 +565,13 @@ Table~\ref{tab:tcoef} summarizes temperature effects on reactivity calculated
 in this work for both initial and equilibrium fuel compositions, compared 
 to the original \gls{ORNL} report data \cite{robertson_conceptual_1971}. 
 By propagating the $k_{eff}$  statistical error provided by Serpent, 
-uncertainty for each temperature coefficient was obtained and appeared in 
+uncertainty for each temperature coefficient was obtained and appears in 
 Table~\ref{tab:tcoef}. Other sources of uncertainty are neglected, such as 
 cross section measurement error and approximations inherent in the equations 
-of the state, providing both the salt and graphite density dependence on 
+of state, providing both the salt and graphite density dependence on 
 temperature. The main physical principle underlying the reactor temperature 
 feedback is an expansion of heated material. If the fuel salt temperature 
-increases, the density of the salt decreases, but at the same time, the total 
+increases, the density of the salt decreases; at the same time, the total 
 volume of fuel salt in the core remains constant because the graphite bounds 
 it. If the graphite temperature increases, the density of graphite 
 decreases, creating additional space for fuel salt. To determine the 
@@ -583,8 +585,8 @@ considered:
 \end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
-	\caption{Temperature coefficients of reactivity for initial and 
-	equilibrium state (reproduced from Rykhlevskii \emph{et al.} 
+	\caption{Temperature coefficients of reactivity for the initial and 
+	equilibrium states (reproduced from Rykhlevskii \emph{et al.} 
 		\cite{rykhlevskii_modeling_2019}).}
 	\begin{tabularx}{\textwidth}{ p{0.3\textwidth} R R R } \hline
 		Reactivity coefficient   & Initial & Equilibrium  &  Reference
@@ -620,7 +622,7 @@ graphite surfaces, was created based on this information. For calculation of
 displacement, it was assumed that the interface between the graphite reflector 
 and vessel is immobile and the vessel temperature is constant. This 
 is the most reasonable assumption for the short-term reactivity effects 
-because inlet salt cooling graphite reflector and the inner surface of the 
+because inlet salt cools the graphite reflector and the inner surface of the 
 vessel.
 
 The fuel temperature coefficient (FTC) is negative for both initial and 
@@ -628,7 +630,7 @@ equilibrium fuel compositions due to thermal Doppler broadening of the
 resonance capture cross sections in the thorium. A small positive effect of 
 fuel density on reactivity increases from $+1.21$ pcm/K at reactor startup to 
 $+1.66$ pcm/K for equilibrium fuel composition, which has a negative effect on 
-FTC magnitude during the reactor operation. This is in good agreement with 
+FTC magnitude during the reactor operation; this is in good agreement with 
 earlier research \cite{robertson_conceptual_1971,park_whole_2015}. The 
 moderator temperature coefficient (MTC) is positive for the startup 
 composition and decreases during reactor operation because of spectrum 
@@ -650,7 +652,7 @@ accident, the safety rods would be dropped down into the core. The integral
 rod worths were calculated for various positions to separately estimate the 
 worth of the control rods\footnote{In 
 \cite{robertson_conceptual_1971}, the graphite rods are referred to as 
-``control'' rods.}, the safety (B$_4$C) rods, and the whole reactivity control 
+``control'' rods.}, the safety rods, and the whole reactivity control 
 system. Control rod integral worth is approximately 28 cents and stays almost 
 constant during reactor operation. The safety rod integral worth decreases by  
 16.2\% during 20 years of operation because of neutron spectrum hardening and 
@@ -659,15 +661,15 @@ absorber accumulation in proximity to reactivity control system rods. This
 accident analysis and safety justification.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
-	\caption{Control system rod worth for initial and equilibrium fuel 
-		composition (reproduced from Rykhlevskii \emph{et al.} 
+	\caption{Control system rod worth for the initial and equilibrium fuel 
+		compositions (reproduced from Rykhlevskii \emph{et al.} 
 		\cite{rykhlevskii_modeling_2019}).}
 	\begin{tabularx}{\textwidth}{ p{0.5\textwidth}  R  R } \hline
 		Reactivity parameter  &  Initial[\cent]    &  Equilibrium[\cent]  \\ 
 		\hline
 		Control (graphite) rod integral worth               & $\ 28.2\pm0.8$    
 		& $\ 
-		29.0\pm0.8$ \\ Safety (B$_4$C) rod integral worth                  & 
+		29.0\pm0.8$ \\ Safety rod integral worth                  & 
 		$251.8\pm0.8$    & $211.0\pm0.8$  \\
 		Total reactivity control system worth               & $505.8\pm0.7$    
 		& 
@@ -691,24 +693,24 @@ P_f      &= \mbox{fast non-leakage probability $[-]$} \nonumber \\
 P_t      &= \mbox{thermal non-leakage probability $[-]$.} \nonumber
 \end{align}
 
-Table~\ref{tab:six_factor} summarizes the six factors for both initial and 
-equilibrium fuel salt composition. Using Serpent and SaltProc, these factors 
-and their statistical uncertainties have been calculated for both initial and 
-equilibrium fuel salt composition (see Table~\ref{tab:msbr_tab}). The fast and 
-thermal non-leakage probabilities remain constant despite the evolving neutron 
-spectrum during operation. In contrast, the neutron reproduction factor 
-($\eta$), resonance escape probability ($p$), and fast fission factor 
-($\epsilon$) are considerably different between startup and equilibrium. As 
-indicated in Figure~\ref{fig:spectrum}, the neutron spectrum is softer at the 
-beginning of reactor life. Neutron spectrum hardening causes the fast fission 
-factor to increase through the core lifetime. The opposite is true for the 
-resonance escape probability. Finally, the neutron reproduction factor 
-decreases during reactor operation due to the accumulation of fissile 
+Table~\ref{tab:six_factor} summarizes the six factors for both the initial and 
+equilibrium fuel salt compositions. Using Serpent and SaltProc, these factors 
+and their statistical uncertainties have been calculated for both the initial 
+and equilibrium fuel salt compositions (see Table~\ref{tab:msbr_tab}). The 
+fast and thermal non-leakage probabilities remain constant despite the 
+evolving neutron spectrum during operation. In contrast, the neutron 
+reproduction factor ($\eta$), resonance escape probability ($p$), and fast 
+fission factor ($\epsilon$) are considerably different between startup and 
+equilibrium. As indicated in Figure~\ref{fig:spectrum}, the neutron spectrum 
+is softer at the beginning of reactor life. Neutron spectrum hardening causes 
+the fast fission factor to increase through the core lifetime; the opposite is 
+true for the resonance escape probability. Finally, the neutron reproduction 
+factor decreases during reactor operation due to the accumulation of fissile 
 plutonium isotopes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[hb!]
-	\caption{Six factors for the full-core \gls{MSBR} model for initial and 
-		equilibrium fuel composition (reproduced from Rykhlevskii \emph{et 
+	\caption{Six factors for the full-core \gls{MSBR} model for the initial 
+	and equilibrium fuel compositions (reproduced from Rykhlevskii \emph{et 
 		al.} \cite{rykhlevskii_modeling_2019}).}
 	\begin{tabularx}{\textwidth}{ p{0.5\textwidth}  R  R } \hline
 		Factor  & Initial      & Equilibrium   \\ \hline
@@ -727,30 +729,30 @@ plutonium isotopes.
 	\label{tab:six_factor}
 \end{table}
 
-\section{Benefits of fission product removal}
+\section{Benefits of fission products removal}
 To investigate how online fuel salt processing described in Chapter 2 affects 
 the reactor performance, the separate effect of each poison group removal 
 was studied in this section.
 
-\subsection{The effect of removing fission product from the fuel salt}
-Loading initial fuel salt composition into the \gls{MSBR} core leads to a 
-supercritical configuration (Figure ~\ref{fig:fp_removal}). After reactor 
+\subsection{The effect of removing fission products from the fuel salt}
+Loading the initial fuel salt composition into the \gls{MSBR} core leads to a 
+supercritical configuration (Figure~\ref{fig:fp_removal}). After reactor 
 startup, the effective multiplication factor for the case with volatile gases 
 and noble metals removal is approximately 7500 pcm  higher than for the case 
 without fission product removal. This significant impact on the reactor core 
-lifetime is achieved due to immediate removal (20 sec cycle time) and high 
-absorption cross section of Xe, Kr, Mo, and other noble metals removed. The 
-effect of rare earth element removal is significant in a few months after 
+lifetime is achieved due to the immediate removal (20 sec cycle time) and the 
+high absorption cross sections of Xe, Kr, Mo, and other noble metals removed. 
+The effect of rare earth element removal is significant in a few months after 
 startup and reached approximately 5500 pcm after 10 years of operation. The 
 rare earth elements were removed at a slower rate (50-day cycle time). 
 Moreover, Figure~\ref{fig:fp_removal} demonstrates that batch-wise removal of 
-strong absorbers every 3 days unnecessarily leads to fluctuation in 
-results, but rare earth elements removal every 50 days causes an approximately 
-600 pcm jump in reactivity.
+strong absorbers every 3 days unnecessarily leads to fluctuation in results, 
+but rare earth element removal every 50 days causes an approximately 600 pcm 
+jump in reactivity.
 \begin{figure}[ht!] % replace 't' with 'b' to force it to 
 	\centering
 	\includegraphics[width=\textwidth]{ch3/keff_rem_cases.png} 
-	\caption{Calculated effective multiplication factor for full-core 
+	\caption{Calculated effective multiplication factor for the full-core 
 		\gls{MSBR} model with the removal of various fission product groups 
 		over 10 years of operation (reproduced from Rykhlevskii \emph{et al.} 
 		\cite{rykhlevskii_modeling_2019}).}
@@ -764,7 +766,7 @@ fuel salt simultaneously. Eventually, without fission products removal, the
 reactivity decreases to the subcritical state after approximately 500 and 
 1300 days of operation for cases with no removal and volatile gases \& noble 
 metals removal, respectively. The time when the simulated core becomes  
-subcritical ($k_{eff}<$1.0) for full-core model) is called the core 
+subcritical ($k_{eff}<$1.0 for full-core model) is called the core 
 lifetime. Therefore, removing fission products provides significant 
 neutronic benefits and enables a longer core lifetime.
 
@@ -778,7 +780,7 @@ composition (the number densities of major isotopes vary by less than 1\% over
 several years). A secondary goal has been to compare predicted operational and 
 safety parameters (e.g., neutron energy spectrum, power and breeding 
 distribution, temperature coefficients of reactivity) of the \gls{MSBR} at 
-startup and equilibrium state. A tertiary goal has been to demonstrate the 
+startup and equilibrium states. A tertiary goal has been to demonstrate the 
 benefits of continuous fission product removal for thermal \gls{MSR} design.
 
 To achieve these goals, a full-core high-fidelity benchmark model of the 
@@ -797,20 +799,20 @@ fluctuation.
 The results in this chapter indicate that $k_{eff}$ slowly decreases from 
 1.075 and reaches 1.02 at equilibrium after approximately 6 years of 
 operation. At the same time, the concentrations of $^{233}$U, $^{232}$Th, 
-$^{233}$Pa, $^{232}$Pa stabilized after approximately 2500 days of operation.  
-Particularly, $^{233}$U number density equilibrates\footnote{fluctuates less 
-than 0.8\%} after 16 years of operation. Consequently, the core reaches the 
-quasi-equilibrium state after 16 years of operation. However, a wide variety 
-of actinides, including fissile isotopes (e.g., $^{233}$U, $^{239}$Pu) and 
-non-fissile strong absorbers ($^{234}$U), continue accumulating in the 
-core. 
+$^{233}$Pa, and $^{232}$Pa stabilized after approximately 2500 days of 
+operation. Particularly, $^{233}$U number density 
+equilibrates\footnote{fluctuates less than 0.8\%} after 16 years of operation. 
+Consequently, the core reaches the quasi-equilibrium state after 16 years of 
+operation. However, a wide variety of actinides, including fissile isotopes 
+(e.g., $^{233}$U and $^{239}$Pu) and non-fissile strong absorbers ($^{234}$U), 
+continue accumulating in the core. 
 
 Those actinides cause neutron energy spectrum hardening as the core  
 approaches equilibrium. Moreover, the neutron energy spectrum in the central 
 core region is much softer than in the outer core region due to the lower 
 moderator-to-fuel ratio in the outer zone, and this distribution remains 
 stable during reactor operation. Finally, the epithermal or thermal spectrum 
-is needed to effectively breed $^{233}$U from $^{232}$Th because radiative 
+is needed to effectively breed $^{233}$U from $^{232}$Th because the radiative 
 capture cross section of thorium-232 monotonically decreases from $10^{-10}$ 
 MeV to $10^{-5}$ MeV. A harder spectrum in the outer core region tends to 
 significantly increase resonance absorption in thorium and decrease the 
@@ -832,28 +834,28 @@ $-3.10$ to $-0.94$ pcm/K as the spectrum hardens. The moderator temperature
 coefficient is positive and also decreases during fuel depletion. The 
 reactivity control system efficiency analysis showed that the safety rod 
 integral worth decreases by approximately 16.2\% over 16 years of operation, 
-while graphite rod integral worth remains constant. Therefore, neutron energy 
-spectrum hardening during fuel salt depletion has an undesirable impact on 
-\gls{MSBR} stability and controllability and should be taken into 
+while the graphite rod integral worth remains constant. Therefore, neutron 
+energy spectrum hardening during fuel salt depletion has an undesirable impact 
+on \gls{MSBR} stability and controllability and should be taken into  
 consideration in further analysis of transient accident scenarios.
 
 Finally, we proved that the \gls{MSBR} core performance benefits from the 
 removal of volatile gases, noble metals, and rare earths from the fuel salt. 
-Moreover, immediate removal of volatile gases (e.g., xenon) and noble metals 
+Immediate removal of volatile gases (e.g., xenon) and noble metals 
 increased reactivity by approximately 7500 pcm over a 10-year timeframe. In 
 contrast, the effect of relatively slower removal of rare earth elements 
 (every 50 days cycle instead of 3 days) has less impact (5500 pcm) on the core 
 reactivity after 10 years of operation. An additional study is needed to 
 establish neutronic  and economic tradeoffs of removing each element.
 
-This chapter results also helped identify the main directions of SaltProc v0.1 
-improvement. Firstly, the poison removal efficiency is not ideal, as was 
+This chapter's results also helped identify the main directions of SaltProc 
+v0.1 improvement. Firstly, the poison removal efficiency is not ideal, as was 
 discussed in Chapter 1; consequently, the user should be able to simulate the 
 fuel salt reprocessing system using a variable, non-ideal extraction 
 efficiency. Secondly, SaltProc v0.1 entirely removes elements with longer 
 residence times (semi-noble metals, volatile fluorides, Rb, Sr, Cs, Ba, Eu) at 
 the end of cycle time (e.g., 3435 days for rubidium) which causes significant  
-jump in $k_{eff}$ due to removal large batch of the poison at once. In 
-SaltProc v1.0, this drawback has been eliminated by removing a fraction of the 
-target element with longer residence time at each depletion step. In the 
+jumps in $k_{eff}$ due to the removal of large batches of the poison at once. 
+In SaltProc v1.0, this drawback has been eliminated by removing a fraction of 
+the target element with longer residence time at each depletion step. In the 
 following chapters, improved SaltProc v1.0 capabilities will be demonstrated.
