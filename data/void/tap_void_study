@@ -29,7 +29,7 @@ set declib "sss_jeff33.dec"
 %set sfylib "sss_jeff33.sfy"
 % --- Neutron population and criticality cycles:
 
-set pop 500 40 20 %150000 800 300
+set pop 300000 1200 200 %150000 800 300
 %set gcu -1
 
 % --- Reproducibility off (set value to 1 and define seed to set on):
