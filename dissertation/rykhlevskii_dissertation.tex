@@ -10,6 +10,7 @@
 
 \makeatletter
 
+\usepackage{appendix}
 \usepackage{setspace}
 \usepackage{graphicx}  % another package that works for figures
 \usepackage{multirow}
@@ -161,9 +162,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % INSERT REAL CONTENT HERE
 %
-\include{intro}	% for INTRODUCTION in "intro.tex"
-\include{chap2}
-\include{chap3}
+%\include{intro}	% for INTRODUCTION in "intro.tex"
+%\include{chap2}
+%\include{chap3}
 \include{chap4}
 \include{chap5}
 \include{chap6}
@@ -184,5 +185,8 @@
 % Put references in BibTeX format in thesisrefs.bib.
 \bibliography{thesisrefs}
 
+\newpage
+\appendix
+\input{appendix}
 \end{document}
 \endinput
