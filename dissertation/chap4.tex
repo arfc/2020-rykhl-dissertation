@@ -216,26 +216,30 @@ flux at the vessel structural material .
 Nest and lattice geometry types as well as universe transformation 
 capabilities of Serpent \cite{leppanen_serpent_2014}  are employed to 
 represent \gls{TAP} core. Figure~\ref{fig:tap-serpent-plan} shows the $XY$ 
-section of whole-core
-configuration at the expected reactor operational level when all
-control rods are fully withdrawn. Figures~\ref{fig:tap-serpent-elev} and 
-~\ref{fig:tap-serpent-elev-zoom} show a longitudinal section of the reactor. 
-This model contains the moderator rods with silicon carbide cladding, pressure 
-vessel, and inlet and outlet plena (Table~\ref{tab:tap_model_param}). Fuel 
-salt flows around rectangular moderator assemblies consisting of lattices of 
-small-diameter zirconium hydride rods in a corrosion-resistant material. The 
-salt volume fraction for model herein is 0.917204, which means the modeled 
-core is under-moderated and has intermediate neutron spectrum.
+section of whole-core configuration at the expected reactor operational level 
+when all control rods are fully withdrawn. Figures~\ref{fig:tap-serpent-elev} 
+and ~\ref{fig:tap-serpent-elev-zoom} show a longitudinal section of the 
+reactor. This model contains the moderator rods with silicon carbide cladding, 
+pressure vessel, and inlet and outlet plena (Table~\ref{tab:tap_model_param}). 
+Fuel salt flows around rectangular moderator assemblies consisting of lattices 
+of small-diameter zirconium hydride rods in a corrosion-resistant material. 
+The salt volume fraction for Figure ~\ref{fig:tap-serpent-plan} is 0.917204, 
+which means the modeled core is under-moderated and has intermediate neutron 
+spectrum. Quarter-core configurations of the \gls{TAP} core with various salt 
+volume fraction, used in the current work to maintain criticality for 
+reasonable operational period ($>20$ years), are listed in 
+Table~\ref{tab:tap_adjustable_core},Figures~\ref{fig:tap-406-681}, and 
+\ref{fig:tap-840-1668} in Appendix~\ref{appex:geometries}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.75\textwidth]{ch4/tap_plan_view_serpent_347.png}
 	\caption{An $XY$ section of the \gls{TAP} model at horizontal midplane 
-		with fully withdrawn control rods at \gls{BOL} (salt volume fraction 
-		is equal 0.917204). 
-		The violet color represents zirconium 
-		hydride, and the yellow represents fuel salt. The blue color shows 
-		Hastelloy-N, a material used for the vessel wall, and the pink color 
-		is the air.}
+		with fully withdrawn control rods at \gls{BOL} (347 moderator rods, 
+		salt volume fraction is equal 0.917204). 
+		The violet color represents zirconium hydride, and the yellow 
+		represents fuel salt. 
+		The blue color shows Hastelloy-N, a material used for the vessel wall, 
+		and the pink color is the air.}
 	\label{fig:tap-serpent-plan}
 \end{figure}
 
@@ -244,14 +248,6 @@ core is under-moderated and has intermediate neutron spectrum.
 	\includegraphics[width=0.6\textwidth]{ch4/tap_elev_view_serpent_347.png}
 	\caption{45$^{\circ}$ $XZ$ section of the \gls{TAP} core model.}
 	\label{fig:tap-serpent-elev}
-\end{figure}
-\begin{figure}[htp!] % replace 't' with 'b' to 
-	\centering
-	\includegraphics[width=0.4\textwidth]{ch4/tap_elev_view_zoomed_serpent.png}
-	\caption{Zoomed $XZ$ section of the top of the moderator rods and guide 
-		tubes in the \gls{TAP} model. The orange color shows Boron Carbide 
-		(B$_4$C) absorbers used for control rods.}
-	\label{fig:tap-serpent-elev-zoom}
 \end{figure}
 
 To represent the reactivity control system, the model has: 
@@ -266,7 +262,16 @@ when the core configuration is the most reactive and the neutron spectrum is
 the hardest. The control rod design shown on 
 Figures~\ref{fig:tap-serpent-plan} and \ref{fig:tap-serpent-elev-zoom} is 
 comprised of a cluster of 25 rods that provide a total reactivity worth of 
-$3900\pm9.7pcm$.
+$4226\pm9pcm$ at the \gls{BOL}.
+
+\begin{figure}[htp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.55\textwidth]{ch4/tap_elev_view_zoomed_serpent.png}
+	\caption{Zoomed $XZ$ section of the top of the moderator and control rods  
+		in the \gls{TAP} model. The orange color shows Boron Carbide 
+		(B$_4$C) absorbers used for control rods.}
+	\label{fig:tap-serpent-elev-zoom}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
 	\caption{Geometric parameters for the full-core 3D model of the 
@@ -311,15 +316,17 @@ $3900\pm9.7pcm$.
 
 The control rod cluster is modeled using the \textbf{TRANS} Serpent 2 feature, 
 which allows the user to easily change the control rod position during the 
-simulation. Herein I assumed that all control rods are fully withdrawn from 
-the core (Figure~\ref{fig:tap-serpent-elev-zoom}), but control rod positions 
-may vary in future investigations. In this dissertation, all figures 
-of the core were generated using the built-in Serpent plotter.
+simulation. The current works assumed that all control rods are fully 
+withdrawn from the core (Figure~\ref{fig:tap-serpent-elev-zoom}), but user can 
+use SaltProc v1.0 reactivity control capabilities to change control 
+rod position during operation. In this dissertation, all figures of the core 
+were generated using the built-in Serpent plotter.
 
 
 \subsection{TAP fuel salt reprocessing system}
-The \gls{TAP} nuclear island contains the \gls{FP} removal system. Gaseous  
-\glspl{FP} are continuously removed using an off-gas system while liquid and 
+The \gls{TAP} nuclear island contains a fission product removal system. 
+Gaseous \glspl{FP} are continuously removed using an off-gas system while 
+liquid and 
 solid \glspl{FP} are extracted via a chemical processing system. As these 
 byproducts are gradually removed, a small quantity of fresh fuel salt is 
 regularly added to the primary loop. This process conserves a constant fuel 
