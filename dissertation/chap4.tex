@@ -24,8 +24,7 @@ In this chapter, I also analyze the reactor load-following capability for
 various moderator configurations and fuel salt compositions to bound design 
 parameters of gas removal system to ensure load-following operation. 
 
-\section{Transatomic Power Molten Salt Reactor concept design and model  
-description}
+\section{Transatomic Power Molten Salt Reactor concept design description}
 
 The \gls{TAP} concept is a 1250 MW$_{th}$ \gls{MSR} with a LiF-based uranium 
 fuel salt \cite{transatomic_power_corporation_technical_2016}. This concept 
@@ -46,7 +45,7 @@ based on information presented in the TAP white papers
 transatomic_power_corporation_neutronics_2016} and \gls{ORNL} technical 
 reports \cite{betzler_two-dimensional_2017, betzler_assessment_2017-1}.
 
-\subsection{TAP design description}
+\subsection{General design description}
 
 Figure~\ref{fig:tap-rendering} demonstrates a rendering of the primary and 
 secondary loop of the \gls{TAP} \gls{MSR} seated inside a concrete nuclear 
@@ -155,7 +154,7 @@ well as \gls{ORNL} analysis of the \gls{TAP} design
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{TAP core design}
+\subsection{Reactor core design}
 In the \gls{TAP} core (Figure~\ref{fig:tap-core-ben}), fuel salt flows around 
 moderator assemblies consisting of lattices of zirconium hydride rods clad in 
 a corrosion-resistant silicone carbide. The \gls{TAP} reactor pressure vessel 
@@ -212,6 +211,167 @@ flux at the vessel structural material .
 \end{figure}
 
 
+\subsection{Fuel salt reprocessing system}
+The \gls{TAP} nuclear island contains a fission product removal system. 
+Gaseous \glspl{FP} are continuously removed using an off-gas system while 
+liquid and 
+solid \glspl{FP} are extracted via a chemical processing system. As these 
+byproducts are gradually removed, a small quantity of fresh fuel salt is 
+regularly added to the primary loop. This process conserves a constant fuel 
+salt mass and keeps the reactor critical. In contrast with the \gls{MSBR} 
+reprocessing system, the \gls{TAP} design does not need a protactinium 
+separation and isolation system because it operates in a uranium-based 
+single-stage fuel cycle. The authors of the \gls{TAP} concept suggested three 
+distinct fission product removal methods 
+\cite{transatomic_power_corporation_neutronics_2016}:
+\paragraph{Off-Gas System:} The off-gas system removes gaseous fission 
+products such as krypton and xenon, which are then compressed and stored 
+temporarily until they have decayed to the background radiation level. Trace 
+amounts of tritium are also removed and bottled in a liquid form via the same 
+process. Also, the off-gas system directly removes a small fraction of the 
+noble metals.
+\paragraph{Metal Plate-Out/Filtration:} A nickel mesh filter removes noble and 
+semi-noble metal solid fission products as they plate out onto internal surface
+of the filter.
+\paragraph{Liquid Metal Extraction:} Lanthanides and other non-noble metals 
+stay dissolved in the fuel salt. They generally have a lower capture cross 
+section and thus absorb fewer neutrons than $^{135}$Xe, but their extraction 
+is essential to ensure normal operation. In the \gls{TAP} reactor, lanthanide 
+removal is accomplished via a liquid-metal/molten salt extraction process 
+similar to that developed for \gls{MSBR} by \gls{ORNL}  
+\cite{robertson_conceptual_1971}. The process converts the dissolved 
+lanthanides into a well-understood oxide waste form, similar to that of 
+\gls{LWR} \gls{SNF}. This oxide waste comes out of the \gls{TAP} reprocessing 
+plant in ceramic granules and can be sintered into another convenient form for 
+storage \cite{transatomic_power_corporation_technical_2016}.
+
+Figure~\ref{fig:tap-reproc} shows the principal design of the \gls{TAP} 
+primary loop, including an off-gas system, nickel mesh filter, and lanthanide 
+chemical extraction facility. Similarly to the \gls{MSBR}, an off-gas system 
+is also based on a simple process of helium sparging through fuel salt with 
+consequent gas bubbles removed before returning the fuel salt to the core (see 
+Section~\ref{sec:gas-separ}). 
+Nevertheless, one crucial difference must be noted: the \gls{MSBR} gas 
+separation system suggested helium injection and subsequent transport of the 
+voids throughout the primary loop, including the core for at least ten full 
+loops \cite{robertson_conceptual_1971}. 
+\begin{figure}[htp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/tap_primary_loop.png}
+	\caption{Simplified \gls{TAP} primary loop design including off-gas system 
+		(blue), 
+		nickel filter (orange) and liquid metal extraction system (green) 
+		(reproduced from \cite{transatomic_power_transatomic_2019}).}
+	\label{fig:tap-reproc}
+\end{figure}
+
+Introduction of the void (helium bubbles) during operation is a significant 
+concern for safe, stable operation because the increase of void fraction in 
+the fuel salt when it enters back to the core would cause unpredictable 
+reactivity change. Kedl stated, ``Average loop void fractions as high as 1\% 
+are undesirable... it is desirable to keep the average loop void fraction well 
+below 1\%.''\cite{robertson_conceptual_1971} but he did not offer an 
+explanation why. In fact, the \gls{MSBR} design targeted 0.2\% average void in 
+the fuel salt \cite{robertson_conceptual_1971} and successfully operated the 
+\gls{MSRE} with average void fraction below 0.7\% \cite{compere_fission_1975}.
+We can reduce void fraction in the fuel salt to negligible levels by using an 
+effective gas separator for stripping helium/xenon bubbles before returning 
+the salt to a primary loop (Figure~\ref{fig:tap-reproc}, blue block). 
+
+Noble and semi-noble metal solid fission products tend to plate out onto metal 
+surfaces including piping, heat exchanger tubes, reactor vessel inner surface, 
+etc. Previous research by \gls{ORNL} \cite{robertson_conceptual_1971} reported 
+that about 50\% of noble and semi-noble metals would plate out inside 
+\gls{MSBR} systems (including off-gas system) without any special treatment. 
+To improve the extraction efficiency of these fission products, the \gls{TAP} 
+concept suggested employing a nickel mesh filter located in a bypass stream in 
+the primary loop (Figure~\ref{fig:tap-reproc}, orange block). The main idea of 
+this filter is to create large nickel surface area using porous metal (e.g., 
+Inconel fibers). The fuel salt is flowing throughout the filter and noble 
+metals plate-out on the internal filter surface. 
+
+This Liquid Metal Extraction process for the \gls{TAP} concept has been 
+adopted from the \gls{MSBR}. The \gls{MSRE} demonstrated a liquid-liquid 
+extraction process for removing rare earths and lanthanides from fuel salt and 
+estimated efficiency of this process. 
+In fact, due to similarities in reprocessing schemes, the \gls{TAP} project 
+reported almost the same set of elements for removal and similar effective 
+cycle times as suggested for \gls{MSBR} (Table~\ref{tab:reprocessing_list}). 
+The \gls{TAP} neutronics whitepaper specifies additional low-probability 
+fission products and gases that should be removed during operation. These 
+elements are categorized into the previously defined processing groups, but 
+the removal rates of most of these elements (all except for hydrogen) 
+are very low.
+
+Details of gas removal and fuel reprocessing systems have historically 
+been conceptual. Accordingly, liquid-fueled system design including the 
+\gls{TAP} concept usually assumes ideal (rather than realistically 
+constrained) removal efficiencies for reactor performance simulations. In this 
+thesis, I developed a realistic online reprocessing system and reactor model 
+to capture the dynamics of fuel composition evolution during reactor 
+operation. Gas removal efficiency is variable in that model, described using 
+mathematical correlation from Chapter 2 (see Equation~\ref{eq:gas_eff}). For 
+the other \glspl{FP}, a fixed\footnote{ 
+	Published information about dynamics of extraction efficiency during 
+	reactor 
+	operation for seminoble metals, volatile fluorides, and rare earths is 
+	insufficient to inform a variable removal efficiency.}, non-ideal 
+extraction efficiency based on cycle time from  
+Table~\ref{tab:reprocessing_list} was used to inform the fuel reprocessing 
+model.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htp!]
+	\centering
+	\caption{The effective cycle times for fission products removal  from the 
+		\gls{TAP} reactor (reproduced from \cite{betzler_implementation_2017} 
+		and 
+		\cite{transatomic_power_corporation_neutronics_2016}).}
+	\begin{tabular}{p{0.2\textwidth} p{0.42\textwidth} p{0.12\textwidth} 
+			p{0.14\textwidth}}
+		\hline 
+		%\begin{tabularx}{\linewidth}{l X} \toprule 
+		\textbf{Processing group} & \qquad\qquad\qquad \textbf{Nuclides} & 
+		\textbf{Removal Rate (s$^{-1}$)} & \textbf{Cycle time (at full power)} 
+		\\ [5pt] \hline 
+		\multicolumn{3}{c}{\textit{Elements removed in \gls{MSBR} concept and 
+				adopted for the \gls{TAP}} \cite{robertson_conceptual_1971}} \\
+		Volatile gases & Xe, Kr								  & 5.00E-2 & 20 
+		sec \\ [5pt]
+		Noble metals & Se, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Sb, Te & 5.00E-2 & 20 
+		sec \\ [5pt]
+		Seminoble metals & Zr, Cd, In, Sn	  				  & 5.79E-8 & 200 
+		days \\ [5pt]
+		Volatile fluorides & Br, I 							  & 1.93E-7 & 60 
+		days \\ [5pt]
+		Rare earths & Y, La, Ce, Pr, Nd, Pm, Sm, Gd           & 2.31E-7 & 50 
+		days \\ [5pt]
+		\qquad & Eu & 2.32E-8 & 500 days \\ [5pt]
+		Discard & Rb, Sr, Cs, Ba & 3.37E-9 & 3435 days \\ [5pt] 
+		\hline
+		
+		\multicolumn{3}{c}{\textit{Additional elements removed} 
+			\cite{transatomic_power_corporation_neutronics_2016, 
+				betzler_implementation_2017}  } \\
+		Volatile gases & H								  	& 5.00E-2 & 20 
+		sec    \\ [5pt]
+		Noble metals & Ti, V, Cr, Cu						& 3.37E-9 & 3435 
+		days \\ [5pt]
+		Seminoble metals & Mn, Fe, Co, Ni, Zn, Ga, Ge, As   & 3.37E-9 & 3435 
+		days \\ [5pt]
+		Rare earths & Sc									& 3.37E-9 & 3435 
+		days \\ [5pt]
+		Discard & Ca										& 3.37E-9 & 3435 
+		days \\ [5pt] 
+		\hline
+	\end{tabular}
+	\label{tab:reprocessing_list}
+	\vspace{-0.9em}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{TAP system model}
 \subsection{Serpent 2 full-core model} \label{sec:tap_model}
 Nest and lattice geometry types as well as universe transformation 
 capabilities of Serpent \cite{leppanen_serpent_2014}  are employed to 
@@ -323,175 +483,7 @@ rod position during operation. In this dissertation, all figures of the core
 were generated using the built-in Serpent plotter.
 
 
-\subsection{TAP fuel salt reprocessing system}
-The \gls{TAP} nuclear island contains a fission product removal system. 
-Gaseous \glspl{FP} are continuously removed using an off-gas system while 
-liquid and 
-solid \glspl{FP} are extracted via a chemical processing system. As these 
-byproducts are gradually removed, a small quantity of fresh fuel salt is 
-regularly added to the primary loop. This process conserves a constant fuel 
-salt mass and keeps the reactor critical. In contrast with the \gls{MSBR} 
-reprocessing system, the \gls{TAP} design does not need a protactinium 
-separation and isolation system because it operates in a uranium-based 
-single-stage fuel cycle. The authors of the \gls{TAP} concept suggested three 
-distinct fission product removal methods 
-\cite{transatomic_power_corporation_neutronics_2016}:
-\paragraph{Off-Gas System:} The off-gas system removes gaseous fission 
-products such as krypton and xenon, which are then compressed and stored 
-temporarily until they have decayed to the background radiation level. Trace 
-amounts of tritium are also removed and bottled in a liquid form via the same 
-process. Also, the off-gas system directly removes a small fraction of the 
-noble metals.
-\paragraph{Metal Plate-Out/Filtration:} A nickel mesh filter removes noble and 
-semi-noble metal solid fission products as they plate out onto internal surface
-of the filter.
-\paragraph{Liquid Metal Extraction:} Lanthanides and other non-noble metals 
-stay dissolved in the fuel salt. They generally have a lower capture cross 
-section and thus absorb fewer neutrons than $^{135}$Xe, but their extraction 
-is essential to ensure normal operation. In the \gls{TAP} reactor, lanthanide 
-removal is accomplished via a liquid-metal/molten salt extraction process 
-similar to that developed for \gls{MSBR} by \gls{ORNL}  
-\cite{robertson_conceptual_1971}. The process converts the dissolved 
-lanthanides into a well-understood oxide waste form, similar to that of 
-\gls{LWR} \gls{SNF}. This oxide waste comes out of the \gls{TAP} reprocessing 
-plant in ceramic granules and can be sintered into another convenient form for 
-storage \cite{transatomic_power_corporation_technical_2016}.
-
-Figure~\ref{fig:tap-reproc} shows the principal design of the \gls{TAP} 
-primary loop, including an off-gas system, nickel mesh filter, and lanthanide 
-chemical extraction facility. Similarly to the \gls{MSBR}, an off-gas system 
-is also based on a simple process of helium sparging through fuel salt with 
-consequent gas bubbles removed before returning the fuel salt to the core. 
-Nevertheless, one crucial difference must be noted: the \gls{MSBR} gas 
-separation system suggested helium injection and subsequent transport of the 
-voids throughout the primary loop, including the core for at least ten full 
-loops \cite{robertson_conceptual_1971}. It is a significant concern for safe, 
-stable operation because the increase of void fraction in the fuel salt when 
-it enters back to the core would cause unpredictable reactivity change. This 
-drawback can be overcome by using an effective gas separator for stripping 
-helium/xenon bubbles before returning the salt to a primary loop 
-(Figure~\ref{fig:tap-reproc}, blue block). 
-\begin{figure}[htp!] % replace 't' with 'b' to 
-	\centering
-	\includegraphics[width=\textwidth]{ch4/tap_primary_loop.png}
-	\caption{Simplified \gls{TAP} primary loop design including off-gas system 
-		(blue), 
-		nickel filter (orange) and liquid metal extraction system (green) 
-		(reproduced from \cite{transatomic_power_transatomic_2019}).}
-	\label{fig:tap-reproc}
-\end{figure}
-
-Noble and semi-noble metal solid fission products tend to plate out onto metal 
-surfaces including piping, heat exchanger tubes, reactor vessel inner surface, 
-etc. Previous research by \gls{ORNL} \cite{robertson_conceptual_1971} reported 
-that about 50\% of noble and semi-noble metals would plate out inside 
-\gls{MSBR} systems without any special treatment. To improve the extraction 
-efficiency of these fission products, the \gls{TAP} concept suggested 
-employing a nickel mesh filter located in a bypass stream in the primary loop 
-(Figure~\ref{fig:tap-reproc}, orange block). The main idea of this filter is 
-to create a maze with large metal (nickel) surface area. The fuel salt is  
-flowing throughout the filter and noble metals plate-out on the internal  
-filter surface. 
-
-This Liquid Metal Extraction process for the \gls{TAP} concept has been 
-adopted from the \gls{MSBR}. The \gls{MSRE} demonstrated a liquid-liquid 
-extraction process for removing rare earths and lanthanides from fuel salt and 
-estimated efficiency of this process. Removal efficiency ($\epsilon_{RE}$) of  
-this process is the function of salt mass flow rate, liquid bismuth mass 
-flow rate, interfacial areas between salt and metal, and mass transfer 
-coefficient for each noble metal species. The most recent research for LiF 
-salt (for the \gls{MSFR} concept) reported the following form of extraction 
-efficiency correlation \cite{rodrigues_actinide/lanthanide_2015}:
-\begin{align} 
-\epsilon_{RE} &= \frac{1}{1+10^{\lambda}} \nonumber \\
-&= \frac{1}{1+10^{f(A, \dot{m}_{Bi}, \dot{m}_{salt}, N, K)}} \label{eq:re_eff}
-\intertext{where}
-A&= \mbox{metal-to-salt interface area} \nonumber \\
-\dot{m}_{Bi}&= \mbox{bismuth mass flow rate} \nonumber \\
-\dot{m}_{salt}&= \mbox{salt mass flow rate} \nonumber \\
-N&= \mbox{number of stages} \nonumber \\
-K&= \mbox{liquid phase mass transfer coefficient} \nonumber 
-\end{align}
-Correlations are different for various lanthanides and can be determined from 
-experimental data and/or existing analytical models 
-\cite{mcneese_engineering_1971, delpech_possible_2012, 
-	rodrigues_actinide/lanthanide_2015}.
-
-In fact, due to similarities in reprocessing schemes, the \gls{TAP} project 
-reported almost the same set of elements for removal and similar effective 
-cycle times as suggested for \gls{MSBR} (Table~\ref{tab:reprocessing_list}). 
-The \gls{TAP} neutronics whitepaper specifies additional low-probability 
-fission products and gases that should be removed during operation. These 
-elements are categorized into the previously defined processing groups, but 
-the removal rates of most of these elements (i.e., all except for hydrogen) 
-are very low.
-
-Details of gas removal and fuel reprocessing systems have historically 
-been conceptual. Accordingly, liquid-fueled system designs including the 
-\gls{TAP} concept usually assume ideal (rather than realistically constrained) 
-removal efficiencies for reactor performance simulations. For the proposed 
-work, a realistic online reprocessing system and reactor model will be created 
-to capture the dynamics of fuel composition evolution during reactor 
-operation. Gas removal efficiency will be represented in that model as a 
-variable, described using mathematical correlation from Chapter 2 (see  
-Equation~\ref{eq:gas_eff}). For the other \glspl{FP}, a fixed\footnote{ 
-	Published information about dynamics of extraction efficiency during 
-	reactor 
-	operation for seminoble metals, volatile fluorides, and rare earths is 
-	insufficient to inform a variable removal efficiency.}, non-ideal 
-extraction efficiency based on cycle time from 
-Table~\ref{tab:reprocessing_list} will be used in the fuel reprocessing model.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[htbp!]
-	\centering
-	\caption{The effective cycle times for fission products removal  from the 
-		\gls{TAP} reactor (reproduced from \cite{betzler_implementation_2017} 
-		and 
-		\cite{transatomic_power_corporation_neutronics_2016}).}
-	\begin{tabular}{p{0.2\textwidth} p{0.42\textwidth} p{0.12\textwidth} 
-			p{0.16\textwidth}}
-		\hline 
-		%\begin{tabularx}{\linewidth}{l X} \toprule 
-		\textbf{Processing group} & \qquad\qquad\qquad \textbf{Nuclides} & 
-		\textbf{Removal Rate (s$^{-1}$)} & \textbf{Cycle time (at full power)} 
-		\\ [5pt] \hline 
-		\multicolumn{3}{c}{\textit{Elements removed in \gls{MSBR} concept and 
-				adopted for the \gls{TAP}} \cite{robertson_conceptual_1971}} \\
-		Volatile gases & Xe, Kr								  & 5.00E-2 & 20 
-		sec \\ [5pt]
-		Noble metals & Se, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Sb, Te & 5.00E-2 & 20 
-		sec \\ [5pt]
-		Seminoble metals & Zr, Cd, In, Sn	  				  & 5.79E-8 & 200 
-		days \\ [5pt]
-		Volatile fluorides & Br, I 							  & 1.93E-7 & 60 
-		days \\ [5pt]
-		Rare earths & Y, La, Ce, Pr, Nd, Pm, Sm, Gd           & 2.31E-7 & 50 
-		days \\ [5pt]
-		\qquad & Eu & 2.32E-8 & 500 days \\ [5pt]
-		Discard & Rb, Sr, Cs, Ba & 3.37E-9 & 3435 days \\ [5pt] 
-		\hline
-		
-		\multicolumn{3}{c}{\textit{Additional elements removed} 
-			\cite{transatomic_power_corporation_neutronics_2016, 
-				betzler_implementation_2017}  } \\
-		Volatile gases & H								  	& 5.00E-2 & 20 
-		sec    \\ [5pt]
-		Noble metals & Ti, V, Cr, Cu						& 3.37E-9 & 3435 
-		days \\ [5pt]
-		Seminoble metals & Mn, Fe, Co, Ni, Zn, Ga, Ge, As   & 3.37E-9 & 3435 
-		days \\ [5pt]
-		Rare earths & Sc									& 3.37E-9 & 3435 
-		days \\ [5pt]
-		Discard & Ca										& 3.37E-9 & 3435 
-		days \\ [5pt] 
-		\hline
-	\end{tabular}
-	\label{tab:reprocessing_list}
-	\vspace{-0.9em}
-\end{table}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\subsection{Model of the fuel reprocessing system}
 
 
 \section{Long-term depletion case demonstration and validation}
