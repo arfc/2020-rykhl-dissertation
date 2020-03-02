@@ -334,8 +334,8 @@ model.
 		\textbf{Processing group} & \qquad\qquad\qquad \textbf{Nuclides} & 
 		\textbf{Removal Rate (s$^{-1}$)} & \textbf{Cycle time (at full power)} 
 		\\ [5pt] \hline 
-		\multicolumn{3}{c}{\textit{Elements removed in \gls{MSBR} concept and 
-				adopted for the \gls{TAP}} \cite{robertson_conceptual_1971}} \\
+		\multicolumn{3}{c}{\textit{Elements removed in the \gls{MSBR} concept 
+		and adopted for the \gls{TAP}} \cite{robertson_conceptual_1971}} \\
 		Volatile gases & Xe, Kr								  & 5.00E-2 & 20 
 		sec \\ [5pt]
 		Noble metals & Se, Nb, Mo, Tc, Ru, Rh, Pd, Ag, Sb, Te & 5.00E-2 & 20 
@@ -374,9 +374,9 @@ model.
 \section{TAP system model}
 \subsection{Serpent 2 full-core model} \label{sec:tap_model}
 Nest and lattice geometry types as well as universe transformation 
-capabilities of Serpent \cite{leppanen_serpent_2014}  are employed to 
+capabilities of Serpent \cite{leppanen_serpent_2014} are employed to 
 represent \gls{TAP} core. Figure~\ref{fig:tap-serpent-plan} shows the $XY$ 
-section of whole-core configuration at the expected reactor operational level 
+section of the whole-core model at the expected reactor operational level 
 when all control rods are fully withdrawn. Figures~\ref{fig:tap-serpent-elev} 
 and ~\ref{fig:tap-serpent-elev-zoom} show a longitudinal section of the 
 reactor. This model contains the moderator rods with silicon carbide cladding, 
@@ -388,7 +388,7 @@ which means the modeled core is under-moderated and has intermediate neutron
 spectrum. Quarter-core configurations of the \gls{TAP} core with various salt 
 volume fraction, used in the current work to maintain criticality for 
 reasonable operational period ($>20$ years), are listed in 
-Table~\ref{tab:tap_adjustable_core},Figures~\ref{fig:tap-406-681}, and 
+Table~\ref{tab:tap_adjustable_core}, Figures~\ref{fig:tap-406-681}, and 
 \ref{fig:tap-840-1668} in Appendix~\ref{appex:geometries}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
@@ -411,7 +411,7 @@ Table~\ref{tab:tap_adjustable_core},Figures~\ref{fig:tap-406-681}, and
 \end{figure}
 
 To represent the reactivity control system, the model has: 
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[label=(\alph*), noitemsep]
 	\item control rod guide tubes made of nickel-based alloy;
 	\item control rods represented as a Boron Carbide (B$_4$C) cylinders 
 	with a thin Hastelloy-N coating;
@@ -424,7 +424,7 @@ Figures~\ref{fig:tap-serpent-plan} and \ref{fig:tap-serpent-elev-zoom} is
 comprised of a cluster of 25 rods that provide a total reactivity worth of 
 $4226\pm9pcm$ at the \gls{BOL}.
 
-\begin{figure}[htp!] % replace 't' with 'b' to 
+\begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.55\textwidth]{ch4/tap_elev_view_zoomed_serpent.png}
 	\caption{Zoomed $XZ$ section of the top of the moderator and control rods  
@@ -484,7 +484,111 @@ were generated using the built-in Serpent plotter.
 
 
 \subsection{Model of the fuel reprocessing system}
+I thoroughly analyzed the original \gls{TAP} reprocessing system design 
+(Figure~\ref{fig:tap-reproc}) and neutron poisons removal rates  
+(Table~\ref{tab:reprocessing_list}) to determine a suitable reprocessing 
+scheme for SaltProc v1.0 demonstration (Figure~\ref{fig:demo-repro-scheme}). 
+This demonstration case assumed fixed, non-ideal ($<100$\%) removal 
+efficiencies based on physical model for noble gas extraction efficiency 
+discussed in Section~\ref{sec:gas-separ}. 
+\begin{figure}[htp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/tap_saltproc_repro_scheme.png}
+	\caption{\gls{TAP} reprocessing scheme flowchart used for demonstration of 
+	SaltProc v1.0. Arrows represent material flow; percents represent fraction 
+	of total mass flow rates; ellipses represent fuel reprocessing 
+	system components; diamonds represent waste streams; the box shows 
+		refuel material flow.}
+	\label{fig:demo-repro-scheme}
+\end{figure}
 
+The gas removal components (sparger/contactor and entrainment separator) are 
+located in-line because estimated full loop time for the fuel salt is about 20 
+seconds and approximately equal to the cycle time 
+(Table~\ref{tab:reprocessing_list}). To remove all volatile gases every 20 
+seconds, the gas removal system must operate with 100\% of the core throughout 
+flow rate (in-line gas removal system). For the demonstration case herein 
+efficiency of xenon, krypton, and hydrogen extraction are determined using 
+Peebles \emph{et al.} model (Equation~\ref{eq:gas_eff}) discussed earlier. 
+Gas-liquid interfacial area per unit volume ($a$) to inform 
+equation~\ref{eq:gas_eff} is a function of salt/gas flow rates and diameter of 
+the gas bubbles \cite{sada_gas-liquid_1987}:
+\begin{align}\label{eq:interfacial-area}
+& a = \frac{6}{d_b}\frac{Q_{He}}{Q_{He} + Q_{salt}}
+\intertext{where}
+Q_{salt}&= \mbox{volumetric salt flow rate $[m^3/s]$} \nonumber \\
+Q_{He}&= \mbox{volumetric helium flow rate $[m^3/s]$} \nonumber \\
+d_b &= \mbox{helium bubble diameter $[m]$.} \nonumber
+\end{align}
+
+Extraction efficiencies are different for different gases because they have 
+different solubility (Henry's law constant) in the salt. 
+Table~\ref{tab:gas_removal_efficiency} reports Henry's law constants and 
+corresponding efficiencies of migration noble gas to the helium bubbles in the 
+sparger. Total separation efficiency (Table~\ref{tab:gas_removal_efficiency}) 
+refers efficiency of extraction target gaseous element after performing helium 
+sparging in the sparger following by separation of noble-gas-reach bubbles 
+from the salt in the axial-flow centrifugal bubble separator 
+\cite{gabbard_development_1974}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htp!]
+	\centering
+	\caption{The noble gas extraction efficiency at working temperature 
+	T=627$^{\circ}$C calculated using Peebles \emph{et al.} model 
+	(Equation~\ref{eq:gas_eff}) 
+	assuming liquid phase mass transfer coefficient 
+	$K_L=0.0085$ $m/s$ \cite{peebles_removal_1968}, salt volumetric flow rate 
+	$Q_{salt}=2$ $m^3/s$, helium volumetric flow rate $Q_{He}=0.1$ $m^3/s$, 
+	helium bubbles diameter $d_b=0.508$ $mm$, and volume of the sparger 
+	$V=1.4$ $m^3$.}
+	\begin{tabularx}{\textwidth}{L R R R}
+		\hline
+		\textbf{Element}  & \textbf{Dimensionless} & 
+		\multicolumn{2}{c}{\textbf{Efficiency of}}\\
+		& \textbf{Henry's law constant at T=700$^{\circ}$C} & 
+		\textbf{migration to He bubbles}&\textbf{total separation$^{\star}$}\\ 
+		\hline
+		Xe &$0.057\times 10^{-3}$ 
+		\cite{blander_solubility_1959}&0.9630&0.9149\\
+		Kr &$\approx0.283\times 10^{-3}$ \cite{blander_solubility_1959}&0.9595 
+		&0.9115\\
+		H  &$3.870\times 10^{-3}$ \cite{tomkins_gases_2016}&0.9066&0.8613\\
+		\hline
+	\end{tabularx}
+	\begin{tablenotes}
+		\small
+		\item$^{\star}$With axial-flow centrifugal bubble separator by 
+		Gabbard \emph{et al.} which allows the 
+		bubble separation efficiency 95\% \cite{gabbard_development_1974}.
+	\end{tablenotes}
+	\label{tab:gas_removal_efficiency}
+	\vspace{-0.9em}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The nickel filter in the \gls{TAP} concept is designed to extract 
+noble/semi-noble metals and volatile fluorides 
+(Table~\ref{tab:reprocessing_list}). Similarly to volatile gases, 
+noble metals must be removed every 20 seconds and, hence, the filter should 
+operate in-line also.The nickel filter removes a wide range of elements with 
+various efficiencies (Table~\ref{tab:reprocessing_list}).
+
+Lanthanides and other non-noble metals generally have a lower capture  
+cross section and absorb fewer neutrons than gases and noble metals. These 
+elements can be removed via a liquid-metal/molten salt extraction process with 
+relatively low removal rates (cycle time $> 50$ days). This is accomplished 
+by directing a small fraction of the salt mass flow leaving the nickel mesh 
+filter (10\%). That fraction then flows to the liquid-metal/molten salt 
+component of the reprocessing system, where lanthanides are removed with a 
+specific extraction efficiency to match the  required cycle time 
+(Table~\ref{tab:reprocessing_list}). The rest 90\% of the salt mass flow is 
+directed from the nickel filter to heat exchanger without performing any fuel 
+salt treatment.
+
+The removal rates vary among nuclides in this reactor concept, which dictate 
+the necessary resolution of depletion calculations. To compromise, a 3-day 
+time was selected for the long-term demonstration case based on a timestep 
+refinement study by Betzler \emph{et al.} \cite{betzler_assessment_2017-1}.
 
 \section{Long-term depletion case demonstration and validation}
 \subsection{Fuel salt isotopic composition dynamics}
