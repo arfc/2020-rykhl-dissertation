@@ -11,7 +11,7 @@
 *.cb
 *.cb2
 .*.lb
-
+dissertation/rykhlevskii_dissertation.pdf
 ## Intermediate documents:
 *.dvi
 *.xdv
@@ -240,3 +240,13 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+# sampler directory
+data/uq/serpent/sampler/
+data/uq/scale/pincell/sampler*/
+
+# Checkpoints
+data/scripts/.ipynb_checkpoints/
+data/uq/serpent/scripts/.ipynb_checkpoints/
+data/uq/scale/script_plotters/.ipynb_checkpoints/
+

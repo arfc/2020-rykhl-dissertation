@@ -1,0 +1,191 @@
+\documentclass[edeposit,fullpage,12pt]{uiucthesis2009}
+
+% Use draftthesis for notes and date markings on every page.  Useful when you
+%   have multiple copies floating around.
+% Use offcenter for the extra .5 inch on the left side. Needed with fullpage and fancy.
+% Use mixcasechap for compatibility with hyperref package, which does NOT like all caps default
+% Use edeposit for the adviser/committee on the title page.
+% Use tocnosub to suppress subsection and lower entries in the TOC.
+% PhD candidates use "proquest" for the proquest abstract.
+
+\makeatletter
+
+\usepackage{appendix}
+\usepackage{setspace}
+\usepackage{graphicx}  % another package that works for figures
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{threeparttable,caption,tabularx,booktabs}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\usepackage{array}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+%\captionsetup{width=1.0\textwidth,font={normalsize},skip=0.3cm,within=none,justification=centering}
+\usepackage{rotating}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\newcolumntype{b}{>{\hsize=1.0\hsize}X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcolumntype{m}{>{\hsize=.75\hsize}X}
+\newcolumntype{x}{>{\hsize=.25\hsize}X}
+\newcolumntype{a}{>{\hsize=.11\hsize}X}
+\graphicspath{{figures/}}
+%\usepackage{subfigure}  % for subfigures
+\usepackage{amsmath}  % for math spacing
+%\usepackage{amssymb}  % for math spacing
+%\usepackage{url}  % Hyphenation of URLs.
+\usepackage{lscape}  % Useful for wide tables or figures.
+\usepackage[justification=raggedright]{caption}	% makes captions ragged right 
+%- thanks to Bryce Lobdell
+\interfootnotelinepenalty=10000
+\usepackage[acronym,toc]{glossaries}  % acronyms inclusion
+\usepackage{color,soul}
+\makeglossary
+
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage{hyperref}
+\pdfstringdefDisableCommands{\let\hskip\empty}
+\usepackage{xspace}
+\usepackage{float}
+\usepackage{subcaption}
+
+\usepackage{MnSymbol}%
+\usepackage{wasysym}%
+\usepackage{adjustbox}
+\usepackage{footnotebackref}
+%\usepackage[document]{ragged2e}
+
+% Uncomment the appropriate one of the following four lines:
+%\msthesis
+\phdthesis
+%\otherdoctorate[abbrev]{Title of Degree}
+%\othermasters[abbrev]{Title of Degree}
+
+\title{Fuel processing simulation tool for liquid-fueled nuclear reactors}
+\author{Andrei Rykhlevskii}
+\department{Nuclear, Plasma, and Radiological Engineering}
+\degreeyear{2020}
+
+% Advisor name is required for
+% - doctoral students for the ProQuest abstract
+% - master's students who do not have a master's committee
+%\advisor{Professor Kathryn D. Huff}
+
+% Uncomment the \committee command for
+% - all doctoral students
+% - master's students who have a master's committee
+\committee{Assistant Professor Kathryn Huff, Chair\\
+           Associate Professor Tomasz Kozlowski     \\
+           Professor James Stubbins    \\
+           Professor Luke Olson}   
+
+\begin{document}
+\include{acros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE
+%
+\maketitle
+
+%\raggedright
+\parindent 1em%
+
+\frontmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+%
+%\begin{abstract}
+%\input{abs}
+%\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEDICATION
+%
+%\begin{dedication}
+%Dedicated to the memory of my father, Igor Rykhlevskii, who always believed in my ability to %succeed in the academic arena.
+%\end{dedication}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACKNOWLEDGMENTS
+%
+% Put acknowledgments in a file called "ack.tex" and it'll be inputted here.
+%\begin{acknowledgments}
+%\input{ack}
+%\end{acknowledgments}																																				
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS
+%
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LIST OF TABLES
+%
+% The List of Tables is not strictly necessary. Omitting the List of Tables will
+% simplify the thesis check and reduce the number of corrections.
+%\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LIST OF FIGURES
+%
+% The List of Figures is not strictly necessary. Omitting the List of Figures 
+%will
+% simplify the thesis check and reduce the number of corrections.
+%\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LIST OF ABBREVIATIONS
+%
+% The List of Abbreviations is not strictly necessary.
+%\chapter{LIST OF ABBREVIATIONS}
+
+%\printacronyms
+%\begin{symbollist*}
+%\item[MSBR] Molten Salt Breeder Reactor
+%\item[MSR] Molten Salt Reactor
+%\item[ORNL] Oak Ridge National Laboratory
+%\end{symbollist*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LIST OF SYMBOLS
+%\chapter{LIST OF SYMBOLS}
+%\begin{symbollist}[0.7in]
+%\item[$\nu$] Fission neutron yield
+%\item[$\Sigma_f$] Macroscopic fission cross section ($cm^{-1}$)
+%\item[$\phi$] Neutron flux ($\frac{neutron}{cm^2\times s}$)
+%\item[$\gamma_{_i}$] Fission yield of $i^{th}$ nuclide
+%\end{symbollist}
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INSERT REAL CONTENT HERE
+%
+%\include{intro}	% for INTRODUCTION in "intro.tex"
+%\include{chap2}
+%\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{chap6}
+\include{concl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%
+%\appendix
+%\include{apx}
+
+\backmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+%
+%\bibliographystyle{IEEE_ECE}
+\bibliographystyle{unsrt}
+% Put references in BibTeX format in thesisrefs.bib.
+\bibliography{thesisrefs}
+
+\newpage
+%\input{appendix}
+\end{document}
+\endinput
