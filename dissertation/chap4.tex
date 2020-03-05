@@ -372,13 +372,18 @@ model.
 
 
 \section{TAP system model}
+In this section, the \gls{TAP} core and fuel salt reprocessing system models  
+for demonstrating SaltProc v1.0 are described in details. I used these models 
+for SaltProc demonstration and validation for both long-term and short-term 
+cases.
+
 \subsection{Serpent 2 full-core model} \label{sec:tap_model}
 Nest and lattice geometry types as well as universe transformation 
 capabilities of Serpent \cite{leppanen_serpent_2014} are employed to 
 represent \gls{TAP} core. Figure~\ref{fig:tap-serpent-plan} shows the $XY$ 
 section of the whole-core model at the expected reactor operational level 
 when all control rods are fully withdrawn. Figures~\ref{fig:tap-serpent-elev} 
-and ~\ref{fig:tap-serpent-elev-zoom} show a longitudinal section of the 
+and \ref{fig:tap-serpent-elev-zoom} show a longitudinal section of the 
 reactor. This model contains the moderator rods with silicon carbide cladding, 
 pressure vessel, and inlet and outlet plena (Table~\ref{tab:tap_model_param}). 
 Fuel salt flows around rectangular moderator assemblies consisting of lattices 
@@ -481,6 +486,11 @@ withdrawn from the core (Figure~\ref{fig:tap-serpent-elev-zoom}), but user can
 use SaltProc v1.0 reactivity control capabilities to change control 
 rod position during operation. In this dissertation, all figures of the core 
 were generated using the built-in Serpent plotter.
+
+The neutron population per cycle and the number of active/inactive cycles were 
+chosento obtain a balance between minimizing uncertainty for a transport 
+problem (28 pcm for$k_{eff}$) and simultaneously minimizing computational 
+time.
 
 
 \subsection{Model of the fuel reprocessing system}
@@ -590,8 +600,72 @@ the necessary resolution of depletion calculations. To compromise, a 3-day
 time was selected for the long-term demonstration case based on a timestep 
 refinement study by Betzler \emph{et al.} \cite{betzler_assessment_2017-1}.
 
-\section{Long-term depletion case demonstration and validation}
-\subsection{Fuel salt isotopic composition dynamics}
+\section{Long-term depletion demonstration and validation}
+\subsection{Constant, ideal extraction efficiency case}
+To validate SaltProc v1.0, I performed lifetime-long depletion calculation 
+with ideal extraction efficiency. This case was selected to repeat fuel salt 
+depletion as close as possible to ChemTriton simulation for full-core 
+\gls{TAP} core by Betzler \emph{et al.} \cite{betzler_assessment_2017-1}.  
+Betzler \emph{et al.} made following assumptions and approximations in their 
+work \cite{betzler_assessment_2017-1}:
+\begin{enumerate}[noitemsep]	
+	\item Effective cycle times as prescribed by Transatomic Power Technical 
+	White Paper (Table~\ref{tab:reprocessing_list}) with \textbf{100\% removal 
+	efficiency}.
+	\item 5\% \gls{LEU} feed rate is equal to rate of fisson product removal.
+	\item 3-day depletion step.
+	\item Quarter-core model with vacuum boundary condition.
+	\item Delayed neutron precursor drift was neglected.
+\end{enumerate}
+I adopted those assumption for code-to-code verification of SaltProc v1.0 
+against ChemTriton. ENDF/B-VII.1 \cite{chadwick_endf/b-vii.1_2011} nuclear 
+data library is used for this case to be consistent with Betzler's work.
+But some crucial information has not been reported: core geometries for 
+various moderator rod configurations except startup configuration, excess 
+reactivity at startup, S($\alpha, \beta$) data and temperature used. In this 
+section, I made best effort to repeat Betzler \emph{et al.} simulation using 
+same input data to validate SaltProc for the \gls{TAP} reactor.
+
+
+\subsubsection{Effective multiplication factor}
+Figures~\ref{fig:keff-ben-valid} and \ref{fig:keff-ben-valid-zoomed} 
+demonstrate the effective multiplication factor obtained using SaltProc v1.0 
+with Serpent. The $k_{eff}$ was obtained after removing fissionproducts and 
+adding feed material at the end of each depletion step (3 days for this case). 
+SaltProc v1.0 predicts value of $k_{eff}$ at the end of next depletion step, 
+and switches to geometry file with better moderator-to-fuel ratio if the 
+predicted $k_{eff}$ might drops below 1. This algorithm mimics regular 
+maintenance shutdown when the \gls{TAP} core excess reactivity is exhausted, 
+and moderator rod assemblies should be reconfigured to operate next cycle. The 
+$k_{eff}$ fluctuates significantly as a result of the batch-wise nature of 
+the online reprocessing approach used.
+
+Loading the initial fuel salt composition with 5\% \gls{LEU} into the 
+\gls{TAP} core leads to a supercritical configuration with an excess 
+reactivity of about 3200pcm (Figure~\ref{fig:keff-ben-valid}). Without
+performing any fuel salt reprocessing and spectrum shifting, the core became 
+subcritical after 30 days of operation \cite{rykhlevskii_milestone_2019}. 
+SaltProc calculates an operational lifetime of 22.5 years which is lower than 
+ChemTriton result for the full-core simulation (29.0 years).
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/keff_ben.png}
+	\caption{Effective multiplication factor for full-core \gls{TAP} core 
+	model for the case with ideal removal efficiency of fission product. 
+	Confidence interval $\sigma=28$ $pcm$ is shaded.}
+	\label{fig:keff-ben-valid}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/keff_ben_zoomed.png}
+	\caption{Zoomed effective multiplication factor for the interval from 660 
+	to 715 EFPD during Cycle \#1 (347 moderator rods, \gls{SVF}=0.91720353). 
+		Confidence interval $\sigma=28$ $pcm$ is shaded.}
+	\label{fig:keff-ben-valid-zoomed}
+\end{figure}
+
+\subsubsection{Fuel salt isotopic composition dynamics}
 
 \section{Reactor load following analysis}
 
