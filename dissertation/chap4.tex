@@ -6,7 +6,7 @@ the literature \cite{betzler_two-dimensional_2017, betzler_assessment_2017-1};
 thus, code-to-code verification with ChemTRITON/SCALE is possible 
 \cite{betzler_assessment_2017-1}. The demonstration was performed for two 
 timescales:
-\paragraph{Long-term.} I performed the \gls{TAP} \gls{MSR} core lifetime-long 
+\paragraph*{Long-term.} I performed the \gls{TAP} \gls{MSR} core lifetime-long 
 (25 years) depletion simulation with moderate time resolution (3-day depletion 
 step) and constant, 100\% power level. The 
 results obtained with SaltProc v1.0 are compared with recent efforts discussed 
@@ -14,7 +14,7 @@ in Chapter 1, more specifically with full-core \gls{TAP} depletion analysis
 with ideal removal efficiencies by Betzler \emph{et al.}  
 \cite{betzler_assessment_2017-1}. This validation effort showed that SaltProc 
 v1.0 solution is correct for the case with \emph{ideal extraction efficiency}.
-\paragraph{Short-term (transient).} I performed the 24-hour-long depletion 
+\paragraph*{Short-term (transient).} I performed the 24-hour-long depletion 
 simulation with changing, load following reactor power with the fine time 
 resolution (variable depletion step from 1 to 30-min). The depletion 
 calculation for the \gls{TAP} in load following regime capture the effects of 
@@ -24,7 +24,7 @@ In this chapter, I also analyze the reactor load-following capability for
 various moderator configurations and fuel salt compositions to bound design 
 parameters of gas removal system to ensure load-following operation. 
 
-\section{Transatomic Power Molten Salt Reactor concept design description}
+\section{Transatomic Power Molten Salt Reactor design description}
 
 The \gls{TAP} concept is a 1250 MW$_{th}$ \gls{MSR} with a LiF-based uranium 
 fuel salt \cite{transatomic_power_corporation_technical_2016}. This concept 
@@ -91,7 +91,7 @@ from 0.9 to 27.5\% while maintaining a relatively low melting point
 salt) \cite{betzler_two-dimensional_2017}. The graphite has a very high 
 thermal scattering cross section which makes it a perfect moderator but has 
 a few major drawbacks: 
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[label=(\alph*), itemsep=-1ex]
 	\item low lethargy gain per collision requires a large volume of 
 	moderator to be present to reach criticality, which leads to a larger core 
 	and obstructs the core power density;
@@ -120,7 +120,7 @@ The \gls{TAP} \gls{MSR} primary loop contains the reactor core volume
 cladding), pumps, and primary heat exchangers. Pumps circulate the  
 LiF-(Act)F$_4$ fuel salt through the primary loop. The pumps, vessels, tanks, 
 and piping are made of a nickel-based alloy (similar to Hastelloy-N\footnote{ 
-Hastelloy-N is very common in \gls{MSR} concepts now, but was developed at 
+Hastelloy-N is very common in \gls{MSR} designs now, but was developed at 
 \gls{ORNL} in the \gls{MSRE} program that started in the 1950s.}), which 
 is highly resistant to corrosion in various molten salt environments. Inside 
 the reactor vessel, near the zirconium hydride moderator rods, the fuel salt 
@@ -135,7 +135,8 @@ well as \gls{ORNL} analysis of the \gls{TAP} design
 	\caption{Summary of principal data for the \gls{TAP} \gls{MSR} 
 		(reproduced from \cite{betzler_assessment_2017-1, 
 		transatomic_power_corporation_technical_2016}). }
-	\begin{tabularx}{\textwidth}{ s  s}
+		\centering
+	\begin{tabularx}{0.8\textwidth}{L R}
 		\hline
 		Thermal power   		& 1250 MW$_{th}  $       		\\ 
 		Electric power		    & 520 MW$_e  $ 			 		\\ 
@@ -146,8 +147,8 @@ well as \gls{ORNL} analysis of the \gls{TAP} design
 		Uranium enrichment      & 5\% $^{235}$U          	    \\
 		Moderator               & Zirconium Hydride (ZrH$_{1.66}$) rods \\
 								& (with silicon carbide cladding)       \\
-		Neutron spectrum        & intermediate at the \gls{BOL}             \\
-		                        & thermal at the \gls{EOL}			\\
+		Neutron spectrum at the \gls{BOL} & intermediate \\
+		\qquad\qquad\qquad\qquad\space at the \gls{EOL}     & thermal      \\
 		\hline
 	\end{tabularx}
 	\label{tab:tap_tab}
@@ -183,7 +184,7 @@ Figure~\ref{fig:svf-predetermined} shows the \gls{SVF} variation during
 operation that shifts the reactor neutron energy spectrum from intermediate to 
 thermal to maximize fuel burnup. At the \gls{BOL}, a high \gls{SVF} is 
 selected to obtain relatively hard spectrum and enhance fertile material 
-($^{238}$U) conversion into the fissile material ($^{239}$Pu) while the 
+($^{238}$U) conversion into the fissile material ($^{239}$Pu) when the 
 startup fissile material ($^{235}$U) inventory is still large. As fissile 
 concentration in the fuel salt declines, an additional moderator are 
 introduced to maintain criticality, leading to salt volume fraction decrease 
@@ -224,16 +225,16 @@ separation and isolation system because it operates in a uranium-based
 single-stage fuel cycle. The authors of the \gls{TAP} concept suggested three 
 distinct fission product removal methods 
 \cite{transatomic_power_corporation_neutronics_2016}:
-\paragraph{Off-Gas System:} The off-gas system removes gaseous fission 
+\paragraph*{Off-Gas System:} The off-gas system removes gaseous fission 
 products such as krypton and xenon, which are then compressed and stored 
 temporarily until they have decayed to the background radiation level. Trace 
 amounts of tritium are also removed and bottled in a liquid form via the same 
 process. Also, the off-gas system directly removes a small fraction of the 
 noble metals.
-\paragraph{Metal Plate-Out/Filtration:} A nickel mesh filter removes noble and 
-semi-noble metal solid fission products as they plate out onto internal surface
-of the filter.
-\paragraph{Liquid Metal Extraction:} Lanthanides and other non-noble metals 
+\paragraph*{Metal Plate-Out/Filtration:} A nickel mesh filter removes noble 
+and semi-noble metal solid fission products as they plate out onto internal 
+surface of the filter.
+\paragraph*{Liquid Metal Extraction:} Lanthanides and other non-noble metals 
 stay dissolved in the fuel salt. They generally have a lower capture cross 
 section and thus absorb fewer neutrons than $^{135}$Xe, but their extraction 
 is essential to ensure normal operation. In the \gls{TAP} reactor, lanthanide 
@@ -488,8 +489,10 @@ rod position during operation. In this dissertation, all figures of the core
 were generated using the built-in Serpent plotter.
 
 The neutron population per cycle and the number of active/inactive cycles were 
-chosento obtain a balance between minimizing uncertainty for a transport 
-problem (28 pcm for$k_{eff}$) and simultaneously minimizing computational 
+chosen
+to obtain a balance between minimizing uncertainty for a transport 
+problem (28 pcm for
+$k_{eff}$) and simultaneously minimizing computational 
 time.
 
 
@@ -588,12 +591,11 @@ cross section and absorb fewer neutrons than gases and noble metals. These
 elements can be removed via a liquid-metal/molten salt extraction process with 
 relatively low removal rates (cycle time $> 50$ days). This is accomplished 
 by directing a small fraction of the salt mass flow leaving the nickel mesh 
-filter (10\%). That fraction then flows to the liquid-metal/molten salt 
-component of the reprocessing system, where lanthanides are removed with a 
-specific extraction efficiency to match the  required cycle time 
-(Table~\ref{tab:reprocessing_list}). The rest 90\% of the salt mass flow is 
-directed from the nickel filter to heat exchanger without performing any fuel 
-salt treatment.
+filter (10\%) to the liquid-metal/molten salt component of the reprocessing 
+system, where lanthanides are removed with a specific extraction efficiency to 
+match the  required cycle time (Table~\ref{tab:reprocessing_list}). The rest 
+90\% of the salt mass flow is directed from the nickel filter to heat 
+exchanger without performing any fuel salt treatment.
 
 The removal rates vary among nuclides in this reactor concept, which dictate 
 the necessary resolution of depletion calculations. To compromise, a 3-day 
@@ -611,7 +613,7 @@ work \cite{betzler_assessment_2017-1}:
 \begin{enumerate}[noitemsep]	
 	\item Effective cycle times as prescribed by Transatomic Power Technical 
 	White Paper (Table~\ref{tab:reprocessing_list}) with \textbf{100\% removal 
-	efficiency}.
+	efficiency} for all removal groups, including noble gases.
 	\item 5\% \gls{LEU} feed rate is equal to rate of fisson product removal.
 	\item 3-day depletion step.
 	\item Quarter-core model with vacuum boundary condition.
@@ -620,52 +622,224 @@ work \cite{betzler_assessment_2017-1}:
 I adopted those assumption for code-to-code verification of SaltProc v1.0 
 against ChemTriton. ENDF/B-VII.1 \cite{chadwick_endf/b-vii.1_2011} nuclear 
 data library is used for this case to be consistent with Betzler's work.
-But some crucial information has not been reported: core geometries for 
-various moderator rod configurations except startup configuration, excess 
-reactivity at startup, S($\alpha, \beta$) data and temperature used. In this 
-section, I made best effort to repeat Betzler \emph{et al.} simulation using 
-same input data to validate SaltProc for the \gls{TAP} reactor.
+Unfortunately, some crucial details has not been reported in 
+\cite{betzler_assessment_2017-1}: exact core geometries for various moderator 
+rod configurations except startup configuration, excess reactivity at startup, 
+S($\alpha, \beta$) data and temperature used. This section presented my best 
+effort to repeat Betzler \emph{et al.} simulation using same input data to 
+validate SaltProc for the \gls{TAP} concept.
 
 
-\subsubsection{Effective multiplication factor}
+\subsubsection{Effective multiplication factor dynamics}
 Figures~\ref{fig:keff-ben-valid} and \ref{fig:keff-ben-valid-zoomed} 
 demonstrate the effective multiplication factor obtained using SaltProc v1.0 
-with Serpent. The $k_{eff}$ was obtained after removing fissionproducts and 
+with Serpent. The $k_{eff}$ was obtained after removing fission products and 
 adding feed material at the end of each depletion step (3 days for this case). 
-SaltProc v1.0 predicts value of $k_{eff}$ at the end of next depletion step, 
-and switches to geometry file with better moderator-to-fuel ratio if the 
-predicted $k_{eff}$ might drops below 1. This algorithm mimics regular 
-maintenance shutdown when the \gls{TAP} core excess reactivity is exhausted, 
-and moderator rod assemblies should be reconfigured to operate next cycle. The 
-$k_{eff}$ fluctuates significantly as a result of the batch-wise nature of 
-the online reprocessing approach used.
+SaltProc v1.0 updated the moderator rod configuration to the next 
+configuration (e.g., from 1388 rods per core to 1624 rods per core) once 
+predicted value of $k_{eff}$ at the end of next depletion step drops below 1. 
+This algorithm mimics regular maintenance shutdown when the \gls{TAP} core 
+excess reactivity is exhausted, and moderator rod assemblies should be 
+reconfigured to operate next cycle. 
 
-Loading the initial fuel salt composition with 5\% \gls{LEU} into the 
-\gls{TAP} core leads to a supercritical configuration with an excess 
-reactivity of about 3200pcm (Figure~\ref{fig:keff-ben-valid}). Without
-performing any fuel salt reprocessing and spectrum shifting, the core became 
-subcritical after 30 days of operation \cite{rykhlevskii_milestone_2019}. 
-SaltProc calculates an operational lifetime of 22.5 years which is lower than 
-ChemTriton result for the full-core simulation (29.0 years).
-\begin{figure}[hbp!] % replace 't' with 'b' to 
+Optimal number of moderator configurations (cycles) is found to be 15 (see 
+Appendix~\ref{appex:geometries}). Fewer cycles would improve capacity factor 
+but needs larger excess reactivity at the \gls{BOC} which is strictly limited 
+by reactivity control system worth. More cycles would require frequent 
+moderator rods reconfiguration which worsen capacity factor.  The interval 
+between first and second moderator configuration was only 12 months, the 
+shortest interval between moderator configuration updates. For the operation 
+interval between 2 and 16 years after startup, the intervals between shutdowns 
+for moderator rod updates was 18-26 months. But towards the \gls{EOL}, the 
+intervals between moderator rod reconfiguration dropped to 13 months. Overall, 
+average interval between regular shutdowns for the core reconfiguration was 18 
+months which exactly matches refueling interval for conventional \glspl{LWR}  
+and consistent with Betzler \emph{et al.} ($\approx$16 months)  
+\cite{betzler_assessment_2017-1}.
+\begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/keff_ben.png}
-	\caption{Effective multiplication factor for full-core \gls{TAP} core 
-	model for the case with ideal removal efficiency of fission product. 
-	Confidence interval $\sigma=28$ $pcm$ is shaded.}
+	\caption{Effective multiplication factor dynamics for full-core \gls{TAP} 
+		core model for the case with ideal removal efficiency of fission 
+		product. 
+		Confidence interval $\sigma=28$ $pcm$ is shaded.}
 	\label{fig:keff-ben-valid}
 \end{figure}
 
-\begin{figure}[hbp!] % replace 't' with 'b' to 
+The $k_{eff}$ fluctuates significantly as a result of the batch-wise nature of 
+the online reprocessing approach used. Loading the initial fuel salt 
+composition with 5\% \gls{LEU} into the \gls{TAP} core leads to a 
+supercritical configuration with an excess reactivity of about 3200pcm 
+(Figure~\ref{fig:keff-ben-valid}). Without performing any fuel salt 
+reprocessing and spectrum shifting, the core became subcritical after 30 days 
+of operation \cite{rykhlevskii_milestone_2019}. SaltProc calculates an 
+operational lifetime of 22.5 years, after which the fuel salt reached a total 
+burnup of 81.46 MWd/kgU. The end of operational lifetime is achieved when the 
+minimum \gls{SVF} is obtained, as restricted by the moderator geometry 
+parameters (e.g., moderator rod diameter, rod pitch, internal diameter of the 
+reactor vessel). Table~\ref{tab:valid_ben_lifetime} compares obtained 
+results with Betzler \emph{et al.} \cite{betzler_assessment_2017-1}. Overall, 
+SaltProc-calculated operational lifetime and burnup are lower than the 
+reference by approximately 22\% and 17\%, respectively. Better match in the 
+operational lifetime between SaltProc v1.0 and ChemTriton can be obtained if 
+detailed moderator configuration description of Betzler \emph{et al.} model 
+will be available in a future.
+\begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=\textwidth]{ch4/keff_ben_zoomed.png}
+	\includegraphics[width=0.9\textwidth]{ch4/keff_ben_zoomed.png}
 	\caption{Zoomed effective multiplication factor for the interval from 660 
-	to 715 EFPD during Cycle \#1 (347 moderator rods, \gls{SVF}=0.91720353). 
-		Confidence interval $\sigma=28$ $pcm$ is shaded.}
+		to 715 EFPD during Cycle \#1 (startup geometry configuration, 347 
+		moderator 
+		rods, \gls{SVF}=0.91720353). Confidence interval $\sigma=28$ $pcm$ is 
+		shaded.}
 	\label{fig:keff-ben-valid-zoomed}
 \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[hbp!]
+	\centering
+	\caption{Comparison of main operational parameters in the \gls{TAP} 
+	reactor between SaltProc and Betzler \emph{et al.}
+	\cite{betzler_assessment_2017-1}.}
+	\begin{tabularx}{\textwidth}{p{0.42\textwidth} R R}
+		\hline
+		\textbf{Parameter}  & \textbf{Current work} & \textbf{Betzler, 2017} 
+		\cite{betzler_assessment_2017-1}\\ \hline
+		Operational lifetime [y] & 22.5 & 29.0 \\
+		Discharge burnup [MWd/kgU] & 76.30& 91.9 \\
+		Average interval between moderator reconfiguration [months] & 18 & 
+		16 \\
+		\hline
+	\end{tabularx}
+	\label{tab:valid_ben_lifetime}
+	\vspace{-0.9em}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsubsection{Fuel salt isotopic composition dynamics}
+Figures~\ref{fig:u-ben-valid}, \ref{fig:pu-fiss-ben-valid}, and 
+\ref{fig:pu-ben-valid} show that continuous \gls{LEU} feed into the \gls{TAP} 
+reactor is not sufficient to maintain the fissile material content of the 
+core, as the uranium enrichment steadily decreases from 5\% at the \gls{BOL} 
+to 1\% at the \gls{EOL}. However, during the first 13 years of operation, 
+the \gls{TAP} \gls{MSR} breeds fissile $^{239}$Pu and $^{241}$Pu, reaching a 
+peak of total fissile plutonium inventory of 2.15t  
+(Figure~\ref{fig:pu-fiss-ben-valid}). A significant amount of non-fissile 
+plutonium ($^{238}$Pu, $^{240}$Pu, and $^{242}$Pu) and uranium ($^{236}$U) 
+builds up in the reactor during operation and negatively impacts criticality 
+of the reactor. $^{239}$Pu and $^{241}$Pu are major contributors to fissile 
+material content of the core keeping it critical during second half of 
+the operational lifecycle. The total $^{239}$Pu in the core rises during the 
+first 11 years of operation due to the harder neutron spectrum. After 11 
+years, the softer spectrum breeds less $^{239}$ from $^{238}$U, and more of 
+$^{239}$ is progressively burned. Obtained results are in a good agreement 
+with results in ORNL Report byt Betzler \emph{et al.} 
+(Table~\ref{tab:valid_ben_isos}) \cite{betzler_assessment_2017-1}.
+
+%$^{235}$U inventory in Betzler \emph{et al.} changed from 6.8t at the 
+%\gls{BOL} to 1.0t at the \gls{EOL}. $^{239}$Pu  was 1.065t at the 
+%\gls{EOL}. $^{240}$Pu  was 995kg at the 
+%\gls{EOL}. $^{241}$Pu  was 465kg at the 
+%\gls{EOL}.		
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/u_ben_valid.png}
+	\caption{SaltProc-calculated uranium isotopic fuel salt content during 
+	22.5 years of operation.}
+	\label{fig:u-ben-valid}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/pu_ben_valid.png}
+	\caption{SaltProc-calculated plutonium isotopic fuel salt content during 
+		22.5 years of operation.}
+	\label{fig:pu-ben-valid}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/tot_pu_ben_valid.png}
+	\caption{SaltProc-calculated fissile and non-fissile plutonium fuel salt 
+	content during 22.5 years of operation.}
+	\label{fig:pu-fiss-ben-valid}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[hbp!]
+	\centering
+	\caption{Comparison of major heavy isotopes inventories at the \gls{EOL} 
+	in the \gls{TAP} reactor between SaltProc and Betzler \emph{et al.}		
+	\cite{betzler_assessment_2017-1}.}
+	\begin{tabularx}{\textwidth}{L p{0.12\textwidth} R R R}
+		\hline
+		& \textbf{Isotope}  & \textbf{Current work [kg]} & \textbf{Betzler, 
+		2017 [kg]} & \textbf{$\Delta m$ [\%]}\\ \hline
+		\multirow{4}{*}{Fissile}
+		&$^{235}$U  & 1299 & 1160 & $+11$\% \\
+		&$^{239}$Pu & 942  & 995  & $-5$\% \\
+		&$^{241}$Pu & 427  & 435  & $-2$\% \\
+		&Total & 2668 & 2590 & $+3$\%  \\ \hline
+		
+		\multirow{4}{*}{Non-fissile}
+		&$^{236}$U  & 1123 & 1200 & $-6$\% \\
+		&$^{238}$U  & 127'353 & 132'400 & $-4$\% \\
+		&$^{238}$Pu & 235  & 280  & $-16$\% \\
+		&$^{240}$Pu & 503  & 1000  & $-50$\% \\
+		&$^{242}$Pu & 230  & 310  & $-26$\% \\
+		&Total & 129'444 & 135'190 & $+4$\%  \\ \hline
+	\end{tabularx}
+	\label{tab:valid_ben_isos}
+	\vspace{-0.9em}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Lifetime-long SaltProc calculation requires a 5\% \gls{LEU} feed rate of 460.8 
+kg per year to maintain the fuel salt inventory in the primary loop which is 
+consistent with the reference. Table~\ref{tab:valid_ben_performance} shows 
+main fuel cycle performance parameters calculated using SaltProc and compared 
+with the reference. Normalized per GW$_{th}$-year, the \gls{TAP} concept 
+requires about 5.23t of fuel comparing with 4.14t reported by Betzler \emph{et 
+al.}. SaltProc-calculated waste production normalized per GW$_{th}$-year is 
+5\% less than reported by ORNL. Potentially, the \gls{TAP} can operate with 
+\gls{LWR} \gls{SNF} as the fissile material feed. The fissile component of 
+\gls{LWR} \gls{SNF} is lower than 5\% enriched uranium and adds less fertile 
+$^{238}$U to the fuel salt, potentially shortening the operational lifetime. 
+But in this case, the \gls{TAP} concept has the potential to have a better 
+waste reduction metrics.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[hbp!]
+	\centering
+	\caption{Comparison of normalized total fuel load and actinide waste from 
+	an LWR and the TAP reactor \cite{betzler_assessment_2017-1}.}
+	\begin{tabularx}{\textwidth}{p{0.42\textwidth} R R}
+		\hline
+		\textbf{Parameter}  & \textbf{Current work} & \textbf{Betzler, 2017} 
+		\cite{betzler_assessment_2017-1}\\ \hline
+		5\% \gls{LEU} feed rate [kg/y] & 460.8 & 480 \\
+		Loaded fuel [MT per GW$_{th}$-r] & 5.23 & 4.14 \\
+		Waste  [MT per GW$_{th}$-y] & 3.57 & 3.74 \\
+		\hline
+	\end{tabularx}
+	\label{tab:valid_ben_performance}
+	\vspace{-0.9em}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Neutron energy spectrum}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/ben_spec_bol.png}
+	\caption{SaltProc-calculated fissile and non-fissile plutonium fuel salt 
+		content during 22.5 years of operation.}
+	\label{fig:ben-spectrum-bol}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/ben_spec_eol.png}
+	\caption{SaltProc-calculated fissile and non-fissile plutonium fuel salt 
+		content during 22.5 years of operation.}
+	\label{fig:ben-spectrum-eol}
+\end{figure}
+
 
 \section{Reactor load following analysis}
 
