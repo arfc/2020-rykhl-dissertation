@@ -889,6 +889,53 @@ waste production (Table~\ref{tab:valid_ben_performance}).
 
 
 \subsubsection{Time step refinement}
+The results shown in this chapter are obtained from a SaltProc calculation 
+with uniform depletion time step of 3 days. The duration of the time step was 
+chosen after performing parametric sweep to determine the longest depletion 
+time step that provides the accuracy of the calculation. Larger time step 
+potentially reduces the SaltProc calculation costs, providing results faster 
+for lifetime-long simulations. 
+
+Figure~\ref{fig:timeref-keff} shows $k_{eff}$ evolution obtained with 3-, 6-, 
+12-, and 24-days depletion time intervals for 25-year simulation. The interval 
+between moderator configuration updates was assumed similar for all 4 cases 
+for consistency. Multiplication factor at the \gls{BOC} for each moderator 
+configuration became lower when the time step decreasing. At the \gls{EOC} for 
+each geometry, $k_{eff}=1.0$  for 3-day time step and decreasing significantly 
+when depletion interval rises. Furthermore, while the longer time steps 
+appropriately capture uranium depletion ($<1$\% difference for 6-,12- and 
+24-day time steps), observed difference in key fissile $^{239}$Pu mass is 
+significant for the depletion interval 6-days and longer ($>0.5$\% or $>9$ 
+kg which is higher than significant quantity 8 kg Pu).
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/keff_time_refinement.png}
+	\caption{SaltProc-calculated effective multiplication factor ($k_{eff}$) 
+	during operation for different depletion time step sizes.}
+	\label{fig:timeref-keff}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.9\textwidth]{ch4/u235_time_refinement.png}\\
+		\vspace{-7mm}
+	\hspace{0.5mm}
+	\includegraphics[width=\textwidth]{ch4/u238_time_refinement.png}
+		\vspace{-3mm}
+	\caption{SaltProc-calculated $^{235}$U (upper) and $^{238}$U (lower) 
+	content during operation for different depletion time step sizes.}
+	\label{fig:timeref-u}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/pu239_time_refinement.png}
+	\caption{SaltProc-calculated $^{239}$Pu content during operation for 
+		different depletion time step sizes.}
+	\label{fig:timeref-pu239}
+\end{figure}
+
+
 
 \subsection{Realistic extraction efficiency case}
 
