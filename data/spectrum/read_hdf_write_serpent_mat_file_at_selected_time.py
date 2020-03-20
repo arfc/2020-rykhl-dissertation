@@ -6,7 +6,7 @@ from pyne import nucname
 db_file = '/home/andrei2/Desktop/git/publications/2020-rykhl-dissertation/data/db/valid_with_ben/ideal_endf_s(ab)_ben_3d_10791d_final.h5'
 new_mat_file = 'eol/mat_prepr_comp_geo_15_eoc.ini'
 
-time_after_startup = 9000.0   # days, extract the composition after n days startup
+time_after_startup = 8214.0   # 22.5y=8214d; 9000 days,7002 extract the composition after n days startup
 
 include_decay_isos = False
 

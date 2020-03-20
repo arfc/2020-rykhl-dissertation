@@ -6,7 +6,7 @@ include "/home/andrei2/Desktop/git/saltproc/develop/examples/mats/non_burnable_m
 
 % Burnup settings will be added on next line
 
-include "/home/andrei2/Desktop/git/saltproc/develop/examples/geometry/1668_all.ini"
+include "/home/andrei2/Desktop/git/saltproc/develop/examples/geometry/1668_all.ini" %1338 998
 
 %include "/u/sciteam/rykhlevs/meitner/mat_comp/saltproc_prepr_comp.ini"
 %include "/u/sciteam/rykhlevs/meitner/mat_comp/non_burnable_mats.ini"
@@ -54,7 +54,7 @@ set stabcut 1E-12
 
 %plot 13 1550 3400 0.0 -155 0
 %plot 13 1000 1000 0 -20 20 135 175
-%plot 13 2000 2000 16.5
+plot 13 2000 2000 16.5
 
 % --- Depletion parameters
 % --- Options for burnup calculation:
@@ -62,7 +62,7 @@ set stabcut 1E-12
 %set pcc     2  % Predictor-corrector calculation off (Linear extrapolation)
 %set xscalc  2  % Cross sections from spectrum
 %set bunorm 2
-%set opti 3
+set opti 3
 
 set power 1.250E+09
 
@@ -101,6 +101,7 @@ trans CR6 0.0 0.0 400.0
 
 % --- Detector energy grid (uniform lethargy):
 ene tot 3 1000 1E-9 12.0
+
 ene ben 1 9.69229916378108E-09
 9.69322859610645E-09
 1.07649013548293E-08

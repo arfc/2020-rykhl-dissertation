@@ -733,7 +733,7 @@ the operational lifecycle. The total $^{239}$Pu in the core rises during the
 first 11 years of operation due to the harder neutron spectrum. After 11 
 years, the softer spectrum breeds less $^{239}$ from $^{238}$U, and more of 
 $^{239}$ is progressively burned. Obtained results are in a good agreement 
-with results in ORNL Report byt Betzler \emph{et al.} 
+with results in ORNL Report by Betzler \emph{et al.} 
 (Table~\ref{tab:valid_ben_isos}) \cite{betzler_assessment_2017-1}.
 
 %$^{235}$U inventory in Betzler \emph{et al.} changed from 6.8t at the 
@@ -825,20 +825,72 @@ waste reduction metrics.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Neutron energy spectrum}
+Significant thermalization of the neutron spectrum is observed as moderator 
+rods are added into the core configuration 
+(Figure~\ref{fig:ben-spectrum-bol}). At startup, the neutron spectra from the 
+current work and Betzler \emph{et al.} are match well because the core 
+geometry, its \gls{SVF}, and initial fuel composition in 
+these two simulation are similar. Pearson correlation  
+coefficient\footnote{Pearson correlation coefficient is calculated by the 
+	following formula:
+	\begin{align}
+	r &= \frac{\sum_{i=1}^{N} 
+		(\Phi_i^{ref}-\overline{\Phi^{ref}})(\Phi_i-\overline{\Phi})}
+	{\sqrt{\sum_{i=1}^{N} (\Phi_i^{ref}-\overline{\Phi^{ref}})^2 
+			\sum_{i=1}^{N} 
+			(\Phi_i-\overline{\Phi})^2}}\\
+	\mbox{where} \nonumber\\
+	\Phi_i^{ref},\Phi_i &= \mbox{neutron flux for i$^{th}$ energy bin 
+		reported in the reference and the current work $[n/cm^2\cdot s]$} 
+	\nonumber\\
+	\overline{\Phi^{ref}}, \overline{\Phi} &= \mbox{neutron flux averaged over 
+		N energy bins reported in the reference and current work $[n/cm^2\cdot 
+		s]$} 
+	\nonumber\\
+	N &= \mbox{number of neutron energy bins [-].}
+	\nonumber
+	\end{align}}
+$r_{BOL}=0.91115$ which indicates strong, positive association between the 
+spectra at the \gls{BOL} (see Figure~\ref{fig:ben-spectrum-bol}, upper plot).
+At the \gls{EOL}, SaltProc/Serpent-calculated spectrum is more thermal than 
+reported by Betzler \emph{et al.} \cite{betzler_assessment_2017-1}, but 
+correlation coefficient $r_{EOL}=0.90987$ still shows that the spectra are 
+extremely strongly related (see Figure~\ref{fig:ben-spectrum-bol}, lower 
+plot). 
+%with smaller amplitude of resonances between 10$^{-5}$ and 10$^{-2}$ MeV 
+%(resonance capture of neutrons by $^{238}$U).
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=\textwidth]{ch4/ben_spec_bol.png}
-	\caption{SaltProc-calculated fissile and non-fissile plutonium fuel salt 
-		content during 22.5 years of operation.}
+	\includegraphics[width=0.85\textwidth]{ch4/ben_spec_bol.png}\\
+	\vspace{-14mm}
+	\hspace{0.5mm}
+	\includegraphics[width=0.85\textwidth]{ch4/ben_spec_eol.png}
+	\vspace{-3mm}
+	\caption{Neutron flux energy spectrum at the BOL (upper) and the EOL 
+		(lower) obtained using SaltProc/Serpent (orange) compared with 
+		ChemTriton/Shift (blue) \cite{betzler_assessment_2017-1}.}
 	\label{fig:ben-spectrum-bol}
 \end{figure}
-\begin{figure}[hbp!] % replace 't' with 'b' to 
-	\centering
-	\includegraphics[width=\textwidth]{ch4/ben_spec_eol.png}
-	\caption{SaltProc-calculated fissile and non-fissile plutonium fuel salt 
-		content during 22.5 years of operation.}
-	\label{fig:ben-spectrum-eol}
-\end{figure}
+
+
+Faster spectrum at the \gls{BOL} tends to significantly increase resonance 
+absorptionin $^{238}$U and decrease the absorptions in fissile and 
+construction materials. Thus, softer spectrum in the current work compared 
+with Betzler \emph{et al.} led to fewer resonance captures\footnote{Energy 
+range for $^{238}$U resonance neutron capture is between 10$^{-5}$ and 
+10$^{-2}$ MeV.} of neutrons by $^{238}$U, hence, less $^{239}$Pu bred from 
+$^{238}$U. Therefore, the SaltProc/Serpent calculation in the current work 
+underpredicts the destruction (i.e., fission and capture) of $^{235}$U and 
+overpredicts the destruction of $^{235}$ (see Table~\ref{tab:valid_ben_isos}). 
+Finally, the softer neutron spectrum leds to more fissions in fissile 
+plutonium isotopes ($^{239}$Pu and $^{241}$Pu) which also decreases 
+non-fissile plutonium (Table~\ref{tab:valid_ben_isos}) and total actinide 
+waste production (Table~\ref{tab:valid_ben_performance}).
+
+
+\subsubsection{Time step refinement}
+
+\subsection{Realistic extraction efficiency case}
 
 
 \section{Reactor load following analysis}
