@@ -698,7 +698,7 @@ will be available in a future.
 \begin{table}[hbp!]
 	\centering
 	\caption{Comparison of main operational parameters in the \gls{TAP} 
-	reactor between SaltProc and Betzler \emph{et al.}
+	reactor between the current work and Betzler \emph{et al.}
 	\cite{betzler_assessment_2017-1}.}
 	\begin{tabularx}{\textwidth}{p{0.42\textwidth} R R}
 		\hline
@@ -717,8 +717,9 @@ will be available in a future.
 
 
 \subsubsection{Fuel salt isotopic composition dynamics}
-Figures~\ref{fig:u-ben-valid}, \ref{fig:pu-fiss-ben-valid}, and 
-\ref{fig:pu-ben-valid} show that continuous \gls{LEU} feed into the \gls{TAP} 
+Figures~\ref{fig:u-ben-valid}, \ref{fig:pu-ben-valid}, and 
+\ref{fig:pu-fiss-ben-valid} show that continuous \gls{LEU} feed into the 
+\gls{TAP} 
 reactor is not sufficient to maintain the fissile material content of the 
 core, as the uranium enrichment steadily decreases from 5\% at the \gls{BOL} 
 to 1\% at the \gls{EOL}. However, during the first 13 years of operation, 
@@ -729,11 +730,11 @@ plutonium ($^{238}$Pu, $^{240}$Pu, and $^{242}$Pu) and uranium ($^{236}$U)
 builds up in the reactor during operation and negatively impacts criticality 
 of the reactor. $^{239}$Pu and $^{241}$Pu are major contributors to fissile 
 material content of the core keeping it critical during second half of 
-the operational lifecycle. The total $^{239}$Pu in the core rises during the 
-first 11 years of operation due to the harder neutron spectrum. After 11 
-years, the softer spectrum breeds less $^{239}$ from $^{238}$U, and more of 
-$^{239}$ is progressively burned. Obtained results are in a good agreement 
-with results in ORNL Report by Betzler \emph{et al.} 
+the operational lifecycle. The total $^{239}$Pu inventory in the core rises 
+during the first 11 years of operation due to the harder neutron spectrum. 
+After 11 years, the softer spectrum breeds less $^{239}$Pu from $^{238}$U, and 
+more of $^{239}$Pu is progressively burned. Obtained results are in a good 
+agreement with results in ORNL Report by Betzler \emph{et al.} 
 (Table~\ref{tab:valid_ben_isos}) \cite{betzler_assessment_2017-1}.
 
 %$^{235}$U inventory in Betzler \emph{et al.} changed from 6.8t at the 
@@ -767,7 +768,7 @@ with results in ORNL Report by Betzler \emph{et al.}
 \begin{table}[hbp!]
 	\centering
 	\caption{Comparison of major heavy isotopes inventories at the \gls{EOL} 
-	in the \gls{TAP} reactor between SaltProc and Betzler \emph{et al.}		
+	in the \gls{TAP} reactor between the current work and Betzler \emph{et al.}	
 	\cite{betzler_assessment_2017-1}.}
 	\begin{tabularx}{\textwidth}{L p{0.12\textwidth} R R R}
 		\hline
@@ -797,25 +798,27 @@ kg per year to maintain the fuel salt inventory in the primary loop which is
 consistent with the reference. Table~\ref{tab:valid_ben_performance} shows 
 main fuel cycle performance parameters calculated using SaltProc and compared 
 with the reference. Normalized per GW$_{th}$-year, the \gls{TAP} concept 
-requires about 5.23t of fuel comparing with 4.14t reported by Betzler \emph{et 
-al.}. SaltProc-calculated waste production normalized per GW$_{th}$-year is 
+requires about 5.23t of fuel compared with 4.14t reported by Betzler \emph{et 
+al.} SaltProc-calculated waste production normalized per GW$_{th}$-year is 
 5\% less than reported by ORNL. Potentially, the \gls{TAP} can operate with 
-\gls{LWR} \gls{SNF} as the fissile material feed. The fissile component of 
-\gls{LWR} \gls{SNF} is lower than 5\% enriched uranium and adds less fertile 
-$^{238}$U to the fuel salt, potentially shortening the operational lifetime. 
-But in this case, the \gls{TAP} concept has the potential to have a better 
-waste reduction metrics.
+\gls{LWR} \gls{SNF} as the fissile material feed. The heavy metal component of 
+\gls{LWR} \gls{SNF} has a lower fissile material weight fraction than 5\% 
+enriched uranium and adds less fertile $^{238}$U to the fuel salt, potentially 
+reducing the operational lifetime. But in case of using waste material (e.g., 
+Transuranium elements from \gls{LWR} \gls{SNF}) in this fueling scenario, the 
+\gls{TAP} concept has the potential to have a better waste reduction metrics.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[hbp!]
 	\centering
 	\caption{Comparison of normalized total fuel load and actinide waste from 
-	an LWR and the TAP reactor \cite{betzler_assessment_2017-1}.}
+	the TAP reactor obtained in the current work and Betzler \emph{et al.} 
+	\cite{betzler_assessment_2017-1}.}
 	\begin{tabularx}{\textwidth}{p{0.42\textwidth} R R}
 		\hline
 		\textbf{Parameter}  & \textbf{Current work} & \textbf{Betzler, 2017} 
 		\cite{betzler_assessment_2017-1}\\ \hline
-		5\% \gls{LEU} feed rate [kg/y] & 460.8 & 480 \\
-		Loaded fuel [MT per GW$_{th}$-r] & 5.23 & 4.14 \\
+		5\% \gls{LEU} feed rate [kg/y] & 460.8 & 480.0 \\
+		Loaded fuel [MT per GW$_{th}$-y] & 5.23 & 4.14 \\
 		Waste  [MT per GW$_{th}$-y] & 3.57 & 3.74 \\
 		\hline
 	\end{tabularx}
@@ -854,17 +857,17 @@ $r_{BOL}=0.91115$ which indicates strong, positive association between the
 spectra at the \gls{BOL} (see Figure~\ref{fig:ben-spectrum-bol}, upper plot).
 At the \gls{EOL}, SaltProc/Serpent-calculated spectrum is more thermal than 
 reported by Betzler \emph{et al.} \cite{betzler_assessment_2017-1}, but 
-correlation coefficient $r_{EOL}=0.90987$ still shows that the spectra are 
+correlation coefficient $r_{EOL}=0.90987$ shows that the spectra are still 
 extremely strongly related (see Figure~\ref{fig:ben-spectrum-bol}, lower 
 plot). 
 %with smaller amplitude of resonances between 10$^{-5}$ and 10$^{-2}$ MeV 
 %(resonance capture of neutrons by $^{238}$U).
-\begin{figure}[hbp!] % replace 't' with 'b' to 
+\begin{figure}[htbp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.85\textwidth]{ch4/ben_spec_bol.png}\\
-	\vspace{-14mm}
+	\includegraphics[width=0.77\textwidth]{ch4/ben_spec_bol.png}\\
+	\vspace{-12mm}
 	\hspace{0.5mm}
-	\includegraphics[width=0.85\textwidth]{ch4/ben_spec_eol.png}
+	\includegraphics[width=0.77\textwidth]{ch4/ben_spec_eol.png}
 	\vspace{-3mm}
 	\caption{Neutron flux energy spectrum at the BOL (upper) and the EOL 
 		(lower) obtained using SaltProc/Serpent (orange) compared with 
@@ -874,14 +877,15 @@ plot).
 
 
 Faster spectrum at the \gls{BOL} tends to significantly increase resonance 
-absorptionin $^{238}$U and decrease the absorptions in fissile and 
+absorption
+in $^{238}$U and decrease the absorptions in fissile and 
 construction materials. Thus, softer spectrum in the current work compared 
 with Betzler \emph{et al.} led to fewer resonance captures\footnote{Energy 
 range for $^{238}$U resonance neutron capture is between 10$^{-5}$ and 
 10$^{-2}$ MeV.} of neutrons by $^{238}$U, hence, less $^{239}$Pu bred from 
 $^{238}$U. Therefore, the SaltProc/Serpent calculation in the current work 
 underpredicts the destruction (i.e., fission and capture) of $^{235}$U and 
-overpredicts the destruction of $^{235}$ (see Table~\ref{tab:valid_ben_isos}). 
+overpredicts the destruction of $^{235}$U (see Table~\ref{tab:valid_ben_isos}). 
 Finally, the softer neutron spectrum leds to more fissions in fissile 
 plutonium isotopes ($^{239}$Pu and $^{241}$Pu) which also decreases 
 non-fissile plutonium (Table~\ref{tab:valid_ben_isos}) and total actinide 
@@ -894,19 +898,33 @@ with uniform depletion time step of 3 days. The duration of the time step was
 chosen after performing parametric sweep to determine the longest depletion 
 time step that provides the accuracy of the calculation. Larger time step 
 potentially reduces the SaltProc calculation costs, providing results faster 
-for lifetime-long simulations. 
+for lifetime-long (25-year) simulations. 
 
 Figure~\ref{fig:timeref-keff} shows $k_{eff}$ evolution obtained with 3-, 6-, 
 12-, and 24-days depletion time intervals for 25-year simulation. The interval 
-between moderator configuration updates was assumed similar for all 4 cases 
+between moderator configuration updates was assumed similar for all four cases 
 for consistency. Multiplication factor at the \gls{BOC} for each moderator 
-configuration became lower when the time step decreasing. At the \gls{EOC} for 
-each geometry, $k_{eff}=1.0$  for 3-day time step and decreasing significantly 
-when depletion interval rises. Furthermore, while the longer time steps 
-appropriately capture uranium depletion ($<1$\% difference for 6-,12- and 
-24-day time steps), observed difference in key fissile $^{239}$Pu mass is 
-significant for the depletion interval 6-days and longer ($>0.5$\% or $>9$ 
-kg which is higher than significant quantity 8 kg Pu).
+configuration became lower when the time step increasing. At the \gls{EOC} for 
+each geometry, $k_{eff}=1.0$  for 3-day time step and drops significantly below 
+1.0 when depletion interval rises. The use of longer depletion time step 
+decreases $k_{eff}$ at the end of each depletion step. The decrease is because 
+more poisonous \glspl{FP} (e.g., $^{135}$Xe) are produced in the core. With 
+longer time steps, large concentration of poisons are obtained at the end of 
+depletion step when those poisons are being removed, resulting in the 
+criticality growth. 
+
+Figures~\ref{fig:timeref-u} and \ref{fig:timeref-u} show that while the longer 
+time steps appropriately capture uranium depletion ($<1$\% difference even for 
+24-day time step), observed difference in fissile $^{239}$Pu mass is 
+significant for the depletion interval 6-days and longer ($>0.5$\% difference). 
+Using the 6-day depletion interval leads to overprediction of $^{239}$Pu 
+production by 5 kg at the \gls{EOL} (Figure~\ref{fig:timeref-pu239}). The use 
+of 6-day time step tends to cause an overprediction of total plutonium 
+production by 9.6 kg. Notably, significant quantity (SQ) for plutonium 
+currently in use by the IAEA is 8 kg ($<80$\% $^{238}$Pu) 
+\cite{close_iaea_1995}. Thus, depletion interval longer than 6 days leads to 
+significant error in the predicted plutonium inventory at the \gls{EOL}, which 
+is larger than SQ. 
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/keff_time_refinement.png}
@@ -917,24 +935,30 @@ kg which is higher than significant quantity 8 kg Pu).
 
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.9\textwidth]{ch4/u235_time_refinement.png}\\
-		\vspace{-7mm}
+	\includegraphics[width=0.91\textwidth]{ch4/u235_time_refinement.png}\\
+		\vspace{-11mm}
 	\hspace{0.5mm}
 	\includegraphics[width=\textwidth]{ch4/u238_time_refinement.png}
-		\vspace{-3mm}
+		\vspace{-6mm}
 	\caption{SaltProc-calculated $^{235}$U (upper) and $^{238}$U (lower) 
 	content during operation for different depletion time step sizes.}
 	\label{fig:timeref-u}
 \end{figure}
 
-\begin{figure}[hbp!] % replace 't' with 'b' to 
+\begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/pu239_time_refinement.png}
 	\caption{SaltProc-calculated $^{239}$Pu content during operation for 
 		different depletion time step sizes.}
 	\label{fig:timeref-pu239}
 \end{figure}
-
+Increasing depletion time interval significantly reduces computational cost but 
+also significantly deteriorates the accuracy of depletion 
+calculations. Calculations using a depletion time step of 6 days and longer 
+demonstrated a significant difference in calculated $k_{eff}$ and depleted mass 
+from those using 3-day depletion step. In the current work, the 3-day 
+depletion step was chosen to adequately predict the mass of major heavy 
+isotopes in the fuel salt during 25 years of the \gls{TAP} reactor operation.
 
 
 \subsection{Realistic extraction efficiency case}
