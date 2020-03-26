@@ -1,6 +1,6 @@
 \chapter{Tool demonstration: Transatomic Power MSR}
 
-In this chapter, I demonstrate SaltProc v1.0 capabilities for the \gls{TAP} 
+This chapter demonstrate SaltProc v1.0 capabilities for the \gls{TAP} 
 \gls{MSR}. The \gls{TAP} concept was selected because it is well analyzed in 
 the literature \cite{betzler_two-dimensional_2017, betzler_assessment_2017-1};
 thus, code-to-code verification with ChemTRITON/SCALE is possible 
@@ -688,9 +688,9 @@ will be available in a future.
 	\centering
 	\includegraphics[width=0.9\textwidth]{ch4/keff_ben_zoomed.png}
 	\caption{Zoomed effective multiplication factor for the interval from 660 
-		to 715 EFPD during Cycle \#1 (startup geometry configuration, 347 
-		moderator 
-		rods, \gls{SVF}=0.91720353). Confidence interval $\sigma=28$ $pcm$ is 
+		to 715 EFPD during transitioning from Cycle \#1 (startup geometry 
+		configuration, 347 moderator rods, \gls{SVF}=0.91720353) to Cycle \#2 
+		(\gls{SVF}=0.88694). Confidence interval $\sigma=28$ $pcm$ is 
 		shaded.}
 	\label{fig:keff-ben-valid-zoomed}
 \end{figure}
@@ -963,6 +963,30 @@ isotopes in the fuel salt during 25 years of the \gls{TAP} reactor operation.
 
 \subsection{Realistic extraction efficiency case}
 
+\subsubsection{Effective multiplication factor}
+
+\begin{figure}[htp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/eps/keff.png}
+	\caption{Effective multiplication factor dynamics for full-core \gls{TAP} 
+		core model for the case with realistic removal efficiency of fission 
+		product and various mass transfer coefficients ($K_L$). 
+		Confidence interval $\sigma=28$ $pcm$ is shaded.}
+	\label{fig:keff-eps-var}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{ch4/eps/keff_zoomed.png}
+	\caption{Zoomed effective multiplication factor dynamics during switching 
+	from Cycle \#14 (\gls{SVF}=0.582846) to  Cycle \#15 (\gls{SVF}=0.535505) 
+	for the case with realistic removal efficiency of fission 
+		product and various mass transfer coefficients ($K_L$). 
+		Confidence interval $\sigma=28$ $pcm$ is shaded.}
+	\label{fig:keff-eps-var-zoom}
+\end{figure}
+
+\subsubsection{Fuel salt isotopic composition}
 
 \section{Reactor load following analysis}
 
