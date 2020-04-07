@@ -1,30 +1,31 @@
 \chapter{Tool demonstration for lifetime-long depletion: Transatomic Power MSR}
 
-This chapter demonstrate SaltProc v1.0 capabilities for the \gls{TAP} 
-\gls{MSR}. The \gls{TAP} concept was selected because it is well analyzed in 
-the literature \cite{betzler_two-dimensional_2017, betzler_assessment_2017-1};
-thus, code-to-code verification with ChemTRITON/SCALE is possible 
-\cite{betzler_assessment_2017-1}. The demonstration was performed for two 
-timescales:
-\paragraph*{Long-term.} I performed the \gls{TAP} \gls{MSR} core lifetime-long 
-(25 years) depletion simulation with moderate time resolution (3-day depletion 
-step) and constant, 100\% power level. The 
-results obtained with SaltProc v1.0 are compared with recent efforts discussed 
-in Chapter 1, more specifically with full-core \gls{TAP} depletion analysis 
-with ideal removal efficiencies by Betzler \emph{et al.}  
-\cite{betzler_assessment_2017-1}. This validation effort showed that SaltProc 
-v1.0 solution is correct for the case with \emph{ideal extraction efficiency}.
-\paragraph*{Short-term (transient).} I performed the 24-hour-long depletion 
-simulation with changing, load following reactor power with the fine time 
-resolution (variable depletion step from 1 to 30-min). The depletion 
-calculation for the \gls{TAP} in load following regime capture the effects of 
-xenon poisoning and evaluate the benefit of using an online gas removal system.
+This chapter presents a validation demonstration applying SaltProc v1.0 to 
+the \gls{TAP} \gls{MSR}. The \gls{TAP} concept was selected because it is well 
+analyzed in the literature \cite{betzler_two-dimensional_2017, 
+betzler_assessment_2017-1}; thus, code-to-code verification with 
+ChemTRITON/SCALE is possible \cite{betzler_assessment_2017-1}. This chapter 
+presents the \gls{TAP} \gls{MSR} core lifetime-long (25 years) depletion 
+simulation with moderate time resolution (3-day depletion step) and at 
+constant, 100\% power level. The results obtained with SaltProc v1.0 are 
+compared with recent efforts discussed in Chapter 1, more specifically with 
+full-core \gls{TAP} depletion analysis with assumed ideal removal efficiency 
+(100\% of target isotope is removed) by Betzler \emph{et al.} 
+\cite{betzler_assessment_2017-1}. This validation effort 
+showed that SaltProc v1.0 solution is correct for the case with \emph{ideal 
+extraction efficiency}. 
 
-In this chapter, I also analyze the reactor load-following capability for 
-various moderator configurations and fuel salt compositions to bound design 
-parameters of gas removal system to ensure load-following operation. 
+Finally, this chapter presents lifetime-long fuel salt depletion simulation 
+for the case with \emph{realistic, physics-based} mathematical model for noble 
+gas removal efficiency which provides fuel isotopic composition evolution 
+during 25 years of the \gls{TAP} \gls{MSR} operation. Detailed insights about 
+fuel salt composition and neutron spectrum dynamics obtained herein will be 
+used in the following chapters to investigate the \gls{TAP} reactor poisoning 
+during load-following and safety parameters evolution during operation.
 
-\section{Transatomic Power Molten Salt Reactor design description}
+
+\section{Transatomic Power Molten Salt Reactor design 
+description}\label{sec:tap_design_sum}
 
 The \gls{TAP} concept is a 1250 MW$_{th}$ \gls{MSR} with a LiF-based uranium 
 fuel salt \cite{transatomic_power_corporation_technical_2016}. This concept 
@@ -202,7 +203,7 @@ during regular shutdown for reactor maintenance
 are inserted into the core, and a further injection of fresh fuel salt does 
 not alter criticality. Unmoderated salt is flowing in the annulus between the 
 core, and the vessel wall provides for a potential reduction in fast neutron 
-flux at the vessel structural material .
+flux at the vessel structural material.
 \begin{figure}[t] % replace 't' with 'b' to 
 	\includegraphics[width=\textwidth]{ch4/svf_predetermined.png}
 	\caption{The change in SVF as a function of burnup in the \gls{TAP} 
@@ -213,7 +214,7 @@ flux at the vessel structural material .
 
 
 \subsection{Fuel salt reprocessing system}
-The \gls{TAP} nuclear island contains a fission product removal system. 
+The \gls{TAP} nuclear system contains a fission product removal system. 
 Gaseous \glspl{FP} are continuously removed using an off-gas system while 
 liquid and 
 solid \glspl{FP} are extracted via a chemical processing system. As these 
@@ -273,8 +274,8 @@ reactivity change. Kedl stated, ``Average loop void fractions as high as 1\%
 are undesirable... it is desirable to keep the average loop void fraction well 
 below 1\%.''\cite{robertson_conceptual_1971} but he did not offer an 
 explanation why. In fact, the \gls{MSBR} design targeted 0.2\% average void in 
-the fuel salt \cite{robertson_conceptual_1971} and successfully operated the 
-\gls{MSRE} with average void fraction below 0.7\% \cite{compere_fission_1975}.
+the fuel salt \cite{robertson_conceptual_1971} and the \gls{MSRE} successfully 
+operated with average void fraction about 0.7\% \cite{compere_fission_1975}.
 We can reduce void fraction in the fuel salt to negligible levels by using an 
 effective gas separator for stripping helium/xenon bubbles before returning 
 the salt to a primary loop (Figure~\ref{fig:tap-reproc}, blue block). 
@@ -312,12 +313,10 @@ thesis, I developed a realistic online reprocessing system and reactor model
 to capture the dynamics of fuel composition evolution during reactor 
 operation. Gas removal efficiency is variable in that model, described using 
 mathematical correlation from Chapter 2 (see Equation~\ref{eq:gas_eff}). For 
-the other \glspl{FP}, a fixed\footnote{ 
-	Published information about dynamics of extraction efficiency during 
-	reactor 
-	operation for seminoble metals, volatile fluorides, and rare earths is 
-	insufficient to inform a variable removal efficiency.}, non-ideal 
-extraction efficiency based on cycle time from  
+the other \glspl{FP}, a fixed\footnote{Published information about dynamics of 
+extraction efficiency during reactor operation for noble-, seminoble metals, 
+and rare earths is insufficient to inform a variable removal efficiency.}, 
+non-ideal extraction efficiency based on cycle time from  
 Table~\ref{tab:reprocessing_list} was used to inform the fuel reprocessing 
 model.
 
@@ -372,24 +371,24 @@ model.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{TAP system model}
+\section{TAP system model} \label{sec:tap_model}
 In this section, the \gls{TAP} core and fuel salt reprocessing system models  
 for demonstrating SaltProc v1.0 are described in details. I used these models 
 for SaltProc demonstration and validation for both long-term and short-term 
 cases.
 
-\subsection{Serpent 2 full-core model} \label{sec:tap_model}
+\subsection{Serpent 2 full-core model} 
 Nest and lattice geometry types as well as universe transformation 
 capabilities of Serpent \cite{leppanen_serpent_2014} are employed to 
-represent \gls{TAP} core. Figure~\ref{fig:tap-serpent-plan} shows the $XY$ 
-section of the whole-core model at the expected reactor operational level 
+represent \gls{TAP} core. Figure~\ref{fig:tap-serpent-plan} shows $XY$ section 
+of the whole-core model at the expected reactor operational level 
 when all control rods are fully withdrawn. Figures~\ref{fig:tap-serpent-elev} 
 and \ref{fig:tap-serpent-elev-zoom} show a longitudinal section of the 
 reactor. This model contains the moderator rods with silicon carbide cladding, 
 pressure vessel, and inlet and outlet plena (Table~\ref{tab:tap_model_param}). 
-Fuel salt flows around rectangular moderator assemblies consisting of lattices 
+Fuel salt flows around square moderator assemblies consisting of lattices 
 of small-diameter zirconium hydride rods in a corrosion-resistant material. 
-The salt volume fraction for Figure ~\ref{fig:tap-serpent-plan} is 0.917204, 
+The salt volume fraction for Figure~\ref{fig:tap-serpent-plan} is 0.917204, 
 which means the modeled core is under-moderated and has intermediate neutron 
 spectrum. Quarter-core configurations of the \gls{TAP} core with various salt 
 volume fraction, used in the current work to maintain criticality for 
@@ -401,7 +400,7 @@ Table~\ref{tab:tap_adjustable_core}, Figures~\ref{fig:tap-406-681}, and
 	\includegraphics[width=0.75\textwidth]{ch4/tap_plan_view_serpent_347.png}
 	\caption{An $XY$ section of the \gls{TAP} model at horizontal midplane 
 		with fully withdrawn control rods at \gls{BOL} (347 moderator rods, 
-		salt volume fraction is equal 0.917204). 
+		salt volume fraction 0.917204). 
 		The violet color represents zirconium hydride, and the yellow 
 		represents fuel salt. 
 		The blue color shows Hastelloy-N, a material used for the vessel wall, 
@@ -426,7 +425,8 @@ To represent the reactivity control system, the model has:
 The control rods must be able to suppress excess reactivity at the \gls{BOL} 
 when the core configuration is the most reactive and the neutron spectrum is 
 the hardest. The control rod design shown on 
-Figures~\ref{fig:tap-serpent-plan} and \ref{fig:tap-serpent-elev-zoom} is 
+Figures~\ref{fig:tap-serpent-plan}, \ref{fig:tap-serpent-elev} and 
+\ref{fig:tap-serpent-elev-zoom} is 
 comprised of a cluster of 25 rods that provide a total reactivity worth of 
 $4226\pm9pcm$ at the \gls{BOL}.
 
@@ -499,10 +499,11 @@ I thoroughly analyzed the original \gls{TAP} reprocessing system design
 (Figure~\ref{fig:tap-reproc}) and neutron poisons removal rates  
 (Table~\ref{tab:reprocessing_list}) to determine a suitable reprocessing 
 scheme for SaltProc v1.0 demonstration (Figure~\ref{fig:demo-repro-scheme}). 
-This demonstration case assumed fixed, non-ideal ($\epsilon<100$\%) removal 
-efficiencies. Realistic noble gas removal efficiency is based on physical 
-model for noble gas extraction efficiency discussed in 
-Section~\ref{sec:gas-separ}. 
+This chapter presents two demonstration cases: with ideal 
+(Section~\ref{sec:ben-valid}) and realistic, non-ideal 
+(Section~\ref{sec:long-term-real}) gas removal efficiency. Realistic noble gas 
+removal efficiency is based on physical model for noble gas extraction 
+efficiency discussed in Section~\ref{sec:gas-separ}. 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/tap_saltproc_var_eps.png}
@@ -538,24 +539,28 @@ The nickel filter in the \gls{TAP} concept is designed to extract
 noble/semi-noble metals and volatile fluorides 
 (Table~\ref{tab:reprocessing_list}). Similarly to volatile gases, 
 noble metals must be removed every 20 seconds and, hence, the filter should 
-operate in-line also.The nickel filter removes a wide range of elements with 
-various efficiencies (Table~\ref{tab:reprocessing_list}).
+operate with 100\% of the core throughout flow rate. The nickel filter removes 
+a wide range of elements with various effective cycle time 
+(Table~\ref{tab:reprocessing_list}).
 
 Lanthanides and other non-noble metals generally have a lower capture  
 cross section and absorb fewer neutrons than gases and noble metals. These 
 elements can be removed via a liquid-metal/molten salt extraction process with 
 relatively low removal rates (cycle time $> 50$ days). This is accomplished 
 by directing a small fraction of the salt mass flow leaving the nickel mesh 
-filter (10\%) to the liquid-metal/molten salt component of the reprocessing 
-system, where lanthanides are removed with a specific extraction efficiency to 
-match the  required cycle time (Table~\ref{tab:reprocessing_list}). The rest 
-90\% of the salt mass flow is directed from the nickel filter to heat 
-exchanger without performing any fuel salt treatment.
+filter (10\% of the core throughout flow rate) to the liquid-metal/molten salt 
+component of the reprocessing system, where lanthanides are removed with a 
+specific extraction efficiency to match the  required cycle time 
+(Table~\ref{tab:reprocessing_list}). The rest 90\% of the salt mass flow is 
+directed from the nickel filter to heat exchanger without performing any fuel 
+salt treatment.
 
 The removal rates vary among nuclides in this reactor concept, which dictate 
 the necessary resolution of depletion calculations. To compromise, a 3-day 
-time was selected for the long-term demonstration case based on a timestep 
-refinement study by Betzler \emph{et al.} \cite{betzler_assessment_2017-1}.
+depletion time step was selected for the long-term demonstration case based on 
+a time step refinement study by Betzler \emph{et al.} 
+\cite{betzler_assessment_2017-1}. Complimentary time step refinement study 
+results are presented in Section~\ref{sec:time-refinement}.
 
 \section{Long-term depletion demonstration and validation}
 \subsection{Constant, ideal extraction efficiency case}\label{sec:ben-valid}
@@ -568,8 +573,9 @@ work \cite{betzler_assessment_2017-1}:
 \begin{enumerate}[noitemsep]	
 	\item Effective cycle times as prescribed by Transatomic Power Technical 
 	White Paper (Table~\ref{tab:reprocessing_list}) with \textbf{100\% noble 
-	gas removal efficiency}; hence, $\epsilon_{es}$ and $\epsilon_m$ on  
-	Figure~\ref{fig:demo-repro-scheme} are both set to 1.0.
+	gas removal efficiency}; hence, $\epsilon_{es}$ and $\epsilon_m$ in 
+	reprocessing model (Figure~\ref{fig:demo-repro-scheme}) are both set to 
+	1.0.
 	\item 5\% \gls{LEU} feed rate is equal to rate of fisson product removal.
 	\item 3-day depletion step.
 	\item Quarter-core, 3-D model with vacuum boundary conditions.
@@ -652,7 +658,7 @@ will be available in a future.
 	\label{fig:keff-ben-valid-zoomed}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[hbp!]
+\begin{table}[htp!]
 	\centering
 	\caption{Comparison of main operational parameters in the \gls{TAP} 
 	reactor between the current work and Betzler \emph{et al.}
@@ -668,7 +674,6 @@ will be available in a future.
 		\hline
 	\end{tabularx}
 	\label{tab:valid_ben_lifetime}
-	\vspace{-0.9em}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -676,12 +681,11 @@ will be available in a future.
 \subsubsection{Fuel salt isotopic composition dynamics}
 Figures~\ref{fig:u-ben-valid}, \ref{fig:pu-ben-valid}, and 
 \ref{fig:pu-fiss-ben-valid} show that continuous \gls{LEU} feed into the 
-\gls{TAP} 
-reactor is not sufficient to maintain the fissile material content of the 
-core, as the uranium enrichment steadily decreases from 5\% at the \gls{BOL} 
-to 1\% at the \gls{EOL}. However, during the first 13 years of operation, 
-the \gls{TAP} \gls{MSR} breeds fissile $^{239}$Pu and $^{241}$Pu, reaching a 
-peak of total fissile plutonium inventory of 2.15t  
+\gls{TAP} reactor is not sufficient to maintain the fissile material content 
+of the core, as the uranium enrichment steadily decreases from 5\% at the 
+\gls{BOL} to 1\% at the \gls{EOL}. However, during the first 13 years of 
+operation, the \gls{TAP} \gls{MSR} breeds fissile $^{239}$Pu and $^{241}$Pu, 
+reaching a peak of total fissile plutonium inventory of 2.15 t  
 (Figure~\ref{fig:pu-fiss-ben-valid}). A significant amount of non-fissile 
 plutonium ($^{238}$Pu, $^{240}$Pu, and $^{242}$Pu) and uranium ($^{236}$U) 
 builds up in the reactor during operation and negatively impacts criticality 
@@ -843,7 +847,8 @@ range for $^{238}$U resonance neutron capture is between 10$^{-5}$ and
 10$^{-2}$ MeV.} of neutrons by $^{238}$U, hence, less $^{239}$Pu bred from 
 $^{238}$U. Therefore, the SaltProc/Serpent calculation in the current work 
 underpredicts the destruction (i.e., fission and capture) of $^{235}$U and 
-overpredicts the destruction of $^{235}$U (see Table~\ref{tab:valid_ben_isos}). 
+overpredicts the destruction of $^{238}$U (see 
+Table~\ref{tab:valid_ben_isos}). 
 Finally, the softer neutron spectrum leds to more fissions in fissile 
 plutonium isotopes ($^{239}$Pu and $^{241}$Pu) which also decreases 
 non-fissile plutonium (Table~\ref{tab:valid_ben_isos}) and total actinide 
@@ -863,13 +868,13 @@ Figure~\ref{fig:timeref-keff} shows $k_{eff}$ evolution obtained with 3-, 6-,
 between moderator configuration updates was assumed similar for all four cases 
 for consistency. Multiplication factor at the \gls{BOC} for each moderator 
 configuration became lower when the time step increasing. At the \gls{EOC} for 
-each geometry, $k_{eff}=1.0$  for 3-day time step and drops significantly below 
-1.0 when depletion interval rises. The use of longer depletion time step 
+each geometry, $k_{eff}=1.0$  for 3-day time step and drops significantly 
+below 1.0 when depletion interval rises. The use of longer depletion time step 
 decreases $k_{eff}$ at the end of each depletion step. The decrease is because 
-more poisonous \glspl{FP} (e.g., $^{135}$Xe) are produced in the core. With 
-longer time steps, large concentration of poisons are obtained at the end of 
-depletion step when those poisons are being removed, resulting in the 
-criticality growth. 
+more poisonous \glspl{FP} (e.g., $^{135}$Xe) are produced in the core during 
+longer depletion interval. With longer time steps, large concentration of 
+poisons are obtained at the end of depletion step when those poisons are being 
+removed, resulting in the large criticality growth. 
 
 Figures~\ref{fig:timeref-u} and \ref{fig:timeref-pu239} show that the longer 
 time steps appropriately capture uranium depletion ($<1$\% difference even for 
@@ -882,7 +887,7 @@ overprediction of total plutonium production by 9.6 kg. Notably, significant
 quantity (SQ) for plutonium currently in use by the IAEA is 8 kg ($<80$\% 
 $^{238}$Pu) \cite{close_iaea_1995}. Thus, 6-day depletion interval or longer 
 leads to significant error in the predicted plutonium inventory at the 
-\gls{EOL} (computational error in plutonium mass larger than SQ). 
+\gls{EOL} (larger than 1 SQ). 
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/keff_time_refinement.png}
@@ -914,9 +919,9 @@ Increasing depletion time interval significantly reduces computational cost
 but also significantly deteriorates the accuracy of depletion calculations. 
 Calculations using a depletion time step of 6 days and longer demonstrated a 
 significant difference in calculated $k_{eff}$ and depleted mass from those 
-using 3-day depletion step. In the current work, the 3-day depletion step was 
-chosen to adequately predict the mass of major heavy isotopes in the fuel salt 
-during 25 years of the \gls{TAP} reactor operation.
+using 3-day depletion step. In the current work, 3-day depletion step was 
+selected to adequately predict the mass of major heavy isotopes in the fuel 
+salt during 25 years of the \gls{TAP} reactor operation.
 
 
 \subsection{Realistic extraction efficiency case}\label{sec:long-term-real}
@@ -937,13 +942,13 @@ Q_{He}&= \mbox{volumetric helium flow rate $[m^3/s]$} \nonumber \\
 d_b &= \mbox{helium bubble diameter $[m]$.} \nonumber
 \end{align}
 
-Following parameters are selected to inform Equation~\ref{eq:gas_eff} for 
-prototypic sparger: (1) salt volumetric flow rate throughout sparger 
-$Q_{salt}=2$ $m^3/s$; (2) sparging gas (helium) volumetric flow rate 
-$Q_{He}=0.1$ $m^3/s$; (3) helium bubbles diameter $d_b=0.508$ $mm$ as advised 
-by ORNL \cite{robertson_conceptual_1971}; (4) length of the sparger $L=11$ 
-$m$; (5) sparger diameter $D=0.4$ $m$ (sparger cross section $A_C=0.126$ 
-$m^2$).
+Additionally, following parameters are selected to inform 
+Equation~\ref{eq:gas_eff} for prototypic sparger: (1) salt volumetric flow 
+rate throughout sparger $Q_{salt}=2$ $m^3/s$; (2) sparging gas (helium) 
+volumetric flow rate $Q_{He}=0.1$ $m^3/s$; (3) helium bubbles diameter 
+$d_b=0.508$ $mm$ as advised by ORNL \cite{robertson_conceptual_1971}; (4) 
+length of the sparger $L=11$ $m$; (5) sparger diameter $D=0.4$ $m$ (sparger 
+cross section $A_C=0.126$ $m^2$).
 
 The liquid phase mass transfer coefficient ($K_L$) selection presents a 
 challenge, since published information is currently insufficient to inform 
@@ -951,20 +956,20 @@ Equation~\ref{eq:gas_eff}.
 Peebles \emph{et al.} stated that Equation~\ref{eq:gas_eff} is valid for $K_L$
 in range from 1 to 100 $ft/hr$ (from 0.0847 to 8.4667 $mm/s$) 
 \cite{peebles_removal_1968}. For the demonstration case herein, I performed a
-25-year depletion calculation for $K_L$ of 0.0847, 2.1167, and 8.4667 $mm/s$ 
+25-year depletion calculations for $K_L$ of 0.0847, 2.1167, and 8.4667 $mm/s$ 
 to investigate the effect of noble gas removal efficiency on fuel cycle 
 characteristics.
 
 Extraction efficiency is gas-specific because solubility in the salt (Henry's 
 law constant) is different for various gases. 
 Table~\ref{tab:gas_removal_efficiency} reports dimensionless Henry's law 
-constants and corresponding calculated efficiencies of noble gas (Xe, Kr, H) 
+constant and corresponding calculated efficiency of noble gas (Xe, Kr, H) 
 migration to the helium bubbles ($\epsilon_m$) in the prototypic sparger for 
 various mass transfer coefficients ($K_L$).  Total separation efficiency  
-(Table~\ref{tab:gas_removal_efficiency}) refers efficiency of extraction 
-target gaseous element after performing helium sparging in the sparger 
-following by separation of noble-gas-reach bubbles from the salt in the 
-axial-flow centrifugal bubble separator \cite{gabbard_development_1974}. 
+(Table~\ref{tab:gas_removal_efficiency}, last 3 columns) refers efficiency of 
+extraction target gaseous element after performing helium sparging in the 
+sparger following by separation of noble-gas-reach bubbles from the salt in 
+the axial-flow centrifugal bubble separator \cite{gabbard_development_1974}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1022,15 +1027,16 @@ Section~\ref{sec:time-refinement}). Notably, the core went subcritical during
 first cycle (startup moderator rod configuration) after 330 and 318 days for 
 $K_L=8.4667$ and 0.0847 $mm/s$, respectively. 
 
-Lower mass transfer coefficient worsen neutron poison removal from the 
-\gls{TAP} core which shortening interval between shutdowns for moderator rod 
-updates. Additionally, the presents of unremoved poison in the core suppresses 
-the effective multiplication factor after moderator reconfiguration 
-($\approx500$ $pcm$ lower for $K_L=0.0847$ $mm/s$ case than for $K_L=8.4667$ 
-$mm/s$ at the \gls{BOL} and $\approx1100$ $pcm$ at the \gls{EOL}). Overall, 
-noble gas removal provides with significant neutronics benefit (less neutrons 
-are being lost in strong absorbers such as $^{135}$Xe), better fuel 
-utilization, and enables longer time between reconfiguring the moderator rods.
+Lower mass transfer coefficient worsen efficiency of neutron poison removal 
+from the \gls{TAP} core which is shortening interval between shutdowns for 
+moderator rod updates. Additionally, the presents of unremoved poison in the 
+core suppresses the effective multiplication factor after moderator 
+reconfiguration ($\approx500$ $pcm$ lower for $K_L=0.0847$ $mm/s$ case than 
+for $K_L=8.4667$ $mm/s$ at the \gls{BOL} and $\approx1100$ $pcm$ at the 
+\gls{EOL}). Overall, noble gas removal provides with significant neutronics 
+benefit (less neutrons are being lost in strong absorbers such as $^{135}$Xe), 
+better fuel utilization, and enables longer time between reconfiguring the 
+moderator rods.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/eps/keff.png}
@@ -1058,18 +1064,18 @@ utilization, and enables longer time between reconfiguring the moderator rods.
 \end{figure}
 
 \subsubsection{Neutron spectrum}
-Figure shows the normalized neutron flux spectrum for the full-core TAP core 
-modelin the energy range from 10$^{-9}$ to 15 MeV. The neutron energy 
-spectrum at the \gls{EOL} issignificantly harder than at the \gls{BOL} due to 
-moderator-to-fuel ratio growth during reactor operation caused by periodic 
-moderator rods reconfiguration. The \gls{TAP} reactor spectrum is 
-significantly harderthan in a typical \gls{LWR} and is in a good agreement 
-with the \gls{TAP} neutroncs white paper 
+Figure~\ref{fig:spectrum-eps-var} shows the normalized neutron flux spectrum 
+for the full-core TAP core modelin the energy range from 10$^{-9}$ to 15 MeV. 
+The neutron energy spectrum at the \gls{EOL} issignificantly harder than at 
+the \gls{BOL} due to moderator-to-fuel ratio growth during reactor operation 
+caused by periodic moderator rods reconfiguration. The \gls{TAP} reactor 
+spectrum is significantly harderthan in a typical \gls{LWR} and is in a good 
+agreement with the \gls{TAP} neutroncs white paper 
 \cite{transatomic_power_corporation_neutronics_2016} and ORNL 
 reports \cite{betzler_assessment_2017-1, betzler_two-dimensional_2017}.The 
 liquid phase mass transfer coefficient ($K_L$) and, consequently, noble gas 
-removal efficiency has negligible effect on the fast energy spectrum (between 
-10$^{-2}$ and 10 MeV) at the \gls{EOL}. 
+removal efficiency has negligible effect on the spectrum in the fast range 
+(between 10$^{-2}$ and 10 MeV) at the \gls{EOL}. 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.7\textwidth]{ch4/eps/spectrum.png}
@@ -1082,19 +1088,19 @@ removal efficiency has negligible effect on the fast energy spectrum (between
 \end{figure}
 
 However, Figure~\ref{fig:spectrum-th-eps-var} demonstrates notable difference 
-in neutron flux thermal energy spectrum due to huge $^{135}$Xe absorption 
-cross section in thermal energy range ($\sigma_{a,^{135}Xe}\approx3\times10^6$ 
-b). $^{135}$Xe mass in the core at the \gls{EOL} for the case with low 
-efficiency of noble gas removal ($K_L=0.0847$ $mm/s$) is significantly larger 
-than for the case with high removal efficiency ($K_L=8.4667$ $mm/s$) 
-(Figure~\ref{fig:xe135-eps-var-zoomes}) which leads to higher neutron loss due 
-to absorption in xenon.
+in thermal range of the spectrum due to huge $^{135}$Xe absorption 
+cross section in thermal energy range ($\sigma_{a,^{135}Xe}=2.6\times10^6$ 
+b). Figure~\ref{fig:xe135-eps-var-zoomes} shows that $^{135}$Xe mass in the 
+core at the \gls{EOL} for the case with low efficiency of noble gas removal 
+($K_L=0.0847$ $mm/s$) is significantly larger than for the case with high 
+removal efficiency ($K_L=8.4667$ $mm/s$) which leads to higher neutron loss 
+due to absorption in xenon.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.7\textwidth]{ch4/eps/spectrum_th_zoomed.png}
 			\vspace{-3mm}
 	\caption{The neutron flux energy spectrum normalized by unit lethargy  
-		\gls{EOL} zoomed in thermal energy range.}
+		\gls{EOL} zoomed in the thermal energy range.}
 	\label{fig:spectrum-th-eps-var}
 \end{figure}
 
@@ -1102,16 +1108,17 @@ to absorption in xenon.
 \subsubsection{Fuel salt isotopic composition evolution}
 The time-dependent isotopic compositions obtained with different noble gas 
 extraction efficiencies behave very similarly. For $^{235}$U, the difference 
-between $K_L=8.4667$ (e.g., 91.5\% of $^{135}$Xe is removed) and $K_L=0.0847$ 
-$mm/s$ (e.g., 3.1\% of $^{135}$Xe is removed) is within 0.2\% for the first 14 
-years and rises rapidly to 1.15\% over the remaining 10 years  
+between $K_L=8.4667$ $mm/s$ (e.g., 91.5\% of $^{135}$Xe is removed) and 
+$K_L=0.0847$ $mm/s$ (e.g., 3.1\% of $^{135}$Xe is removed) is within 0.2\% for 
+the first 14 years and rises rapidly to 1.15\% over the remaining 10 years  
 (Figure~\ref{fig:u235-eps-var}). The simulations with mass transfer  
 coefficient ($K_L$) smaller than $8.4467$ $mm/s$ maintain a larger quantity of 
 $^{235}$U during the operation because more neutrons are being parasitically 
-absorbed bu noble gas which leads to smaller fission rate. The relative mass 
-difference for $^{238}$U is small (Figure~\ref{fig:u238-eps-var}), but 
-absolute difference is approximately 50 kg at the \gls{EOL}, with the 
-$K_L=0.0847$ $mm/s$ simulation maintaining the lower quantity.
+absorbed by the noble gas which leads to slightly smaller fission rate. The 
+relative mass difference for $^{238}$U is small 
+(Figure~\ref{fig:u238-eps-var}), but absolute difference is approximately 50 
+kg at the \gls{EOL}, with the $K_L=0.0847$ $mm/s$ simulation maintaining the 
+lower quantity.
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.8\textwidth]{ch4/eps/u235.png}
@@ -1123,7 +1130,7 @@ $K_L=0.0847$ $mm/s$ simulation maintaining the lower quantity.
 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.8\textwidth]{ch4/eps/u238.png}
+	\includegraphics[width=0.88\textwidth]{ch4/eps/u238.png}
 	\caption{SaltProc-calculated mass of $^{238}$U in the fuel salt during 
 		25 years of operation for $K_L=8.4667$ $mm/s$ compared with less 
 		effective noble gas removal.}
@@ -1147,11 +1154,14 @@ breeding performance of fissile $^{239}$Pu.
 \end{figure}
 
 
-Figure~\ref{fig:xe135-eps-var} demonstrates $^{135}$Xe mass in the \gls{TAP} 
-core during 25 years of operation for various mass transfer coefficients 
-($K_L$). Jumps in $^{135}$Xe mass every few years are representing spectral 
-shift due to moderator rod reconfiguration to shift the neutron spectrum from 
-mostly epithermal at the \gls{BOL} to thermal at the \gls{EOL}. 
+Figure~\ref{fig:xe135-eps-var} demonstrates $^{135}$Xe mass dynamics in the 
+\gls{TAP} core during 25 years of operation for various mass transfer 
+coefficients ($K_L$). Jumps in $^{135}$Xe mass every few years are 
+representing spectral shift due to moderator rod reconfiguration to shift the 
+neutron spectrum from intermediate at the \gls{BOL} to thermal at the 
+\gls{EOL}. In contrast, mass of $^{135}$I which is the main direct precursor 
+of $^{135}$Xe, is approximately 18 g and stays almost constant over 25 years.
+
 Figure~\ref{fig:xe135-eps-var-zoomes} shows $^{135}$Xe mass at the 
 end of each depletion time step before and after performing fuel salt 
 reprocessing procedure in SaltProc v1.0. $^{135}$Xe concentration in the core 
@@ -1163,12 +1173,35 @@ the spectrum thermalizes during operation.
 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.8\textwidth]{ch4/eps/xe135_before.png}
+	\includegraphics[width=0.85\textwidth]{ch4/eps/xe135.png}
 	\caption{SaltProc-calculated mass of $^{135}$Xe in the fuel salt during 
 		25 years of operation for the case with realistic removal efficiency 
 		of fission product and various mass transfer coefficients ($K_L$).}
 	\label{fig:xe135-eps-var}
 \end{figure}
+
+I checked correctness of SaltProc v1.0 calculation by comparing the mass of 
+$^{135}$Xe to the expected mass after performing removals after each depletion 
+step with realistic efficiency (Table~\ref{tab:gas_removal_efficiency}). The 
+expected mass of reprocessed isotope is calculated as follows:
+\begin{align}
+\qquad\qquad\qquad & m_{a} = m_{b} \times  
+(1-\epsilon_{m}) \times (1-\epsilon_{es})
+\intertext{where}
+m_{a} &= \mbox{mass of the isotope after applying removals and feeds} 
+\nonumber \\
+m_{b} &= \mbox{mass of the isotope right before reprocessing} 
+\nonumber \\
+\epsilon_{m} &= \mbox{efficiency of the isotope migration to helium bubbles} 
+\nonumber \\
+\epsilon_{es} &= \mbox{entrainment separator extraction efficiency.} 
+\nonumber
+\end{align}
+
+This simple check showed that SaltProc-calculated mass of $^{135}$Xe 
+(Figure~\ref{fig:xe135-eps-var-zoomes}) matches exactly the expected mass. 
+Thus, SaltProc v1.0 extraction module correctly removes target isotopes with 
+specified extraction efficiency.
 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
@@ -1179,16 +1212,57 @@ the spectrum thermalizes during operation.
 	treatment.}
 	\label{fig:xe135-eps-var-zoomes}
 \end{figure}
-
+\FloatBarrier
 
 
 
 
 \section{Concluding remarks}
-This chapter demonstrates SaltProc v1.0 capabilities applied for the \gls{TAP} 
-\gls{MSR}. Lifetime-long depletion simulations with SaltProc v1.0 demonstrated 
-good agreement with reference ORNL results in Section~\ref{sec:ben-valid}. 
-Time step refinement study in Section~\ref{sec:time-refinement} shows that 
-accurate uranium isotopic content prediction can be obtained with longer 
-depletion time step (6- or 12-day step) but in order to get accurate plutonium 
-isotopic content 3-day depletion time step must be used.
+This chapter demonstrated SaltProc v1.0 capabilities for lifetime-long fuel 
+salt depletion simulations applied for the \gls{TAP} \gls{MSR}. 
+Section~\ref{sec:tap_design_sum} summarized the \gls{TAP} \gls{MSR} core and 
+fuel salt reprocessing system details required to inform SaltProc model. The 
+\gls{TAP} \gls{MSR} conceptual design potentially achieves high burnup and 
+fuel utilization by shifting the neutron energy spectrum from intermediate at 
+startup to thermal at the \gls{EOL}. 
+ 
+Section~\ref{sec:ben-valid} presented lifetime-long depletion simulations with 
+SaltProc v1.0. The 25-year simulation with assuming ideal removal efficiency 
+(e.g., 100\% of target neutron poison is being removed at the end of each 
+depletion step). This validation effort demonstrated good agreement with 
+reference ORNL report. Full-core 3D SaltProc/Serpent analysis 
+showed that the spectrum hardening over the first 13 years of operation 
+produces sufficient amount of fissile plutonium to achieve fuel salt 
+burnup of 76.3 MWd/kgU after 22.5 years of operation. SaltProc-calculated 
+inventories of major heavy isotopes at the \gls{EOL} are consistent with 
+results in the literature. The difference in mass between SaltProc and the 
+reference was only 3\% and 4\% for fissile ($^{235}$U, $^{239}$Pu, $^{241}$Pu) 
+and non-fissile ($^{236}$U, $^{238}$U, $^{238}$Pu, $^{240}$Pu, $^{242}$Pu) 
+isotopes, respectively. Finally, SaltProc-calculated feed rate is 460.8 kg of 
+UF$_4$ per year which agrees well with 480 kg/y reported by Betzler \emph{et 
+al.} \cite{betzler_assessment_2017-1}
+
+Time step refinement study in Section~\ref{sec:time-refinement} showed that 
+accurate uranium isotopic content prediction can be obtained with relatively 
+long depletion time step (6- or 12-day). However, significant absolute 
+difference in plutonium mass at the \gls{EOL} ($\approx10$ kg for 6-day step) 
+could be a safeguardsissue, as this represents more than one significant 
+quantity (8 kg) over the reactor lifetime. Overall, to get accurate plutonium 
+isotopic content without rising proliferation issues, 3-day depletion time 
+step must be used.
+
+Finally, Section~\ref{sec:long-term-real} demonstrated SaltProc v1.0 for 
+25-year depletion simulation with realistic, physics-based removal efficiency 
+of the noble gas. When identifying reasonable mathematical model for realistic 
+gas removal efficiency ($\epsilon$), the liquid phase mass transfer 
+coefficient ($K_L$) demonstrated strong correlation with $\epsilon$. Thus, 
+SaltProc simulations using different $K_L$ in validity range from 0.0847 to 
+8.4667 $mm/s$ (corresponding $^{135}$Xe removal efficiency $\epsilon\in 
+[0.031,0.915]$) showed that the larger liquid phase mass transfer coefficient 
+and corresponding higher noble gas extraction efficiency provided significant 
+neutronics benefit, better fuel utilization, and longer time between shutdowns 
+for moderator rod reconfiguration. Notably, the larger mass transfer 
+coefficient also provides slightly more thermal neutron spectrum because fewer 
+thermal neutrons are absorbed by poisonous \glspl{FP}. In the following 
+chapters, results of these realistic depletion simulations will be used for 
+short-term transient simulations and safety parameters analysis. 
