@@ -1,4 +1,35 @@
 \chapter{Error propagation in depletion calculations}
+In the \gls{MC} depletion analyses, the uncertainties on predicted isotopic 
+composition are caused by two primary factors: stochastic uncertainty in 
+the computed flux and uncertainty in the nuclear data (cross sections, fission 
+yields, decay constants). In \gls{MC} reactor physics software, the stochastic 
+uncertainty of single burnup step is superposed with errors, propagated 
+throughout calculation from previous steps. Over time, these errors 
+accumulate, and cumulative error in the predicted number density might be 
+significant for the lifetime-long fuel depletion calculations.
+
+Takeda \emph{et al.} first proposed a method to evaluate uncertainty of the 
+number density in the \gls{MC} simulations applying the sensitivities of the 
+burnup matrix to cross sections and number densities. Takeda and colleagues 
+propagated covariances of the cross section library and obtained number 
+density uncertainty due to the cross section error of about 4\% for major 
+heavy isotopes ($^{235}$U, $^{239}$Pu, $^{241}$Pu) after 400-day 
+\gls{MC} burnup calculation for homogeneous model of fast reactor. Notably, 
+the number density uncertainty due to the stochastic error in the \gls{MC} was 
+much lower: about 0.03\% for $^{241}$Pu, 0.02\% for $^{235}$U, and $<0.004$\% 
+for $^{238}$U. The Takeda model showed that statistical error contribution to 
+the total error in number densities of major heavy isotopes and \glspl{FP} is 
+less than 1\% \cite{takeda_estimation_1999}. Finally, substantial neutron 
+history ($N$) increase can theoretically reduce the stochastic error to zero 
+but it is enormously expensive due to slow convergence ($O(\sqrt{N}$) of Monte 
+Carlo method.
+
+In a similar vein, Rochman \emph{et al.} used Serpent Monte Carlo burnup code 
+and in-house sampler to analyze total uncertainty for actinide number density 
+for typical \gls{PWR} fuel assembly model. Rochman propagated nuclear data 
+uncertainties by repeating thousand times the same burnup calculation, each 
+time using a different file with randomly perturbed nuclear data.
+
 
 \section{Statistical uncertainty in depleted fuel composition}
 
