@@ -11,27 +11,73 @@ significant for the lifetime-long fuel depletion calculations.
 Takeda \emph{et al.} first proposed a method to evaluate uncertainty of the 
 number density in the \gls{MC} simulations applying the sensitivities of the 
 burnup matrix to cross sections and number densities. Takeda and colleagues 
-propagated covariances of the cross section library and obtained number 
+propagated covariances of the cross sections and obtained the number 
 density uncertainty due to the cross section error of about 4\% for major 
 heavy isotopes ($^{235}$U, $^{239}$Pu, $^{241}$Pu) after 400-day 
 \gls{MC} burnup calculation for homogeneous model of fast reactor. Notably, 
-the number density uncertainty due to the stochastic error in the \gls{MC} was 
+the number density uncertainty due to the stochastic error in MCNP was 
 much lower: about 0.03\% for $^{241}$Pu, 0.02\% for $^{235}$U, and $<0.004$\% 
 for $^{238}$U. The Takeda model showed that statistical error contribution to 
 the total error in number densities of major heavy isotopes and \glspl{FP} is 
 less than 1\% \cite{takeda_estimation_1999}. Finally, substantial neutron 
-history ($N$) increase can theoretically reduce the stochastic error to zero 
-but it is enormously expensive due to slow convergence ($O(\sqrt{N}$) of Monte 
-Carlo method.
+population ($N$) increase can theoretically reduce the stochastic error to 
+zero but it is enormously expensive due to slow convergence ($O(\sqrt{N})$) of 
+Monte Carlo method.
 
-In a similar vein, Rochman \emph{et al.} used Serpent Monte Carlo burnup code 
-and in-house sampler to analyze total uncertainty for actinide number density 
-for typical \gls{PWR} fuel assembly model. Rochman propagated nuclear data 
-uncertainties by repeating thousand times the same burnup calculation, each 
-time using a different file with randomly perturbed nuclear data.
+Garcia-Herranz \emph{et al.} used MCNP and in-house code ACAB to analyze the 
+uncertainties on the nuclide inventory based on random samplinq technique for 
+single, spherical fuel element (``pebble") contained coated PuO$_2$ fuel 
+particle. The random sampling or ``brute force" method is the multi-step 
+scheme of stochastic neutronics and depletion calculation could be considered 
+as a single process with (nuclear data) and output (final number densities). 
+Authors performed a simultaneous random sampling of all the cross 
+sections\footnote{Authors assumed that the influence of uncertainties in decay 
+constants, fission yields and other input parameters is negligible.} 1000 
+times and obtained the distributions of the isotopic inventory. Relative error 
+of the final number density for 1200-day fuel cycle (800 MWg/kgHM burnup) due 
+to cross section uncertainties was reported in range from 7\% (for $^{244}$Pu) 
+to 46\% (for $^{242}$Pu) and found to be independent of neutron history size. 
+In contrast, similar characteristic but only due to stochastic error for 
+reasonably large neutron history was less than 0.15\% 
+\cite{garcia-herranz_propagation_2008}. Thus, random sampling Monte Carlo 
+results by Garcia-Herranz \emph{et al.} agreed with Takeda statement that 
+nuclear data is the major source of uncertainty; stochastic error contribution 
+to the total nuclear density error is negligibly small ($<1$\%) and might be 
+reduced to almost further by substantially increasing neutron histories.
+
+In similar vein, Radaideh \emph{et al.} used SCALE 6.2 
+\cite{rearden_scale_2018} to quantify the uncertainty in nuclide concentration 
+in \gls{BWR} 10$\times$10 assembly due to uncertainties in neutron cross 
+sections, fission yield, and decay data \cite{radaideh_uncertainty_2018}. The 
+Radaideh model used 56-group covariance library in deterministic code TRITON 
+(2D) depletion calculations and, hence, introduced no stochastic error in the 
+flux calculations. That work used 500 random samples in 1174-day TRITON 
+depletion calculation and reported number density uncertainty between 0.14\% 
+for $^{238}$U and 6.56\% for $^{238}$Pu \cite{radaideh_novel_2019-1}. This 
+approachbenefits from Sampler module available in the SCALE package and 
+can be used by SCALE users across the world.
+
+In this chapter, the uncertainty in the fuel salt composition will be 
+investigated two different sources of uncertainty separately. The uncertainty 
+in the nuclides inventory due to the transport problem statistical error is 
+evaluated using random sampling technique using Serpent Monte Carlo code. By 
+changing the code's initial random number seed, the data produce by 1000 runs 
+is used to investigate statistical error in multiplication factor ($k_{eff}$) 
+and number density of major isotopes. The uncertainty in depleted fuel salt 
+composition due to nuclear data uncertainties - a major part of nuclear 
+density uncertainty - is determined using SCALE/Sampler sequence in 
+conjunction with TRITON (2D, deterministic code). Uncertainties in nuclear
+data (e.g., neutron cross sections, fission yields, decay constants) are 
+propagated into the response ofinterest (fuel salt isotopic composition) by 
+generating a large number of samples with perturbed nuclear data. The two 
+approaches are demonstratedusing the \gls{TAP} reactor model.
 
 
-\section{Statistical uncertainty in depleted fuel composition}
+
+
+
+
+\section{Stochastic uncertainty in depleted fuel composition}
 
 \section{Nuclear data related uncertainty in depleted fuel composition}
 
