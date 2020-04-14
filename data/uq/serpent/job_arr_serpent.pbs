@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -l nodes=4:ppn=32:xe
+#PBS -l walltime=00:45:00
+#PBS -N uq_sample_${SAMPLE}
+#PBS -j oe 
+#PBS -q normal
+
+# To add certain modules that you do not have added via ~/.modules                                                
+module swap PrgEnv-cray PrgEnv-gnu
+#module unload xalt darshan                                                                                       
+export OMP_NUM_THREADS=32
+
+### cd to the location where you submitted the job, if needed
+### note that you are on a PBS MOM node and not running interactively on a
+### compute node
+
+cd $PBS_O_WORKDIR
+cp tap $PBS_O_WORKDIR/sampler/tap_${SAMPLE}
+aprun -n 4 -d 32 /projects/sciteam/bahg/serpent_test/src/sss2 -omp 32 ./sampler/tap_${SAMPLE}
