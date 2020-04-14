@@ -32,7 +32,7 @@ scheme of stochastic neutronics and depletion calculation could be considered
 as a single process with (nuclear data) and output (final number densities). 
 Authors performed a simultaneous random sampling of all the cross 
 sections\footnote{Authors assumed that the influence of uncertainties in decay 
-constants, fission yields and other input parameters is negligible.} 1000 
+constants, fission yields and other input parameters are negligible.} 1000 
 times and obtained the distributions of the isotopic inventory. Relative error 
 of the final number density for 1200-day fuel cycle (800 MWg/kgHM burnup) due 
 to cross section uncertainties was reported in range from 7\% (for $^{244}$Pu) 
@@ -57,15 +57,27 @@ for $^{238}$U and 6.56\% for $^{238}$Pu \cite{radaideh_novel_2019-1}. This
 approachbenefits from Sampler module available in the SCALE package and 
 can be used by SCALE users across the world.
 
+All listed research efforts studied simplified, pin-cell or single-assembly 
+models of conventional \gls{LWR} and considered nuclear data uncertainty for 
+following elements: hydrogen, oxygen, zirconium, uranium, and plutonium. The 
+nuclear data for these elements have relatively low uncertainty because it was 
+measured many times for myriad weapon and non-weapon applications. However, 
+the \gls{TAP} \gls{MSR} and many other designs rely on other elements such as 
+lithium and fluorine which have relatively high cross section covariances. 
+Effect of $^6$Li, $^7$Li, and $^{19}$F nuclear data uncertainty on final 
+isotopic composition uncertainty was never studied before. This chapter seeks 
+to estimate the uncertainties on predicted isotopic composition for the 
+\gls{TAP} \gls{MSR} during lifetime-long depletion simulations.
+
 In this chapter, the uncertainty in the fuel salt composition will be 
-investigated two different sources of uncertainty separately. The uncertainty 
-in the nuclides inventory due to the transport problem statistical error is 
-evaluated using random sampling technique using Serpent Monte Carlo code. By 
-changing the code's initial random number seed, the data produce by 1000 runs 
-is used to investigate statistical error in multiplication factor ($k_{eff}$) 
-and number density of major isotopes. The uncertainty in depleted fuel salt 
-composition due to nuclear data uncertainties - a major part of nuclear 
-density uncertainty - is determined using SCALE/Sampler sequence in 
+investigated for two different sources of uncertainty separately. The 
+uncertainty in the nuclides inventory due to the transport problem statistical 
+error is evaluated using random sampling technique using Serpent Monte Carlo 
+code. By changing the code's initial random number seed, the data produce by 
+1000 runs is used to investigate statistical error in multiplication factor 
+($k_{eff}$) and number density of major isotopes. The uncertainty in depleted 
+fuel salt composition due to nuclear data uncertainties - a major part of 
+nuclear density uncertainty - is determined using SCALE/Sampler sequence in 
 conjunction with TRITON (2D, deterministic code). Uncertainties in nuclear
 data (e.g., neutron cross sections, fission yields, decay constants) are 
 propagated into the response ofinterest (fuel salt isotopic composition) by 
@@ -74,11 +86,83 @@ approaches are demonstratedusing the \gls{TAP} reactor model.
 
 
 
-
-
-
 \section{Stochastic uncertainty in depleted fuel composition}
 
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/endf_serpent_keff_boc_for_tap.png}
+	\caption{Caption here.}
+	\label{fig:11}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/endf_serpent_keff_eoc_for_tap.png}
+	\caption{Caption here.}
+	\label{fig:22}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/endf_serpent_keff_dynamics_for_tap.png}
+	\caption{Caption here.}
+	\label{fig:33}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/serpent_mass_std_u.png}
+	\caption{Caption here.}
+	\label{fig:44}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/serpent_mass_std_pu.png}
+	\caption{Caption here.}
+	\label{fig:pu}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/serpent_mass_std_xe_i.png}
+	\caption{Caption here.}
+	\label{fig:xe-i}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/serpent_convergance_for_tap.png}
+	\caption{Caption here.}
+	\label{fig:uq-convergance}
+\end{figure}
+
 \section{Nuclear data related uncertainty in depleted fuel composition}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/tap_pin_for_scale.png}
+	\caption{Caption here.}
+	\label{fig:uq-tap-pincell}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/scale_kinf_dynamics_for_tap.png}
+	\caption{Caption here.}
+	\label{fig:uq-scale-kinf}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/scale_mass_std_u.png}
+	\caption{Caption here.}
+	\label{fig:uq-scale-u}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/scale_mass_std_pu.png}
+	\caption{Caption here.}
+	\label{fig:uq-scale-pu}
+\end{figure}
+
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/scale_convergance_for_tap.png}
+	\caption{Caption here.}
+	\label{fig:uq-scale-convergance}
+\end{figure}
 
 \section{Concluding remarks}
