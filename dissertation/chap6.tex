@@ -54,7 +54,8 @@ Radaideh model used 56-group covariance library in deterministic code TRITON
 flux calculations. That work used 500 random samples in 1174-day TRITON 
 depletion calculation and reported number density uncertainty between 0.14\% 
 for $^{238}$U and 6.56\% for $^{238}$Pu \cite{radaideh_novel_2019-1}. This 
-approachbenefits from Sampler module available in the SCALE package and 
+approach
+benefits from Sampler module available in the SCALE package and 
 can be used by SCALE users across the world.
 
 All listed research efforts studied simplified, pin-cell or single-assembly 
@@ -80,13 +81,87 @@ fuel salt composition due to nuclear data uncertainties - a major part of
 nuclear density uncertainty - is determined using SCALE/Sampler sequence in 
 conjunction with TRITON (2D, deterministic code). Uncertainties in nuclear
 data (e.g., neutron cross sections, fission yields, decay constants) are 
-propagated into the response ofinterest (fuel salt isotopic composition) by 
+propagated into the response of interest (fuel salt isotopic composition) by 
 generating a large number of samples with perturbed nuclear data. The two 
-approaches are demonstratedusing the \gls{TAP} reactor model.
+approaches are demonstrated using the \gls{TAP} reactor model.
 
 
 
 \section{Stochastic uncertainty in depleted fuel composition}
+This section presents a general approach to uncertainty propagation throughout 
+the depletion calculations when using Monte Carlo burnup software. Only 
+uncertainties due to the statisticalnature of Monte Carlo neutron transport 
+calculation was considered herein. 
+
+\subsection{Methodology of uncertainty propagation by a random sampling}
+In nuclear reactors where the changes in the isotopic composition changes the 
+neutron flux distribution, a sequence of coupled transport problem and 
+depletion calculations should be done. In such coupled calculations, the 
+depletion time is divided into a few time intervals. A transport calculation 
+is carried out for each time interval and the evaluated reactor rates are then 
+used to solve system of the Bateman equations~\ref{eq:bateman} to obtain the 
+fuel isotopic composition at the end of the time interval. The goal is not 
+only to calculate the isotopic vector at the end of each depletion step, but 
+also to estimate stochastic error in the vector due to the statistical nature 
+of Monte Carlo neutron transport calculations.
+
+Monte Carlo methods using ``random sampling", which employs a pseudo random 
+number generator for sampling probabilities of neutrons from their ``birth" 
+until it is either absorbed or escaped \cite{brown_fundamentals_2005}. Each 
+neutron history is tallied and when sufficient number of histories are 
+accumulated, statistical metrics (mean value, standard deviation) of the 
+target parameters are calculated. The \gls{MC} code repeats this process for 
+user-defined number of cycles. The first few cycles have poor statistics 
+because the \gls{MC} code accumulated insufficient neutron historical data. 
+The first few cycles are usually marked ``inactive" and used for source 
+convergence only. Therefore, the user must define the number of inactive and 
+active cycles to balance the need to assuring source convergence and 
+statistical accuracy with computational costs.
+
+Serpent Monte Carlo code calculates the uncertainty of each output parameter. 
+During each neutron source cycle, Serpent calculates the sum of the 
+collisions, fissions, and other events in that cycle. After all active cycles 
+completion, the code computes the statistical mean and associated standard 
+deviation based on cycle-specific data. Notably, Serpent estimates the 
+uncertainty assuming that all events are independent. Thus, Serpent Monte 
+Carlo code does not contain an algorithm that propagates the uncertainties 
+from one depletion step to the next. Instead, the estimate uses only data from 
+each separate depletion step by itself. Jaakko Lapp\"{a}nen stated, "Error 
+propagation in Monte Carlo burnup calculation is a major research topic at the 
+moment..." and mentioned unprecedented complexity of the problem 
+\cite{leppanen_statistical_2012}.
+
+In order to estimate the variance in the isotopic composition $[N]$ due to 
+statistical nature of \gls{MC}, a bash scripting system was developed to run a 
+depletion calculation with $S$ burnup steps $M$ times changing nothing except 
+the seed value for the random number sequence in the Serpent input 
+(Figure~\ref{fig:uq-brute-force}). The multiple ``replication" of each 
+depletion sequence produces set of $M$ isotopic concentrations at the end of 
+each depletion interval. 
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=\textwidth]{uq/brute_force_method.png}
+	\caption{Principal scheme of random sampling (``brute force") method to 
+		propagate uncertainties in final isotopic concentrations (reproduced 
+		from 
+		Garcia-Herranz \emph{et al.} \cite{garcia-herranz_propagation_2008}).}
+	\label{fig:uq-brute-force}
+\end{figure}
+
+After running depletion calculationsfor all samples, the mean and standard 
+deviation of the isotopic concentration can be calculated asfollows
+\begin{align}
+\overline{N_i} &= \frac{1}{M} \sum_{i=1}^{M} N^{(j)}_i \\
+\sigma_{N_i} &= \sqrt{\frac{1}{M-1} \sum_{i=1}^{M} 
+(N^{(j)}_i-\overline{N_j})^2}
+\intertext{where}
+\overline{N_i} &= \mbox{mean concentration of isotope $i$ $[-]$} \nonumber \\
+M &= \mbox{number of depletion runs with distinct seed $[-]$} \nonumber \\
+N^{(j)}_i &= \mbox{concentration of isotope $i$ in the run $j$ 
+$[-]$.} \nonumber
+\end{align}
+
+
 
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
@@ -132,6 +207,7 @@ approaches are demonstratedusing the \gls{TAP} reactor model.
 \end{figure}
 
 \section{Nuclear data related uncertainty in depleted fuel composition}
+
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.8\textwidth]{uq/tap_pin_for_scale.png}
@@ -156,6 +232,18 @@ approaches are demonstratedusing the \gls{TAP} reactor model.
 	\includegraphics[width=0.8\textwidth]{uq/scale_mass_std_pu.png}
 	\caption{Caption here.}
 	\label{fig:uq-scale-pu}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/scale_mass_std_xe_i.png}
+	\caption{Caption here.}
+	\label{fig:uq-scale-xe-i}
+\end{figure}
+\begin{figure}[hbp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=0.8\textwidth]{uq/scale_mass_std_act.png}
+	\caption{Caption here.}
+	\label{fig:uq-scale-act}
 \end{figure}
 
 \begin{figure}[hbp!] % replace 't' with 'b' to 
