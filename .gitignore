@@ -243,7 +243,9 @@ TSWLatexianTemp*
 
 # sampler directory
 data/uq/serpent/sampler/
+data/uq/serpent/sampler_endf/
 data/uq/scale/pincell/sampler*/
+data/uq/scale/pincell/sampler_endf/
 
 # Checkpoints
 data/scripts/.ipynb_checkpoints/

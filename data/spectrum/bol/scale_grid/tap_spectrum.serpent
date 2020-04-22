@@ -1,0 +1,361 @@
+% Include file with burnable material composition on the line below
+include "/home/andrei2/Desktop/git/saltproc/develop/examples/mats/mat_composition.ini"
+% Include file with non-burnable material composition on the line below
+%include "/home/andrei2/Desktop/git/saltproc/develop/examples/mats/non_burnable_mats.ini"
+% Geometry import will be added by SaltProc on the next line
+
+% Burnup settings will be added on next line
+
+include "/home/andrei2/Desktop/git/saltproc/develop/examples/geometry/347_base.ini"
+
+%include "/u/sciteam/rykhlevs/meitner/mat_comp/saltproc_prepr_comp.ini"
+%include "/u/sciteam/rykhlevs/meitner/mat_comp/non_burnable_mats.ini"
+%include "/u/sciteam/rykhlevs/meitner/geometry/core_cr_withdr.ini"
+
+%include "/home/rykhandr/tap/mat_comp/saltproc_prepr_comp.ini"
+%include "/home/rykhandr/tap/mat_comp/non_burnable_mats.ini"
+%include "/home/rykhandr/tap/geometry/core_cr_withdr.ini"
+
+set title "TAP MSR BOL spectrum plotter (ENDF-B/VII + S(a,b) from JEFF"
+
+%therm zrh_h 900 hzr05.32t hzr06.32t   % 900K H-Zr
+set acelib "/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.xsdata"
+%set declib "/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.dec"
+%set nfylib "/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.nfy"
+
+%set acelib "sss_jeff312.xsdata"
+%set declib "sss_jeff33.dec"
+%set nfylib "sss_jeff33.nfy"
+%set sfylib "sss_jeff33.sfy"
+% --- Neutron population and criticality cycles:
+
+set pop 30000 600 200  %15000 500 200
+%set gcu -1
+
+% --- Reproducibility off (set value to 1 and define seed to set on):
+
+%set repro 1
+
+% --- Reduce unionized energy grid size in order to save some memory
+%     Use grid thinning with 5e-5 reconstruction tolerance between
+%     1e-8 and 15 MeV.
+
+%set egrid 5e-5 1e-10 15.0
+
+% --- Cut-offs:
+
+set fpcut   1E-6
+set stabcut 1E-12
+
+% --- Geometry and mesh plots:
+%trans 10 0 0 0 0 0 45
+
+%plot 33 2800 2100 4.5 0 140.0 0 105.0
+
+%plot 13 1550 3400 0.0 -155 0
+%plot 13 1000 1000 0 -20 20 135 175
+%plot 13 2000 2000 16.5
+
+% --- Depletion parameters
+% --- Options for burnup calculation:
+%set bumode  2  % CRAM method
+%set pcc     2  % Predictor-corrector calculation off (Linear extrapolation)
+%set xscalc  2  % Cross sections from spectrum
+%set bunorm 2
+%set opti 3
+
+%set power 1.250E+09
+
+set inventory all
+
+%set rfw 1 restart
+%set rfr idx 321 restart
+%set seed 46549345296
+%set seed 7812324546562      % for 2-step test (5d)
+%set seed 2358907456230438  % for 7-step test (2d)
+
+% ---- All CR inserted by default - withdrawn
+%trans CR0 0.0 0.0 -25.0
+%trans CR1 0.0 0.0 -25.0
+%trans CR2 0.0 0.0 -25.0
+%trans CR3 0.0 0.0 -25.0
+%trans CR4 0.0 0.0 -25.0
+%trans CR5 0.0 0.0 -25.0
+%trans CR6 0.0 0.0 -25.0 320.
+trans CR0 0.0 0.0 400.0
+trans CR1 0.0 0.0 400.0
+trans CR2 0.0 0.0 400.0
+trans CR3 0.0 0.0 400.0
+trans CR4 0.0 0.0 400.0
+trans CR5 0.0 0.0 400.0
+trans CR6 0.0 0.0 400.0
+
+% --- Geometry and mesh plots:
+
+%plot 3 2000 2000 0.0
+%plot 1 2000 2000 4.5
+
+% --- Depletion parameters
+
+%_____________________ Output_____________%
+
+% --- Detector energy grid (uniform lethargy):
+ene tot 3 10000 1E-9 15.0
+ene scale238 4 scale238
+ene scale252 1 1.000000E-11
+1.000000E-10
+5.000000E-10
+7.500000E-10
+1.000000E-09
+1.200000E-09
+1.500000E-09
+2.000000E-09
+2.500000E-09
+3.000000E-09
+4.000000E-09
+5.000000E-09
+7.500000E-09
+1.000000E-08
+2.530000E-08
+3.000000E-08
+4.000000E-08
+5.000000E-08
+6.000000E-08
+7.000000E-08
+8.000000E-08
+9.000000E-08
+1.000000E-07
+1.250000E-07
+1.500000E-07
+1.750000E-07
+2.000000E-07
+2.250000E-07
+2.500000E-07
+2.750000E-07
+3.000000E-07
+3.250000E-07
+3.500000E-07
+3.750000E-07
+4.000000E-07
+4.500000E-07
+5.000000E-07
+5.500000E-07
+6.000000E-07
+6.250000E-07
+6.500000E-07
+7.000000E-07
+7.500000E-07
+8.000000E-07
+8.500000E-07
+9.000000E-07
+9.250000E-07
+9.500000E-07
+9.750000E-07
+1.000000E-06
+1.010000E-06
+1.020000E-06
+1.030000E-06
+1.040000E-06
+1.050000E-06
+1.060000E-06
+1.070000E-06
+1.080000E-06
+1.090000E-06
+1.100000E-06
+1.110000E-06
+1.120000E-06
+1.130000E-06
+1.140000E-06
+1.150000E-06
+1.175000E-06
+1.200000E-06
+1.225000E-06
+1.250000E-06
+1.300000E-06
+1.350000E-06
+1.400000E-06
+1.450000E-06
+1.500000E-06
+1.590000E-06
+1.680000E-06
+1.770000E-06
+1.860000E-06
+1.940000E-06
+2.000000E-06
+2.120000E-06
+2.210000E-06
+2.300000E-06
+2.380000E-06
+2.470000E-06
+2.570000E-06
+2.670000E-06
+2.770000E-06
+2.870000E-06
+2.970000E-06
+3.000000E-06
+3.100000E-06
+3.200000E-06
+3.500000E-06
+3.730000E-06
+4.100000E-06
+4.700000E-06
+5.000000E-06
+5.400000E-06
+6.000000E-06
+6.250000E-06
+6.500000E-06
+6.750000E-06
+6.875000E-06
+7.000000E-06
+7.150000E-06
+8.100000E-06
+9.100000E-06
+1.000000E-05
+1.150000E-05
+1.190000E-05
+1.290000E-05
+1.440000E-05
+1.600000E-05
+1.700000E-05
+1.850000E-05
+1.940000E-05
+2.000000E-05
+2.050000E-05
+2.120000E-05
+2.175000E-05
+2.250000E-05
+2.500000E-05
+2.750000E-05
+3.000000E-05
+3.125000E-05
+3.175000E-05
+3.325000E-05
+3.375000E-05
+3.500000E-05
+3.550000E-05
+3.600000E-05
+3.700000E-05
+3.713000E-05
+3.727000E-05
+3.763000E-05
+3.800000E-05
+3.910000E-05
+3.960000E-05
+4.100000E-05
+4.240000E-05
+4.400000E-05
+4.520000E-05
+4.830000E-05
+5.060000E-05
+5.340000E-05
+5.800000E-05
+6.100000E-05
+6.300000E-05
+6.500000E-05
+6.750000E-05
+7.200000E-05
+7.600000E-05
+8.000000E-05
+8.170000E-05
+9.000000E-05
+9.700000E-05
+1.012000E-04
+1.050000E-04
+1.080000E-04
+1.130000E-04
+1.160000E-04
+1.175000E-04
+1.190000E-04
+1.220000E-04
+1.430000E-04
+1.700000E-04
+1.800000E-04
+1.877000E-04
+1.885000E-04
+1.915000E-04
+1.930000E-04
+2.020000E-04
+2.074000E-04
+2.095000E-04
+2.200000E-04
+2.400000E-04
+2.850000E-04
+3.050000E-04
+5.500000E-04
+6.700000E-04
+6.830000E-04
+9.500000E-04
+1.150000E-03
+1.500000E-03
+1.550000E-03
+1.800000E-03
+2.200000E-03
+2.250000E-03
+2.500000E-03
+3.000000E-03
+3.740000E-03
+3.900000E-03
+5.700000E-03
+8.030000E-03
+9.500000E-03
+1.300000E-02
+1.700000E-02
+2.000000E-02
+3.000000E-02
+4.500000E-02
+5.000000E-02
+5.200000E-02
+6.000000E-02
+7.300000E-02
+7.500000E-02
+8.200000E-02
+8.500000E-02
+1.000000E-01
+1.283000E-01
+1.490000E-01
+2.000000E-01
+2.700000E-01
+3.300000E-01
+4.000000E-01
+4.200000E-01
+4.400000E-01
+4.700000E-01
+4.920000E-01
+5.500000E-01
+5.730000E-01
+6.000000E-01
+6.700000E-01
+6.790000E-01
+7.500000E-01
+8.200000E-01
+8.611000E-01
+8.750000E-01
+9.000000E-01
+9.200000E-01
+1.010000E+00
+1.100000E+00
+1.200000E+00
+1.250000E+00
+1.317000E+00
+1.356000E+00
+1.400000E+00
+1.500000E+00
+1.850000E+00
+2.354000E+00
+2.479000E+00
+3.000000E+00
+4.304000E+00
+4.800000E+00
+6.434000E+00
+8.187000E+00
+1.000000E+01
+1.284000E+01
+1.384000E+01
+1.455000E+01
+1.568000E+01
+1.733000E+01
+2.000000E+01
+
+% --- Flux per lethargy all over core
+det avrg de scale252 dt -3
+det avrg238 de scale238 dt -3

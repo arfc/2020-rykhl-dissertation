@@ -80,7 +80,7 @@ Infinite-lattice pin model
 read parm
 echo=yes
 xnlib=4 run=yes collapse=yes prtmxsec=no prtbroad=yes
-sn=4 inners=4 outers=200 epsilon=1e-4 epseigen=1e-3
+sn=4 inners=4 outers=200 epsilon=1e-4 epseigen=1e-3 drawit=yes
 end parm
 
 'This card is for cross-section homegnization, just redefine all your materials similarily

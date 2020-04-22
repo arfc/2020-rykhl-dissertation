@@ -80,7 +80,7 @@ trans CR6 0.0 0.0 400.0
 
 
 % ---- Base (nominal) case, 0% void fraction
-branch nom         % all withdrawn
+branch nom var VOID 0.0         % all withdrawn
 
 % ---- Void (He) fract variation from 0.0% to 1%
 branch void01 stp fuel -4.95523985 -1  % no ajustment in temperature
