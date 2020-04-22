@@ -44,7 +44,7 @@ reasonably large neutron history was less than 0.15\%
 results by Garcia-Herranz \emph{et al.} agreed with Takeda's statement that 
 nuclear data is the major source of uncertainty; stochastic error contribution 
 to the total nuclear density error is negligibly small ($<1$\%) and reduces
-slowly when the number of neutron histories increases.
+slowly if the number of neutron histories increases.
 
 In a similar vein, Radaideh \emph{et al.} used SCALE 6.2 with Sampler module
 \cite{rearden_scale_2018} to quantify the uncertainty in nuclide concentration 
@@ -285,7 +285,7 @@ relative uncertainties of fissile $^{239}$Pu and $^{241}$Pu are 0.01-0.07\%
 and 0.04-0.18\%, respectively. Mass uncertainties for the 
 strongest neutron poison, $^{135}$Xe, and its primary direct precursor, 
 $^{135}$I, are 0.0175-0.0275\% and 0.01-0.0175\%, respectively. Overall, 
-stochastic error in depletion calculation is larger for isotopes with very low 
+stochastic error in depletion calculation is larger for isotopes with small 
 concentration in the core due to round-off error. 
 Table~\ref{tab:uq-serpent-mean-std-rsd} shows that the stochastic error in the 
 isotopic inventories even for unusually high burnup of 100 MW$_{th}$d/kgU (30 
@@ -496,8 +496,8 @@ slightly larger than results in the literature for conventional \gls{LWR}
 (e.g., 0.44\% \cite{williams_statistical_2013} or 0.55\% 
 \cite{campolina_uncertainty_2018} for \gls{PWR}). This discrepancy between 
 $k_{\infty}$ uncertainty for the \gls{TAP} \gls{MSR} and \gls{PWR} is likely 
-to come from $^{19}$F and $^{7}$Li nuclear data, which have very large 
-covariance across reactions.
+to come from $^{19}$F and $^{7}$Li nuclear data, which have significant 
+covariances across reactions.
 
 Figure~\ref{fig:uq-scale-u-pu} shows the standard deviation percentages in 
 uranium and plutonium isotopic as a function of time. The uncertainty in 
@@ -538,7 +538,7 @@ Figure~\ref{fig:uq-scale-xe-i} shows the mass uncertainties for selected
 \glspl{FP}: $^{135}$Xe and its primary direct precursor, $^{135}$I. The masses 
 of $^{135}$Xe and $^{135}$I are in the ranges 24-27 g and 18-19 g, 
 respectively. As expected, relative standard deviations for these isotopes are 
-relatively low due to very low uncertainty of fission yield for $^{235}$U. The 
+relatively low due to minimal uncertainty of fission yield for $^{235}$U. The 
 relative standard deviation of $^{135}$Xe mass changes in a range from 
 0.47\% to 0.6\%, while the $^{135}$I standard deviation ranges from 0.35\% to 
 0.56\%.
