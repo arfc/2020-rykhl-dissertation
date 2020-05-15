@@ -490,7 +490,7 @@ problem (28 pcm for $k_{eff}$) and simultaneously minimizing computational
 time.
 
 
-\subsection{Model of the fuel reprocessing system}
+\subsection{Model of the fuel reprocessing system}\label{sec:tap-online-model}
 I thoroughly analyzed the original \gls{TAP} reprocessing system design 
 (Figure~\ref{fig:tap-reproc}) and neutron poison removal rates  
 (Table~\ref{tab:reprocessing_list}) to determine a suitable reprocessing 
@@ -1241,34 +1241,40 @@ SaltProc v1.0 unit test.
 
 \section{Safety and operational parameters} \label{sec:safety-param}
 The previous section (Section~\ref{sec:long-term}) reported fuel salt 
-composition evolution during 25 years of the \gls{TAP} \gls{MSR} operation.
-The inventory of fissile $^{235}$U decreased with time, while other fissile 
-isotopes, $^{239}$Pu and $^{241}$Pu, is being produced in the reactor core. At 
+composition evolution during 25 years of \gls{TAP} \gls{MSR} operation.
+The inventory of fissile $^{235}$U decreased with time, while the inventories 
+of fissile, $^{239}$Pu and $^{241}$Pu, increased. At 
 the same time, many poisonous actinides (e.g., $^{236}$U, $^{240}$Pu, 
-$^{242}$Pu) are built up in the core, which shifts the neutron energy 
+$^{242}$Pu) built up in the core, shifting the neutron energy 
 spectrum. Moreover, the \gls{TAP} design assumes an intentional spectrum shift 
 by adding more moderator rods during operation. In this section, I analyze how 
-such neutron spectrum shift affects major safety and operation parameters such 
-as temperature and void coefficients of reactivity, total 
-reactivity worth of the control rods, and reactor kinetic parameters.
+such neutron spectrum shift affects major safety and operational parameters 
+such as temperature and void coefficients of reactivity, total control rod 
+worth, and other reactor kinetic parameters.
 
 \subsection{Temperature coefficient of reactivity}
-The main physical principle underlying the reactor temperature feedback is an 
+The main physical principle underlying reactor temperature feedback is an 
 expansion of heated material. When the fuel salt temperature increases, the 
 density of the salt decreases, but at the same time, the total volume of fuel 
 salt in the core remains constant because it is bounded by the vessel. When 
 the moderator rod temperature increases, the density of zirconium hydride 
-decreases, creating additional space for fuel salt. 
+decreases, reducing space between moderator rods and displacing fuel salt from 
+the core. Another physical principle underlying temperature feedback is the 
+Doppler broadening of the resonance capture cross section of the $^{238}$U 
+due to thermal motion of target nuclei in the fuel. The Doppler effect 
+arises from the dependence of the capture cross sections on the relative 
+velocity between neutron and nucleus. The Doppler coefficient of reactivity of 
+thermal reactors is always negative and instantaneous.
 
-The temperature coefficient of reactivity quantifies reactivity changes due to 
-temperature change in fuel and moderator component of a reactor 
+The temperature coefficient of reactivity, $\alpha$, quantifies reactivity 
+changes due to temperature change in fuel and moderator component of a reactor 
 core. The $\alpha_{T,j}$ represents the temperature coefficient of 
 reactivity of a component $j$ (fuel, moderator, or isothermal) and can be 
 calculated as:
 \begin{align}\label{eq:th-feedback}
-\alpha_{T,j} &= \frac{\partial \rho}{\partial T_j} \quad[pcm/K] \\
-\rho       &= \frac{k_{eff}-1}{k_{eff}} \times 10^5 \quad[pcm]
+\alpha_{T,j} &= \frac{\partial \rho}{\partial T_j} \quad[pcm/K]
 \intertext{where}
+\rho       &= \frac{k_{eff}-1}{k_{eff}} \times 10^5 \quad[pcm] \\
 k_{eff}  &= \mbox{effective multiplication factor corresponding to $T$ of 
 component $j$ [$-$]} \nonumber \\
 \partial T_j &= \mbox{change in average temperature of component $j$ 
@@ -1286,22 +1292,23 @@ change in reactivity per unit of temperature change:
 \end{align}
 
 However, fuel and moderator temperature are rarely equal because fuel heats up 
-much faster than the moderator; thus, the fuel temperature coefficient (FTC) 
-and the moderator temperature coefficient (MTC) should be calculated 
+much faster than the moderator; thus, the fuel temperature coefficient 
+($\alpha_{T,F}$ or FTC) and the moderator temperature coefficient 
+($\alpha_{T,M}$ or MTC) must be calculated 
 separately. In the base case simulation in this work, the fuel salt and the 
-moderator temperatures are fixed at 900K, which is an operational temperature 
-in the core. To determine the fuel salt temperature coefficient (FTC), I 
-perturbed the fuel salt temperature from 900K to 800K and 1000K with 
+moderator temperatures are fixed at 900K. To determine $\alpha_{T,F}$, I 
+perturbed the fuel salt temperature from 800K to 1000K in 
 increments of 50K while fixing the moderator temperature at 900K (base case). 
-Likewise, I calculated the moderator temperature coefficient (MTC) by 
-perturbing the moderator temperature from 900K to 800K and 1000K with 50K 
-increments, while the fuel temperature is fixed at 900K. 
+Likewise, I calculated $\alpha_{T,M}$ by perturbing the moderator temperature 
+from 800K to 1000K with 50K increments, while fixing the fuel temperature at 
+900K. 
 
 The range of temperature perturbation for the temperature coefficient  
 calculation has been selected based on operational parameters. The \gls{TAP} 
-\gls{MSR} operates in the range of 773-973K (500-700$^o$C), which is far below 
-the salt boiling point of approximately 1473K. The salt freezes below 773K. At 
-the other end of the temperature spectrum, 
+\gls{MSR} operates in the range of 773-973K (500-700$^{\circ}$C), which is far 
+below the salt boiling point of approximately 1473K 
+\cite{transatomic_power_corporation_technical_2016}. The salt freezes below 
+773K \cite{barton_phase_1958}. At the other end of the temperature spectrum, 
 the temperature higher than 973K passively melts a freeze plug, which drains 
 the fuel salt from the reactor vessel to the drain tanks. The drain tanks have 
 a subcritical configuration with a large free surface area to readily 
@@ -1311,37 +1318,41 @@ Thus, calculating temperature coefficients in the temperature range from 800
 to 1000K captured the outcomes of most accident transients.
 
 To determine the temperature coefficients, the cross section temperatures for 
-the fuel and moderator were changed in the range of 800-1000K. For the FTC 
-calculation, changes in the fuel temperature are impact cross sections 
-(Doppler effect) and the fuel salt density. The density of fuel 
-salt changes with respect to temperature as follows 
+the fuel and moderator were changed in the range of 800-1000K. For 
+$\alpha_{T,F}$ calculation, changes in the fuel temperature impact cross 
+section resonances (Doppler effect) as well as the fuel salt density. The 
+density of fuel salt changes with respect to temperature as follows 
 \cite{janz_molten_1974}:
 \begin{align}\label{eq:salt-den}
 \rho_{salt}(T) &= 6.105 - 12.720\times10^4 T[K] \quad [g/cm^3]
 \end{align}
 The uncertainty in the salt density calculated using 
 Equation~\ref{eq:salt-den} is approximately 0.036 $g/cm^3$ at 900K.
-In contrast, when the moderator temperature is changing, the density, cross 
-section temperature, and the geometry are also changing due to thermal 
+In contrast, when the moderator temperature changes, the density, cross 
+section temperature, and the geometry also change due to thermal 
 expansion of the solid zirconium hydride (ZrH$_{1.66}$) rods. Accordingly, the 
 new moderator density and sizes are calculated using a linear temperature 
-expansion coefficient of $2.734\times10^{-5}$K$^{-1}$ 
-\cite{yamanaka_thermal_1999}. Using this thermal expansion data, I created new 
-geometry input for Serpent 2, which takes into account the displacement of the 
-moderator surfaces. That is, the MTC calculation takes into account the 
-following factors:
+expansion coefficient \cite{yamanaka_thermal_1999}:
+\begin{align}
+\alpha_L &= 2.734\times10^{-5} \quad [K^{-1}]
+\end{align}
+Using this thermal expansion data, I took into account the displacement of the 
+moderator surfaces by generating corresponding geometry definitions for each 
+Serpent calculation. That is, $\alpha_{T,M}$ calculation takes into account 
+the following factors:
 \begin{itemize}[noitemsep, topsep=0pt]
 	\item thermal Doppler broadening of the resonance capture cross sections 
 	in ZrH$_{1.66}$;
 	\item hydrogen S($\alpha$, $\beta$) thermal scattering data shift due to 
 	moderator temperature change;
-	\item density change due to thermal expansion/contraction;
-	\item changes in the moderator rod diameter and length.
+	\item density change due to moderator thermal expansion/contraction;
+	\item corresponding geometric changes in the moderator rod diameter and 
+	length.
 \end{itemize}
  
-By propagating the $k_{eff}$ statistical error provided by Serpent 2, 
-uncertainty for each temperature coefficient is obtained using the  
-formula:
+By propagating the $k_{eff}$ statistical error provided by Serpent 2, the 
+corresponding uncertainty in each temperature coefficient is obtained using 
+the formula:
 \begin{align}
 \delta\alpha_T &= \abs{\frac{1}{T_{i+1} - T_i}} \sqrt{\frac{\delta 
 		k_{eff}^2(T_{i+1})}{k_{eff}^4(T_{i+1})}  
@@ -1353,24 +1364,30 @@ k_{eff} &= \mbox{effective multiplication factor corresponding to $T_i$ [-]}
 [$pcm$]} \nonumber \\
 T_i &= \mbox{perturbed temperature in the range of 800-1000K.} \nonumber
 \end{align}
-Notably, other sources of uncertainty are neglected, such as design parameters 
-uncertainty, cross section measurement error, and approximations inherent in 
-the equations of the state providing both the salt and moderator density 
+Notably, other sources of uncertainty are neglected, such as design parameter 
+uncertainty, cross section measurement error\footnote{Chapter 7 of the current 
+work presents uncertainty quantification method for propagating cross section 
+measurement uncertainty throughout depletion calculations. While it is out of 
+scope of this work to estimate nuclear-data related uncertainty of the 
+temperature feedback coefficient, method from Chapter 7 can be adopted for the 
+future work to perform such calculations.}, and approximations inherent in 
+the equations of state providing both the salt and moderator density 
 dependence on temperature. 
 
 Figure~\ref{fig:tc-bol-eol} shows reactivity as a function of fuel, moderator, 
 and total temperature for the \gls{TAP} \gls{MSR} at the \gls{BOL} and 
-\gls{EOL}. At startup, reactivity change with temperature is clearly fits 
+\gls{EOL}. At startup, reactivity change with temperature clearly fits 
 linear regression (R-squared\footnote{Coefficient of determination ($R^2$) is 
 a statistical measure of how good measured data fitted linear regression 
 line.} is 0.9, 0.99, and 0.98 for fuel, moderator, and isothermal case, 
 respectively). 
-However, linear relationship between reactivity and moderator temperature 
-worsens toward the \gls{EOL}, but $R^2>0.7$ still indicates a strong linear 
-association between $\rho$ and $T$ ($R^2$ is 0.99, 0.87, and 0.74 for fuel, 
-moderator, and total case, respectively). The slope of linear regression is 
-the temperature coefficient of reactivity, which I determined separately for 
-each component (FTC, MTC, and ITC).
+Also, while the linear relationship between reactivity and moderator 
+temperature worsens toward the \gls{EOL}, an $R^2>0.7$ still indicates a 
+strong linear association between $\rho$ and $T$ ($R^2$ is 0.99, 0.87, and 
+0.74 for fuel, 
+moderator, and total case, respectively). I determined the temperature 
+coefficient of reactivity separately for each component (fuel, moderator, 
+and isothermal) using the slope of the linear regression for each.
 
 \begin{figure}[htbp!] % replace 't' with 'b' to 
 	\centering
@@ -1389,15 +1406,14 @@ each component (FTC, MTC, and ITC).
 
 Table~\ref{tab:tcoef} summarizes temperature coefficients of reactivity in the 
 \gls{TAP} core calculated at the \gls{BOL} and \gls{EOL}. The fuel 
-temperature coefficient is negative all the time and becomes stronger toward 
-the \gls{EOL} as the spectrum thermalizes due to additional, retained fission 
-products and actinides building up in the fuel salt. 
-The MTC and ITC are both negative and large 
-at startup. However, the MTC became positive toward the \gls{EOL} due to the
-spectral shift. To better understand the dynamics of temperature coefficients 
-evolution, I calculated temperature coefficients for 15 different moments 
-during operation to cover all moderator rod configurations described in 
-Appendix~\ref{appex:geometries}.
+temperature coefficient is negative throughout operation and becomes stronger 
+toward the \gls{EOL} as the spectrum thermalizes due to additional, retained 
+fission products and actinides building up in the fuel salt. 
+The MTC and ITC are both strongly negative at startup. However, the MTC became 
+weakly positive toward the \gls{EOL} due to the same spectral shift. To better 
+understand the dynamics of temperature coefficient evolution, I calculated 
+temperature coefficients for 15 distinct moments during operation to cover all 
+moderator rod configurations described in Appendix~\ref{appex:geometries}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
 	\caption{Temperature coefficients for the \gls{TAP} reactor at the 
@@ -1407,28 +1423,28 @@ Appendix~\ref{appex:geometries}.
 		\textbf{Coefficient} & \textbf{\gls{BOL} [pcm/K]} & \textbf{\gls{EOL} 
 		[pcm/K]}                  \tabularnewline 
 		[5pt] \hline
-		FTC & $-0.350\pm6.74\times10^{-2}$ & $-0.868\pm6.01\times10^{-2}$ 
+		FTC & $-0.350\pm0.0023$ & $-0.868\pm0.0005$ 
 		\tabularnewline [3pt] \hline
-		MTC & $-1.134\pm6.72\times10^{-2}$ & $+0.746\pm6.02\times10^{-2}$  
+		MTC & $-1.134\pm0.0001$ & $+0.746\pm0.0001$  
 		\tabularnewline [3pt] \hline
-		ITC & $-1.570\pm6.67\times10^{-2}$ & $-0.256\pm5.97\times10^{-2}$  
+		ITC & $-1.570\pm0.0001$ & $-0.256\pm0.0003$  
 		\tabularnewline [3pt] \hline
 	\end{tabularx}
 	\label{tab:tcoef}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figure~\ref{fig:tc-evo} shows temperature coefficients evolution for the 
-\gls{TAP} reactor during 25 years of operation with taking into account 
-spectral shift due to reconfiguration of the moderator rods. The fuel 
-temperature coefficient is almost 
-constant for 19 years and decreases for the last 6 years (configurations with 
+Figure~\ref{fig:tc-evo} shows temperature coefficient evolution for the 
+\gls{TAP} reactor during 25 years of operation and takes into account the
+spectral shift due to moderator rod reconfigurations. The fuel temperature 
+coefficient is almost 
+constant for 19 years but decreases for the last 6 years (configurations with 
 1498 and 1668 moderator rods in the core). In contrast, the moderator 
 temperature coefficient decreases from $-1.134$ $pcm$/$K$ to $-2.280$ 
 $pcm$/$K$ during the first 11 years and then increases up to $+0.746$ 
 $pcm$/$K$ at the \gls{EOL}. 
 The moderator temperature increase at startup pushes thermal neutrons to 
-higher energies, and the neutrons end up with their energy below the lowest 
+higher energies, nearly up to the lowest 
 $^{238}$U resonances in the capture cross section. After 11 years, similar 
 moderator temperature increase shifts neutrons into the same 
 energy region, but this time that energy range is populated not only with 
@@ -1440,9 +1456,9 @@ of operation because there is twice as much moderator in the core at 11 years
 compared to the \gls{BOL}. The moderator temperature increase causes fuel 
 salt displacement due to the thermal expansion of the moderator rods, which 
 has a particularly strong effect when the salt volume fraction is less than 
-75\%. That is, when moderator heats, moderator-to-fuel ratio increases 
-due to thermal expansion of zirconium hydride, which leads to positive change 
-in reactivity. %These 
+75\%. That is, when moderator heats up, the moderator-to-fuel ratio increases 
+due to thermal expansion of zirconium hydride, which in turn leads to positive 
+change in reactivity. %These 
 %observations from estimating reactivity coefficients demonstrate the 
 %importance of proper characterization of thermal scattering data for the 
 %zirconium hydride moderator.
@@ -1450,11 +1466,11 @@ in reactivity. %These
 Finally, the isothermal temperature coefficient dynamics are similar to the 
 MTC:
 the ITC decreases from $-1.57$ $pcm/K$ to $-2.66$ $pcm/K$ first 13 years of 
-operation. After that, the ITC growing rapidly up to $-0.256$ $pcm/K$ at the 
-\gls{EOL}. Overall, the ITC is negative all the time but became relatively 
-small after 25 years of operation (comparing with conventional \gls{PWR}, 
-which has isothermal temperature coefficient about $1.71$ 
-$pcm/^{\circ}F\approx-3.08$ $pcm/K$ \cite{forget_integral_2018}).
+operation. After that, the ITC grows rapidly up to $-0.256$ $pcm/K$ at the 
+\gls{EOL}. Overall, the ITC remains negative throughout operation but became 
+relatively weak after 25 years of operation (comparing with conventional 
+\gls{PWR}, which has an isothermal temperature coefficient of 
+$\alpha_{T,ISO}\approx-3.08$ $pcm/K$ \cite{forget_integral_2018}).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/saf_par/tc_evo.png}
@@ -1467,16 +1483,17 @@ $pcm/^{\circ}F\approx-3.08$ $pcm/K$ \cite{forget_integral_2018}).
 \end{figure}
 
 \subsection{Void coefficient of reactivity}
-The effect of the fuel void on reactivity is evaluated by reducing the fuel 
-salt 
-density from the base value (0\% of void) assuming helium volume fraction in 
-the salt varies between 0 and 2\%. The temperature of both fuel salt and 
-moderator is held constant at 900K. Figure~\ref{fig:void-bol-eol} shows the 
-positive effect of helium volume fraction on reactivity because the
-decrease in the salt density causes an increase of moderator-to-fuel ratio. 
+The effect of fuel voids (i.e. bubbles) on reactivity is evaluated by reducing 
+the fuel salt density from the base value (0\% void) assuming helium volume 
+fraction in the salt varies between 0 and 2\%. The temperatures of both the 
+fuel salt and the moderator are held constant at 900K. 
+Because a decrease in the salt density causes an increase of moderator-to-fuel 
+ratio, an increase in the helium volume fraction (voids) increases reactivity 
+as shown in Figure~\ref{fig:void-bol-eol}.
 However, the slope of the line (void coefficient of reactivity ($\alpha_{V}$)) 
 decreases toward \gls{EOL} due to the gradually increasing volume of moderator 
-in the core (volume fraction of the fuel salt at the \gls{EOL} less than 54\%).
+in the core (the volume fraction of the fuel salt at the \gls{EOL} is less 
+than 54\%).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.85\textwidth]{ch4/saf_par/void_coeff_bol_eol.png}
@@ -1488,15 +1505,18 @@ in the core (volume fraction of the fuel salt at the \gls{EOL} less than 54\%).
 \end{figure}
 
 Figure~\ref{fig:void-evo} shows the void coefficient evolution during 25 years 
-of operation with taking into account 15 moderator rods reconfigurations. The 
-fact that the void coefficient of reactivity is positive does not compromise 
-the reactor safety, as a fuel density change would likely be coupled to a 
-change in temperature. Some void fraction fluctuations may happen due to 
-gaseous \glspl{FP} production, but their generation rates are usually almost 
+of operation, taking into account 15 moderator rod reconfigurations. The 
+positive void coefficient of reactivity, though not ideal, does not compromise 
+the reactor safety, if fuel density change resulted be coupled to a 
+change in temperature. And, while some void fraction fluctuations may happen 
+due to gaseous fission product production, their generation rates are 
+usually almost 
 constant. However, a large volume of sparging gas (helium) can be accidentally 
 introduced into the \gls{TAP} core in case of the bubble separator 
-malfunction. Thus, \emph{the bubble separator must be backed up} to avoid 
-sudden positive negativity insertion in case of the separator failure. These 
+malfunction. Thus, \emph{the bubble separator must have backup safety 
+mechanism} to avoid 
+sudden positive negativity insertion in case of the separator failure, 
+particularly at the \gls{BOL}. These 
 observations from calculating reactivity coefficients should be taken into 
 account in the \gls{TAP} \gls{MSR} accident analysis and safety justification.
 \begin{figure}[htp!] % replace 't' with 'b' to 
@@ -1514,14 +1534,15 @@ In the \gls{TAP} concept, control rods perform two main functions: to shut
 down the reactor at any point during operation by negative reactivity 
 insertion and to control the excess of reactivity after moderator 
 rod reconfiguration during regular maintenance. In an accident, the control 
-rods would be dropped down into the core. The total control rod worth (CRW)
-is calculated for various moments during 25 years of operation to 
-evaluate neutron spectrum shift influence on the CRW. 
+rods would be dropped down into the core. The total control rod worth 
+($\rho_{CRW}$ or CRW) is calculated for various moments during 25 years of 
+operation to evaluate neutron spectrum shift influence on the CRW. 
 
 The reactivity worth of all control rods is defined as:
 \begin{align}
-CRW(pcm) &= \frac{k_{eff}^W - k_{eff}^I}{k_{eff}^W k_{eff}^I}\times 10^5 \\
-CRW(\$) &= \frac{1}{\beta_{eff}} \frac{k_{eff}^W - k_{eff}^I}{k_{eff}^W 
+\rho_{CRW}(pcm) &= \frac{k_{eff}^W - k_{eff}^I}{k_{eff}^W k_{eff}^I}\times 
+10^5 \\
+\rho_{CRW}(\$) &= \frac{1}{\beta_{eff}} \frac{k_{eff}^W - k_{eff}^I}{k_{eff}^W 
 k_{eff}^I}
 \intertext{where}
 k_{eff}^W &= \mbox{effective multiplication factor when all rods are fully 
@@ -1532,9 +1553,9 @@ k_{eff}^I &= \mbox{effective multiplication factor when all rods are fully
 \end{align}
 The statistical error of the  reactivity worth are obtained using formula:
 \begin{align}
-\delta CRW(pcm) &= \sqrt{\frac{(\delta k_{eff}^W)^2}{(k_{eff}^W)^4} + 
+\delta\rho_{CRW}(pcm) &= \sqrt{\frac{(\delta k_{eff}^W)^2}{(k_{eff}^W)^4} + 
 \frac{(\delta k_{eff}^I)^2}{(k_{eff}^I)^4}} \\
-\delta CRW(\$) &= \frac{1}{\beta_{eff}}\sqrt{\frac{(\delta 
+\delta\rho_{CRW}(\$) &= \frac{1}{\beta_{eff}}\sqrt{\frac{(\delta 
 k_{eff}^W)^2}{(k_{eff}^W)^4} + \frac{(\delta k_{eff}^I)^2}{(k_{eff}^I)^4} + 
 \frac{(\delta \beta_{eff})^2 (k_{eff}^W-k_{eff}^I)^2}{\beta_{eff}^2 
 (k_{eff}^W k_{eff}^I)^2}}
@@ -1544,22 +1565,23 @@ k_{eff}^W)^2}{(k_{eff}^W)^4} + \frac{(\delta k_{eff}^I)^2}{(k_{eff}^I)^4} +
 \nonumber
 \end{align}
 
-Figure~\ref{fig:crw-evo} demonstrates the CRW evolution during 25 years of the 
-\gls{TAP} reactor operation. The cluster of 25 control rods made of boron 
-carbide 
-(B$_4$C) provided a reactivity worth of $5.059\pm0.014$ \$ at the \gls{BOL}. 
-However, spectral shift due to additional moderator rods insertion leads to 
-significant change in the CRW. Adding more moderator near control rods 
-increasing the CRW due to the local neutron spectrum 
+Figure~\ref{fig:crw-evo} demonstrates control rod worth evolution during 25 
+years of the \gls{TAP} reactor operation. The cluster of 25 control rods made 
+of boron carbide (B$_4$C) provided a reactivity worth of $5.059\pm0.014$ \$ at 
+the \gls{BOL}. 
+However, spectral shift due to additional moderator rods toward the \gls{EOL} 
+leads to significant change in $\rho_{CRW}$. Adding more moderation near 
+control rods increases $\rho_{CRW}$ due to the local neutron spectrum 
 thermalization (see transition from 347 to 427 moderator rods, 
-Figure~\ref{fig:tap-406-681}). In contrast, adding moderator far away from the 
-control rod positions leads to CRW degradation (see transition from 427 to 505 
+Figure~\ref{fig:tap-406-681}). 
+In contrast, adding moderator rods far away from the control rod positions 
+leads to $\rho_{CRW}$ degradation (see transition from 427 to 505 
 moderator rods, Figure~\ref{fig:tap-406-681}). On the one hand, the spectrum 
 thermalizes and many fission product poisons exhibit larger absorption cross 
 sections in the thermal energy range. On the other hand, higher actinides 
 (particularly, isotopes of plutonium) are accumulated in the fuel salt which 
-deteriorates control rod worth. Overall, the CRW decreases to $4.472\pm0.015$ 
-\$ at the \gls{EOL}. 
+deteriorates control rod worth. Overall, $\rho_{CRW}$ decreases to 
+$4.472\pm0.015$ \$ at the \gls{EOL}. 
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.85\textwidth]{ch4/saf_par/crw_evo_dollar.png}
@@ -1571,47 +1593,49 @@ deteriorates control rod worth. Overall, the CRW decreases to $4.472\pm0.015$
 \end{figure}
 
 Overall, the design of the reactivity control system is sufficient to shut 
-down the \gls{TAP} reactor at the \gls{BOL}. However, the spectral shift and 
-the change in the salt composition during operation significantly reduces the 
-total control rod worth and makes it less than excess reactivity after later 
-moderator reconfigurations. Thus, the number of control rods, their position, 
-or material selection must be revised to make sure that the \gls{TAP} reactor 
-could be switched to a safe state at any moment during operation. For example, 
-europium oxide (Eu$_2$O$_3$) might be a better absorbing material for the 
-control rods \cite{ashraf_preliminary_2020-1}.
+down the \gls{TAP} reactor at the \gls{BOL}. However, the spectral shift, 
+moderator rod reconfigurations, and the change in the salt composition during 
+operation drive the total control rod worth below excess reactivity, violating 
+reactor safety (insufficient shutdown margin). Thus, the number of control 
+rods, their position, or material selection must be revised to make sure that 
+the \gls{TAP} reactor could be safely shut down at any moment during 
+operation. For example, europium oxide (Eu$_2$O$_3$) might be a better 
+absorbing material for the control rods \cite{ashraf_preliminary_2020}.
 
 
 \subsection{Reactor kinetic parameters}
+Most of the neutrons produced in fission are prompt ($>99$\%). But less than 
+1\% of neutrons are later emitted by fission products that are called the 
+delayed neutron precursors (DNP). The term ``delayed" means, that the neutron 
+is emitted due to $\beta$-decay with half-lives in the range from few 
+milliseconds up to 1 minute. Even though, the number of delayed neutrons per 
+fission neutron is quite small ($<1$\% for most fissile isotopes), they play 
+an essential role in the nuclear reactor control. Delayed neutrons presence 
+changes the dynamic time response of a reactor to reactivity change from 
+$10^{-7}$ s to 10 s, making it controllable by reactivity control system such 
+as control rods. In nuclear library JEFF-3.1.2, delayed nuclear precursors are 
+divided into 8 groups, each with different characteristic half-life, 
+$\lambda_i$. The delayed neutron fraction, $\beta_i$, is defined as the 
+fraction of all fission neutrons that appears as delayed neutrons in the 
+$i^{th}$ group.
+
 It is crucial to study kinetic parameter dynamics because the fuel salt 
 composition changes with time and new actinides appear in the fuel, which 
-contributes to the emission of the delayed neutron. Figures~\ref{fig:beta-eol} 
-and \ref{fig:lamda-eol} shows precursor-group-wise delayed neutron fraction 
+alters the emission of delayed neutrons. Figures~\ref{fig:beta-eol} 
+and \ref{fig:lamda-eol} show precursor-group-wise delayed neutron fraction 
 (DNF, $\beta_i$) and decay constant ($\lambda_i$) evolution during 25 years of 
-the \gls{TAP} \gls{MSR} operation. The effective delayed neutron fraction 
+\gls{TAP} \gls{MSR} operation. The effective delayed neutron fraction 
 ($\beta_{eff}$) in the \gls{TAP} core decreased dramatically from 
 $7.245\times10^{-3}$($\pm0.5$\%) at the \gls{BOL} to 
 $4.564\times10^{-3}$($\pm0.6$\%) at the \gls{EOL} ($-37$\%). 
 
-Similarly, the effective precursor decay constant ($\lambda_{eff}$) slipped 
-slightly from $0.481$ $s^{-1}$($\pm0.8$\%) to $0.468$ $s^{-1}$($\pm1.1$\%) 
-during 25 years of operation. During operation, the concentration of $^{235}$U 
-decreases, and the concentration of fissile plutonium isotopes (e.g., 
-$^{239}$Pu) 
-increases. Notably, $^{239}$Pu emits about 2.5 times fewer delayed neutrons 
-than $^{235}$U; delayed neutron yields are 0.00664 and 0.01650 for the 
-$^{239}$Pu and $^{235}$U, respectively. Thus, as fuel salt burnup increases, 
-delayed neutron emission is controlled by plutonium isotopes (e.g., $^{239}$Pu 
-and $^{241}$Pu) and decreased with time. All decay constants show a slight 
-decrease toward the \gls{EOL} due to the reactor spectrum hardening. This 37\% 
-decline in the effective delayed neutron fraction and 3\% decline in the 
-effective precursor decay constant must be taken into account in the \gls{TAP} 
-design accident analysis and safety justification.
 \begin{figure}[htbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch4/saf_par/betas_evo.png}
 		\vspace{-5mm}
-	\caption{Evolution of the precursor-group-wise DNF ($\beta_i$) as a 
-	function of time for the \gls{TAP} \gls{MSR}. The uncertainty $\pm\sigma$ 
+	\caption{Evolution of the precursor-group-wise delayed neutron fraction 
+	($\beta_i$) as a function of time for the \gls{TAP} \gls{MSR}. The 
+	uncertainty $\pm\sigma$ 
 	region is shaded.}
 	\label{fig:beta-eol}
 \end{figure}
@@ -1624,11 +1648,28 @@ design accident analysis and safety justification.
 	uncertainty $\pm\sigma$ region is shaded.}
 	\label{fig:lamda-eol}
 \end{figure}
-\newpage
 
+Similarly, the effective precursor decay constant ($\lambda_{eff}$) slipped 
+slightly from $0.481$ $s^{-1}$($\pm0.8$\%) to $0.468$ $s^{-1}$($\pm1.1$\%) 
+during 25 years of operation. During operation, the concentration of $^{235}$U 
+decreases, and the concentration of fissile plutonium isotopes (e.g., 
+$^{239}$Pu) 
+increases. Notably, $^{239}$Pu emits about 2.5 times fewer delayed neutrons 
+than $^{235}$U; delayed neutron yields are 0.00664 and 0.01650 for the 
+$^{239}$Pu and $^{235}$U, respectively. Thus, as fuel salt burnup increases, 
+delayed neutron emission is controlled by plutonium isotopes (e.g., $^{239}$Pu 
+and $^{241}$Pu) and decreases with time. All decay constants show a slight 
+decrease toward the \gls{EOL} due to the reactor spectrum hardening. This 37\% 
+decline in the effective delayed neutron fraction and 3\% decline in the 
+effective precursor decay constant must be taken into account in the \gls{TAP} 
+design accident analysis and safety justification.
+
+
+
+\newpage
 \section{Concluding remarks}
 This chapter demonstrated SaltProc v1.0 capabilities for lifetime-long fuel 
-salt depletion simulations applied for the \gls{TAP} \gls{MSR}. 
+salt depletion simulations applied to the \gls{TAP} \gls{MSR}. 
 Section~\ref{sec:tap_design_sum} summarized the \gls{TAP} \gls{MSR} core and 
 fuel salt reprocessing system details that inform the SaltProc model.
 %I validated SaltProc v1.0 capabilities for lifetime-long (25 years) depletion 
@@ -1664,12 +1705,12 @@ relatively long depletion time step (6- or 12-day). However, the significant
 absolute difference in plutonium mass at the \gls{EOL} ($\approx10$ kg for a 
 6-day step) could be a safeguards issue, as this represents more than one 
 significant quantity (8 kg) over the reactor lifetime. Overall, to get 
-accurate plutonium isotopic content without rising proliferation issues, a 
+accurate plutonium isotopic content without raising proliferation issues, a 
 3-day depletion time step must be used.
 
 Section~\ref{sec:long-term-real} of this chapter demonstrated SaltProc v1.0 
-for a 25-year depletion simulation with a realistic, physics-based removal 
-efficiency of the noble gas. When identifying a reasonable mathematical model 
+for a 25-year depletion simulation with a realistic, physics-based noble gas 
+removal efficiency. When identifying a reasonable mathematical model 
 for realistic gas removal efficiency ($\epsilon$), the liquid phase mass 
 transfer coefficient ($K_L$) demonstrated a strong correlation with 
 $\epsilon$. Thus, SaltProc simulations using different $K_L$ in validity range 
@@ -1684,9 +1725,9 @@ the following chapters, the results of these realistic depletion simulations
 will be used for short-term transient simulations and safety parameter 
 analysis. 
 
-Finally, this chapter demonstrated safety and operational parameters evolution 
+Finally, this chapter demonstrated safety and operational parameter evolution 
 during 25 years of the \gls{TAP} \gls{MSR} operation. In general, the safety 
-of the reactor worsens with time due to actinides and \glspl{FP} accumulation 
+of the reactor worsens with time due to actinides and \glspl{FP} accumulating 
 in the fuel salt. Shifting neutron spectrum from epithermal to thermal by 
 periodically adding more moderator rods also has a negative influence on 
 crucial safety an operational characteristics. These observations must be 
