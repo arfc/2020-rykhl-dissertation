@@ -8,9 +8,10 @@ propagated throughout calculations from previous steps. Over time, these
 errors accumulate, and cumulative error in the predicted number density might 
 be significant for the lifetime-long fuel depletion calculations.
 
-Takeda \emph{et al.} first proposed a method to evaluate the uncertainty of 
-the number density in the \gls{MC} simulations applying the sensitivities of 
-the burnup matrix to number densities. Takeda and colleagues propagated 
+Takeda \emph{et al.} \cite{takeda_estimation_1999} first proposed a method to 
+evaluate the uncertainty of the number density in the \gls{MC} simulations 
+applying the sensitivities of the burnup matrix to number densities 
+\cite{takeda_estimation_1999}. Takeda and colleagues propagated 
 covariances of the cross sections and obtained the number density uncertainty 
 due to the cross section error of about 4\% for major heavy isotopes 
 ($^{235}$U, $^{239}$Pu, $^{241}$Pu) after 400-day \gls{MC} burnup calculations 
@@ -24,20 +25,20 @@ a substantial neutron population ($N$) increase can theoretically reduce the
 stochastic error to zero, but it is enormously expensive due to slow 
 convergence ($O(\sqrt{N})$) of the MC method.
 
-Garcia-Herranz \emph{et al.} used MCNP and in-house code ACAB to analyze the 
-uncertainties on the nuclide inventory based on the random sampling technique 
-for spherical fuel element (``pebble") with coated PuO$_2$ particles. The 
-random sampling or ``brute force" method is the multi-step 
-sequence of neutronics and depletion calculations that could be considered 
-as a single process with an input (nuclear data) and output (final number 
-densities). Authors performed a simultaneous random sampling of all the cross 
-sections\footnote{Authors assumed that the influence of uncertainties in decay 
-constants, fission yields, and other input parameters is negligible.} 1000 
-times and obtained the distributions of the isotopic inventory. The relative 
-error of the final number density for the 1200-day fuel cycle (800 
-MW$_{th}$d/kgHM burnup) due to the nuclear data uncertainty was reported in a 
-range from 7\% (for $^{244}$Pu) to 46\% (for $^{242}$Pu) and found to be 
-independent of neutron history size. 
+Garcia-Herranz \emph{et al.} \cite{garcia-herranz_propagation_2008} used MCNP 
+and in-house code ACAB to analyze the uncertainties on the nuclide inventory 
+based on the random sampling technique for spherical fuel element (``pebble") 
+with coated PuO$_2$ particles. The random sampling or ``brute force" method is 
+the multi-step sequence of neutronics and depletion calculations that could be 
+considered as a single process with an input (nuclear data) and output (final 
+number densities). The authors performed a simultaneous random sampling of all 
+the cross sections\footnote{Authors assumed that the influence of 
+uncertainties in decay constants, fission yields, and other input parameters 
+is negligible.} 1000 times and obtained the distributions of the isotopic 
+inventory. The relative error of the final number density for the 1200-day 
+fuel cycle (800 MW$_{th}$d/kgHM burnup) due to the nuclear data uncertainty 
+was reported in a range from 7\% (for $^{244}$Pu) to 46\% (for $^{242}$Pu) and 
+found to be independent of a number of neutron histories. 
 In contrast, relative error of the final number density due to stochastic 
 error for reasonably large neutron history was less than 0.15\% 
 \cite{garcia-herranz_propagation_2008}. Thus, random sampling Monte Carlo 
@@ -47,37 +48,34 @@ contribution to the total nuclear density error is negligibly small ($<1$\%)
 and reduces slowly if the number of neutron histories increases.
 
 In a similar vein, Radaideh \emph{et al.} used SCALE 6.2 with the Sampler 
-module
-\cite{rearden_scale_2018} to quantify the uncertainty in nuclide concentration 
-in a \gls{BWR} 10$\times$10 assembly due to uncertainties in neutron cross 
-sections, fission yields, and decay data \cite{radaideh_using_2019-1}.  
-Radaideh and colleagues used a 56-group covariance library in deterministic 
-SCALE/TRITON transport calculations and, hence, introduced no stochastic error 
-in the flux calculations. That work used 500 random samples in a 1174-day 
-TRITON 
-depletion calculation and reported number density uncertainty between 0.14\% 
-for $^{238}$U and 6.56\% for $^{238}$Pu \cite{radaideh_combining_2019-1}. This 
-approach benefits from the Sampler module available in the SCALE 6.2 package 
-and can be used by all SCALE users around the globe.
+module \cite{rearden_scale_2018} to quantify the uncertainty in nuclide 
+concentration in a \gls{BWR} 10$\times$10 assembly due to uncertainties in 
+neutron cross sections, fission yields, and decay data 
+\cite{radaideh_using_2019}. Radaideh and colleagues used a 56-group covariance 
+library in deterministic SCALE/TRITON transport calculations and, hence, 
+introduced no stochastic error in the flux calculations. That work used 500 
+random samples in a 1174-day TRITON depletion calculation and reported number 
+density uncertainty between 0.14\% for $^{238}$U and 6.56\% for $^{238}$Pu 
+\cite{radaideh_combining_2019}. This approach benefits from the Sampler module 
+available in the SCALE 6.2 package and can be used by all SCALE users around 
+the globe.
 
 All listed research efforts studied simplified, pin-cell, or single-assembly 
 models of conventional \glspl{LWR} and considered nuclear data uncertainty for 
 the following elements: hydrogen, oxygen, zirconium, uranium, and plutonium. 
 The nuclear data for these elements have relatively low uncertainty because 
-they were measured many times for a myriad of weapon and non-weapon 
-applications. 
+they were measured many times for myriad weapon and non-weapon applications. 
 However, the \gls{TAP} \gls{MSR} and many other \gls{MSR} designs rely on 
 other elements such as lithium and fluorine, which have relatively large cross 
 section covariances. The effect of $^6$Li, $^7$Li, and $^{19}$F nuclear data 
-uncertainty 
-on the final isotopic composition uncertainty in molten fuel salt was never 
-studied before. This chapter seeks to estimate the uncertainties on predicted 
-isotopic compositions for the \gls{TAP} \gls{MSR} during lifetime-long 
-depletion simulations.
+uncertainty on the final isotopic composition uncertainty in molten fuel salt 
+was never studied before. This chapter seeks to estimate the uncertainties on 
+predicted isotopic compositions for the \gls{TAP} \gls{MSR} during 
+lifetime-long depletion simulations.
 
 In this chapter, the uncertainty in the fuel salt composition is investigated 
 for two different sources of uncertainty separately. The uncertainty in the 
-nuclides inventory due to the transport problem statistical error is evaluated 
+nuclide inventory due to the transport problem statistical error is evaluated 
 by repeating multiple Serpent Monte Carlo code depletion simulations. By 
 changing the code's initial random number seed, the output produced by 1000 
 runs is used to investigate the statistical error in the multiplication factor 
@@ -97,14 +95,15 @@ The following assumptions and simplifications are made for both approaches:
 	material.
 	\item Uncertainties in input parameters (size, density, enrichment, power) 
 	are ignored.
-	\item Only one, startup moderator rod configuration (1388 rods inserted) 
+	\item Only one moderator rod configuration (startup, 1388 rods inserted) 
 	is considered.
-	\item The flux spectrum is not sensitive to changes in fuel composition 
-	due to performing \gls{FP} extraction and refueling. That is, I assumed 
-	that the fuel salt is irradiated in the \gls{TAP} core without performing  
-	online reprocessing at a constant power of 1.25 GW$_{th}$ up to the 
-	unusually high burnup of 100 MW$_{th}$d/kgU (30 EFPY).
+	\item Online fission product removal and fresh fuel injection are ignored.
 \end{enumerate}
+In a future, when SCALE 6.3b4 with online reprocessing capability 
+\cite{rykhlevskii_fuel_2019, betzler_modeling_2020} will be 
+available for the scientific community, the current work's approach might be 
+implemented to quantify uncertainty in the depletion calculations with 
+continuous online fuel salt treatment and processing.
 
 
 \section{Stochastic uncertainty in the isotopic inventory} 
@@ -128,41 +127,41 @@ the end of each depletion step but also to estimate the stochastic error in
 the vector due to the statistical nature of Monte Carlo neutron transport 
 calculations.
 
-Monte Carlo methods use ``random sampling," which employs a pseudo-random 
+Monte Carlo methods use random sampling, which employs a pseudo-random 
 number generator for sampling probabilities of neutrons from their ``birth" 
 until they are either absorbed or escaped \cite{brown_fundamentals_2005}. Each 
 neutron history is tallied, and when a sufficient number of histories are 
 accumulated, statistical metrics (e.g., mean value, standard deviation) of the 
-target parameters are calculated. The \gls{MC} code repeats this process for a
-user-defined number of cycles. The first few cycles have poor statistics 
-because the \gls{MC} code accumulated insufficient neutron historical data. 
-The first few cycles are usually marked ``inactive" and used for source 
-convergence only. Therefore, the user must define the number of inactive and 
-active cycles to balance the need to assure source convergence and 
-statistical accuracy with computational costs.
+target parameters are calculated. The Monte Carlo method repeats this process 
+for a user-defined number of cycles. The first few cycles have poor statistics 
+due to insufficient neutron historical data. 
+Accordingly, the first few cycles are usually marked ``inactive" and used for 
+source convergence only. Therefore, the user must define the number of 
+inactive and active cycles to balance the need to assure source convergence 
+and statistical accuracy with computational costs.
 
-Serpent Monte Carlo code calculates the relative statistical error of each 
-output parameter of the transport problem. 
+The Serpent Monte Carlo transport software calculates the relative statistical 
+error of each output parameter of the transport problem. 
 During each neutron source cycle, Serpent calculates the sum of the 
 collisions, fissions, and other events in that cycle. After completion of all 
-active cycles, the code computes the statistical mean and associated standard 
+active cycles, Serpent computes the statistical mean and associated standard 
 deviation based on cycle-specific data. Notably, Serpent estimates the 
-uncertainty assuming that all events are independent. Thus, the Serpent Monte 
-Carlo code does not contain an algorithm that propagates the uncertainties 
-from one depletion step to the next. Instead, the estimate uses only data from 
-each separate depletion step by itself. Jaakko Lapp\"{a}nen stated, ``Error 
-propagation in Monte Carlo burnup calculation is a major research topic at the 
-moment..." and mentioned unprecedented complexity of the problem 
-\cite{leppanen_statistical_2012}.
+uncertainty assuming that all events are independent, thus, neglecting to 
+propagate the uncertainties from one depletion step to the next. Instead, the 
+estimate uses only data from each separate depletion step by itself. Jaakko 
+Lapp\"{a}nen stated, ``Error propagation in Monte Carlo burnup calculation is 
+a major research topic at the moment..." and mentioned unprecedented 
+complexity of the problem \cite{leppanen_statistical_2012}.
 
 In order to estimate the variance in the isotopic composition $[N]$ due to the
-statistical nature of \gls{MC}, a bash scripting system was developed to run a 
-depletion calculation with $S$ burnup steps $M$ times, \emph{changing nothing 
-except the seed value for the random number sequence in the Serpent input} 
-(Figure~\ref{fig:uq-brute-force}). Once again, the nuclear data uncertainty is 
-not propagated in this section. The multiple ``replications" of each 
-depletion sequence produce a set of $M$ isotopic concentrations at the end of 
-each depletion interval \cite{tohjoh_effect_2006-2, wyant_numerical_2012}. 
+statistical nature of Monte Carlo method, a bash scripting system was 
+developed to run a depletion calculation with $S$ burnup steps $M$ times, 
+\emph{changing nothing except the seed value for the random number sequence in 
+the Serpent input} (Figure~\ref{fig:uq-brute-force}). Once again, the nuclear 
+data uncertainty is not propagated in this section. The multiple 
+``replications" of each depletion sequence produce a set of $M$ isotopic 
+concentrations at the end of each depletion interval \cite{tohjoh_effect_2006, 
+wyant_numerical_2012}. 
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{uq/brute_force_method.png}
@@ -184,10 +183,12 @@ follows
 \sigma_{N_i} &= \sqrt{\frac{1}{M-1} \sum_{j=1}^{M} 
 (N^{(j)}_i-\overline{N_j})^2}
 \intertext{where}
-\overline{N_i} &= \mbox{mean concentration of isotope $i$ $[-]$} \nonumber \\
+\overline{N_i} &= \mbox{mean concentration of isotope $i$ $[\frac{1}{cm^3}]$} 
+\nonumber \\
 M &= \mbox{number of depletion runs with a unique seed $[-]$} 
 \nonumber \\
-N^{(j)}_i &= \mbox{concentration of isotope $i$ in the sample $j$ $[-]$.} 
+N^{(j)}_i &= \mbox{concentration of isotope $i$ in the sample $j$ 
+$[\frac{1}{cm^3}]$.} 
 \nonumber
 \end{align}
 
@@ -199,14 +200,14 @@ necessary to find the number of runs (samples) required for the convergence of
 $k_{eff}$.
 
 The \gls{TAP} full-core model in Serpent described earlier (see  
-Section~\ref{sec:tap-model}) is used for the uncertainty quantification study 
+Section~\ref{sec:tap_model}) is used for the uncertainty quantification study 
 herein. The model benefits from 1/8 symmetry, which allowed me to 
 significantly reduce the computational burden without losing accuracy
 (Figure~\ref{fig:tap-serpent-plan}). The number of neutron histories was 
 selected to compromise between accuracy and computational costs. Running 
-15,000 neutrons with 500 active cycles and 200 inactive or “skipped” cycles 
-used for source convergence gave a reasonable balance between small 
-statistical uncertainty and computation time. Thirty depletion time steps were 
+15,000 neutrons with 500 active cycles and 200 inactive cycles 
+(used for source convergence) gave a reasonable balance between statistical 
+certainty and computation time. Thirty depletion time steps were 
 selected for a 30-year depletion simulation (i.e., the isotopic composition is 
 stored, and neutron flux is recalculated at the end of each year). 
 Additionally, I selected the Chebyshev Rational Approximation Method (CRAM) 
@@ -219,16 +220,17 @@ used for all simulations in the current chapter
 \subsection{Results and analysis}
 A total of 1000 samples is propagated via the Serpent depletion calculation,  
 and the histograms of eigenvalue samples at the \gls{BOL} and \gls{EOL} (30 
-\gls{EFPY}) are demonstrated in Figure~\ref{fig:uq-serp-keff-hist}. The 
-results show that the effective multiplication factor ($k_{eff}$) mean value 
-and the standard deviation due to the stochastic nature of \gls{MC}
-both decrease gradually during 30 years of the \gls{TAP} reactor operation. 
+\gls{EFPY}) are shown in Figure~\ref{fig:uq-serp-keff-hist}. The 
+results show that the mean effective multiplication factor ($k_{eff}$) 
+and its standard deviation both decrease gradually during 30 years of 
+\gls{TAP} reactor operation due to the stochastic nature of \gls{MC}. 
 An uncertainty in $k_{eff}$ of approximately $35$ $pcm$ is observed at the 
-\gls{BOL}, while it slipped to about $29$ $pcm$ at the \gls{EOL}. To obtain 
-a set of $M=1000$ vectors of isotopic concentrations in a depletion 
-simulation with $S=30$ depletion steps, $M\times S=30,\!000$ Serpent runs were 
-performed on Idaho National Laboratory's Falcon cluster. The computational 
-time for such an analysis was approximately 1,200 node-hours (4.9 core-years).
+\gls{BOL}, while it slipped to about $29$ $pcm$ at the \gls{EOL}. A 1000 
+independent Serpent runs were performed on Idaho National Laboratory's Falcon 
+supercomputer to obtain a set of M=1000 vectors of isotopic concentrations in 
+a depletion simulation with S=30 depletion time intervals each. The 
+computational time for such an analysis was approximately 1,200 node-hours 
+(4.9 core-years).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{uq/endf_serpent_keff_hist_for_tap.png}
@@ -243,7 +245,8 @@ Figure~\ref{fig:uq-serpent-keff-evolution} shows the observed and reported by
 Serpent uncertainties in $k_{eff}$ for the \gls{TAP} core during 30 years of 
 operation. Notably, Serpent-calculated uncertainty in the multiplication 
 factor is slightly lower than observed uncertainty. This discrepancy is due to 
-statistical noise in the output data and agreed with results in the literature 
+statistical noise in the pseudo-randomly generated initial seed and agreed 
+with results in the literature 
 \cite{wyant_numerical_2012}. Across all 30 depletion steps, the mean observed 
 and reported uncertainty in the $k_{eff}$ is $30$ and $25$ $pcm$, 
 respectively. A better match in these values could be obtained with more 
@@ -290,7 +293,7 @@ relative uncertainties of fissile $^{239}$Pu and $^{241}$Pu are 0.01-0.07\%
 and 0.04-0.18\%, respectively. Mass uncertainties for the 
 strongest neutron poison, $^{135}$Xe, and its primary direct precursor, 
 $^{135}$I, are 0.0175-0.0275\% and 0.01-0.0175\%, respectively. Overall, 
-stochastic error in depletion calculation is larger for isotopes with small 
+stochastic error in depletion calculations is larger for isotopes with small 
 concentrations in the core due to round-off error. 
 Table~\ref{tab:uq-serpent-mean-std-rsd} shows that the stochastic error in the 
 isotopic inventories even for an unusually high burnup of 100 MW$_{th}$d/kgU 
@@ -324,31 +327,31 @@ isotopic inventories even for an unusually high burnup of 100 MW$_{th}$d/kgU
 	Carlo calculations is considered.}
 	\begin{tabularx}{0.7\textwidth}{L R R R R}
 		\hline
-		\textbf{Isotope}  & \textbf{Mean [kg]} & \textbf{STD [kg]} & 
-		\textbf{RSD [\%]}\\ \hline
-		$^{234}$U  & 25.8  & 0.0075 & .0290\% \\
-		$^{235}$U  & 789.9 & 0.1365 & .0173\% \\
-		$^{236}$U  & 1149.5& 0.1439 & .0125\% \\
-		$^{238}$U  & 112,084.8 & 1.9835 & .0018\% \\
-		$^{238}$Pu & 405.5 & 0.0884 & .0218\% \\
-		$^{239}$Pu & 5554.3& 1.5860 & .0286\% \\
-		$^{240}$Pu & 1230.2& 0.5510 & .0448\% \\
-		$^{241}$Pu & 763.1 & 0.2859 & .0375\% \\
-		$^{242}$Pu & 139.0 & 0.0930  & .0669\% \\
-		$^{241}$Am & 218.3 & 0.0566  & .0259\% \\
-		$^{135}$Xe & 0.03  & $<0.0001$& .0179\% \\
-		$^{135}$I  & 0.02  & $<0.0001$& .0110\% \\ \hline
+		\textbf{Isotope}  & \textbf{Mean ($\mu$) [kg]} & \textbf{STD 
+		($\sigma$) [kg]} & \textbf{RSD ($\sigma/\mu$) [\%]}\\ \hline
+		$^{234}$U  & 25.8  & 0.0075 & 0.0290\% \\
+		$^{235}$U  & 789.9 & 0.1365 & 0.0173\% \\
+		$^{236}$U  & 1149.5& 0.1439 & 0.0125\% \\
+		$^{238}$U  & 112,084.8 & 1.9835 & 0.0018\% \\
+		$^{238}$Pu & 405.5 & 0.0884 & 0.0218\% \\
+		$^{239}$Pu & 5554.3& 1.5860 & 0.0286\% \\
+		$^{240}$Pu & 1230.2& 0.5510 & 0.0448\% \\
+		$^{241}$Pu & 763.1 & 0.2859 & 0.0375\% \\
+		$^{242}$Pu & 139.0 & 0.0930  & 0.0669\% \\
+		$^{241}$Am & 218.3 & 0.0566  & 0.0259\% \\
+		$^{135}$Xe & 0.03  & $<0.0001$& 0.0179\% \\
+		$^{135}$I  & 0.02  & $<0.0001$& 0.0110\% \\ \hline
 	\end{tabularx}
 	\label{tab:uq-serpent-mean-std-rsd}
 	\vspace{-0.9em}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-All results presented in Figures~\ref{fig:uq-serpent-u}, 
-\ref{fig:uq-serpent-pu}, \ref{fig:uq-serpent-xe-i} and  
+All results presented in Figures~\ref{fig:uq-serpent-u},  
+\ref{fig:uq-serpent-pu}, \ref{fig:uq-serpent-xe-i}, and  
 Table~\ref{tab:uq-serpent-mean-std-rsd} are based on 1000 samples (e.g., 1000 
-independent Serpent depletion simulations with unique seed values for the 
-random number sequence). Figure~\ref{fig:uq-serpent-convergence} shows the 
+independent Serpent depletion simulations with unique random seeds). 
+Figure~\ref{fig:uq-serpent-convergence} shows the 
 convergence of $k_{eff}$ and $^{235}$U mass uncertainty with the number of 
 samples. Notably, 300 samples were enough for $\sigma_{k_{eff}}$ convergence. 
 The $^{235}$U mass uncertainty at the \gls{EOL} decreases steadily 
@@ -356,13 +359,13 @@ with the number of samples, but even 400 samples are sufficient to obtain
 reasonable uncertainty ($<0.02$\%). 
 Finally, it is possible to reduce the stochastic uncertainty in the isotopic 
 inventory to almost zero by substantially increasing the neutron population 
-(number of neutron histories and active cycles); however, it is extremely 
+(number of neutron histories and active cycles). However, this is extremely 
 inefficient because Monte Carlo converges sublinearly ($O(\sqrt{N})$).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{uq/serpent_convergance_for_tap.png}
 	\caption{Convergence of $k_{eff}$ and $^{235}$U mass uncertainties due to 
-	the statistical error in Monte Carlo as a function of samples number.}
+	the statistical error in Monte Carlo as a function of number of samples.}
 	\label{fig:uq-serpent-convergence}
 \end{figure}
 \FloatBarrier
@@ -371,15 +374,14 @@ inefficient because Monte Carlo converges sublinearly ($O(\sqrt{N})$).
 \section{Nuclear data-related uncertainty in the isotopic inventory}
 This section focuses on evaluating uncertainty in a depletion calculation 
 caused by uncertainties in nuclear data, namely, cross sections, fission 
-yields, and decay constants. I used deterministic $S_N$ code SCALE/TRITON 
-\cite{rearden_scale_2018} to avoid statistical errors, which are inevitable 
-when using any Monte Carlo transport software (e.g., Serpent), to estimate 
-only nuclear data-related uncertainty.
+yields, and decay constants. I used a deterministic $S_N$ transport solver, 
+SCALE/TRITON \cite{rearden_scale_2018}, to avoid statistical errors and 
+isolate nuclear data-related uncertainty.
 
 \subsection{Methodology of uncertainty propagation by a random sampling}
-The nuclear data uncertainties are propagated through fuel depletion 
-calculation using a random sampling method\footnote{Sometimes researchers also 
-called it ``Monte Carlo sampling," \cite{radaideh_using_2019-1} ``brute 
+Nuclear data uncertainties are propagated through fuel depletion calculations 
+using a random sampling method\footnote{Sometimes researchers also 
+called it ``Monte Carlo sampling," \cite{radaideh_using_2019} ``brute 
 force method,"\cite{garcia-herranz_propagation_2008} or ``Fast Total Monte 
 Carlo" \cite{rochman_nuclear_2014}. However, in this chapter, this method is 
 called ``random  sampling."}. The multi-step sequence of deterministic 
@@ -390,41 +392,41 @@ large number of times, each time using a different nuclear data file (sample).
 This collection of random nuclear data files is produced by the SCALE Sampler 
 module from a multivariate normal distribution using covariance matrices in 
 the 56-group covariance library \cite{rearden_scale_2018, 
-radaideh_novel_2019-1}. This approach is summarized in the flowchart 
+radaideh_novel_2019}. This approach is summarized in the flowchart 
 (Figure~\ref{fig:uq-sampler}).
 
-After generating the collection of random nuclear data files, the depletion 
-calculations are performed for each sample with SCALE. This work uses NEWT, a
+After generating the collection of random nuclear data files, SCALE performs 
+depletion calculations for each sample. This work uses NEWT, a
 2D-deterministic transport code, coupled with ORIGEN. ORIGEN solves a set of 
 the Bateman equations using NEWT-calculated neutron fluxes. The unit cell 
 model is used to achieve reasonable computing costs while providing an 
 accurate neutron spectrum for depletion calculations 
 (Figure~\ref{fig:uq-tap-pincell}) \cite{betzler_molten_2017, 
 rykhlevskii_fuel_2019, betzler_modeling_2020}. For this unit cell model, an 
-8$\times$8 mesh with the reflective boundary condition is used. The 56-group 
+8$\times$8 mesh with reflective boundary conditions is used. The 56-group 
 ENDF/B-VII.1 nuclear data library along with the 56-group covariance library 
-are 
-used in depletion calculations. The full-core 3-D depletion 
-calculation can be performed if NEWT is replaced with KENO-VI, which 
-is a three-dimensional Monte Carlo neutron transport code, that might be 
-coupled with ORIGEN for performing depletion calculations. However, two 
-reasons make it impractical because: 
-(1) it requires enormous computing cost, (2) it introduces stochastic error 
-due to the statistical nature of the \gls{MC} method, and 
-(3) it cannot be applied to continuous energy Monte Carlo calculations 
-\cite{rearden_scale_2018}.
+are used in these depletion calculations. 
+%The full-core 3-D depletion 
+%calculation can be performed if NEWT is replaced with KENO-VI, which 
+%is a three-dimensional Monte Carlo neutron transport code, that might be 
+%coupled with ORIGEN for performing depletion calculations. However, two 
+%reasons make it impractical because: 
+%(1) it requires enormous computing cost, (2) it introduces stochastic error 
+%due to the statistical nature of the \gls{MC} method, and 
+%(3) it cannot be applied to continuous energy Monte Carlo calculations 
+%\cite{rearden_scale_2018}.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{uq/majdi_scale_scheme.png}
-	\caption{Flowchart of the depletion uncertainty quantification 
+	\caption{Flowchart of depletion uncertainty quantification 
 		using SCALE Sampler (figure courtesy of Majdi I. Radaideh 
-		\cite{radaideh_novel_2019-1}).}
+		\cite{radaideh_novel_2019}).}
 	\label{fig:uq-sampler}
 \end{figure}
 	\vspace{-7mm}
 \begin{figure}[hbp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.36\textwidth]{uq/tap_pin_for_scale.png}
+	\includegraphics[width=0.41\textwidth]{uq/tap_pin_for_scale.png}
 	\caption{Unit cell model representation for the \gls{TAP} \gls{MSR} in 
 	SCALE.}
 	\label{fig:uq-tap-pincell}
@@ -440,7 +442,7 @@ library.
 
 
 \subsection{Results and analysis}
-Figure~\ref{fig:uq-scale-kinf-hist} shows the histograms of samples for the 
+Figure~\ref{fig:uq-scale-kinf-hist} shows histograms of the 
 infinite multiplication factor ($k_{\infty}$) at the \gls{BOL} and \gls{EOL} 
 (30 \gls{EFPY}) for 800 total random samples. Similar to stochastic 
 uncertainty, the results show that the $k_{\infty}$ standard deviation due to 
@@ -460,7 +462,7 @@ computational power (about 10,000 times more).
 	\centering
 	\includegraphics[width=\textwidth]{uq/endf_scale_keff_hist_for_tap.png}
 		\vspace{-8mm}
-	\caption{Histograms of $k_{\infty}$ samples at the \gls{BOL} (left) and 
+	\caption{Histograms of $k_{\infty}$ at the \gls{BOL} (left) and 
 		\gls{EOL} (right) obtained with SCALE Sampler by stochastically 
 		sampling the nuclear data (cross sections, fission yields, decay 
 		constants).}
@@ -500,21 +502,19 @@ from 0.78\% at the \gls{BOL} to 0.46\% at the \gls{EOL}. This error is
 slightly larger than results in the literature for conventional \glspl{LWR} 
 (e.g., 0.44\% \cite{williams_statistical_2013} or 0.55\% 
 \cite{campolina_uncertainty_2018} for a \gls{PWR}). This discrepancy between 
-$k_{\infty}$ uncertainty for the \gls{TAP} \gls{MSR} and \gls{PWR} is likely 
-to come from $^{19}$F and $^{7}$Li nuclear data, which have significant 
+$k_{\infty}$ uncertainty for the \gls{TAP} \gls{MSR} and \gls{PWR} likely 
+originates with the $^{19}$F and $^{7}$Li nuclear data, which have significant 
 covariances across reactions.
 
-Figure~\ref{fig:uq-scale-u-pu} shows the standard deviation percentages in 
-uranium and plutonium isotopic inventory as a function of time. The 
-uncertainty in 
+Figure~\ref{fig:uq-scale-u-pu} shows the standard deviations in uranium and 
+plutonium isotopic inventory as a function of time. The uncertainty in 
 $^{238}$U is minimal ($<0.1$\%) and almost constant with burnup because 
 $^{238}$U mass does not change significantly from its initial inventory. The 
 $^{236}$U uncertainty also is nearly constant during 30 years of operation and 
 has a value of $\approx3.8$\%. However, $^{235}$U mass uncertainty increases 
 steadily with burnup, due to its inventory decrease during 30 years of 
-operation. 
-The actual mass uncertainty for $^{235}$U demonstrated growth from 5 kg at 1 
-year after startup to approximately 30 kg at the \gls{EOL}.
+operation. The absolute mass uncertainty for $^{235}$U demonstrated growth 
+from 5 kg at 1 year after startup to approximately 30 kg at the \gls{EOL}.
 
 The uncertainty of major plutonium isotopes (e.g., $^{239}$Pu, $^{240}$Pu, 
 $^{241}$Pu) is below 2\% over 30 years of burnup 
@@ -565,7 +565,7 @@ All results presented in this section are based on 800 random samples obtained
 using the Sampler tool in SCALE. Figure~\ref{fig:uq-scale-convergence} 
 shows the convergence of $k_{\infty}$ and $^{235}$U mass uncertainty with 
 number of random samples. Notably, after 500 samples the $k_{\infty}$ and 
-$^{235}$U mass uncertainties are stabilized. Overall, 500 random samples is 
+$^{235}$U mass uncertainties stabilize. Overall, 500 random samples is 
 enough to accurately estimate uncertainty in the isotopic inventory due to 
 uncertainty in nuclear data. 
 
@@ -615,7 +615,7 @@ primary sources of uncertainty in the depletion calculations: stochastic
 uncertainty in the neutron flux distribution and uncertainty in the nuclear 
 data. Stochastic error in the isotopic composition was obtained using the 
 Serpent Continuous Energy Monte Carlo code by running the same depletion 
-sequence 1000 times, each time with a new unique initial seed number. The 
+sequence 1000 times, each time with a new initial random seed. The 
 Sampler module in SCALE 6.2 with a 56-group covariance library was used to 
 obtain nuclear data-related uncertainty in the isotopic composition of the 
 fuel salt. 
@@ -624,7 +624,7 @@ constants) are propagated throughout all steps of the transport/depletion
 sequence, including self-shielding, space-energy flux calculation, and isotope 
 transmutation. 
 
-The errors in isotopic masses due to the statistical errors are below 0.067\% 
+The stochastic errors in isotopic masses are below 0.067\% 
 for 7.5 million neutron histories (total neutron flux relative stochastic 
 error $<0.01$\%). Therefore, it is unnecessary to consider the accumulation of 
 the stochastic error for the fuel depletion in the \gls{TAP} reactor 
@@ -642,7 +642,7 @@ $^{234}$U,$^{235}$U, $^{236}$U, $^{238}$Pu, $^{242}$Pu, and $^{241}$Am.
 Finally, the mass uncertainty for the selected \glspl{FP} ($^{135}$Xe and 
 $^{135}$I), which are the subject of interest of the current work, is below 
 0.6\%. Overall, the principal source of uncertainty in depletion calculations 
-is related to the nuclear data covariances.
+arises from to the nuclear data covariances.
 
 Finally, this chapter demonstrated that the standard deviation in the 
 multiplication factor due to the nuclear data uncertainty ranges from 804 to 
@@ -651,4 +651,4 @@ accurately capture the isotopic inventory evolution for the \gls{TAP} concept
 using SaltProc v1.0 with Serpent Monte Carlo code, it is unnecessary to 
 waste a vast computational power to simulate $10^7-10^9$ neutron histories per 
 each depletion step because the impact of the stochastic errors in 
-neutron fluxes is negligible compared with the nuclear data-related errors .
+neutron fluxes is negligible compared with the nuclear data-related errors.
