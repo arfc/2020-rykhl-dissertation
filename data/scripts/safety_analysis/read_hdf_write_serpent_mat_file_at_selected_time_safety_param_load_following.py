@@ -5,55 +5,19 @@ import os
 
 
 # db_file = '../db/base_case/base_case_void_011867_3d_9600d.h5'
+# db_file = os.path.join(os.getcwd(),
+#                        '../../db/base_case/base_case_void_011867_3d_9600d.h5')
 db_file = os.path.join(os.getcwd(),
-                       '../../db/base_case/base_case_void_011867_3d_9600d.h5')
-# new_mat_file = '../../load-following/large_eps/eol/eoc/mat_kl_100_eol_eoc_-3d.ini'
-new_mat_file = '../../load-following/large_eps/bol/moc/mat_kl_100_bol_moc.ini'
+    '../../load-following/large_eps/eol/eoc/lf_kl_100_eol_eoc_after_repro.h5')
+new_mat_file = '../../safety_analysis/tap/load-following/eol/21hr/mat_lf_eol_21hr.ini'
 
-# new_mat_file = '../../safety_analysis/tap/900rods/boc/mat_kl_100_eol_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/406rods2/boc/mat_kl_100_406_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/427rods3/boc/mat_kl_100_427_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/505rods4/boc/mat_kl_100_505_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/576rods5/boc/mat_kl_100_576_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/633rods6/boc/mat_kl_100_633_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/681rods7/boc/mat_kl_100_681_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/840rods8/boc/mat_kl_100_840_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/880rods9/boc/mat_kl_100_880_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/988rods11/boc/mat_kl_100_988_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/1126rods12/boc/mat_kl_100_1126_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/1668rods/eoc/mat_kl_100_eol_eoc.ini'
-# new_mat_file = '../../safety_analysis/tap/1498rods/boc/mat_kl_100_1498_boc.ini'
-# new_mat_file = '../../safety_analysis/tap/1498rods/moc/mat_kl_100_1498_moc.ini'
+# time_after_startup = 0.041666701436042786   # t=0, start, right at shutdown
+# time_after_startup = 0.08333340287208557   # t=1hr after shutdown
+# time_after_startup = 0.16666680574417114   # t=3hr after shutdown
+# time_after_startup = 0.5000003576278687   # t=11hr after shutdown
+time_after_startup = 0.875000536441803    # t=21hr after shutdown, E of trans
 
-# time_after_startup = 315.0   # 315 days after startup, geo #1, 3d before switch
-time_after_startup = 171.0   # geo #1, MOC
-# time_after_startup = 324.0   # geo #1, right before switch (3d)
-# time_after_startup = 333.0   # geo #2   , 3d after switch
-# time_after_startup = 681.0   # geo #3, 3d after switch
-# time_after_startup = 1131.0   # geo #4, 3d after switch
-# time_after_startup = 1671.0   # geo #5, 3d after switch
-# time_after_startup = 2334.0   # geo #6, 3d after switch
-# time_after_startup = 3054.0   # geo #7, 3d after switch
-# time_after_startup = 3852.0   # geo #8, 840.ini, BOC, 3d after switch
-# time_after_startup = 4221.0   # geo #8, 840.ini, EOC
-# time_after_startup = 4623.0   # geo #8, 840.ini, EOC
-# time_after_startup = 4629.0   # geo #9, 3d after switch
-# time_after_startup = 5301.0   # geo #10, 900.ini, BOC, 3 d after switch
-# time_after_startup = 5925.0   # geo #11, 988.ini, BOC, 3 d after switch
-# time_after_startup = 6639.0   # geo #12, 998.ini, BOC, 3 d after switch
-# time_after_startup = 7191.0   # geo #13, 1388.ini, BOC, 3 d after switch
-# time_after_startup = 7191.0   # geo #12, 1126.ini, BOC, 3 d after switch
-# time_after_startup = 7689.0   # geo #14, 1498.ini, BOC, 3 d after switch
-# time_after_startup = 7884.0   # geo #14, 1498.ini, MOC, 198 d after switch
-# time_after_startup = 8076.0   # geo #14, 1498.ini, EOC, 3 d before switch
-# time_after_startup = 8088.0    # geo #15, 9d after switch
-# time_after_startup = 8169.0   # geo #15, MOC
-# time_after_startup = 9450.0   # geo #15, right before shutdown (3d before)
-
-
-include_decay_isos = True
-# For Temperature coefficient and CRW calculations do not include decay isotopes
-# include_decay_isos = False
+include_decay_isos = False
 
 xs_path = '/home/andrei2/serpent/xsdata/jeff312/sss_jeff312.xsdata'
 # xs_path = '/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.xsdata'
@@ -99,6 +63,7 @@ def read_all_iso_at_step(db_file, time_after_startup):
     db = tb.open_file(db_file, mode='r')
     sim_param = db.root.simulation_parameters
     day_eds = [x['cumulative_time_at_eds'] for x in sim_param.iterrows()]
+    print(day_eds)
     dts = day_eds.index(time_after_startup)
 
     fuel_before = db.root.materials.fuel.before_reproc.comp
@@ -193,7 +158,7 @@ mass_before, mass_after, iso_map, den, vol = \
     read_all_iso_at_step(db_file, time_after_startup)
 
 lib_isos = get_library_isotopes(xs_path)
-filter_out_and_store(mass_after,  # mass_before
+filter_out_and_store(mass_before,  # mass_after
                      lib_isos,
                      new_mat_file,
                      time_after_startup,
