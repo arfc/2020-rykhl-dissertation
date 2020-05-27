@@ -95,7 +95,7 @@ depletion step. The depletion calculation in load following regime capture the
 effects of $^{135}$Xe poisoning and evaluate the benefit of using an online 
 gas removal system in the \gls{TAP} concept.
 
-\subsection{Power load curve selection approach}
+\subsection{Power load curve selection approach}\label{sec:worst-load}
 The load and generation must be continuously balanced almost instantly  in an 
 electric power system. This is a physical requirement that independent of the 
 market structure. Regulation and load following (which provided by intra-hour 
@@ -158,7 +158,7 @@ thorough investigation of many researchers in several countries. However,
 poisoning effect}. Other physical effects are not treated here.
 
 Performing depletion calculation with SaltProc v1.0 to mimic load-following 
-behavior shown in Figure~\ref{fig:power-curve-ny} would require a very fine 
+maneuvering shown in Figure~\ref{fig:power-curve-ny} would require a very fine 
 time step (e.g., 15-minute step). To simulate power change with the desired 
 rump rate (0.1 \gls{HFP}/min), less than a 1-minute depletion time step is 
 needed. 
@@ -186,11 +186,11 @@ the reactor power change and to investigate load-following capabilities of the
 \gls{TAP} reactor with a focus on the xenon poisoning, I selected following 
 worst-case power load profile:
 \begin{enumerate}[label=(\alph*), noitemsep, topsep=0pt]
-	\item operate on 100\% of \gls{HFP} long enough to reach $^{135}$Xe 
-	equilibrium;
+	\item operate on 100\% of \gls{HFP} long enough to reach 
+	$^{135}$I/$^{135}$Xe equilibrium;
 	\item instantaneous power drop from 100\% to 0\%;
 	\item shutdown for $t^{max}_X$ [hours] to reach the $^{135}$Xe 
-	concentration extremum.
+	concentration extremum;
 	\item restart the reactor instantly from 0\% to 100\% power level and 
 	operate on 100\% for a few hours.
 \end{enumerate}
@@ -291,7 +291,7 @@ equal $t^{max}_X$).
 
 Figure~\ref{fig:lf-tap-keff-eol-eoc-no-15} shows that the effective 
 multiplication factor dropped by 70 $pcm$ during first 2.75 hours after 
-shutdown as predicted by Equation~\ref{eq:time-xe-max}. After power ramps down 
+shutdown as predicted by Equation~\ref{eq:time-xe-max}. After power ramps up 
 from 0\% to 100\%, $k_{eff}$ returned to its initial value (1.00151) in 75 
 minutes. The imbalance between $^{135}$I production and $^{135}$Xe burnout is 
 the main reason for this positive reactivity boost. Notably, maximum negative 
@@ -317,11 +317,11 @@ to restart it until $t^{max}_X=2.76h$ after shutting down.
 
 The analysis of the fuel composition evolution provides clearer information 
 about the $^{135}$Xe/$^{135}$I equilibrium and the core state. 
-Figure~\ref{fig:lf-tap-xe-i-eol-eoc-no-15} shows the number density of 
-isotopes influential to the \gls{TAP} core neutronics. The 
-$^{135}$I/$^{135}$Xe number density ratio after reaching equilibrium is equal 
-to 1.0. After shutdown, $^{135}$I decays to $^{135}$Xe that is not burned up. 
-The $^{135}$I decay caused xenon concentration 
+Figure~\ref{fig:lf-tap-xe-i-eol-eoc-no-15} shows changes in the number density 
+of isotopes influential to the \gls{TAP} core neutronics throughout the 
+transient. The $^{135}$I/$^{135}$Xe number density ratio after reaching 
+equilibrium is equal to 1.0. After shutdown, $^{135}$I decays to $^{135}$Xe 
+that is not burned up. The $^{135}$I decay caused xenon concentration 
 peak by 4\% from equilibrium after 2.75 hours due to a shorter $^{135}$I 
 half-life ($\tau_{1/2}(^{135}I)=6.6h$ vs. $\tau_{1/2}(^{135}Xe)=9.17h$). Thus, 
 during the first 2.75 hours, $^{135}$Xe gain from $^{135}$I decay slightly 
@@ -402,7 +402,8 @@ different moments in time (e.g., \gls{BOL}, MOL \gls{EOL}) with fully
 operational gas removal system ($\epsilon_{Xe}=0.915$). 
 
 Figure~\ref{fig:lf-tap-rho-kl100-eol-eoc} shows reactivity change during the
-\gls{TAP} reactor shutdown for 11 hours and following power ramp up to 100\%. 
+\gls{TAP} reactor shutdown for 11 hours and following power ramp up to 100\% 
+when the gas removal system is fully operational. 
 In contrast with the inactive gas removal system case, reactivity drops 
 by 100 $pcm$ during the first hour after shutdown. The gas removal 
 system keeps $^{135}$Xe concentration very low by continuously extracting 
@@ -493,7 +494,7 @@ for both reactors. The \gls{TAP} reactor spectrum at the \gls{BOL} (SVF=0.903)
 is much harder than for the \gls{PWR} due to a lack of moderation in the 
 \gls{TAP} core and its type (ZrH$_{1.66}$ instead of light water). The harder 
 neutron spectrum leads to weaker $^{135}$Xe transmutation because the capture 
-cross section is declined rapidly with energy (see 
+cross section declines rapidly with energy (see 
 Figure~\ref{fig:tap-pwr-spectrum}, lower plot, solid red line, energy range 
 from $10^{-7}$ to $10^{-4}$ MeV). As a result, the $^{135}$I/$^{135}$Xe number 
 density ratio is 0.78 for the \gls{TAP} \gls{MSR} at the \gls{BOL}, which is 
@@ -592,25 +593,25 @@ concentration peak after shutdown and worsens xenon poisoning effect.
 
 %\section{Prototype design for the xenon removal system}
 
-\section{Safety and operational parameters evolution during load following}
+\section{Safety and operational parameters evolution during load 
+following}\label{ch5:saf_param}
 To analyze the impact of the load-following transient on the \gls{TAP} concept 
 safety, I calculated safety and operational parameters at various moments 
 during postulated earlier worst-case power change transient (0\% power level 
 for 11 hours, instantaneous power boost to 100\%, and then 10 hours on 100\% 
 power level) using methodology from Section~\ref{sec:safety-param}. The 
 combination of fuel and moderator temperature feedback coefficients must 
-remain negative during considered short-term transient, and the reactivity 
-worth of control rods must be sufficient to shut down the reactor throughout 
-the transient. Ideally, the reactor is more controllable if major 
-safety and operational parameters remain stable and unaffected by the 
-substantial power level change.
+remain negative and the reactivity worth of control rods must be sufficient to 
+shut down the reactor throughout the transient. Ideally, the reactor is more 
+controllable if major safety and operational parameters remain stable and 
+unaffected by the substantial power level change.
 
 \subsection{Temperature coefficient of reactivity}
 Figure~\ref{fig:lf-tap-tc-evo} shows the temperature feedback coefficient 
 evolution for the \gls{TAP} reactor during the power change transient. The 
-Fuel Temperature Coefficient ($\alpha_{T,F}$) increases slightly during the 
+Fuel Temperature Coefficient ($\alpha_{T,F}$) became less negative during the 
 first hour of the transient due to a slight spectrum hardening because the  
-$^{135}$Xe concentration peak strengthens the Doppler effect in the fuel salt. 
+$^{135}$Xe concentration peak changes the Doppler effect in the fuel salt. 
 After turning the power back on, all three temperature coefficients of 
 reactivity remains stable because the fuel salt composition remains almost 
 unchanged. Overall, the isothermal temperature coefficient, $\alpha_{T,ISO}$ 
@@ -620,7 +621,7 @@ $\sigma_{\alpha_{T,ISO}}\pm0.043$ $pcm/K$.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=\textwidth]{ch5/saf_par/tc_evo.png}
-	\caption{Temperature feedback coefficients evolution during postulated 
+	\caption{Temperature feedback coefficients during the postulated 
 		transient for the \gls{TAP} reactor, 10 days before the \gls{EOL} (all 
 		moderator rods inserted), the gas removal system operates with 
 		efficiency $\epsilon_{Xe}=0.915$. The uncertainty $\pm\sigma$ is 
