@@ -1,0 +1,61 @@
+
+2) 406 rods; 333d
+Smoozed TCs: FTC -0.266000 (0.059618); MTC -1.118000 (0.058757); ITC -1.452000 (0.059200) pcm/K
+
+Regression R-squred: FTC 0.773526; MTC 0.992659; ITC 0.980731
+Regression STD: FTC 0.000001; MTC: 0.000001; ITC: 0.000001
+
+Control rods worth 3975.100000 +/- 9.620811 pcm, 3.905132 %
+From Serpent $\alpha_v$ = 137.00 +/- 4.40 pcm/void%
+Smoothed using linear regression $\alpha_v$ = 136.200000 pcm/void%
+
+4) 505 rods, 1131d
+Smoozed TCs: FTC -0.380000 (0.058872); MTC -1.554000 (0.058078); ITC -1.992000 (0.058050) pcm/K
+
+Regression R-squred: FTC 0.781250; MTC 0.996036; ITC 0.991568
+Regression STD: FTC 0.000001; MTC: 0.000001; ITC: 0.000001
+
+Control rods worth 2930.200000 +/- 9.479451 pcm, 2.860652 %
+
+From Serpent $\alpha_v$ = 153.00 +/- 4.35 pcm/void%
+Smoothed using linear regression $\alpha_v$ = 154.000000 pcm/void%
+
+6) 633rods, 2334d
+Smoozed TCs: FTC -0.590000 (0.059627); MTC -1.984000 (0.058770); ITC -2.402000 (0.058739) pcm/K
+
+Regression R-squred: FTC 0.966816; MTC 0.998227; ITC 0.998956
+Regression STD: FTC 0.000001; MTC: 0.000000; ITC: 0.000000
+
+Control rods worth 2787.000000 +/- 9.548298 pcm, 2.707905 %
+
+From Serpent $\alpha_v$ = 155.50 +/- 4.40 pcm/void%
+Smoothed using linear regression $\alpha_v$ = 153.400000 pcm/void%
+
+7) 681rods, 3054d
+Smoozed TCs: FTC -0.444000 (0.059503); MTC -2.152000 (0.059031); ITC -2.534000 (0.059017) pcm/K
+
+Regression R-squred: FTC 0.974994; MTC 0.997952; ITC 0.999565
+Regression STD: FTC 0.000000; MTC: 0.000001; ITC: 0.000000
+
+Control rods worth 3135.800000 +/- 9.620811 pcm, 3.047644 %
+
+From Serpent $\alpha_v$ = 147.50 +/- 4.39 pcm/void%
+Smoothed using linear regression $\alpha_v$ = 143.600000 pcm/void%
+
+8) 880rods, 4629d
+Smoozed TCs: FTC -0.482000 (0.060794); MTC -2.190000 (0.059976); ITC -2.660000 (0.059969) pcm/K
+
+Regression R-squred: FTC 0.939396; MTC 0.993811; ITC 0.998041
+Regression STD: FTC 0.000001; MTC: 0.000001; ITC: 0.000001
+
+Control rods worth 2983.900000 +/- 9.762172 pcm, 2.920475 %
+
+From Serpent $\alpha_v$ = 133.00 +/- 4.49 pcm/void%
+Smoothed using linear regression $\alpha_v$ = 138.200000 pcm/void%
+
+
+
+
+
+
+
