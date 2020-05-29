@@ -6,21 +6,23 @@ energy spectrum.
 While long-term performance 
 metrics such as fuel utilization would definitely benefit from online removal 
 of poisonous fission products, the gas removal system is unessential to ensure 
-the \gls{TAP} system operation in short-term transient with significant power 
-drop and following restart. However, Chapter 5 clearly demonstrated the noble 
-gas removal strong impact on the reactor neutronics during power adjustments. 
-Thus, another liquid-fueled \gls{MSR} design with thermal spectrum (not 
-epithermal like in the \gls{TAP} core) should be considered to investigate 
-benefits of the online gas removal for load-following operation.	
+the \gls{TAP} system operation during short-term transient with significant 
+power drop and following restart. However, Chapter 5 clearly demonstrated the 
+noble gas removal strong impact on the reactor neutronics during power 
+adjustments. Thus, another liquid-fueled \gls{MSR} design with thermal 
+spectrum (not epithermal like in the \gls{TAP} core) should be considered to 
+investigate benefits of the online gas removal for load-following 
+operation.	
 
-This chapter presents fuel salt depletion with SaltProc during short-term 
-power transient to evaluate load-following capabilities of the molten salt 
-reactor design with a very soft neutron energy spectrum - \gls{MSBR}. The 
-details of the \gls{MSBR} design, its Serpent model, and results of long-term 
-depletion simulation with SaltProc are described in Chapter 3. I simulated 
-load-following transient postulated in Section~\ref{sec:worst-load} using 
-methodology described in Chapter 5. To investigate the effect of
-noble gas 
+This chapter presents fuel salt depletion analysis with SaltProc during a
+short-term power transient to evaluate load-following capabilities of the 
+graphite-moderated molten salt reactor design with a thermal neutron energy 
+spectrum - \gls{MSBR}. The details of the \gls{MSBR} design, the full-core 
+Serpent model, and 
+results of long-term depletion simulation with SaltProc are described in 
+Chapter 3. I simulate the load-following transient postulated in 
+Section~\ref{sec:worst-load} using methodology described in Chapter 5. To 
+investigate the effect of noble gas 
 removal efficiency on load-following operation, I consider three various 
 regimes of the gas removal system operation:
 \begin{enumerate}[label=(\alph*), noitemsep, topsep=0pt]
@@ -36,13 +38,13 @@ safety margins are maintained. Finally, I compare the \gls{TAP} \gls{MSR} and
 
 \section{Depletion analysis results}
 Using the methodology described previously in Chapter 5, the \gls{MSBR} 
-full-core depletion analysis was performed using SaltProc v1.0 with Serpent. I 
+full-core depletion analysis was performed using SaltProc v1.0. I 
 used 30-minutes depletion time step to capture rapid changes in reactivity. 
 The Equation~\ref{eq:time-xe-max} predicted the time after shutdown when 
-$^{135}$Xe concentration peaks ($t^{max}_X$) is in the ranges from 6.8h 
-$\epsilon_{Xe}=0.0$, 30 years after startup) to 7.5h ($\epsilon_{Xe}=0.915$, 
+$^{135}$Xe concentration peaks ($t^{max}_X$) in the range from 6.8h 
+($\epsilon_{Xe}=0.0$, 30 years after startup) to 7.5h ($\epsilon_{Xe}=0.915$, 
 \gls{BOL}). The $t^{max}_X$ for the \gls{MSBR} is longer than 
-for the \gls{TAP} reactor (2.75 hours) due to much more thermal neutron energy 
+for the \gls{TAP} reactor (2.75h) due to much more thermal neutron energy 
 spectrum.
 To be consistent throughout different gas removal regimes while 
 investigating load-following capabilities of the \gls{MSBR}, I selected 
@@ -62,23 +64,23 @@ in Chapter 5:
 
 \subsection{Reactivity dynamics}
 Figures~\ref{fig:msbr-lf-keff-evo} and \ref{fig:msbr-lf-rho-evo} show the 
-effective multiplication factor ($k_{eff}$) and reactivity dynamics for the 
+effective multiplication factor and reactivity dynamics for the 
 different gas removal efficiency in the \gls{MSBR} during the transient, 
-described earlier. In the no-removal case (Figure~\ref{fig:msbr-lf-keff-evo}, 
-upper panel), the effective multiplication 
-dropped after $t^{max}_X=7.5h$ by 1457 $pcm$ and 1035 $pcm$ at \gls{BOL} and 
-after 15 years of full-power operation. Thus, the 
-Equation~\ref{eq:time-xe-max} correctly predicted the moment when the xenon 
-poisoning effect maximized for inactive gas removal system ($\epsilon_{Xe}=0$).
-After power ramp-up from 0\% to 100\%, the effective multiplication factor 
+described earlier. For the no-removal case (Figure~\ref{fig:msbr-lf-keff-evo}, 
+upper panel), the effective multiplication dropped after $t^{max}_X=7.5h$ by 
+1457 $pcm$ and 1035 $pcm$ at \gls{BOL} and after 15 years of full-power 
+operation, respectively. Thus, the Equation~\ref{eq:time-xe-max} correctly 
+predicted the moment when the xenon poisoning effect maximized for no-removal 
+case ($\epsilon_{Xe}=0$).
+After the power ramp-up from 0\% to 100\%, the effective multiplication factor 
 restored to its initial value in about 3 hours. Notably, maximum 
 negative reactivity introduction due to $^{135}$Xe buildup after the 
 \gls{MSBR} shutdown is very similar to the \gls{PWR} (both at startup): 1457 
 $pcm$ and 1500 $pcm$ \cite{rykhlevskii_impact_2019}, respectively. 
-Additionally, the xenon poisoning effect diminishes toward the \gls{EOL} 
+Additionally, the xenon poisoning effect diminished toward the \gls{EOL} 
 because the $^{135}$Xe concentration peak is larger for softer thermal 
-spectrum (the \gls{MSBR} spectrum becomes harder during  operation due to 
-plutonium and other strong neutron absorbers accumulation in the fuel salt).
+spectrum (the \gls{MSBR} spectrum becomes \emph{harder} during  operation due 
+to plutonium and other strong neutron absorbers accumulation in the fuel salt).
 Finally, the effect of $^{135}$Xe poisoning is almost the same after 15 and 30 
 years of operation because the fuel salt composition reached its equilibrium 
 after about 16 years of full-power operation (see 
@@ -87,17 +89,17 @@ Section~\ref{sec:ch3-msbr-fuel-comp}).
 Middle and lower plots in Figure~\ref{fig:msbr-lf-rho-evo} show reactivity 
 change during the \gls{MSBR} shutdown for 7.5 hours and following power ramp 
 up to 100\% for moderate ($\epsilon_{Xe}=0.536$) and high 
-($\epsilon_{Xe}=0.915$) removal efficiency, respectively. In contrast with the 
-no gas removal, reactivity drops during the 30-minutes interval after shutdown 
-by 161 $pcm$ and 189 $pcm$ for moderate and high removal efficiency, 
+($\epsilon_{Xe}=0.915$) removal efficiency, respectively. In contrast with 
+no gas removal, reactivity dropped during the 30-minutes interval after 
+shutdown by 161 and 189 $pcm$ for moderate and high removal efficiency, 
 respectively.  Afterward, the reactivity boosts by 1494 $pcm$ and 2608 $pcm$ 
 for $\epsilon_{Xe}=0.536$ and 0.915, respectively. This happens because 
-the gas removal system extracted 53.6\% and 91.5\% of xenon at the end of 
+the gas removal system extracted 53.6\% and 91.5\% of xenon mass at the end of 
 30-minutes depletion step. The more effective xenon removal leads to greater 
 positive reactivity jump, as expected. Notably, the reactivity stabilizes at 
-approximately $+2500$ $pcm$ level for both case in about 5 hours from the 
+approximately $+2500$ $pcm$ level for both cases in about 5 hours from the 
 beginning of the transient because $^{135}$Xe loss due to its decay and online 
-gas extraction equalizes $^{135}$Xe gain due to $^{135}$I decay.
+gas removal equalizes $^{135}$Xe gain due to $^{135}$I decay.
 Overall, the online gas removal from the fuel salt even with moderate 
 efficiency is beneficial to the core neutronics and significantly reduces the 
 xenon poisoning effect ($-161\pm10$ $pcm$ instead of $-1494\pm10$ $pcm$). 
@@ -145,23 +147,23 @@ transient for the no-removal case is 2.45 and 2.03 at the \gls{BOL} and after
 $^{135}$I/$^{135}$Xe concentration ratio at the startup leads to $^{135}$Xe 
 concentration peak by 11\% higher than at the \gls{EOL} which is consistent 
 with the \gls{TAP} \gls{MSR} results. However, larger $^{135}$Xe concentration 
-does not worsen the xenon poisoning effect (Figure~\ref{fig:msbr-lf-rho-evo}) 
-because the spectrum hardens toward \gls{EOL}. The harder spectrum leads to 
-weaker $^{135}$Xe burn out because its absorption cross section slumps with 
-energy (see Figure~\ref{fig:tap-pwr-spectrum}).
+does not necessary worsens the xenon poisoning effect 
+(Figure~\ref{fig:msbr-lf-rho-evo}) because the spectrum hardens toward 
+\gls{EOL} and $^{135}$Xe absorption cross section slumps with energy (see
+Figure~\ref{fig:tap-pwr-spectrum}).
 
 For the high gas removal efficiency regime, the $^{135}$I/$^{135}$Xe 
 concentration ratio is 2.47 and 2.08 at the \gls{BOL} and after 
 30 years of full-power operation, respectively. For the \gls{BOL} and 
-\gls{EOL}, the $^{135}$Xe concentration peaked only by 8\% at the end of first 
-30-minute depletion step which caused a 189-$pcm$ negative reactivity 
+\gls{EOL}, the $^{135}$Xe concentration peaked only by 8\% at the end of a 
+first 30-minute depletion step which caused a 189-$pcm$ negative reactivity 
 insertion. Afterward, the concentration of $^{135}$Xe dropped quickly because 
-the gas removal system extracted most of the fission gas. The mass of 
-$^{135}$Xe in the fuel salt before shutdown is approximately 7 times greater 
-than after the power turned back on, which caused significant reactivity 
-growth by $\approx2550$ $pcm$. Surprisingly, the removal of 12 g of $^{135}$Xe 
-after 60 minutes from the shutdown caused an impressive 2600-$pcm$ positive 
-reactivity insertion (217 pcm/g$^{135}$Xe reactivity worth). 
+the gas removal system extracted most of the fission gas. The $^{135}$Xe 
+concentration in the fuel salt before the shutdown is approximately 7 times 
+greater than after the power turned back on, which caused significant 
+reactivity growth by $\approx2550$ $pcm$. Surprisingly, the removal of 12 g of 
+$^{135}$Xe from $t=30min$ to $t=60min$ caused an impressive 2600-$pcm$ 
+positive reactivity insertion (217 pcm/g$^{135}$Xe reactivity worth). 
 \begin{figure}[htbp!] % replace 't' with 'b' to 
 	\centering
 	$\begin{array}{r}
@@ -172,21 +174,21 @@ reactivity insertion (217 pcm/g$^{135}$Xe reactivity worth).
 	\vspace{-4mm}
 	\caption{Comparison of $^{135}$Xe and $^{135}$I isotopic content at the 
 		\gls{BOL} (dashed line) and after 30 years of operation (solid line) 
-		for 
-		various gas removal regimes. The uncertainty $\pm\sigma$ is shaded.}
+		for various gas removal regimes. Uncertainty of the predicted mass 
+		will be estimated and discussed in Chapter 7.}
 	\label{fig:msbr-lf-xe-i-ratio}
 \end{figure}
 
-Such a large 
-variations in $^{135}$Xe concentration are observed due to batch-wise nature 
+Such a quick fluctuations in the $^{135}$Xe concentration are observed due to 
+batch-wise nature 
 of SaltProc simulations (e.g., the fraction of target poison is being 
 removed discretely, at the end of each depletion step). Realistically, the gas 
 removal system extracts gas from the fuel salt continuously, which would 
 result in a much smoother change in the concentration and, accordingly, 
 in the reactivity. Notably, for the both \gls{BOL} and \gls{EOL}, the 
 $^{135}$Xe mass stabilized at 1 g in about 3-4 hours after the shutdown and 
-started inclining slowly ($60$ $mg/EFPH$) after power ramp-up from 0 to 100\%. 
-That is, when the reactor operates again on a full-power level,  $^{135}$Xe 
+then inclined slowly ($60$ $mg/EFPH$) after power ramp-up from 0 to 100\%. 
+That is, when the reactor returned back to a full-power level,  the $^{135}$Xe 
 concentration during a few days will be significantly lower than before 
 load-following transient. Thus, less thermal neutrons will be parasitically 
 absorbed in the fission gas. As a result, the long-term fuel cycle performance 
@@ -203,17 +205,18 @@ efficiency ($\epsilon_{Xe}=0.536$ instead of 0.915) provided comparable
 benefits to the core neutronics during the postulated load-following 
 transient. In fact, similarly to the $\epsilon_{Xe}=0.915$ case, the 
 $^{135}$Xe mass stabilized at 1.5 g in about 5 hours after the shutdown and 
-then increasing slowly ($165$ $mg/EFPH$) after power ramp-up from 0 to 100\%.
+then increased slowly ($165$ $mg/EFPH$) after power ramp-up from 0 to 100\%.
 In conclusion, simpler and cheaper gas removal system with extraction 
-efficiency $\epsilon_{Xe}=0.536$ enough to suppress the xenon poisoning effect 
-after shutdown to acceptable level (-161 $pcm$) and to ensure load-following 
+efficiency $\epsilon_{Xe}=0.536$ is good enough to suppress the xenon 
+poisoning effect to acceptable level (-161 $pcm$) and ensure load-following 
 capability of the \gls{MSBR}.
 
 
 \subsection{Neutron spectrum}
 Figure~\ref{fig:ch6-msbr-spectrum} shows that the \gls{MSBR} spectrum after 30 
 years of operation (solid line) is harder than at the startup (dashed line). 
-Compared to the \gls{MSBR}, the \gls{TAP} \gls{MSR} spectrum is significantly 
+Compared with the \gls{MSBR}, the \gls{TAP} \gls{MSR} spectrum is 
+significantly 
 harder even when all moderator rods are inserted to the core. Notably, the 
 \gls{MSBR} spectrum has clear peak in thermal energy region, but flat neutron 
 energy dependence in intermediate and fast energy region, which is quite 
@@ -299,7 +302,10 @@ approximately $-0.22\pm0.09$ $pcm/K$ during first 30 minutes after shutdown.
 Afterwards, when the gas removal system extracted major fraction of the 
 $^{135}$Xe from the fuel salt, $\alpha_{ISO}$ became significantly more 
 negative ($-1.39$ and $-1.56$ $pcm/K$ at the \gls{BOL} and after 30 years of 
-operation, respectively) due to the spectrum softening.
+operation, respectively) due to the spectrum softening. In brief, the 
+temperature feedback in the \gls{MSBR} becomes stronger when neutron poisons 
+concentration in the fuel decreases. As a result, flattening the $^{135}$Xe 
+concentration peak improves the \gls{MSBR} passive safety.
 
 Overall, the combination of fuel and moderator thermal feedback coefficients, 
 $\alpha_{ISO}$, remains negative throughout the postulated transient. 
@@ -309,40 +315,67 @@ coefficient dynamics throughout the transient due to
 a more gradual change in the $^{135}$Xe concentration.
 
 \subsection{Void coefficient of reactivity}
-Figure~\ref{fig:msbr-tap-void-evo} demonstrates the void coefficient of 
+Figure~\ref{fig:msbr-lf-void-evo} demonstrates the void coefficient of 
 reactivity evolution during the postulated transient. 
-The $\alpha_V$ remains almost constant throughout the transient for all cases. 
-Notably, the void coefficient of reactivity after 30 years of full-power 
-operation is substantially greater than at the startup for both gas removal 
-regimes. Thus, the unexpected void insertion due to the gas separation system 
-failure would lead to more severe consequences toward \gls{EOL}. This 
-observation should be taken into account in the \gls{MSBR} accident analysis 
-and safetyjustification.
+In contrast with the \gls{TAP} \gls{MSR}, the void coefficient of reactivity 
+after 30 years of full-power operation is substantially greater than at the 
+startup for both gas removal regimes. The reason for this is the \gls{MSBR} 
+spectrum hardening toward \gls{EOL}, which is opposite to the \gls{TAP} 
+\gls{MSR} spectrum evolution. Thus, an unexpected void insertion due to the 
+gas separation system failure would lead to more severe consequences toward 
+\gls{EOL}. 
 \begin{figure}[htbp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.95\textwidth]{ch6/saf_par/void_evo_kl25.png}\\
+	\includegraphics[width=0.92\textwidth]{ch6/saf_par/void_evo_kl25.png}\\
 	\vspace{-12mm}
 	\hspace{+0.05mm}
-	\includegraphics[width=0.95\textwidth]{ch6/saf_par/void_evo_kl100.png}
+	\includegraphics[width=0.92\textwidth]{ch6/saf_par/void_evo_kl100.png}
 	\vspace{-3mm}
 	\caption{Void coefficient of reactivity as a function of time during 
-	postulated transientfor the \gls{MSBR} operating with moderate 
+	postulated transient
+for the \gls{MSBR} operating with moderate 
 	($\epsilon_{Xe}=0.536$, upper) and high ($\epsilon_{Xe}=0.915$, lower) gas 
 	removal efficiency at the \gls{BOL} (dashed line) and after 30 years of 
-	operation (solid line). The uncertainty $\pm\sigma$ is shaded.}
+	operation (solid line).}
 	\label{fig:msbr-lf-void-evo}
 \end{figure}
 
-For the high gas removal efficiency case, $\alpha_V$ fluctuates during the 
-postulated transient between 42 and 61 $pcm/$\% at the \gls{BOL} and between 
-87 and 102 $pcm/$\% after 30 years of operation. The $^{135}$Xe concentration 
-spike caused corresponding $\alpha_V$ drop due to short-term spectrum 
-hardening. Then, $\alpha_V$ quickly recovers to its initial value. As for 
-temperature feedback coefficient, the moderate gas removal efficiency provided 
-more predictable $\alpha_V$ dynamics throughout the transient and smaller 
-difference between $\alpha_V$ at the \gls{BOL} and \gls{EOL}.
+For the high gas removal efficiency, $\alpha_V$ fluctuates during the 
+postulated transient between 42 and 61 $pcm/$void\% at the \gls{BOL} and 
+between 87 and 102 $pcm/$void\% after 30 years of operation. The $^{135}$Xe 
+concentration spike caused corresponding $\alpha_V$ drop due to short-term 
+spectrum hardening. Then, $\alpha_V$ quickly recovers to its initial value. 
+Similarly to the temperature feedback coefficient, the moderate gas removal 
+efficiency provided more predictable $\alpha_V$ dynamics throughout the 
+transient. Additionally, significantly smaller $\alpha_V$ raise toward 
+\gls{EOL} for the case with $\epsilon_{Xe}=0.536$ ($\Delta\alpha_V\approx25$ 
+$pcm/$void\%) will simplify the gas removal backup safety mechanism. 
+Overall, all observed changes in the void coefficient of reactivity throughout 
+the load-following transient for all cases are within 3-$\sigma$ range 
+($\sigma_{\alpha_V}\pm5$ $pcm/$\%). This observations should be taken 
+into account in the \gls{MSBR} accident analysis and safety
+justification.
 
 \subsection{Reactivity control rod worth}
+Figure~\ref{fig:lf-msbr-crw-evo} shows the control rod worth evolution 
+during the postulated transient. For the high gas removal efficiency regime 
+with the \gls{EOL} fuel composition, the control rod worth dropped by $46\pm9$ 
+$pcm$ during first 30 minutes after the shutdown due to short-term spectrum 
+hardening related to the $^{135}$Xe concentration peak. In next 30 minutes, 
+the CRW recovers to its initial value and keeps increasing throughout the 
+transient because the gas removal system steadily reduces $^{135}$Xe 
+concentration in the core. Notably, the control rod worth is greater at the 
+\gls{BOL} because the $^{10}$B (used as absorber in the control rods) 
+absorption cross section declines rapidly with energy. Overall, the control 
+rod worth benefits from the \gls{MSBR} spectrum softening toward \gls{EOL}.
+
+For the moderate gas separation efficiency regime, the control rod worth 
+remains almost constant during first hour after shutdown for the both 
+\gls{BOL} and \gls{EOL}. Afterwards, the CRW increased by 4\% due to the 
+spectrum softening caused by the $^{135}$Xe concentration incline. As for 
+other safety parameters, the control rod worth also benefits 
+from less effective gas removal system due to smother xenon concentration 
+dynamics, and, thus, more predictable neutron spectrum shift. 
 \begin{figure}[htbp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.95\textwidth]{ch6/saf_par/crw_evo_kl25.png}\\
@@ -350,9 +383,102 @@ difference between $\alpha_V$ at the \gls{BOL} and \gls{EOL}.
 	\hspace{+0.05mm}
 	\includegraphics[width=0.95\textwidth]{ch6/saf_par/crw_evo_kl100.png}
 	\vspace{-3mm}
-	\caption{with moderate (upper) and high (lower) removal efficiency. The 
-		uncertainty $\pm\sigma$ region is shaded.}
+	\caption{Total control rod worth as a function of time during 
+		postulated transient
+for the \gls{MSBR} operating with moderate 
+		($\epsilon_{Xe}=0.536$, upper) and high ($\epsilon_{Xe}=0.915$, lower) 
+		gas removal efficiency at the \gls{BOL} (dashed line) and after 30 
+		years of operation (solid line).}
 	\label{fig:msbr-lf-crw-evo}
 \end{figure}
 
+Unfortunately, the total control rod worth is insufficient to shut down the 
+reactor throughout the postulated transient. The reactivity change during the 
+transient is up to 2550 $pcm$ while the total control rod worth is only about 
+$1250-1425$ $pcm$. The \gls{MSBR} was designed with only two graphite and two 
+boron-carbide rods located in the center of the core (see 
+Figure~\ref{fig:msbr_elev_view}) for operative reactivity control and relied 
+heavily on fissile feed adjustment as a primary reactivity control 
+mechanism. However, the fissile feed cannot be adjusted quickly and nuclear  
+regulations required control rods have sufficient worth to safely shut down 
+the reactor at any time. Therefore, the control rods design in the \gls{MSBR} 
+must be reexamined to ensure the total control rod worth at least 3000 $pcm$ 
+to ensure safety during the transient with rapid power change.
+
+
 \section{Concluding remarks}
+This chapter demonstrated SaltProc v1.0 capabilities to simulate the 
+short-term depletion with the power variation from 0\% to 100\% for the 
+\gls{MSBR}. I applied methodology from Chapter 5 to investigate the xenon 
+poisoning effect in the \gls{MSBR} for three various gas removal system 
+regimes: (1) no gas removal ($\epsilon_{Xe}=0.0$), (2) moderate gas removal 
+efficiency ($\epsilon_{Xe}=0.536$), and (3) high gas removal efficiency 
+($\epsilon_{Xe}=0.915$). 
+
+When the gas removal system is inactive, $^{135}$Xe concentration peaked in 
+about 7.5 hours after shutdown which caused the reactivity drop by 1457 and 
+1035 $pcm$ for the startup and equilibrium fuel salt composition. Such 
+negative effect of the xenon poisoning is consistent with other thermal 
+reactor designs (i.e., -1500 $pcm$ for \gls{PWR} 
+\cite{rykhlevskii_impact_2019}). In contrast with results for the \gls{TAP} 
+\gls{MSR} in Chapter 5, the \gls{MSBR} demonstrated significant negative 
+impact of the $^{135}$Xe concentration spike after shutdown on the core 
+neutronics. The reason for that is significantly greater initial 
+$^{135}$I/$^{135}$Xe concentration ratio: 2.45 and 1.0 for \gls{MSBR} and 
+\gls{TAP} reactor at the \gls{BOL}, respectively. Thus, the $^{135}$Xe peak is 
+significantly higher for the \gls{MSBR} than for \gls{TAP} reactor: +56\% 
+and +0.33\%, respectively. Finally, the $^{135}$Xe parasitically absorbs 
+substantially more neutrons in thermal (\gls{MSBR}) than in epithermal 
+(\gls{TAP} \gls{MSR}) neutron spectrum which amplifies the xenon poisoning 
+effect when the spectrum softens. In contrast with the spectrum thermalization 
+toward \gls{EOL} in the \gls{TAP} reactor, in the \gls{MSBR} the neutron 
+spectrum hardens toward \gls{EOL} due to plutonium and other strong absorbers 
+accumulation in the fuel salt. Thus, for the \gls{MSBR} the xenon poisoning 
+effect becomes less severe toward \gls{EOL}. 
+
+The online gas removal in the \gls{MSBR} demonstrated impressive positive 
+impact on the core neutronics. The gas removal system operation almost 
+eliminated effect of xenon poisoning by removing vast majority of $^{135}$Xe 
+during first hour after the shutdown. During the first 30-minutes interval, 
+the reactivity dropped by 161 and 189 $pcm$ for moderate and high removal 
+efficiency, respectively. Afterwards, the reactivity raised by approximately 
+$+2700$ $pcm$ for both efficiencies in a few hours because the $^{135}$Xe mass 
+in the fuel fell from 14 to 1-2 g. Indeed, the $^{135}$Xe loss due to decay 
+and active gas removal greatly  overcame its only gain from the $^{135}$I 
+decay (no fission happens, thus, no new $^{135}$I is produced). Notably, the 
+amplitude of the reactivity swing after shutdown is larger for the \gls{BOL} 
+when the xenon reactivity worth is greater due to softer neutron spectrum. 
+Finally, significantly lower gas removal efficiency ($\epsilon_{Xe}=0.536$ 
+instead of 0.915) provided comparable benefits to the \gls{MSBR} core 
+neutronics during the postulated load-following transient.
+
+Finally, this chapter demonstrated that the \gls{MSBR} maintains major safety 
+margins throughout the postulated load-following transient. Thus, the 
+temperature coefficient of reactivity and the total control rod worth worsen 
+slightly during first 30 minute of the transient when the $^{135}$Xe 
+concentration peaked causing corresponding neutron spectrum hardening. After 
+that, the fast $^{135}$Xe concentration decline improved all safety and 
+operational parameters among the cases. Unfortunately, the reactivity worth of 
+two control rods made of boron carbide (B$_4$C) is insufficient to compensate 
+huge reactivity change after shutdown. Even though the total control worth 
+rises throughout the transient, the reactivity system design is unfeasible
+for load-following and must be redesigned. 
+
+In conclusion, the xenon poisoning effect impact on the \gls{MSBR} neutronics 
+is much stronger than on the \gls{TAP} \gls{MSR}. Therefore, the \gls{MSBR} 
+without 
+gas removal system is incapable to reduce power from 100\% to 0\% and then 
+restart anytime due to severe effect of xenon poisoning. However, the online 
+gas removal even with moderate separation efficiency (e.g., 
+$\epsilon_{Xe}=0.536$) aids to eliminate the iodine pit problem and enable 
+load-following capability of the \gls{MSBR} without compromising its safety. 
+For the best results, the gas removal system must have smart control system 
+coupled with reactivity control and power regulation systems. Ideally, the 
+separation efficiency should be boosted right before the power ramp down and 
+during first few moments after power drop to flatten the $^{135}$Xe peak. 
+Afterwards, the control system would reduce the removal efficiency to avoid a
+vast positive reactivity insertion due to fast $^{135}$Xe concentration cut 
+down. Overall, more detailed study of power changing transients must be 
+performed using SaltProc v1.0 with better time resolution (i.e., a 1-min 
+interval) to better understand how to adjust the gas removal efficiency during 
+load-following.
