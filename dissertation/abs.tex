@@ -1,1 +1,26 @@
-Abstract here
+Nuclear reactors with liquid fuel offering multiple advantages over their 
+solid-fueled siblings: an improved inherent safety, fuel utilization, thermal 
+efficiency, online reprocessing, and potential for nuclear fuel cycle closure. 
+The interest in advanced liquid-fueled nuclear 
+systems, particularly \glspl{MSR}, has grown recently with numerous new 
+commercial \gls{MSR} concepts. 
+However, most contemporary reactor physics software is incapable of performing 
+fuel depletion calculations for such advanced reactors. To further 
+develop liquid-fueled reactor designs, researchers need a simulation tool for 
+performing fuel depletion calculations while taking into account online fuel 
+reprocessing and refueling. Current modeling efforts in the literature usually 
+assume ideal(e.g., 100\% of neutron poison being removed) rather than 
+realistically constrained removalefficiency. 
+
+This work aims to provide a flexible tool, SaltProc, for simulating 
+the fuel depletion in a generic nuclear reactor with liquid, circulating fuel. 
+SaltProc allows the user to specify realistically constrained extraction 
+efficiency of fission products based on physical models offuel processing 
+components appearing in various \gls{MSR} systems. Moreover, SaltProc can 
+maintain the reactor's criticality by adjusting the geometry of the core. This 
+work demonstrated and validated SaltProc for lifetime-long and short-term 
+depletion calculation in two \gls{MSR} designs: \gls{MSBR} and \gls{TAP} 
+\gls{MSR}. SaltProc successfully captured the evolution of fuel salt 
+composition and major safety parameters (temperature and void coefficient of 
+reactivity, shutdown margin) during reactor operation with various efficiency 
+of noble gas extraction.
