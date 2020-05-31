@@ -86,7 +86,7 @@ and fresh fuel injection during the anticipated transient. To be able to
 simulate transients with time-dependent power generation, I added to SaltProc 
 v1.0 capability to perform fuel salt depletion with variable depletion time 
 step and reactor power level\footnote{For simplicity, the reactor power level 
-is adjusted by changing normalization factor in Serpent (\emph{set power 
+is adjusted by changing the normalization factor in Serpent (\emph{set power 
 P[W]}). This simplification assumes that spatial and energy distribution of 
 the neutron flux remains constant and only the magnitude of the flux changes 
 with time. That is, control rod movement and the corresponding change in the 
@@ -128,7 +128,7 @@ in power generation \cite{kirby_method_2005}. Typical natural gas peaking
 plants can ramp at or above 10\% of their capacity per minute 
 \cite{huff_enabling_2018}. Elite combustion engine peakers (W\"{a}rtsil\"{a}) 
 can ramp up from 10\% to 100\% load (or down) in less than one minute 
-\cite{wartsila_combustion_2020}. Hydropower plants also typically have the
+\cite{wartsila_combustion_2020}. Hydropower plants also typically have
 high-speed and accurate ramping capability, which is suitable for regulation 
 \cite{kirby_method_2005}.
 
@@ -175,8 +175,8 @@ fresh fuel), the reactor power was decreased from 100\% to 0\% (e.g., the
 reactor is tripped), the $^{135}$Xe concentration and corresponding negative 
 reactivity insertion would reach maximum in about 10-11 hours after shutdown 
 \cite{lamarsh_introduction_1975, 
-bell_nuclear_1970}. Preliminary study in the literature for the \gls{TAP} 
-concept shown that the worst xenon impact on the core occurs in about 7.66 
+bell_nuclear_1970}. A preliminary study in the literature shows that the worst 
+xenon impact on the core occurs in about 7.66 
 hours after shutdown \cite{rykhlevskii_impact_2019}. Notably, the time after 
 shutdown when $^{135}$Xe concentration reaches a maximum strongly depends on 
 the reactor neutron energy spectrum.
@@ -601,9 +601,9 @@ during postulated earlier worst-case power change transient (0\% power level
 for 11 hours, instantaneous power boost to 100\%, and then 10 hours on 100\% 
 power level) using methodology from Section~\ref{sec:safety-param}. The 
 combination of fuel and moderator temperature feedback coefficients must 
-remain negative and the reactivity worth of control rods must be sufficient to 
-shut down the reactor throughout the transient. Ideally, the reactor is more 
-controllable if major safety and operational parameters remain stable and 
+remain negative, and the reactivity worth of control rods must be sufficient 
+to shut down the reactor throughout the transient. Ideally, the reactor is 
+more controllable if major safety and operational parameters remain stable and 
 unaffected by the substantial power level change.
 
 \subsection{Temperature coefficient of reactivity}
@@ -652,7 +652,7 @@ constant and sufficient to shut down the reactor throughout the postulated
 transient. During the first three hours of the transient, the control rod 
 worth decreases from $1998.9\pm8.9$ $pcm$ to $1988.3\pm8.9$ $pcm$ due to a 
 slight spectrum hardening caused by $^{135}$Xe concentration raise. Overall, 
-the changes in the control rod worth are insignificant and lie within the 
+the control rod worth changes are insignificant and lie within the 
 stochastic error range ($\sigma_{CRW}\pm8.9$ $pcm$).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
@@ -671,7 +671,7 @@ This chapter demonstrated the short-term depletion simulations for the
 100\%] using SaltProc v1.0 and Serpent. I considered two different noble gas 
 removal scenarios: (1) inactive gas removal system (e.g., $\epsilon_{Xe}=0$), 
 and (2) fully operational gas removal system (e.g., $\epsilon_{Xe}=0.915$). 
-The results in literature report negative xenon poisoning effect for 
+The results in the literature report negative xenon poisoning effect for 
 conventional \glspl{LWR} reaches its extremum $\Delta\rho\approx-1500$ $pcm$ 
 in approximately 11 hours after shutdown. Such a vast reactivity drop 
 complicates the \glspl{LWR} load-following.
