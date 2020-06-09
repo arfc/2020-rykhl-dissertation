@@ -1,24 +1,41 @@
 \chapter{Tool demonstration for load-following and safety analysis: 
 Transatomic Power MSR}
-In order to be competitive in the current domestic energy market, the 
-\glspl{MSR} may need the flexibility to follow load. The load-following 
-operation has the potential to increase the commercial 
-competitiveness of nuclear power dramatically. Due to the increasing 
-penetration of renewables into the electric grid, base-load operation carries 
-the risk of correspondingly frequent negative electric energy pricing. Thus, 
-responsiveness to the net electricity demand is essential to market relevance 
+In order to be competitive in the current domestic energy market, \glspl{MSR} 
+may need the flexibility to follow net load on the grid. Such load-following 
+operation has the potential to increase the commercial competitiveness of 
+nuclear power dramatically. Due to the increasing penetration of renewables 
+into the electric grid, base-load operation carries the risk of 
+correspondingly frequent negative electric energy pricing. Thus, 
+responsiveness to net electricity demand is essential to market relevance 
 for new designs \cite{energy_information_administration_u.s._2016}.
 This chapter presents a validation demonstration applying SaltProc v1.0 to 
 simulate fuel salt depletion with online reprocessing during short-term 
 transient to evaluate load-following capabilities of the \gls{TAP} \gls{MSR}.
 
-\section{Technical aspects of load following with nuclear reactors}
+\section{Technical aspects of load following with nuclear 
+reactors}\label{ch5:aspects}
 
-The main physical effect limiting the possibilities of power variations in a 
-conventional \gls{LWR} is fission product poisoning, especially iodine pit 
-(the reactor's inability to start a few hours after the reactor power 
-decreases due to peak of $^{135}$Xe concentration in the core). The 
-$^{135}$Xe is the strongest known neutron absorber 
+The physical constrains limiting power variations in conventional \glspl{LWR} 
+include \cite{lokhov_technical_2011}:
+\begin{itemize}[noitemsep, topsep=0pt]
+	\item thermal strain and stress to fuel materials\footnote{This constrain 
+		does not apply to circulating-fuel \glspl{MSR} because the fuel is 
+		into a
+		liquid form.};
+	\item fuel burnup (low excess reactivity at the \gls{EOC});
+	\item \emph{$^{135}$Xe poisoning (iodine pit)};
+	\item reactivity thermal feedback (change in the temperature of the 
+	primary coolant and fuel causes negative reactivity insertion which limits 
+	power regulation capabilities).
+\end{itemize}
+Each of these physical effects is currently under active international 
+research. 
+
+This chapter focuses only on the fission product poisoning, especially the 
+``iodine pit''. The ``iodine pit'', also called the ``iodine hole'' or ``xenon 
+pit'', is the reactor's inability to start a few hours after the reactor power 
+decreases due to peak of $^{135}$Xe concentration in the core.
+The $^{135}$Xe is the strongest known neutron absorber 
 ($\sigma_{a,^{135}Xe}=2.6\times10^6$ barns) with a half-life 
 $\tau_{1/2}=9.17h$ and yield for $^{235}$U fission about 6.6\%. 
 Figure~\ref{fig:xe-reaction-chain} shows the entire decay chain, which 
@@ -31,18 +48,40 @@ and half from $^{135}$Te decay ($\tau_{1/2}=19s$)
 	\centering
 	\includegraphics[width=0.4\textwidth]{ch5/xenon-135-reactions-decay.png}
 	\caption{Mechanisms of $^{135}$Xe gain and loss in the reactor core 
-		(reproduced from \cite{nuclear_power_production_2020}.}
+		(reproduced from \cite{nuclear_power_production_2020}).}
 	\label{fig:xe-reaction-chain}
 \end{figure}
 
-Under normal operating conditions, $^{135}$Xe is being 
-transmuted to $^{136}$Xe ('burned out') in the reactor core as it is produced, 
-so while it harms the neutron economy, balancing the reactor controls can 
+Under normal operating conditions, $^{135}$Xe is transmuted to $^{136}$Xe 
+(`burned out') in the reactor core as it is produced. 
+So, while it harms the neutron economy, balancing the reactor controls can 
 compensate for its effect. The burnout of $^{135}$Xe for an operating reactor 
 can be described as follows:
 \begin{align}
 & \isotope[135]{Xe}+\isotope[1]{n}\rightarrow \isotope[136]{Xe} \;(stable)
 \end{align}
+
+Because $^{135}$Xe is produced partially from the $^{135}$I decay, the 
+$^{135}$Xe concentration directly depends on the $^{135}$I concentration. 
+Therefore, the iodine and xenon rate of change can be described as follows
+\begin{align}
+\frac{dI(t)}{dt} &= \gamma_I \Sigma_f\phi - \lambda_II \label{eq:iodine}\\
+\frac{dX(t)}{dt} &= \lambda_II+\gamma_X\Sigma_f\phi - \lambda_XX - 
+\sigma_{a,X}\phi X \label{eq:xenon}
+\intertext{where}
+I, X &= \mbox{number density of $^{135}$I, $^{135}$Xe [cm$^{-3}$]} 
+\nonumber\\
+\gamma_I,\gamma_X &= \mbox{effective yield of $^{135}$I, $^{135}$Xe 
+	[fission$^{-1}$]} \nonumber\\
+\lambda_I,\lambda_X &= \mbox{decay constant of $^{135}$I, $^{135}$Xe 
+	[s$^{-1}$]}\nonumber\\
+\Sigma_f &= \mbox{macroscopic fission cross section of $^{235}$U [s$^{-1}$]} 
+\nonumber\\
+\sigma_{a,X} &= \mbox{microscopic absorption cross section of $^{135}$Xe 
+	[b]}\nonumber\\
+\phi &= \mbox{neutron flux [$cm^{-2}s^{-1}$].}\nonumber
+\end{align}
+
 The difficulty comes when the reactor power is reduced, and there are fewer 
 neutrons to burn the $^{135}$Xe out, so its concentration increases and 
 further suppresses reactor power. In this case, the core takes some time to 
@@ -64,15 +103,15 @@ power demands, typically referred to as `load following.'
 
 This chapter presents modeling and simulation of load following transient 
 operation of the \gls{TAP} \gls{MSR}. This study focuses on the 
-$^{135}$Xe/$^{135}$I balance in the \gls{TAP} core and its effect on the 
-reactor performance. In this chapter, I demonstrated the short-term ($<24$ 
-hours) depletion simulation with the core power changing in the [0,100\%] 
-range for xenon removal efficiency ($\epsilon_{Xe}$) varied between 0 and 
-0.915 (see Table~\ref{tab:gas_removal_efficiency}). 
+$^{135}$Xe/$^{135}$I balance in the \gls{TAP} core and its effect on 
+reactor performance. In this chapter, I simulate short-term ($<24$ hours) 
+depletion with the core power changing in the [0,100\%] range for xenon 
+removal efficiency ($\epsilon_{Xe}$) varied between 0 and 0.915 (see 
+Table~\ref{tab:gas_removal_efficiency}). 
 
-This chapter also demonstrates an analysis of the reactor load-following 
+This chapter also demonstrates an analysis of reactor load-following 
 capability for various moderator configurations and fuel salt compositions to 
-bound the desired efficiency of the gas removal system to ensure 
+bound the necessary efficiency of the gas removal system to ensure 
 load-following operation. 
 
 \section{TAP MSR load following analysis}
@@ -81,27 +120,27 @@ the \gls{TAP} \gls{MSR} developed using Serpent 2 (see
 Section~\ref{sec:tap_model}). The multi-component, online reprocessing system 
 model with realistic noble gas removal efficiency described in 
 Section~\ref{sec:tap-online-model}, is used to simulate fission product 
-removal 
-and fresh fuel injection during the anticipated transient. To be able to 
+removal and fresh fuel injection during the anticipated transient. To
 simulate transients with time-dependent power generation, I added to SaltProc 
-v1.0 capability to perform fuel salt depletion with variable depletion time 
-step and reactor power level\footnote{For simplicity, the reactor power level 
+v1.0 a new capability to perform fuel salt depletion with variable time 
+step size and power level\footnote{For simplicity, the reactor power level 
 is adjusted by changing the normalization factor in Serpent (\emph{set power 
 P[W]}). This simplification assumes that spatial and energy distribution of 
 the neutron flux remains constant and only the magnitude of the flux changes 
 with time. That is, control rod movement and the corresponding change in the 
 flux spatial and energy distribution are not treated here.} during each 
-depletion step. The depletion calculation in load following regime capture the 
-effects of $^{135}$Xe poisoning and evaluate the benefit of using an online 
-gas removal system in the \gls{TAP} concept.
+depletion step. The depletion calculation in the load following regime 
+captures the effects of $^{135}$Xe poisoning and illuminates the benefit of 
+using an online gas removal system in the \gls{TAP} concept.
 
 \subsection{Power load curve selection approach}\label{sec:worst-load}
-The load and generation must be continuously balanced almost instantly  in an 
-electric power system. This is a physical requirement that independent of the 
-market structure. Regulation and load following (which provided by intra-hour 
-real-time energy market) are the two services required to maintain a balance 
-between power generation and power load continuously. 
-Figure~\ref*{fig:power-curve-ny} demonstrates the morning ramp-up decomposed 
+The load and generation must be continuously and almost instantly balanced in 
+an electric power system. This is a physical requirement independent of the 
+market structure. Regulation and load following (in the real-time energy 
+market they are provided  by the 
+intra-hour workings) are the two services 
+required to maintain a balance between power generation and power load. 
+Figure~\ref{fig:power-curve-ny} demonstrates the morning ramp-up decomposed 
 into the total load (green), smooth load-following ramp (blue), and regulation 
 (red). The smooth load-following slowly rises from 3566 MW to 4035 MW over 3 
 hours. Regulation compensates for high-frequency fluctuations in the load 
@@ -120,52 +159,43 @@ it is 15-min and 10-min, respectively \cite{kirby_method_2005}.
 	\label{fig:power-curve-ny}
 \end{figure}
 
-In general, the regulation is the use of online generation or storage that is 
-equipped with automatic generation control and can change output 
-quickly (MW/min ramp rate) to compensate for the minute-to-minute 
-fluctuations in customer loads and correct for the unintentional fluctuation 
+In this context \emph{regulation} refers to the use of online generation or 
+storage that is equipped with automatic generation control and can change 
+output quickly (MW/min ramp rate) to compensate for the minute-to-minute 
+fluctuations in customer loads and correct for unintentional fluctuations
 in power generation \cite{kirby_method_2005}. Typical natural gas peaking 
 plants can ramp at or above 10\% of their capacity per minute 
 \cite{huff_enabling_2018}. Elite combustion engine peakers (W\"{a}rtsil\"{a}) 
 can ramp up from 10\% to 100\% load (or down) in less than one minute 
-\cite{wartsila_combustion_2020}. Hydropower plants also typically have
-high-speed and accurate ramping capability, which is suitable for regulation 
+\cite{wartsila_combustion_2020}. Hydropower plants also typically have 
+accurate, high-speed ramping capability suitable for regulation 
 \cite{kirby_method_2005}.
 
 Conventional nuclear power plants (Generation III/III+) can be used for 
 load-following (blue curve on Figure~\ref{fig:power-curve-ny}) but have 
-limited maneuverability capabilities. For example, the German Konvoi reactors 
+limited maneuverability. For example, the German Konvoi reactors 
 are designed for 15,000 cycles with daily power variations from 100\% to 60\% 
 power level with ramp rate up to 2\%/min \cite{ludwig_load_2011}, which is by 
-order of magnitude slower than fossil-fueled plants. Ideally, we want to be 
-able to use nuclear power plants with \gls{MSR} to enable daily power 
-variation with a much more flexible range (from 100\% to 0\% and from 0\% to 
-100\%) and ramp rate up to 10\%/min to be competitive with thermal generators.
+order of magnitude slower than fossil-fueled plants. 
+The \glspl{MSR} must enable daily power variation with a much more flexible 
+range (from 100\% to 0\% and from 0\% to 100\%) and ramp rate up to 10\%/min 
+to compete with these generators. The physical constrains limiting power 
+variation range and ramp rate in nuclear reactors was listed in 
+Section~\ref{ch5:aspects}. 
+\emph{The current chapter of the dissertation focuses only on the $^{135}$Xe 
+poisoning effect.} Other physical effects, such as thermal strain and stress 
+in structural materials are not treated here.
 
-The physical effects that limit the possibilities of power variations in 
-conventional \glspl{LWR} are \cite{lokhov_technical_2011}:
-\begin{itemize}[noitemsep, topsep=0pt]
-	\item reactivity thermal feedback (change in the temperature of the 
-	primary coolant and fuel causes negative reactivity insertion which limits 
-	power regulation capabilities);
-	\item thermal strain and stress to fuel materials;
-	\item fuel burnup (low excess reactivity at the \gls{EOC});
-	\item \emph{$^{135}$Xe poisoning (iodine pit)}.
-\end{itemize}
-Each of these physical effects is currently under 
-thorough investigation of many researchers in several countries. However, 
-\emph{the current chapter of the dissertation focuses only on the $^{135}$Xe  
-poisoning effect}. Other physical effects are not treated here.
 
-Performing depletion calculation with SaltProc v1.0 to mimic load-following 
-maneuvering shown in Figure~\ref{fig:power-curve-ny} would require a very fine 
-time step (e.g., 15-minute step). To simulate power change with the desired 
-rump rate (0.1 \gls{HFP}/min), less than a 1-minute depletion time step is 
-needed. 
+Performing a depletion calculation with SaltProc v1.0 to mimic the 
+load-following maneuvering shown in Figure~\ref{fig:power-curve-ny} would 
+require a very fine time step (e.g., 15-minute step). To simulate power change 
+with the desired rump rate (0.1 \gls{HFP}/min), depletion time step resolution 
+of less than a 1-minute is needed. 
 Such fine resolution requires thousands of depletion time steps to simulate 
 12-hour transient involving unreasonable computational costs. 
 Instead, this chapter presents simulations with a 1-hour time step to 
-investigate the impact of gaseous fission products removal on the reactor's 
+investigate the impact of gaseous fission product removal on the reactor 
 response to power demands. 
 
 The most challenging power transient for conventional \glspl{LWR} from the 
@@ -175,13 +205,12 @@ fresh fuel), the reactor power was decreased from 100\% to 0\% (e.g., the
 reactor is tripped), the $^{135}$Xe concentration and corresponding negative 
 reactivity insertion would reach maximum in about 10-11 hours after shutdown 
 \cite{lamarsh_introduction_1975, 
-bell_nuclear_1970}. A preliminary study in the literature shows that the worst 
-xenon impact on the core occurs in about 7.66 
-hours after shutdown \cite{rykhlevskii_impact_2019}. Notably, the time after 
+bell_nuclear_1970}. Notably, the time after 
 shutdown when $^{135}$Xe concentration reaches a maximum strongly depends on 
 the reactor neutron energy spectrum.
 
-Thus, to demonstrate SaltProc v1.0 capabilities for short-term transient with 
+Thus, to demonstrate SaltProc v1.0 capabilities for a short-term transient 
+with 
 the reactor power change and to investigate load-following capabilities of the 
 \gls{TAP} reactor with a focus on the xenon poisoning, I selected following 
 worst-case power load profile:
@@ -194,9 +223,24 @@ worst-case power load profile:
 	\item restart the reactor instantly from 0\% to 100\% power level and 
 	operate on 100\% for a few hours.
 \end{enumerate}
+Or in math formulation:
+\begin{align}
+P(t)& = 
+\begin{cases}
+100\%,&  t < t_{eq}\\
+0\%,  &  t_{eq} \leq t \leq t^{max}_X\\
+100\%,&  t > t^{max}_X
+\end{cases}
+\intertext{where}
+P(t) &= \mbox{reactor power level [\%]} \nonumber\\
+t_{eq} &= \mbox{time after startup to reach $^{135}$Xe equilibrium 
+concentration [h]} 
+\nonumber\\
+t^{max}_X &= \mbox{time after shutdown when $^{135}$Xe concentration peaks 
+[h].}\nonumber
+\end{align}
 This postulated worst-case transient could be considered as backing up solar 
-power with 
-nuclear on a high-solar-penetrated grid (e.g., in California).
+power with nuclear on a high-solar-penetration grid (e.g., in California).
 Any other power load profile (i.e., blue load-following line shown in  
 Figure~\ref{fig:power-curve-ny}) would demonstrate a significantly milder 
 xenon poisoning effect because of the power demand change in the [0,100\%] 
@@ -205,46 +249,35 @@ would be able to maintain criticality in the described stress test (e.g.,
 $k_{eff}>1.0$ during all stages of the transient), then it is capable of 
 following a realistic load curve.
 
-To calculate time at which the $^{135}$Xe concentration will reach maximum, 
-the following system of Ordinary Differential Equations (ODE) must be solved: 
-\begin{align}
-\frac{dI(t)}{dt} &= \gamma_I \Sigma_f\phi - \lambda_II \\
-\frac{dX(t)}{dt} &= \lambda_II+\gamma_X\Sigma_f\phi - \lambda_XX - 
-\sigma_{a,X}\phi X\\
+The local extremum of xenon concentration can be described as follows
+\begin{align} \label{eq:xe-extremum}
 \frac{dX(t)}{dt} &= 0
-\intertext{where}
-I, X &= \mbox{number density of $^{135}$I, $^{135}$Xe [cm$^{-3}$]} 
-\nonumber\\
-\gamma_I,\gamma_X &= \mbox{effective yield of $^{135}$I, $^{135}$Xe 
-[fission$^{-1}$]} \nonumber\\
-\lambda_I,\lambda_X &= \mbox{decay constant of $^{135}$I, $^{135}$Xe 
-[s$^{-1}$]}\nonumber\\
-\Sigma_f &= \mbox{macroscopic fission cross section of $^{235}$U [s$^{-1}$]} 
-\nonumber\\
-\sigma_{a,X} &= \mbox{microscopic absorption cross section of $^{135}$Xe 
-[b]}\nonumber\\
-\phi &= \mbox{neutron flux.}\nonumber
 \end{align}
+The system of Ordinary Differential Equations which consist of 
+Equations~\ref{eq:iodine}, \ref{eq:xenon}, and \ref{eq:xe-extremum} must be 
+solved to calculate when the $^{135}$Xe concentration reaches maximum.
+
 If the $^{135}$I and $^{135}$Xe concentrations at shutdown is $I_0$ and $X_0$, 
 respectively, the time after shutdown when the $^{135}$Xe concentration peaks 
 is given by:
 \begin{align}\label{eq:time-xe-max}
 t^{max}_X &= \frac{1}{\lambda_X-\lambda_I}
-log(\frac{\lambda_X(\lambda_I[X_0+I_0]-\lambda_XX_0)}{\lambda_I^2 
-I_0})
+log\left(\frac{\lambda_X(\lambda_I[X_0+I_0]-\lambda_XX_0)}{\lambda_I^2 
+I_0}\right)
 \end{align}
 
 Since the $^{135}$I and $^{135}$Xe concentrations at shutdown in the \gls{TAP} 
 core are expected to be different at the \gls{BOL} and \gls{EOL} due to 
 significant spectral shift, $t^{max}_X$ is recalculated for each case to 
 obtain the worst possible xenon poisoning effect. The ultimate goal of this 
-effort is to evaluate impact of problematic fission products removal such as 
-xenon on maximum negative reactivity insertion due to xenon poisoning and 
-understand when it happens.
+effort is to evaluate the timing and impact of problematic fission product 
+removal (i.e. xenon removal) on maximum negative reactivity insertion.
+
+
 
 \subsection{Results and Analysis}
 The \gls{TAP} full core depletion analysis was performed using SaltProc v1.0. 
-I used a 1-hour depletion time step to capture rapid changes in reactivity and 
+A 1-hour depletion time step captures rapid changes in reactivity and 
 isotopic composition during the transient. 
 Figure~\ref{fig:lf-tap-keff-eol-eoc-no} demonstrated the effective 
 multiplication factor evolution during postulated worst-case transient when 
@@ -257,28 +290,28 @@ and all moderator rods are inserted in the core (see 1668 rods configuration
 in Figure~\ref{fig:tap-840-1668}). The negative effect of xenon poisoning is 
 expected to be the greatest at the \gls{EOL} when the core has the most 
 thermal neutron spectrum. 
-Multiplication factor decreases by 64 $pcm$ during the first two hours after 
-shutdown ($^{135}$Xe concentration reached its maximum) and then increases by 
-242 $pcm$ because $^{135}$Xe loss due to decay overcame its gain from 
-$^{135}$I decay. The $k_{eff}$ increase accelerated after reactor power turned 
-back to 100\% due to $^{135}$Xe burnout. 
+The multiplication factor decreases by 64 $pcm$ during the first two hours 
+after shutdown ($^{135}$Xe concentration reached its maximum) and then 
+increases by 242 $pcm$ because $^{135}$Xe loss due to decay overcame its gain 
+from $^{135}$I decay. The $k_{eff}$ increase accelerated after reactor power 
+turned back to 100\% due to $^{135}$Xe burnout. 
 Figure~\ref{fig:lf-tap-keff-eol-eoc-no} clearly indicates that the time after 
-shutdown when the $^{135}$Xe reaches its extremum ($t^{max}_X$) for the 
-\gls{TAP} reactor is significantly shorter than well-known xenon peak time for 
-\glspl{LWR} (11 hours).
+shutdown when the $^{135}$Xe reaches its extremum ($t^{max}_X$) is 
+significantly shorter for the \gls{TAP} reactor than for \glspl{LWR} (11 
+hours).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=0.9\textwidth]{ch5/keff_kl_1_eol_eoc.png}
+	\includegraphics[width=\textwidth]{ch5/keff_kl_1_eol_eoc.png}
 	\caption{The effective multiplication factor dynamics for an 11-hour 
 		shutdown (well-known xenon peak time for \glspl{LWR}) for the TAP 
 		reactor, 
 		10 days before the \gls{EOL} (all moderator rods inserted), the gas 
-		removal system is turned off. Uncertainty $\sigma\pm7$ $pcm$ is 
+		removal system is turned off. Uncertainty ($\sigma\pm7$ $pcm$) is 
 		shaded.}
 	\label{fig:lf-tap-keff-eol-eoc-no}
 \end{figure}
 
-Using $^{135}$I and $^{135}$Xe number density at the 8448$^{th}$ day of 
+Using $^{135}$I and $^{135}$Xe number densities at the 8448$^{th}$ day of 
 operation (the 10$^{th}$ day before the \gls{EOL}) from long-term realistic 
 analysis 
 (see Section~\ref{sec:long-term-real}) and Equation~\ref{eq:time-xe-max}, I 
@@ -290,14 +323,14 @@ the finer time resolution (15 minutes instead of 1 hour) and shutdown time of
 equal $t^{max}_X$).
 
 Figure~\ref{fig:lf-tap-keff-eol-eoc-no-15} shows that the effective 
-multiplication factor dropped by 70 $pcm$ during first 2.75 hours after 
+multiplication factor dropped by 70 $pcm$ during the first 2.75 hours after 
 shutdown as predicted by Equation~\ref{eq:time-xe-max}. After power ramps up 
 from 0\% to 100\%, $k_{eff}$ returned to its initial value (1.00151) in 75 
 minutes. The imbalance between $^{135}$I production and $^{135}$Xe burnout is 
 the main reason for this positive reactivity boost. Notably, maximum negative 
 reactivity insertion due to $^{135}$Xe buildup after shutdown in the 
-\gls{PWR} is by order of magnitude greater than in the \gls{TAP} \gls{MSR}: 
-$-1500$ $pcm$ \cite{rykhlevskii_impact_2019} and $-70$ $pcm$, respectively.
+\gls{PWR} ($-1500$ $pcm$) is two orders of magnitude greater than in the 
+\gls{TAP} \gls{MSR} ($-70$ $pcm$).
 Thus, the \gls{TAP} reactor with inactive gas removal system remains critical 
 throughout worst-case power change even during the 8448$^{th}$ of operation 
 (the 10$^{th}$ day before $k_{eff}$ drops below 1) when operative excess 
@@ -310,7 +343,7 @@ to restart it until $t^{max}_X=2.76h$ after shutting down.
 	\caption{The effective multiplication factor dynamics for the worst-case 
 		load curve (2.75-hour shutdown) for the \gls{TAP} reactor, 10 days 
 		before the \gls{EOL} (all moderator rods inserted), the gas removal 
-		system is turned off. Uncertainty $\sigma\pm7$ $pcm$ is shaded.}
+		system is turned off. Uncertainty ($\sigma\pm7$ $pcm$) is shaded.}
 	\label{fig:lf-tap-keff-eol-eoc-no-15}
 \end{figure}
 
@@ -319,10 +352,10 @@ The analysis of the fuel composition evolution provides clearer information
 about the $^{135}$Xe/$^{135}$I equilibrium and the core state. 
 Figure~\ref{fig:lf-tap-xe-i-eol-eoc-no-15} shows changes in the number density 
 of isotopes influential to the \gls{TAP} core neutronics throughout the 
-transient. The $^{135}$I/$^{135}$Xe number density ratio after reaching 
+transient. The $^{135}$I/$^{135}$Xe number density ratio after reaching xenon
 equilibrium is equal to 1.0. After shutdown, $^{135}$I decays to $^{135}$Xe 
-that is not burned up. The $^{135}$I decay caused xenon concentration 
-peak by 4\% from equilibrium after 2.75 hours due to a shorter $^{135}$I 
+that is not burned up. The $^{135}$I decay caused xenon concentration to 
+increase by 4\% from equilibrium after 2.75 hours due to a shorter $^{135}$I 
 half-life ($\tau_{1/2}(^{135}I)=6.6h$ vs. $\tau_{1/2}(^{135}Xe)=9.17h$). Thus, 
 during the first 2.75 hours, $^{135}$Xe gain from $^{135}$I decay slightly 
 overcame $^{135}$Xe decay loss. In sum, the $^{135}$Xe peak is almost 
@@ -340,24 +373,26 @@ the \gls{TAP} reactor and \gls{PWR}, respectively
 	\label{fig:lf-tap-xe-i-eol-eoc-no-15}
 \end{figure}
 
-Table~\ref{tab:lf-rho-change-eps-zero} summarizes results of above transient 
-analysis for various moments during 23 years of the \gls{TAP} \gls{MSR} 
-operation \emph{with inactive gas removal system}. I repeated the fuel 
+Table~\ref{tab:lf-rho-change-eps-zero} shows that \emph{even without gas 
+removal} the \gls{TAP} reactor experienced \emph{insignificant effect of xenon 
+poisoning} during the transient, however, the effect worsened toward the 
+\gls{EOL}. I repeated the fuel 
 composition and multiplication factor evolution analysis described earlier to 
-evaluate impact of the reactor spectrum (geometry \#1 has significantly 
+evaluate impact of the reactor spectrum (geometry \#1 has a significantly 
 harder spectrum than geometry \#15) and the fuel salt composition on the 
 effect of xenon poisoning and on the reactor's potential ability to 
 follow load. 
 The effect of xenon  poisoning worsens toward the \gls{EOL} because the 
 $^{135}$Xe concentration peak is larger for the most thermal core 
 configuration (all moderator rods inserted, the largest moderator-to-fuel 
-ratio). Right after last moderator configuration update (switch from geometry 
+ratio). Right after the final moderator configuration update (switch from 
+geometry 
 \#14 to \#15), the xenon concentration peak is slightly larger than at the 
 297$^{th}$ day of the cycle. The fissile $^{235}$U, $^{239}$Pu, and $^{241}$Pu 
 concentration decreasing during last cycle due to burnup, while poisonous 
 actinides (e.g., $^{238}$Pu, $^{240}$Pu, $^{242}$Pu, $^{236}$U) concentration 
 increases which impacts $^{135}$I/$^{135}$Xe number density ratio and, 
-consequently, $^{135}$Xe concentration peak value. Notably, such phenomena is 
+consequently, $^{135}$Xe concentration peak value. Notably, such phenomena are 
 not observed for the \gls{BOL} (geometry \#1, SVF=0.903) or \gls{MOL} 
 (geometry \#8, SVF=0.766).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -376,7 +411,7 @@ not observed for the \gls{BOL} (geometry \#1, SVF=0.903) or \gls{MOL}
 		time ($t^{max}_X$) [h] & Maximum relative $^{135}$Xe concentration 
 		change [\%] & Maximum reactivity change after shutdown ($\Delta\rho$) 
 		[$pcm$] \\ \hline
-		1 & 0.903 & startup+3       & 3542 & 0.749 & +0.33 & -10  \\
+		1 & 0.903 & 3       & 3542 & 0.749 & +0.33 & -10  \\
 		1 & 0.903 & 288     & 405  & 0.500 & +0.14 & -15  \\
 		1 & 0.903 & 315     & 165  & 0.484 & +0.13 & -4   \\\hline
 		8 & 0.766 & 3       & 3014 & 0.688 & +0.36 & -10  \\
@@ -391,31 +426,29 @@ not observed for the \gls{BOL} (geometry \#1, SVF=0.903) or \gls{MOL}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 Overall, the \gls{TAP} \gls{MSR} could be restarted after shutdown \emph{even 
 without gas removal} in worst-case initial conditions: the most thermal 
 moderator configuration, low operative excess reactivity at the end of the 
 burnup cycle, instantaneous power drop, and $^{135}$Xe concentration at its 
 extremum. To investigate the benefits of online fission gas removal on the 
 xenon poisoning effect, I repeated the postulated transient simulation for 
-different moments in time (e.g., \gls{BOL}, MOL \gls{EOL}) with fully 
+different moments in time (e.g., \gls{BOL}, MOL \gls{EOL}) with a fully 
 operational gas removal system ($\epsilon_{Xe}=0.915$). 
 
-Figure~\ref{fig:lf-tap-rho-kl100-eol-eoc} shows reactivity change during the
-\gls{TAP} reactor shutdown for 11 hours and following power ramp up to 100\% 
-when the gas removal system is fully operational. 
-In contrast with the inactive gas removal system case, reactivity drops 
-by 100 $pcm$ during the first hour after shutdown. The gas removal 
-system keeps $^{135}$Xe concentration very low by continuously extracting 
-91.5\% of xenon isotopes. Simultaneously, the online reprocessing system 
-extracts $^{135}$I very slowly (cycle time is 60 days); hence, 
-$^{135}$I/$^{135}$Xe concentration ratio is significantly greater than for 
-no-removal case (11.0 vs. 1.0). According to Equation~\ref{eq:time-xe-max},
-$^{135}$Xe concentration should reach local extremum in about 11 hours after 
-shutdown, but this equation disregards online reprocessing. The 
-depletion simulation performed using SaltProc v1.0 demonstrated that $^{135}$Xe
-concentration peaked in one hour after the shutdown and caused the reactivity 
-drop by 100 $pcm$ (see Figure~\ref{fig:lf-tap-rho-kl100-eol-eoc}). Afterward, 
+Figure~\ref{fig:lf-tap-rho-kl100-eol-eoc} demonstrates a more notable xenon 
+poisoning effect for the case with high gas removal efficiency than for 
+the no-removal case. The reactivity drops by 100 $pcm$ during the 
+first hour after shutdown. The gas removal system keeps $^{135}$Xe 
+concentration very low by continuously extracting 91.5\% of xenon isotopes. 
+Simultaneously, the online reprocessing system extracts $^{135}$I very slowly 
+(cycle time is 60 days); hence, $^{135}$I/$^{135}$Xe concentration ratio is 
+significantly greater than for the no-removal case (11.0 vs. 1.0). According 
+to Equation~\ref{eq:time-xe-max}, $^{135}$Xe concentration should reach local 
+extremum in about 11 hours after shutdown, but this equation disregards online 
+reprocessing. The depletion simulation performed using SaltProc v1.0 
+demonstrated that $^{135}$Xe concentration peaked in one hour after the 
+shutdown and caused the reactivity drop by 100 $pcm$ (see 
+Figure~\ref{fig:lf-tap-rho-kl100-eol-eoc}). Afterward, 
 the reactivity restored quickly ($<2$ hours) to its initial value because 
 the gas removal system extracts 91.5\% of xenon every hour. Overall, 
 $^{135}$Xe loss due to its decay and online gas extraction is more significant 
@@ -427,15 +460,15 @@ than $^{135}$Xe gain due to $^{135}$I decay throughout the transient.
 	\caption{Reactivity dynamics during an 11-hour shutdown for the 
 		\gls{TAP} reactor, 10 days before the \gls{EOL} (all moderator rods 
 		inserted), the gas removal system operates with efficiency 
-		$\epsilon_{Xe}=0.915$. Uncertainty $\sigma\pm5$ $pcm$ is 
+		$\epsilon_{Xe}=0.915$. Uncertainty ($\sigma\pm5$ $pcm$) is 
 		shaded.}
 	\label{fig:lf-tap-rho-kl100-eol-eoc}
 \end{figure}
 
-Table~\ref{tab:lf-rho-change-eps-1}  summarizes xenon poisoning analysis 
-results for various moments during 23 years of \gls{TAP} \gls{MSR} operation 
-\emph{with active gas removal system working with maximum efficiency}
-($\epsilon_{Xe}=0.915$). Similar to the analysis with inactive gas removal 
+Table~\ref{tab:lf-rho-change-eps-1} shows that the \gls{TAP} reactor with 
+high gas removal efficiency experienced \emph{small effect of xenon poisoning} 
+during the transient, and it worsened toward the \gls{EOL}. Similar to the 
+analysis with inactive gas removal 
 system, maximum negative reactivity insertion due to xenon poisoning worsens 
 toward the \gls{EOL} because $^{135}$Xe absorption cross section drops 
 dramatically as energy grows. Notably, 
@@ -486,7 +519,8 @@ presents a challenge ($-1500$ $pcm$) \cite{rykhlevskii_impact_2019}.
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-I analyzed the neutron spectrum of both reactors to understand the difference 
+Additionally, I analyzed the neutron spectrum of both reactors to understand 
+the difference 
 between $^{135}$I/$^{135}$Xe gain and loss for the \gls{TAP} \gls{MSR} and 
 \gls{PWR}. Figure~\ref{fig:tap-pwr-spectrum} 
 demonstrates the neutron flux energy distribution normalized by unit lethargy 
@@ -517,7 +551,7 @@ to decay, and no xenon concentration peak is observed at the \gls{BOL}
 
 
 The \gls{TAP} \gls{MSR} neutron spectrum thermalizes toward the \gls{EOL} due 
-to additional moderator rods insertion. Figure~\ref{fig:tap-pwr-spectrum} 
+to additional moderator rod insertion. Figure~\ref{fig:tap-pwr-spectrum} 
 shows that the \gls{TAP} core spectrum at the \gls{EOL} (after 23 years of 
 operation, all moderator rods inserted into the core) is thermal and  similar 
 to the \gls{PWR} spectrum. However, the $^{135}$I/$^{135}$Xe inventory ratio 
@@ -589,12 +623,19 @@ concentration peak after shutdown and worsens xenon poisoning effect.
 %\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In conclusion, I observed a negligible xenon poisoning in the \gls{TAP} 
+reactor during the anticipated transient because it has a relatively hard 
+neutron energy spectrum even at the most thermal core configuration (all 
+moderator rods are inserted into the core). The harder spectrum gives 
+a small $^{135}$I/$^{135}$Xe concentration ratio which leads to a smaller 
+$^{135}$Xe concentration peak after the shutdown. Notably, the fission gas 
+removal with high efficiency did not significantly change the xenon poisoning 
+effect because the $^{135}$Xe absorption cross section fell dramatically as 
+neutron energy grows. Overall, the \gls{TAP} reactor can effectively 
+load-follow even without fission gas removal. 
 
-
-%\section{Prototype design for the xenon removal system}
-
-\section{Safety and operational parameters evolution during load 
-following}\label{ch5:saf_param}
+\section{Safety and operational parameters evolution during load following} 
+\label{ch5:saf_param}
 To analyze the impact of the load-following transient on the \gls{TAP} concept 
 safety, I calculated safety and operational parameters at various moments 
 during postulated earlier worst-case power change transient (0\% power level 
@@ -613,7 +654,7 @@ Fuel Temperature Coefficient ($\alpha_{T,F}$) became less negative during the
 first hour of the transient due to a slight spectrum hardening because the  
 $^{135}$Xe concentration peak changes the Doppler effect in the fuel salt. 
 After turning the power back on, all three temperature coefficients of 
-reactivity remains stable because the fuel salt composition remains almost 
+reactivity remains stable because the fuel salt composition remain almost 
 unchanged. Overall, the isothermal temperature coefficient, $\alpha_{T,ISO}$ 
 remains negative and strong throughout the postulated transient and 
 fluctuates slightly within stochastic error range 
@@ -624,7 +665,7 @@ $\sigma_{\alpha_{T,ISO}}\pm0.043$ $pcm/K$.
 	\caption{Temperature feedback coefficients during the postulated 
 		transient for the \gls{TAP} reactor, 10 days before the \gls{EOL} (all 
 		moderator rods inserted), the gas removal system operates with 
-		efficiency $\epsilon_{Xe}=0.915$. The uncertainty $\pm\sigma$ is 
+		efficiency $\epsilon_{Xe}=0.915$. The uncertainty, $\pm\sigma$, is 
 		shaded.}
 		\label{fig:lf-tap-tc-evo}
 \end{figure}
@@ -665,68 +706,72 @@ stochastic error range ($\sigma_{CRW}\pm8.9$ $pcm$).
 \end{figure}
 
 
+
 \section{Concluding remarks}
 This chapter demonstrated the short-term depletion simulations for the 
 \gls{TAP} reactor with the core power level variation in the range of [0, 
 100\%] using SaltProc v1.0 and Serpent. I considered two different noble gas 
-removal scenarios: (1) inactive gas removal system (e.g., $\epsilon_{Xe}=0$), 
+removal scenarios: (1) no gas removal (e.g., $\epsilon_{Xe}=0$), 
 and (2) fully operational gas removal system (e.g., $\epsilon_{Xe}=0.915$). 
 The results in the literature report negative xenon poisoning effect for 
 conventional \glspl{LWR} reaches its extremum $\Delta\rho\approx-1500$ $pcm$ 
 in approximately 11 hours after shutdown. Such a vast reactivity drop 
 complicates the \glspl{LWR} load-following.
 
-For the case with an inactive gas removal system ($\epsilon_{Xe}=0$), 
-$^{135}$Xe 
-concentration peaks in about 45 and 165 min after the shutdown at the 
+For the case with no gas removal ($\epsilon_{Xe}=0$), $^{135}$Xe 
+concentration peaks about 45 and 165 min after the shutdown at the 
 \gls{BOL} and \gls{EOL}, respectively. The xenon concentration peaks 
 sooner for the harder core configuration (e.g., at the \gls{BOL}, SVF=0.9) 
 because $^{135}$Xe absorption cross section drops dramatically as neutron 
 energy grows above 0.1 eV, thus, $^{135}$Xe burn out faster in a harder 
 spectrum. Thus, the harder spectrum leads to a smaller $^{135}$I/$^{135}$Xe 
 concentration ratio and, consequently, lower xenon concentration peak after 
-shutdown. For the inactive gas removal scenario (e.g., $^{135}$Xe loss after 
-shutdown due to decay only), xenon concentration at the \gls{BOL} remains 
+shutdown. Without gas removal (e.g., $^{135}$Xe loss after 
+shutdown due to decay only) xenon concentration at the \gls{BOL} remains 
 almost constant ($\Delta N_{^{135}Xe}=+0.33$\%), and no effect of xenon 
 poisoning was observed ($\Delta\rho=-10\pm7$ $pcm$). However, at the 
-\gls{EOL}, when all moderator rods are in, and the neutron spectrum is more 
+\gls{EOL}, when all moderator rods are in and the neutron spectrum is more 
 thermal, I observed a more significant effect of poisoning: $^{135}$Xe 
 concentration increased by 4\% with corresponding negative reactivity 
 insertion of $-70$ $pcm$. 
 
 For the case with very effective noble gas removal ($\epsilon_{Xe}=0.915$), 
-the time when $^{135}$Xe concentration peaks is impossible to predict 
-analytically, because, after shutdown, the gas removal system removes a major 
+the time when $^{135}$Xe concentration peaks cannot be predicted analytically, 
+because, after shutdown, the gas removal system removes a major 
 fraction of xenon gas at the end of each depletion step. Moreover, the 
 $^{135}$I/$^{135}$Xe ratio is significantly greater (e.g., between 8.66 and 
-11.42) than for $\epsilon_{Xe}=0$ case due to very effective xenon removal 
-during normal operation on the full power (iodine also being removed but very 
-slowly, see Table~\ref{tab:reprocessing_list}). Thus, $^{135}$I decay leads to 
+11.42) than for the non-removal ($\epsilon_{Xe}=0$) case. Thus, $^{135}$I 
+decay leads to 
 a substantial increase in $^{135}$Xe concentration right after shutdown (up to 
 +200\% at the \gls{EOL}), and corresponding reactivity drop ($-108\pm5$ $pcm$ 
 at the \gls{EOL}). However, after the first hour, reactivity increases quickly 
-because the gas removal system extracts most of the xenon every 1 hour, which 
-is selected SaltProc v1.0 depletion time step. The effect of xenon poisoning 
-for the \gls{TAP} reactor with active gas removal system in experiments is 
-expected to be even less severe because the system would remove noble gases 
+because the gas removal system extracts most of the xenon every 1 hour (the 
+selected SaltProc v1.0 depletion time step). The true effect of xenon 
+poisoning for the \gls{TAP} reactor with active gas removal is expected to be 
+even less severe because the real system would remove noble gases 
 continuously, not discretely as simulated by SaltProc (e.g., xenon would be 
 removed with $\epsilon_{Xe}=0.915$ every moment, not once per hour). Overall, 
 more realistic results for load-following transients can be obtained with 
-better time resolution - depletion time step should be closer to full loop 
-time (20 seconds), which requires enormous computation burden.
+better time resolution. Though the ideal depletion time step should be closer 
+to full loop time (20 seconds), such fidelity would require an enormous 
+computation burden.
 
-Finally, this chapter demonstrated that the \gls{TAP} reactor maintains major 
-safety margins during postulated transients. The temperature feedback 
+Finally, this chapter demonstrated that the \gls{TAP} reactor maintains 
+required safety margins during postulated transients. The temperature feedback 
 coefficients, void coefficient of reactivity, and control rod worth all remain 
 within stochastic uncertainty throughout the transient. Small elevation in 
 total temperature coefficient and void coefficient of reactivity during the 
-first hour after shutdown is due to $^{135}$Xe concentration raise and 
+first hour after shutdown is due to rising $^{135}$Xe concentration raise and 
 corresponding short-term neutron spectrum hardening. In conclusion, the 
-\gls{TAP} \gls{MSR}, even with an inactive gas removal system, is capable to 
-reducing power from 100\% to 0\% and then restart even when $^{135}$Xe 
-concentration culminates without compromising critical safety margins. 
-The comprehensive material study must be done to prove that structural 
-materials could withstand such dramatic core power fluctuations.
+\gls{TAP} \gls{MSR}, even without gas removal, is capable of the safe restart 
+after reducing power from 100\% to 0\% even when $^{135}$Xe concentration 
+peaks. 
+While this work has confirmed neutronics feasibility of resilience against the 
+iodine pit, separate thermomechanical structural analysis is needed to confirm 
+that structural materials could withstand such dramatic core power 
+fluctuations.
+%The comprehensive material study must be done to prove that structural 
+%materials could withstand such dramatic core power fluctuations.
 
 
 
