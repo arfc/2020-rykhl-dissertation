@@ -17,11 +17,12 @@ efficiency}.
 Finally, this chapter presents a lifetime-long fuel salt depletion simulation 
 for the case with \emph{a realistic, physics-based} mathematical model for 
 noble gas removal efficiency, which provides fuel isotopic composition 
-evolution during 25 years of the \gls{TAP} \gls{MSR} operation. Detailed 
+evolution during 25 years of the \gls{TAP} \gls{MSR} operation. Additionally, 
+this chapter presents safety and operational parameters evolution during 
+operation. Detailed 
 insights about fuel salt composition and neutron spectrum dynamics obtained 
 herein will be used in the following chapters to investigate \gls{TAP} 
-reactor poisoning during load-following and safety parameter evolution during 
-operation.
+reactor poisoning during load-following.
 
 
 \section{Transatomic Power MSR design description}\label{sec:tap_design_sum}
@@ -80,7 +81,8 @@ MW$_{e}$, 2-loop nuclear reactor system with an intermediate salt loop.
 	\label{fig:tap-primary-scheme}
 \end{figure}
 
-The \gls{TAP} design (Figure~\ref{fig:tap-side-view}) is very similar to the
+The \gls{TAP} core design (Figure~\ref{fig:tap-side-view}) is very similar to 
+the
 original \gls{MSRE} design developed by \gls{ORNL} 
 \cite{haubenreich_experience_1970} but has two significant innovations: 
 the fuel salt composition and the moderator. The \gls{MSRE}'s 
@@ -117,7 +119,7 @@ enriched \gls{LEU} fuel cycle.
 
 The \gls{TAP} \gls{MSR} primary loop contains the reactor core volume  
 (including the zirconium hydride moderator rods with silicon carbide  
-cladding), pumps, and primary heat exchangers. Pumps circulate the  
+cladding), pumps, pipes, and primary heat exchangers. Pumps circulate the  
 LiF-(Act)F$_4$ fuel salt through the primary loop. The pumps, vessels, tanks, 
 and piping are made of a nickel-based alloy (similar to Hastelloy-N\footnote{ 
 Hastelloy-N is very common in \gls{MSR} designs now, but was developed at 
@@ -147,8 +149,7 @@ well as an \gls{ORNL} analysis of the \gls{TAP} design
 		Uranium enrichment      & 5\% $^{235}$U          	    \\
 		Moderator               & Zirconium hydride (ZrH$_{1.66}$) rods \\
 								& (with silicon carbide cladding)       \\
-		Neutron spectrum at \gls{BOL} 					& epithermal \\
-		\qquad\qquad\qquad\qquad\space at \gls{EOL}     & thermal      \\
+		Neutron spectrum 		& epithermal \\
 		\hline
 	\end{tabularx}
 	\label{tab:tap_tab}
@@ -163,7 +164,7 @@ is a cylinder made of a nickel-based alloy with an inner radius of 150 cm, a
 height of 350 cm, and a wall thickness of 5 cm. 
 \begin{figure}[t] % replace 't' with 'b' to 
 	\includegraphics[width=\textwidth]{ch4/tap_core_ornl.png}
-	\vspace{-0.35in}
+	\vspace{-0.1in}
 	\caption{The \gls{TAP} \gls{MSR} schematic core view showing moderator 
 		rods (reproduced from ORNL/TM-2017/475  
 		\cite{betzler_assessment_2017-1}).}
@@ -287,7 +288,7 @@ treatment. To improve the extraction efficiency of these fission products, the
 stream in the primary loop (Figure~\ref{fig:tap-reproc}, orange block). The 
 main idea of this filter is to create a large nickel surface area using porous 
 metal (e.g., Inconel fibers). The fuel salt flows throughout the filter 
-and noble metals plate out on the internal filter surface. 
+and noble metals plate out on the filtering material. 
 
 This Liquid Metal Extraction process for the \gls{TAP} concept has been 
 adopted from the \gls{MSRE}. The \gls{MSRE} demonstrated a liquid-liquid 
@@ -396,7 +397,7 @@ neutron spectrum. Quarter-core configurations of the \gls{TAP} core with
 various salt volume fractions, used in the current work to maintain 
 criticality for a reasonable operational period ($>20$ years), are listed in 
 Table~\ref{tab:tap_adjustable_core}, Figures~\ref{fig:tap-406-681}, and 
-\ref{fig:tap-840-1668} in Appendix~\ref{appex:geometries}.
+\ref{fig:tap-840-1668} in Appendix~A.
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.75\textwidth]{ch4/tap_plan_view_serpent_347.png}
@@ -610,7 +611,7 @@ excess reactivity is exhausted, and moderator rod assemblies should be
 reconfigured to operate the next cycle. 
 
 An optimal number of moderator configurations (cycles) is found to be 15 (see 
-Appendix~\ref{appex:geometries}). Fewer cycles would improve capacity factor 
+Appendix~A). Fewer cycles would improve capacity factor 
 but need larger excess reactivity at the \gls{BOC}, which is strictly limited 
 by reactivity control system worth. More cycles would require frequent 
 moderator rod reconfigurations, which worsens the capacity factor.  The 
@@ -1039,7 +1040,7 @@ the salt in the axial-flow centrifugal bubble separator
 Figures~\ref{fig:keff-eps-var} and \ref{fig:keff-eps-var-zoom} demonstrate the 
 effective multiplication factor dynamics ($k_{eff}$) 
 during 25 years of operation with 15 various moderator rod configurations 
-(cycles) described in Appendix~\ref{appex:geometries}. SaltProc v1.0 
+(cycles) described in Appendix~A. SaltProc v1.0 
 coupled to Serpent calculated 
 $k_{eff}$ after removing fission products and feeding 5\% \gls{LEU} at the end 
 of each depletion step (3 days as was determined in 
@@ -1414,7 +1415,7 @@ The MTC and ITC are both strongly negative at startup. However, the MTC became
 weakly positive toward the \gls{EOL} due to the same spectral shift. To better 
 understand the dynamics of temperature coefficient evolution, I calculated 
 temperature coefficients for 15 distinct moments during operation to cover all 
-moderator rod configurations described in Appendix~\ref{appex:geometries}.
+moderator rod configurations described in Appendix~A.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
 	\caption{Temperature coefficients for the \gls{TAP} reactor at the 

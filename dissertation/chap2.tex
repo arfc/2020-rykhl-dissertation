@@ -11,13 +11,13 @@ Gaseous fission products (e.g., Xe) must be removed from the fuel salt
 to avoid reactor poisoning, especially during startup and power maneuvering. 
 This is particularly true for $^{135}$Xe, with its strong neutron capture 
 cross section ($\approx10^6\dots10^7$ b in a thermal energy range). $^{135}$Xe 
-is produced directly from fission in about 0.3\% of $^{235}$U fissions 
+is produced directly from fission in about 0.2\% of $^{235}$U fissions 
 ($\gamma_{_{^{135}Xe}}$), but an even larger fraction of $^{135}$Xe is 
 produced by the decay of $^{135}$I and $^{135}$Te (Table~\ref{tab:xe_gain}). 
 $^{135}$I and $^{135}$Te yields from fission are 
-$\gamma_{_{^{135}I}}\!=3.6$\% and $\gamma_{_{^{135}Te}}\!=2.5$\%, 
+$\gamma_{_{^{135}I}}\!=3.1$\% and $\gamma_{_{^{135}Te}}\!=3.3$\%, 
 respectively. Thus, the total $^{135}$Xe production from fission is about 
-6.4\% of fissions (of $^{235}$U), most of this is from $^{135}$I and 
+6.6\% of fissions (of $^{235}$U), most of this is from $^{135}$I and 
 $^{135}$Te decay. Noble gases (e.g., tritium, xenon, and krypton) can be 
 removed from the fuel salt as follows:
 \begin{enumerate}[label=(\alph*)]
@@ -38,14 +38,14 @@ removed from the fuel salt as follows:
 			parameters involved}  	\\ [5pt] \hline 
 		Direct from fission & $\Sigma_f \gamma_{_{^{135}Xe}}\phi$ (for 
 		$^{235}$U fission) \\
-		yield $\gamma_{_{^{135}Xe}}\!\!\!=0.003$ & \\ [5pt] \hline 
+		yield $\gamma_{_{^{135}Xe}}\!\!\!=0.0022$ & \\ [5pt] \hline 
 		$^{135}$I decay     & $\Sigma_f \gamma_{_{^{135}I}}\phi$ (for 
 		$^{235}$U fission) \\
-		yield $\gamma_{_{^{135}Xe}}\!\!\!=0.036$, it decays to $^{135}$Xe with 
+		yield $\gamma_{_{^{135}Xe}}\!\!\!=0.031$, it decays to $^{135}$Xe with 
 		$\tau_{1/2}=6.68$ h & 			                    \\	[5pt]	\hline 
 		$^{135}$Te decay    & $\Sigma_f \gamma_{_{^{135}Te}}\phi$ (for 
 		$^{235}$U 		fission) \\
-		yield $\gamma_{_{^{135}Xe}}\!\!\!=0.025$, 
+		yield $\gamma_{_{^{135}Xe}}\!\!\!=0.033$, 
 		it decays to $^{135}$I with $\tau_{1/2}=19$ s 
 		& 			                    \\ [5pt]	\hline
 	\end{tabularx}
@@ -59,7 +59,7 @@ Figure~\ref{fig:gas_removal_system} shows the conceptual design of the
 size are introduced in a salt stream via the primary pump bowl. These bubbles 
 absorb noble gases before being separated from the salt by a gas separator. 
 \gls{ORNL} suggested that the \gls{MSBR} off-gas system would inject 
-$d=0.508$ $mm$ helium bubbles in the pump bowl, redirect 10\% of the fuel salt 
+$d=0.508mm$ helium bubbles in the pump bowl, redirect 10\% of the fuel salt 
 flow through a bubble separator to remove the bubbles, and then return the 
 flow into the pump suction. Robertson \emph{et al.} reported that the helium 
 bubble size was approximately 25\% of the throat width (blue circle on 
@@ -108,7 +108,7 @@ helium bubble size by changing the throat width in the bubble generator.
 		constant	($\lambda$)		\\[5pt]
 		\hline $^{135}$Xe burnup              &  Neutron flux 
 		($\phi$)		 					\\[5pt]
-		dissolved xenon-135 burnup as it passes through the core  
+		dissolved $^{135}$Xe burnup as it passes through the core  
 		& 			            \\		
 		\hline $^{135}$Xe migrated to 
 		helium bubbles & Removal efficiency 
@@ -219,7 +219,7 @@ significant engineering challenge \cite{mcfarlane_review_2019}.
 
 In this work, we assumed ideal, constant separation efficiency in the 
 filtering system. However, in the future, a physics-driven mathematical  
-formula can be used when the experimental data or analytical model becomes 
+formula can be used when the experimental data or analytical model will be
 available.
 
 
@@ -295,7 +295,7 @@ approximately 95\% of the uranium from the stream
 \cite{robertson_conceptual_1971}.
 
 To maintain or adjust the fissile material concentration in the reactor 
-(and,consequently, control the reactivity), $^{233}$U is added from the 
+(and, consequently, control the reactivity), $^{233}$U is added from the 
 protactinium decay tank to fully processed salt on its way back to the 
 reactor. Adding fissile material is performed by sparging the salt with UF$_6$ 
 and hydrogen to produce UF$_4$ in the salt and HF gas 
@@ -375,7 +375,7 @@ was developed in 2018 as a part of my M.S. thesis
 \cite{rykhlevskii_arfc/saltproc_2018, rykhlevskii_advanced_2018}. The tool was 
 designed to expand Serpent 2 depletion capabilities for modeling liquid-fueled 
 \glspl{MSR} with online fuel reprocessing systems. SaltProc v0.1 uses HDF5 
-\cite{the_hdf_group_hierarchical_1997} to store data and uses the PyNE Nuclear 
+\cite{the_hdf_group_hierarchical_1997} to store data and the PyNE Nuclear 
 Engineering Toolkit \cite{scopatz_pyne_2012} for Serpent 2 output file parsing 
 and nuclide naming. SaltProc v0.1 is an open-source Python package that uses a 
 batch-wise approach to simulate continuous feeds and removals in \glspl{MSR}. 
@@ -388,6 +388,7 @@ required to remove 100\% of a target nuclide from a fuel salt
 working with the Monte Carlo software Serpent 2, were demonstrated using the 
 full-core MSBR design for a simplified case with ideal removal efficiency 
 (100\% of mass for target elements removed) \cite{rykhlevskii_modeling_2019}. 
+Chapter 3 covers the summary of this effort.
 The SaltProc v0.1 architecture and the principal structure were not designed 
 for flexible implementation of sophisticated online reprocessing systems, 
 including realistic variable extraction efficiencies. 
@@ -398,8 +399,7 @@ to create a comprehensive generic tool to realistically model complex
 extraction efficiencies, time-dependent core geometry, and the mass balance 
 between the core and the reprocessing plant.
 
-\subsection{Software architecture} \textbf{This section needs to be updated 
-when the structure will be finalized.}
+\subsection{Software architecture} 
 
 The SaltProc v1.0 Python toolkit couples directly with Serpent 2 input 
 and output files, to couple the reprocessing system to depletion calculation. 
@@ -419,9 +419,10 @@ for reading the user's input file for the depletion software, initial material
 (e.g., fuel and/or fertile salt) composition, principal parameters for burnup 
 simulation (e.g., neutron population and number of cycles for Monte Carlo 
 neutron transport), and running the depletion code.
-\paragraph*{Simulation.}\textit{Simulation} class runs a Serpent depletion 
+\paragraph*{Simulation.}\textit{Simulation} class runs a depletion 
 step, creates and writes an HDF5 database, tracks time, and converts isotopic 
-composition vector nuclide names from Serpent to human-readable format.
+composition vector nuclide names from a depletion code format to 
+human-readable format.
 \paragraph*{MaterialFlow.}Each \textit{MaterialFlow} object represents the 
 material flowing between \textit{Process} objects  
 (Figures~\ref{fig:matflow_obj} and \ref{fig:matflow_obj_tap}). All instances 
@@ -435,11 +436,10 @@ model the \gls{MSBR} protactinium decay tank). The main idea of the
 \textit{MaterialFlow} object is to pass detailed information about the salt 
 starting at the \gls{MSR} vessel outlet throughout reprocessing components 
 (\textit{Processes}), which modify the \textit{MaterialFlow} object before 
-depleting the material in the next Serpent burnup step. 
+depleting the material in the next depletion step. 
 \begin{figure}[ht!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.7\textwidth]{ch2/materialflow.pdf}
-	\vspace{-0.1in}
 	\caption{Schematic for passing material data between fuel processing 
 		system components shown for a general case.}
 	\label{fig:matflow_obj}
@@ -447,7 +447,6 @@ depleting the material in the next Serpent burnup step.
 \begin{figure}[ht!] % replace 't' with 'b' to 
 	\centering
 	\includegraphics[width=0.9\textwidth]{ch2/tap_materialflow.pdf}
-	\vspace{-0.1in}
 	\caption{Schematic for passing material data between fuel processing 
 		system components shown for the \gls{TAP} concept.}
 	\label{fig:matflow_obj_tap}
@@ -474,10 +473,10 @@ should connect \textit{Process} objects in series, parallel, or both with
 make the reprocessing system definition self-explanatory and straightforward, 
 I employed a standardized graph description language, \emph{dot}, which is 
 widely used in computer science for describing undirected and directed graphs 
-\cite{koutsofios_drawing_1996}. A directed graph is a set of objects 
+\cite{gansner_drawing_1996}. A directed graph is a set of objects 
 (vertices) connected by edges, where the edges have a direction associated 
 with them. In the context of this work, a vertex is \textit{Process} object 
-(component of the fuel processing systems) and s directed graph edge is 
+(a component of the fuel processing systems), and a directed graph edge is 
 \textit{MaterialFlow} object (salt flow).
 \begin{figure}[hbt!] % replace 't' with 'b' to 
 	\centering
@@ -490,7 +489,7 @@ with them. In the context of this work, a vertex is \textit{Process} object
 
 The reprocessing plant structure described with \emph{dot} can be simply 
 plotted using Graphviz \cite{ellson_graphviz_2003} and those plots can be used 
-for analysis, optimization, and publication purposes. The user also had the 
+for analysis, optimization, and publication purposes. The user also has the 
 flexibility to create custom objects with desired attributes and methods and 
 contribute back to the code package using GitHub 
 (\url{https://github.com/arfc/saltproc}).	
@@ -528,8 +527,7 @@ stores the isotopic composition before reprocessing and waste stream from each
 fuel processing component in the HDF5 database. 
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\centering
-	\includegraphics[width=0.98\textwidth]{ch2/saltproc_flowchart.pdf}
-	\vspace{-0.15in}
+	\includegraphics[width=\textwidth]{ch2/saltproc_flowchart.pdf}
 	\caption{Flow chart for the SaltProc v1.0 Python package.}
 	\label{fig:saltproc_flow}
 \end{figure}
@@ -555,11 +553,12 @@ tool to model any geometry: an infinite medium, a unit cell, a multi-zone
 simplified assembly, or a full-core. This flexibility allows the user to 
 perform simulations of varying fidelity and computational intensity. 
 SaltProc v1.0 is an open-source tool available on GitHub. Although the user 
-needs Serpent 2.1.31 installed on his computer to use SaltProc.  It leverages 
-unit tests and continuous integration crucial for software sustainability 
-\cite{krekel_pytest_2004, travis_travis-ci/travis-api_2016}. The documentation 
-is automatically generated using Sphinx \cite{brandl_sphinx_2009} and 
-available here: \url{https://arfc.github.io/saltproc/}. In summary, the 
+needs Serpent $\geq$2.1.31 installed on his computer to use SaltProc. The tool 
+leverages unit tests and continuous integration crucial for software 
+sustainability \cite{krekel_pytest_2004, travis_travis-ci/travis-api_2016}. 
+The documentation automatically generated using Sphinx 
+\cite{brandl_sphinx:_2009} is available here: 
+\url{https://arfc.github.io/saltproc/}. In summary, the 
 development approach of SaltProc v1.0 is focused on producing a generic, 
 flexible and expandable tool that extends Serpent 2 Monte Carlo code for 
 advanced in-reactor fuel cycle analysis as well as simulate many online 
@@ -576,8 +575,8 @@ stationary moderator assemblies with denser lattices to increase the
 moderator-to-fuel ratio \cite{betzler_assessment_2017-1}. 
 SaltProc v1.0 can switch from one core geometry to another core geometry  
 (e.g., with larger moderator-to-fuel ratio) to mimic moderator or absorber 
-movement if the effective multiplication factor, $k_{eff}$, falls below a 
-specific limit (e.g., 1.002). This unique capability allows SaltProc v1.0 to 
+movement if the effective multiplication factor, $k_{eff}$, falls below 1. 
+This unique capability allows SaltProc v1.0 to 
 analyze the fuel cycle performance of any liquid-fueled \gls{MSR} system, 
 including advanced designs with a moving moderator (e.g., \gls{TAP} \gls{MSR}).
 
@@ -592,4 +591,5 @@ package developed and used to simulate continuous feeds and removals in
 various \gls{MSR} designs.
 
 In the following chapters, SaltProc v1.0 will be demonstrated and validated 
-for two liquid-fueled \gls{MSR} designs.
+for two liquid-fueled \gls{MSR} designs: the \gls{MSBR} and the \gls{TAP} 
+\gls{MSR}.

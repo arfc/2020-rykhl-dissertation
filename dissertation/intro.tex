@@ -53,7 +53,7 @@ concerning their strategies for online reprocessing and refueling, we need
 computational analysis methods capturing their unique reactor 
 physics, fuel reprocessing mechanics, and chemistry.
 
-The context of the Ph.D. dissertation is the development and assessment of an 
+The context of this Ph.D. dissertation is the development and assessment of an 
 advanced neutronics tool for fuel depletion calculations in circulating-fuel 
 nuclear reactors. The present work introduces the open-source reprocessing 
 simulation package, SaltProc \cite{rykhlevskii_arfc/saltproc_2018}, which 
@@ -331,7 +331,7 @@ calculated in that work as:
 	&\qquad\qquad \alpha = \frac{k_{1200} - k_{900}}{\delta 
 	T} \\
 	\intertext{where}
-	k_{900}, k_{1200}  &= \mbox{multiplication coefficients at 900K and 
+	k_{900}, k_{1200}  &= \mbox{multiplication factor at 900K and 
 		1200K $[-]$} \nonumber \\
 	\delta T &= \mbox{300 $[K]$.}\nonumber
 \end{align}
@@ -344,7 +344,7 @@ time-invariant total temperature coefficient ($+0.8$ $pcm/K$)
 approach to a full-core high-fidelity \gls{MSBR} model and estimated safety 
 parameters evolution over 20 years of operation \cite{park_whole_2015}. These 
 calculations showed a relatively large negative total temperature coefficient 
-during the 20 year reactor operation. DUring that time, the coefficient 
+during the 20-year reactor operation. During that time, the coefficient 
 magnitude weakens from $-3.21$ to $-1.41$ $pcm/K$ from startup to equilibrium, 
 respectively. Additionally, that work reported a control rod worth 
 deterioration from $2099pcm$ to $1970pcm$ due to neutron spectrum hardening 
@@ -365,13 +365,13 @@ worth of all control rods in the \gls{TAP} core only for the startup fuel
 composition. 
 
 The evolution of control rod worth in the \gls{TAP} has not been reported in 
-the literature before. Chapter 5 of this dissertation illuminated the 
-evolution of essential safety parameters (fuel, moderator, total temperature 
-coefficient, control rod worth) for the \gls{TAP} \gls{MSR} at various moments 
-during the reactor operation. Additionally, I investigated the impact of 
-neutron poison accumulation (e.g., $^{135}$Xe) in the fuel salt during 
-short-term transients (i.e., load following) on major safety characteristics 
-\cite{rykhlevskii_impact_2019}.
+the literature before. Section~\ref{sec:safety-param} of this dissertation 
+illuminated the evolution of essential safety parameters (fuel, moderator, 
+total temperature coefficient, control rod worth) for the \gls{TAP} \gls{MSR} 
+at various moments during the reactor operation. Additionally, I investigated 
+the impact of neutron poison accumulation (e.g., $^{135}$Xe) in the fuel salt 
+during short-term transients (i.e., load following) on major safety 
+characteristics \cite{rykhlevskii_impact_2019}.
 
 
 \section{Background Summary}
@@ -427,7 +427,7 @@ for a two promising \gls{MSR} concepts.
 Most of the existing \gls{MSR} depletion simulators usually assume ideal  
 efficiency (100\% of the target nuclide is being removed) of the neutron 
 poison removal process (see Section~\ref{sec:litreview}). The main goal of 
-this dissertation is to develop a generic open-source tool, SaltProc, capable 
+this dissertation is to develop a generic, open-source tool, SaltProc, capable 
 of simulating a wide range of liquid-fueled systems --- including multi-fluid 
 and multi-region designs --- and validate it against existing modeling 
 efforts. Additionally, SaltProc enables poison extraction simulation based on 
@@ -447,10 +447,15 @@ operational and safety parameters for both the initial and equilibrium states.
 Additionally, the benefits of continuous fission product removal for a thermal 
 \gls{MSR} are evaluated at the end of chapter 3. Chapter 4 covers SaltProc 
 demonstration and validation efforts with a focus on the \gls{TAP} \gls{MSR},  
-taking into account adjustable moderator configuration. Chapter 5 gives the 
-safety parameter overview and its evolution during the \gls{TAP} 
-lifetime-long reactor operation. Moreover, the safety parameters dynamics 
-during short-term transients have been evaluated at the end of chapter 5. The 
-final chapter summarizes this work's contribution to the nuclear community, 
-and a conclusion is offered together with an outlook for future work on the 
+taking into account adjustable moderator configuration. In addition, Chapter 
+4 gives the safety parameter overview and its evolution during the \gls{TAP} 
+lifetime-long reactor operation. SaltProc demonstration for short-term 
+depletion calculations and evaluation of load-following potential of the 
+\gls{TAP} \gls{MSR} and the \gls{MSBR} are presented in Chapters 5 and 6.
+Moreover, the safety parameters dynamics during short-term transients have 
+been evaluated at the end of Chapter 5 and 6. Chapter 7 presents a simple 
+uncertainty propagation via depletion calculation for the \gls{TAP} concept.
+The final chapter summarizes this work's contribution to the nuclear 
+community, and a conclusion is offered together with an outlook for future 
+work on the 
 topic.

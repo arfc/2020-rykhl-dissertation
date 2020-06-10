@@ -5,8 +5,8 @@ This chapter describes the fuel cycle analysis of the \gls{MSBR} obtained
 using the open-source Python package, SaltProc. The development was initially 
 started as a part of my master thesis \cite{rykhlevskii_advanced_2018} in 
 2017. This effort, for verification purposes, assumed ideal extraction 
-efficiency (e.g., 100\% of target isotope mass extracted) because all results 
-available in the literature also rely on this assumption.
+efficiency (e.g., 100\% of the target isotope mass extracted) because all 
+results available in the literature also rely on this assumption.
 
 The main results presented in this chapter have been published in: A. 
 Rykhlevskii, J.W. Bae, and K. D. Huff, ``Modeling and simulation of online 
@@ -123,19 +123,19 @@ neutrons (both fast and thermal) absorbed by $^{233}$U.} is less than 2\%
 \cite{robertson_conceptual_1971}. This parameter can be improved by using 
 experimental graphite types or by applying sealing technology. The effect of 
 the gradual poisoning of the core graphite with xenon is outside of the scope 
-if this work.
+of this work.
 
 \subsection{Core zone I}
 The central region of the core, called zone I, is made up of graphite 
-elements, each $10.16$cm$\times$ 10.16cm$\times$396.24cm. Zone I has 4 
+elements, each $10.16$cm$\times$ 10.16cm$\times$396.24cm and has 13\% fuel 
+salt by volume. Zone I has 4 
 channels for control rods: two for graphite rods, which both regulate and shim 
 during normal operation, and two for backup safety rods consisting of boron 
 carbide clad to assure sufficient negative reactivity for accidents.
 
-These graphite elements have a mostly rectangular shape with lengthwise ridges 
-at each corner that leave space for salt flow elements. Various element sizes 
-reduce the peak damage flux and power density in the center of the core to 
-prevent local graphite damage. Figure~\ref{fig:I_element_ref} shows the 
+Zone I graphite elements have a mostly rectangular shape with lengthwise 
+ridges at each corner that leave space for salt flow around the elements. 
+Figure~\ref{fig:I_element_ref} shows the 
 elevation and plan views of graphite elements of zone I 
 \cite{robertson_conceptual_1971} and their Serpent model 
 \cite{rykhlevskii_full-core_2017}.
@@ -302,7 +302,7 @@ This section discusses the first two applications.
 
 Input parameters for Serpent Monte Carlo code (neutron population, 
 active/inactive cycles) were chosen to compromise between reasonable 
-uncertainty for a transport problem ($\leq 15$ $pcm$ for effective 
+uncertainty for a transport problem ($\leq 15$ $pcm$ for the effective 
 multiplication factor) and computational time. The \gls{MSBR} 
 depletion and safety parameter computations were performed on 64 Blue Waters 
 XK7 nodes (two AMD 6276 Interlagos CPU per node, 16 floating-point Bulldozer 
@@ -420,7 +420,7 @@ the central part of the core. In the undermoderated zone II, the neutron
 energy spectrum is harder, which leads to more intensive neutron capture by 
 $^{232}$Th and helps achieve a relatively high breeding ratio. Moreover, the 
 (n,$\gamma$) resonance energy range in $^{232}$Th is from 10$^{-4}$ to 
-10$^{-2}$ MeV. Therefore, the moderator-to-fuel ratio for zone II was chosen 
+10$^{-2}$ MeV. Thus, the moderator-to-fuel ratio for zone II was chosen 
 to shift the neutron energy spectrum in this range. Furthermore, in the 
 central core region (zone I), the neutron energy spectrum shifts to a harder 
 spectrum over 20 years of reactor operation; meanwhile, in the outer core 
@@ -828,10 +828,10 @@ core region is much softer than in the outer core region due to the lower
 moderator-to-fuel ratio in the outer zone, and this distribution remains 
 stable during reactor operation. Finally, the epithermal or thermal spectrum 
 is needed to effectively breed $^{233}$U from $^{232}$Th because the radiative 
-capture cross section of thorium-232 monotonically decreases from $10^{-10}$ 
+capture cross section of $^{232}$Th monotonically decreases from $10^{-10}$ 
 MeV to $10^{-5}$ MeV. A harder spectrum in the outer core region tends to 
 significantly increase resonance absorption in thorium and decrease the 
-absorptions in fissile and structural materials. 
+absorption in fissile and structural materials. 
 
 The spatial power distribution in the \gls{MSBR} shows that 98\% of the 
 fission power is generated in the central zone I, and the neutron energy 
@@ -842,10 +842,11 @@ occurs in an outer, undermoderated, region of the \gls{MSBR} core. Finally,
 the average $^{232}$Th refill rate throughout 60 years of operation is 
 approximately 2.40 kg/day or 100 g/GWh$_e$.
 
-We compared the safety parameters at startup and state using the Serpent Monte 
-Carlo code. The total temperature coefficient is large and negative at startup 
+We compared the safety parameters at startup and equilibrium state using the 
+Serpent Monte Carlo code. The total temperature coefficient is large and 
+negative at startup 
 and equilibrium, but the magnitude decreases throughout reactor operation from 
-$-3.10$ to $-0.94$ pcm/K as the spectrum hardens. The moderator temperature 
+$-1.64$ to $-1.58$ pcm/K as the spectrum hardens. The moderator temperature 
 coefficient is positive and also decreases during fuel depletion. The 
 reactivity control system efficiency analysis showed that the safety rod 
 integral worth decreases by approximately 16.2\% over 16 years of operation, 
