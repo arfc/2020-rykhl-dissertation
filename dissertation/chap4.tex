@@ -614,7 +614,7 @@ reconfigured to operate the next cycle.
 An optimal number of moderator configurations (cycles) is found to be 15 (see 
 Appendix~A). Fewer cycles would improve capacity factor 
 but need larger excess reactivity at the \gls{BOC}, which is strictly limited 
-by reactivity control system worth. More cycles would require frequent 
+by reactivity control system worth. More cycles would require more frequent 
 moderator rod reconfigurations, which worsens the capacity factor.  The 
 interval between the first and second moderator configuration was only 12 
 months, the shortest interval between moderator configuration updates. For the 
@@ -936,9 +936,9 @@ mass prediction). Calculations using a depletion time step of 6 days or more
 demonstrated a significant difference in calculated $k_{eff}$ (i.e., 
 $\approx300$ $pcm$ for 6-day) and depleted 
 mass (e.g., $\approx0.34$\% error in $^{235}$U predicted mass for 6-day) from 
-those using a 3-day depletion step. In the current work, a 3-day 
+those using a 3-day depletion step. \emph{In the current work, a 3-day 
 depletion step was selected to adequately predict the mass of major heavy 
-isotopes in the fuel salt during 25 years of the \gls{TAP} reactor operation.
+isotopes in the fuel salt during 25 years of the \gls{TAP} reactor operation.}
 
 
 \subsection{Realistic extraction efficiency case}\label{sec:long-term-real}
@@ -997,13 +997,12 @@ the salt in the axial-flow centrifugal bubble separator
 	\fontsize{9}{11}\selectfont
 	\centering
 	\caption{The noble gas extraction efficiency at working temperature 
-		T=627$^{\circ}$C calculated using Equation~\ref{eq:gas_eff} assuming 
-		salt volumetric flow 
+		T=627$^{\circ}$C calculated using Equation~\ref{eq:gas_eff} 
+		\cite{peebles_removal_1968} assuming salt volumetric flow 
 		rate $Q_{salt}=2$ $m^3/s$, helium volumetric flow rate $Q_{He}=0.1$ 
 		$m^3/s$, helium bubbles diameter $d_b=0.508$ $mm$, and sparger volume
 		$V=1.4$ $m^3$. The liquid phase mass transfer coefficient is varied in 
-		validity range $[0.0847,8.4667]$ $mm/s$ 		
-		\cite{peebles_removal_1968}.}
+		validity range $[0.0847,8.4667]$ $mm/s$.}
 	\begin{tabularx}{\textwidth}{L X R R R R R R}
 		\hline 
 		\textbf{Element}&\textbf{Henry's}& 
@@ -1019,7 +1018,7 @@ the salt in the axial-flow centrifugal bubble separator
 		0.9149&0.5357&0.0310\\
 		Kr &2.8E-4 \cite{blander_solubility_1959}&0.9595&0.5630&0.0327& 
 		0.9115&0.5349&0.0310\\
-		H  &3.9E-3 \cite{tomkins_gases_2016}&0.9066&0.5499&0.0326&
+		H  &3.9E-3\cite{tomkins_gases_2016}&0.9066&0.5499&0.0326&
 		0.8613&0.5224&0.0309\\	
 		\hline
 	\end{tabularx}
@@ -1674,7 +1673,8 @@ design accident analysis and safety justification.
 This chapter demonstrated SaltProc v1.0 capabilities for lifetime-long fuel 
 salt depletion simulations applied to the \gls{TAP} \gls{MSR}. 
 Section~\ref{sec:tap_design_sum} summarized the \gls{TAP} \gls{MSR} core and 
-fuel salt reprocessing system details that inform the SaltProc model.
+fuel salt reprocessing system details that inform the SaltProc model 
+(Section~\ref{sec:tap_model}).
 %I validated SaltProc v1.0 capabilities for lifetime-long (25 years) depletion 
 %calculation with assumed gas ideal removal efficiency against 
 %SCALE/ChemTriton 

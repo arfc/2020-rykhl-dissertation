@@ -1,0 +1,27 @@
+{
+  "Path to Serpent executable": "/apps/exp_ctl/easybuild/software/serpent/2.1.31-goolf-5.5.7/bin/sss2",
+  "File containing processing system objects": "base_objects_0.json",
+  "Graph file containing processing system structure": "tap.dot",
+  "User's Serpent input file with reactor model": "tap.serpent",
+  "Path output data storing folder": "../saltproc/data/",
+  "Output HDF5 database file name": "db_eps_3_kl_1.h5",
+  "Number of neutrons per generation": 15000,
+  "Number of active generations": 400,
+  "Number of inactive generations": 200,
+  "Restart simulation from the step when it stopped?": true,
+  "Geometry file/files to use in Serpent runs": [
+    "geometry/840.ini",
+    "geometry/880.ini",
+    "geometry/900.ini",
+    "geometry/988.ini",
+    "geometry/1126.ini",
+    "geometry/1338.ini",
+    "geometry/1498.ini",
+    "geometry/1668_all.ini"
+  ],
+  "Switch to another geometry when keff drops below 1?": true,
+  "Salt mass flow rate throughout reactor core (g/s)": 9920000,
+  "Number of steps for constant power and depletion interval case": 1600,
+  "Depletion step interval or Cumulative time (end of step) (d)": 3,
+  "Reactor power or power step list during depletion step (W)": 1250000000
+}
