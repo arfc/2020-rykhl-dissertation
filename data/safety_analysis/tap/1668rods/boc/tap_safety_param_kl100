@@ -1,0 +1,315 @@
+% Include file with burnable material composition on the line below
+include "./mat_kl_100_840_boc.ini"
+% Include file with non-burnable material composition on the line below
+include "../../non_burnable_mats.ini"
+% Geometry import will be added by SaltProc on the next line
+
+% Burnup settings will be added on next line
+
+%include "/home/andrei2/Desktop/git/saltproc/develop/examples/geometry/347_base.ini"
+include "../../1668_all.ini"
+include "../../moder_thermal_extension.ini"
+
+
+set title "TAP MSR safety parameters calculation, 840 rods, MOL, BOC"
+
+%therm zrh_h 900 hzr05.32t hzr06.32t   % 900K H-Zr
+%set acelib "/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.xsdata"
+%set declib "/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.dec"
+%set nfylib "/home/andrei2/serpent/xsdata/endfb7/sss_endfb7.nfy"
+
+set acelib "sss_jeff312.xsdata"
+%set declib "sss_jeff33.dec"
+%set nfylib "sss_jeff33.nfy"
+%set sfylib "sss_jeff33.sfy"
+% --- Neutron population and criticality cycles:
+
+set pop 30000 3200 200 %30000 1000 200  %13 pcm %30k 4800 200 5.8pcm
+%set gcu -1
+
+% --- Reproducibility off (set value to 1 and define seed to set on):
+
+%set repro 1
+
+% --- Reduce unionized energy grid size in order to save some memory
+%     Use grid thinning with 5e-5 reconstruction tolerance between
+%     1e-8 and 15 MeV.
+
+set egrid 5e-5 1e-10 15.0
+
+% --- Cut-offs:
+
+%set fpcut   1E-6
+%set stabcut 1E-12
+
+% --- Geometry and mesh plots:
+%trans 10 0 0 0 0 0 45
+
+%plot 33 2800 2100 4.5 0 140.0 0 105.0
+
+%plot 13 1550 3400 0.0 -155 0
+%plot 13 1000 1000 0 -20 20 135 175
+%plot 13 2000 2000 16.5
+
+% --- Depletion parameters
+% --- Options for burnup calculation:
+%set bumode  2  % CRAM method
+%set pcc     2  % Predictor-corrector calculation off (Linear extrapolation)
+%set xscalc  2  % Cross sections from spectrum
+%set bunorm 2
+%set opti 3
+
+%set power 1.250E+09
+% --- Detector energy grid (uniform lethargy):
+%ene tot 3 1000 1E-9 15.0
+% --- Flux per lethargy all over core
+%det avrg de tot dt -3
+%set inventory all
+
+%set rfw 1 restart
+%set rfr idx 321 restart
+%set seed 46549345296
+%set seed 7812324546562      % for 2-step test (5d)
+%set seed 2358907456230438  % for 7-step test (2d)
+
+% ---- All CR inserted by default - withdrawn
+
+% --- Geometry and mesh plots:
+
+%plot 3 2000 2000 0.0
+%plot 1 2000 2000 4.5
+
+
+
+% ----------------Branches----------------------
+% fuel density calculate using $\rho(T)=6.105-0.001272T[K]$ which is based on https://aip.scitation.org/doi/10.1063/1.3253134
+% ---- Branches ----
+utrans pos00 0.0 0.0 400.0
+utrans pos01 0.0 0.0 400.0
+utrans pos11 0.0 0.0 400.0
+utrans pos21 0.0 0.0 400.0
+utrans pos31 0.0 0.0 400.0
+utrans pos41 0.0 0.0 400.0
+utrans pos51 0.0 0.0 400.0
+utrans pos61 0.0 0.0 400.0
+
+% --- Nominal branch
+branch nom stp fuel -4.9602 900  % all withdrawn
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+var VOID 0.0
+
+
+% ---- Branch for FTC
+branch ftc800 stp fuel -5.0874 800          % density and Doppler for 800K
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch ftc850 stp fuel -5.0238 850          % density and Doppler for 850K
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch ftc950 stp fuel -4.8966 950          % density and Doppler for 950K
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch ftc1000 stp fuel -4.833 1000         % density and Doppler for 1000K
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+
+% ---- Branch for MTC
+branch mtc800
+stp zrh -5.706678324152147 800 zrh_h hzr05.32t hzr05.32t
+stp sic -3.2281888460564074 800
+repu M M800
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch mtc850
+stp zrh -5.6832752655600594 850 zrh_h hzr05.32t hzr06.32t
+stp sic -3.219075735418266 850
+repu M M850
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch mtc950
+stp zrh -5.6368516563897684 950 zrh_h hzr05.32t hzr06.32t
+stp sic -3.2009614376301836 950
+repu M M950
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch mtc1000
+stp zrh -5.6138293707625673 1000 zrh_h hzr06.32t hzr06.32t
+stp sic -3.1919598474972983 1000
+repu M M1000
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+
+% ---- Branch for ITC
+branch itc800
+stp fuel -5.0874 800
+stp zrh -5.706678324152147 800 zrh_h hzr05.32t hzr05.32t
+stp sic -3.2281888460564074 800
+repu M M800
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch itc850
+stp fuel -5.0238 850
+stp zrh -5.6832752655600594 850 zrh_h hzr05.32t hzr06.32t
+stp sic -3.219075735418266 850
+repu M M850
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch itc950
+stp fuel -4.8966 950
+stp zrh -5.6368516563897684 950 zrh_h hzr05.32t hzr06.32t
+stp sic -3.2009614376301836 950
+repu M M950
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+branch itc1000
+stp fuel -4.833 1000
+stp zrh -5.6138293707625673 1000 zrh_h hzr06.32t hzr06.32t
+stp sic -3.1919598474972983 1000
+repu M M1000
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+
+
+% ----- Void Coefficient ---------------
+branch void05
+stp fuel -4.93539926 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+var VOID 0.5
+
+branch void1
+stp fuel -4.91059853 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+var VOID 1.0
+
+branch void15
+stp fuel -4.88579779 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+var VOID 1.5
+
+branch void2
+stp fuel -4.86099705 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
+var VOID 2.0
+
+
+% ---- Withdrawn all CR in the core ---
+branch crw0         % all inserted
+
+% --- Parameters included in coefficient output:
+set coefpara 1
+IMP_KEFF
+BETA_EFF
+LAMBDA
+SIX_FF_ETA
+SIX_FF_F
+SIX_FF_P
+SIX_FF_EPSILON
+SIX_FF_LF
+SIX_FF_LT
+SIX_FF_KINF
+SIX_FF_KEFF
+
+% --- Coefficient matrix: (full set of variations: 3x3x3x2)
+coef 1
+0
+%16 nom ftc0r ftc0d ftc0 mtc0r mtc0d mtc0 itc0 ftc1r ftc1d ftc1 mtc1r mtc1d mtc1 itc1 crw0
+%26 nom ftc800 ftc850 ftc950 ftc1000 ftc1050 ftc1100 ftc1150 ftc1200 mtc800 mtc850 mtc950 mtc1000 mtc1050 mtc1100 mtc1150 mtc1200 itc800 itc850 itc950 itc1000 itc1050 itc1100 itc1150 itc1200 crw0
+18
+nom
+ftc800 ftc850 ftc950 ftc1000
+mtc800 mtc850 mtc950 mtc1000
+itc800 itc850 itc950 itc1000
+void05 void1 void15 void2
+crw0
+
+%_____________________ Output_____________%
