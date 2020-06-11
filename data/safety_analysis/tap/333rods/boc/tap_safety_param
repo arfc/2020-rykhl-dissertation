@@ -24,7 +24,7 @@ set acelib "sss_jeff312.xsdata"
 %set sfylib "sss_jeff33.sfy"
 % --- Neutron population and criticality cycles:
 
-set pop 300 40 20 %30000 1000 200  %13 pcm
+set pop 30000 3000 200 %30000 1000 200  %13 pcm %30k 4800 200 5.8pcm
 %set gcu -1
 
 % --- Reproducibility off (set value to 1 and define seed to set on):
@@ -82,7 +82,7 @@ set pop 300 40 20 %30000 1000 200  %13 pcm
 
 
 % ----------------Branches----------------------
-% fuel density calculate using $\rho(T)=6.105-0.001272T[K]$ which is based on https://aip.scitation.org/doi/10.1063/1.3253134 
+% fuel density calculate using $\rho(T)=6.105-0.001272T[K]$ which is based on https://aip.scitation.org/doi/10.1063/1.3253134
 % ---- Branches ----
 utrans pos00 0.0 0.0 400.0
 utrans pos01 0.0 0.0 400.0
@@ -94,7 +94,7 @@ utrans pos51 0.0 0.0 400.0
 utrans pos61 0.0 0.0 400.0
 
 % --- Nominal branch
-branch nom % all withhdrawn
+branch nom stp fuel -4.9602 900  % all withdrawn
 tra CR0 pos01
 tra CR1 pos11
 tra CR2 pos21
@@ -131,54 +131,6 @@ tra CR4 pos41
 tra CR5 pos51
 tra CR6 pos61
 branch ftc1000 stp fuel -4.833 1000         % density and Doppler for 1000K
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch ftc1050 stp fuel -4.7694 1050         % density and Doppler for 1050K
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch ftc1100 stp fuel -4.7058 1100         % density and Doppler for 1100K
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch ftc1150 stp fuel -4.6422 1150         % density and Doppler for 1150K
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch ftc1200 stp fuel -4.5786 1200         % density and Doppler for 1200K
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch ftc1250 stp fuel -4.515 1250         % density and Doppler for 1250K
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch ftc1300 stp fuel -4.4514 1300         % density and Doppler for 1300K
 tra CR0 pos01
 tra CR1 pos11
 tra CR2 pos21
@@ -225,72 +177,6 @@ branch mtc1000
 stp zrh -5.6138293707625673 1000 zrh_h hzr06.32t hzr06.32t
 stp sic -3.1919598474972983 1000
 repu M M1000
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch mtc1050
-stp zrh -5.59093228620 1050 zrh_h hzr06.32t hzr07.32t
-stp sic -3.18299503014 1050
-repu M M1050
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch mtc1100
-stp zrh -5.56815955276 1100 zrh_h hzr06.32t hzr07.32t
-stp sic -3.17406678743 1100
-repu M M1100
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch mtc1150
-stp zrh -5.54551032743 1150 zrh_h hzr06.32t hzr07.32t
-stp sic -3.16517492257 1150
-repu M M1150
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch mtc1200
-stp zrh -5.52298377402 1200 zrh_h hzr07.32t hzr07.32t
-stp sic -3.15631924009 1200
-repu M M1200
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch mtc1250
-stp zrh -5.50057906314 1250 zrh_h hzr07.32t hzr07.32t
-stp sic -3.14749954581 1250
-repu M M1250
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch mtc1300
-stp zrh -5.47829537213 1300 zrh_h hzr07.32t hzr07.32t
-stp sic -3.13871564684 1300
-repu M M1300
 tra CR0 pos01
 tra CR1 pos11
 tra CR2 pos21
@@ -348,91 +234,51 @@ tra CR3 pos31
 tra CR4 pos41
 tra CR5 pos51
 tra CR6 pos61
-branch itc1050
-stp fuel -4.7694 1050
-stp zrh -5.59093228620 1050 zrh_h hzr06.32t hzr07.32t
-stp sic -3.18299503014 1050
-repu M M1050
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch itc1100
-stp fuel -4.7058 1100
-stp zrh -5.56815955276 1100 zrh_h hzr06.32t hzr07.32t
-stp sic -3.17406678743 1100
-repu M M1100
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch itc1150
-stp fuel -4.6422 1150
-stp zrh -5.54551032743 1150 zrh_h hzr06.32t hzr07.32t
-stp sic -3.16517492257 1150
-repu M M1150
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch itc1200
-stp fuel -4.5786 1200
-stp zrh -5.52298377402 1200 zrh_h hzr07.32t hzr07.32t
-stp sic -3.15631924009 1200
-repu M M1200
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch itc1250
-stp fuel -4.515 1250
-stp zrh -5.50057906314 1250 zrh_h hzr07.32t hzr07.32t
-stp sic -3.14749954581 1250
-repu M M1250
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
-branch itc1300
-stp fuel -4.4514 1300
-stp zrh -5.47829537213 1300 zrh_h hzr07.32t hzr07.32t
-stp sic -3.13871564684 1300
-repu M M1300
-tra CR0 pos01
-tra CR1 pos11
-tra CR2 pos21
-tra CR3 pos31
-tra CR4 pos41
-tra CR5 pos51
-tra CR6 pos61
+
 
 % ----- Void Coefficient ---------------
 branch void05
 stp fuel -4.93539926 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
 var VOID 0.5
+
 branch void1
 stp fuel -4.91059853 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
 var VOID 1.0
+
 branch void15
 stp fuel -4.88579779 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
 var VOID 1.5
+
 branch void2
 stp fuel -4.86099705 -1
+tra CR0 pos01
+tra CR1 pos11
+tra CR2 pos21
+tra CR3 pos31
+tra CR4 pos41
+tra CR5 pos51
+tra CR6 pos61
 var VOID 2.0
 
 
@@ -458,11 +304,11 @@ coef 1
 0
 %16 nom ftc0r ftc0d ftc0 mtc0r mtc0d mtc0 itc0 ftc1r ftc1d ftc1 mtc1r mtc1d mtc1 itc1 crw0
 %26 nom ftc800 ftc850 ftc950 ftc1000 ftc1050 ftc1100 ftc1150 ftc1200 mtc800 mtc850 mtc950 mtc1000 mtc1050 mtc1100 mtc1150 mtc1200 itc800 itc850 itc950 itc1000 itc1050 itc1100 itc1150 itc1200 crw0
-30
+18
 nom
-ftc800 ftc850 ftc950 ftc1000 ftc1050 ftc1100 ftc1150 ftc1200
-mtc800 mtc850 mtc950 mtc1000 mtc1050 mtc1100 mtc1150 mtc1200
-itc800 itc850 itc950 itc1000 itc1050 itc1100 itc1150 itc1200
+ftc800 ftc850 ftc950 ftc1000
+mtc800 mtc850 mtc950 mtc1000
+itc800 itc850 itc950 itc1000
 void05 void1 void15 void2
 crw0
 
