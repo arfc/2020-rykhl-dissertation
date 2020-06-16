@@ -1,0 +1,178 @@
+% Import geometry
+include "../../../../whole_core_axial_ref.ini"
+%include "../../../../graphite_thermal_extension.ini"
+set bc 1
+
+% Include file with burnable material composition on the line below
+include "./mat_kl_100_bol_7_5h.ini"
+% --- Moderator graphite:
+mat moder    -1.843 tmp 900 rgb 68 1 84 moder gr 6000 6000.09c    -1.0 %tmp 908
+% --- Hastelloy N
+mat hast     -8.671 rgb 127 205 187
+rgb 127 205 187
+% Natural Ni
+% 28000.09c    -0.677
+28058.09c   -0.4562614
+28060.09c   -0.1804391
+28061.09c   -0.0079425
+28062.09c   -0.0256463
+28064.09c   -0.0067108
+
+% Natural W
+% 74000.09c   -0.250
+% 74180.09c   -0.0003417
+74182.09c   -0.0757228
+74183.09c   -0.0004134
+74184.09c   -0.0893641
+74186.09c   -0.0841580
+
+% Natural Cr
+% 24000.09c   -0.070
+24050.09c   -0.0029250
+24052.09c   -0.0585905
+24053.09c   -0.0067708
+24054.09c   -0.0017137
+
+% Al
+13027.09c   -0.003
+
+%------- Poison control rods (B4C)
+mat pois -2.52 tmp 900
+rgb 255 128 0
+6000.09c -0.2307
+5010.09c -0.7693
+
+% --- Thermal scattering data for graphite:
+therm gr 900 gr05.32t gr06.32t  % 900K C-nat JEFF-3.1.2
+%therm gr 900 gre7.18t gre7.20t  % 900K C-nat ENDFB-7
+
+
+set title "MSBR safety parametrs, 91.5% removal, BOL, JEFF"
+
+
+%set acelib "sss_endfb7.xsdata"
+%set declib "sss_endfb7.dec"
+%set nfylib "sss_endfb7.nfy"
+
+set acelib "sss_jeff312.xsdata"
+set declib "sss_jeff33.dec"
+set nfylib "sss_jeff33.nfy"
+set sfylib "sss_jeff33.sfy"
+% --- Neutron population and criticality cycles:
+
+set pop 100000 600 100 1.0 1  %30000 400 100 1.0 1
+%set pop 100 60 60 1.0 1  %30000 400 100 1.0 1
+%set gcu -1
+%set usym 0 3 2 0.0 0.0 0 90
+
+% --- Reproducibility off (set value to 1 and define seed to set on):
+
+%set repro 0  % try speedup
+%set shbuf 1  % try speedup
+
+%set samarium 0
+% --- Reduce unionized energy grid size in order to save some memory
+%     Use grid thinning with 5e-5 reconstruction tolerance between
+%     1e-8 and 15 MeV.
+
+set egrid 5e-5 1e-10 15.0
+
+% --- Cut-offs:
+
+set fpcut   1E-6
+%set stabcut 1E-12
+
+% --- Geometry and mesh plots:
+%plot 33 2000 2000 150.5
+%plot 13 1000 1000 7.62
+
+% ----------------Branches----------------------
+% fuel density calculate using $\rho(T)=3.752-6.68e-4(T[K]-273.15K)$
+% which is based on https://doi.org/10.2172/4030941 (Robertson, 1971)
+
+% --- Nominal branch
+branch nom stp fuel -3.3332642 900  % Base point, 900K
+
+% ---- Branch for FTC
+branch ftc800 stp fuel -3.4000642 800          % density and Doppler for 800K
+branch ftc850 stp fuel -3.3666642 850          % density and Doppler for 850K
+branch ftc950 stp fuel -3.2998642 950          % density and Doppler for 950K
+branch ftc1000 stp fuel -3.2664642 1000         % density and Doppler for 1000K
+
+% ---- Branch for MTC
+branch mtc800
+stp moder -1.843719050429667 800 gr gr05.32t gr05.32t
+%repu 11 G800
+branch mtc850
+stp moder -1.843359455093743 850 gr gr05.32t gr06.32t
+%repu 11 G850
+branch mtc950
+stp moder -1.842640685066412 950 gr gr05.32t gr06.32t
+%repu 11 G950
+branch mtc1000
+stp moder -1.842281510211018 1000 gr gr06.32t gr06.32t
+%repu 11 G1000
+
+% ---- Branch for ITC
+branch itc800
+stp fuel -3.4000642 800
+stp moder -1.843719050429667 800 gr gr05.32t gr05.32t
+%repu 11 G800
+branch itc850
+stp fuel -3.3666642 850
+stp moder -1.843359455093743 850 gr gr05.32t gr06.32t
+%repu 11 G850
+branch itc950
+stp fuel -3.2998642 950
+stp moder -1.842640685066412 950 gr gr05.32t gr06.32t
+%repu 11 G950
+branch itc1000
+stp fuel -3.2664642 1000
+stp moder -1.842281510211018 1000 gr gr06.32t gr06.32t
+%repu 11 G1000
+
+% ----- Void Coefficient ---------------
+branch void05
+stp fuel -3.31659814 -1
+var VOID 0.5
+
+branch void1
+stp fuel -3.29993208 -1
+var VOID 1.0
+
+branch void15
+stp fuel -3.28326603 -1
+var VOID 1.5
+
+branch void2
+stp fuel -3.26659997 -1
+var VOID 2.0
+
+% ---- Withdrawn all CR in the core ---
+branch crw0         % all inserted
+repu CR0 CR1
+
+% --- Parameters included in coefficient output:
+set coefpara 1
+IMP_KEFF
+BETA_EFF
+LAMBDA
+SIX_FF_ETA
+SIX_FF_F
+SIX_FF_P
+SIX_FF_EPSILON
+SIX_FF_LF
+SIX_FF_LT
+SIX_FF_KINF
+SIX_FF_KEFF
+
+% --- Coefficient matrix: (full set of variations: 3x3x3x2)
+coef 1
+0
+18
+nom
+ftc800 ftc850 ftc950 ftc1000
+mtc800 mtc850 mtc950 mtc1000
+itc800 itc850 itc950 itc1000
+void05 void1 void15 void2
+crw0

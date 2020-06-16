@@ -51,7 +51,7 @@
 \usepackage{xspace}
 \usepackage{float}
 \usepackage{subcaption}
-
+\usepackage{isotope}
 \usepackage{MnSymbol}%
 \usepackage{wasysym}%
 \usepackage{adjustbox}
@@ -80,7 +80,7 @@
 \committee{Assistant Professor Kathryn D. Huff, Chair\\
            Associate Professor Tomasz Kozlowski     \\
            Professor James F. Stubbins    \\
-           Professor Luke Olson}   
+           Professor Luke N. Olson}   
 
 \begin{document}
 \include{acros}
@@ -97,9 +97,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ABSTRACT
 %
-%\begin{abstract}
-%\input{abs}
-%\end{abstract}
+\begin{abstract}
+\input{abs}
+\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEDICATION
@@ -154,9 +154,10 @@
 %\chapter{LIST OF SYMBOLS}
 %\begin{symbollist}[0.7in]
 %\item[$\nu$] Fission neutron yield
+%\item[$\gamma_{_i}$] Fission yield of $i^{th}$ nuclide
 %\item[$\Sigma_f$] Macroscopic fission cross section ($cm^{-1}$)
 %\item[$\phi$] Neutron flux ($\frac{neutron}{cm^2\times s}$)
-%\item[$\gamma_{_i}$] Fission yield of $i^{th}$ nuclide
+
 %\end{symbollist}
 
 \mainmatter
@@ -172,19 +173,15 @@
 \include{chap6}
 \include{chap7}
 \include{concl}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% APPENDIX
-%
-%\appendix
-%\include{apx}
+
 
 \backmatter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BIBLIOGRAPHY
 %
-%\bibliographystyle{IEEE_ECE}
-\bibliographystyle{unsrt}
+\bibliographystyle{plainurl}
+%\bibliographystyle{unsrt}
 % Put references in BibTeX format in thesisrefs.bib.
 \bibliography{thesisrefs}
 

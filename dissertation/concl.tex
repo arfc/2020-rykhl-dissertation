@@ -1,1 +1,166 @@
 \chapter{Conclusions and future work}
+
+\section{General Conclusions}
+Liquid-fueled nuclear reactors offer several advantages over their traditional 
+solid-fueled counterparts, which makes them a promising option for nuclear 
+fuel cycle closure while offering improved inherent safety. Simulating such 
+systems presents a challenge because existing reactor physics software for 
+fuel burnup historically has been developed for traditional, solid-fueled 
+reactors.
+
+This work demonstrated a flexible, open-source tool, SaltProc, for 
+simulating fuel depletion in a wide range of circulating-fuel (e.g., liquid 
+fuel circulating throughout the primary loop) nuclear reactors that takes into 
+account unique features of such systems: online fuel reprocessing 
+and refueling. SaltProc extends the continuous-energy Monte Carlo burnup 
+calculation code, Serpent 2, for the simulation of material isotopic evolution 
+in any nuclear reactors with circulating, liquid fuel with the main focus on 
+the liquid-fueled \glspl{MSR}. This work demonstrates a clear contribution to 
+the nuclear engineering community by providing a tool for fuel depletion 
+calculations in any generic nuclear system with circulating fuel.
+
+The need for this work has been shown by a summary of the current state of the 
+art of \gls{MSR} depletion simulator capabilities. The literature review in 
+Chapter 1 concluded that most \gls{MSR} depletion simulators typically assume 
+ideal (rather than realistically constrained) poison removal rates for the 
+nuclear system performance modeling. Moreover, most of the simulators assumed 
+constant extraction efficiency vectors, which must be determined by the user 
+in the input file and cannot be a function of other parameters. SaltProc is 
+capable of modeling the peculiarities of \glspl{MSR}, namely:
+complex, multi-component reprocessing system structure and realistic 
+extraction efficiency of fission product described as a function of 
+many parameters. Furthermore, SaltProc can maintain reactor criticality by 
+adjusting the reactor core geometry. In addition to fundamental simulation 
+capabilities, SaltProc has a scalable design and allows the development of 
+additional advanced capabilities in the future.
+
+I demonstrated SaltProc for lifetime-long full-power operation for two 
+perspective \gls{MSR} designs: \gls{MSBR} and \gls{TAP} \gls{MSR}. The 
+\gls{MSBR} analysis illuminated the simplified depletion of the fuel salt for 
+60 years of full-power operation with ideal fission product extraction 
+efficiency (e.g., 100\% of target poison is being removed). The online fission 
+product removal with 100\% efficiency and fresh fuel feed allowed the 
+\gls{MSBR} to operate at full-power for an extremely long time with effective 
+fuel utilization due to exceptionally low parasitic neutron absorption. The 
+obtained results are validated with published modeling efforts by \gls{ORNL} 
+\cite{betzler_molten_2017}.
+
+Validation simulations for the \gls{TAP} \gls{MSR} have demonstrated the 
+SaltProc capability to model reactors with adjustable moderator configuration. 
+Results for a realistic multi-component model of the fuel salt reprocessing 
+system with assumed ideal removal efficiency are validated with full-core 
+\gls{TAP} depletion analysis by Betzler \emph{et al.} 
+\cite{betzler_assessment_2017-1}. 
+In the realistic reprocessing system with non-ideal removal, the fuel salt 
+composition is strongly influenced by the neutron spectrum hardening due to 
+presence of neutron poisons (e.g., $^{135}$Xe) in the core. Thus, more 
+effective noble gas extraction efficiency significantly reduced neutron loss 
+due to parasitic absorption, which led to
+better fuel utilization and extended 
+core lifetime.
+
+I also used SaltProc to perform short-term depletion analysis 
+with power maneuvering in the $P\in[0,100\%]$ range to investigate 
+load-following capability in the \gls{TAP} \gls{MSR} and \gls{MSBR} designs. 
+Online gaseous fission product removal significantly improved the 
+load-following capability of the \gls{MSBR} by reducing the reactivity worth 
+of xenon poisoning from $-1457$ $pcm$ to $-189$ $pcm$. I observed a negligible 
+effect of xenon poisoning in the \gls{TAP} \gls{MSR} because its neutron 
+energy spectrum is relatively hard even for the most thermal core 
+configuration (all moderator rods are inserted). Thus, the \gls{TAP} \gls{MSR} 
+can effectively load-follow even without continuous gas removal.
+
+Once fuel salt composition evolution was obtained for various \gls{MSR} 
+designs and power levels, I analyzed a major safety and operational parameters 
+at different moments during operation. Specifically, changes in temperature 
+and void coefficients of reactivity and total control rod worth were evaluated 
+for the \gls{TAP} concept and \gls{MSBR} for two timeframes: lifetime-long 
+full-power operation and short-term load-following transient. On a 
+long-timescale, the safety parameters worsened during full-time operation for 
+both considered reactor designs due to a significant spectral shift. For the 
+load-following transient, the combination of fuel and moderator temperature 
+coefficient remained strongly negative throughout the transient for both 
+reactors. Notably, the \gls{MSBR} safety benefited from continuous fission gas 
+removal, while the \gls{TAP} \gls{MSR} safety and operational parameters 
+remained stable due to its harder spectrum. Unfortunately, the total control 
+rod worth was insufficient to shut down the \gls{MSBR} due to a considerable 
+reactivity swing during the load-following transient. Thus, the reactivity 
+control system of the \gls{MSBR} must be redesigned to ensure safe power 
+maneuvering.
+
+The current work also demonstrated a simple uncertainty propagation via Monte 
+Carlo depletion calculations. I evaluated the uncertainty of predicted 
+isotopic composition separately from two primary sources: stochastic error 
+from the transport problem solution and measurement error in the nuclear data 
+library. Nuclear data-related uncertainty in the isotopic masses is 
+approximately 0.5-8\% and varies widely from isotope to isotope due to 
+widespread in the nuclear data covariances. The stochastic errors in isotopic 
+masses are below 0.07\% for a reasonable number of neutron histories 
+($7.5\times 10^6$). Fundamentally, we do not need to waste a substantial 
+computational power to simulate a large number of neutron histories per each 
+depletion step because the nuclear data-related uncertainty is dominating over 
+the stochastic error. 
+
+Furthermore, the nuclear data-related uncertainty in the 
+depletion calculations can be significantly improved by reducing cross section 
+covariance of $^{6}$Li, $^{7}$Li, and $^{19}$F, which are broadly used in the 
+\glspl{MSR}. The nuclear data for those isotopes were not measured accurately 
+because lithium and fluorine rarely appear in conventional \glspl{LWR} 
+core. To further develop the \gls{MSR} concepts, $^{6}$Li, $^{7}$Li, and 
+$^{19}$F cross sections must be thoroughly remeasured with improved 
+uncertainty to reduce the nuclear-data related error in a neutronic 
+calculations.
+
+
+
+\section{Suggested Future Work}
+Continued research into SaltProc-Serpent and related topics could progress
+in many different directions. First of all, other liquid-fueled 
+\gls{MSR} designs with on-site fuel salt reprocessing system should be modeled 
+using SaltProc to improve the cross-code validation portfolio. For example, 
+SaltProc can be validated with a recently published effort for the Chinese 
+Single-fluid Double-zone Thorium Molten Salt Reactor (SD-TMSR) 
+\cite{ASHRAF2019107115}.
+
+Next, optimization of reprocessing parameters (e.g., time step, feeding rate, 
+removal rate for various fission product groups) could establish the best fuel 
+utilization, breeding ratio, or safety characteristics for various designs. 
+This might be performed with a parameter sweeping outer loop, which would 
+change an input parameter by a small increment, run the simulation, and 
+analyze output to determine optimal configuration. Alternatively, the existing 
+RAVEN optimization framework \cite{alfonsi_raven_2016} might be employed for 
+such optimization studies.
+
+Only the simple power drop-and-restart transient with a coarse time resolution 
+has been considered in this work to investigate the load-following 
+capabilities of liquid-fueled \glspl{MSR}. Additional analyses should include 
+realistic power load profiles with 15-minute or even 5-minute time resolution. 
+The existing capabilities of SaltProc allow modeling of smart gas separation 
+regulation during transient by adjusting, for example, the helium bubble sizes 
+in the sparger. The scientific community would benefit enormously from 
+standardized depletion analysis during the load-following operation for 
+various liquid-fueled reactors, including exotic liquid metal fuel reactor 
+designs.
+
+Only the batch-wise online reprocessing approach has been treated in this 
+work. However, Serpent 2 was recently extended for continuous online fuel 
+reprocessing simulation \cite{aufiero_extended_2013}. This extension could be 
+employed for immediate removal of fission product gases (e.g., Xe, Kr), which 
+have a strong negative impact on core lifetime and breeding efficiency. 
+Thus, using the built-in Serpent 2 Monte Carlo code online reprocessing \& 
+refueling material burnup routine would significantly speed up 
+computer-intensive full-core depletion simulations.
+
+%As it was pointed out, the uncertainties of the nuclear data and its impact 
+%on 
+%a major safety and kinetics need to be evaluated with taking into account 
+%online reprocessing and refueling. The fuel motion has a large impact on 
+%safety and kinetic parameters and should be carefully investigated. This 
+%would 
+%require development a multi-physics model of the \gls{MSR} with some advanced 
+%multi-physics software such as Moltres \cite{lindsay_introduction_2018}.
+
+Additional physical models for fission product extraction efficiency will 
+enrich the capabilities of SaltProc.
+
+
