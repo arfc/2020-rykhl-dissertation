@@ -104,7 +104,7 @@ power demands, typically referred to as `load following.'
 This chapter presents modeling and simulation of load following transient 
 operation of the \gls{TAP} \gls{MSR}. This study focuses on the 
 $^{135}$Xe/$^{135}$I balance in the \gls{TAP} core and its effect on 
-reactor performance. In this chapter, I simulate short-term ($<24$ hours) 
+reactor performance. In this chapter, I simulated short-term ($<24$ hours) 
 depletion with the core power changing in the [0,100\%] range for xenon 
 removal efficiency ($\epsilon_{Xe}$) varied between 0 and 0.915 (see 
 Table~\ref{tab:gas_removal_efficiency}). 
@@ -228,8 +228,8 @@ Or in math formulation:
 P(t)& = 
 \begin{cases}
 100\%,&  t < t_{eq}\\
-0\%,  &  t_{eq} \leq t \leq t^{max}_X\\
-100\%,&  t > t^{max}_X
+0\%,  &  t_{eq} \leq t \leq t_{eq}+t^{max}_X\\
+100\%,&  t > t_{eq}+t^{max}_X
 \end{cases}
 \intertext{where}
 P(t) &= \mbox{reactor power level [\%]} \nonumber\\
@@ -301,7 +301,7 @@ significantly shorter for the \gls{TAP} reactor than for \glspl{LWR} (11
 hours).
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\centering
-	\includegraphics[width=\textwidth]{ch5/keff_kl_1_eol_eoc.png}
+	\includegraphics[width=0.9\textwidth]{ch5/keff_kl_1_eol_eoc.png}
 	\caption{The effective multiplication factor dynamics for an 11-hour 
 		shutdown (well-known xenon peak time for \glspl{LWR}) for the TAP 
 		reactor, 
@@ -432,7 +432,7 @@ moderator configuration, low operative excess reactivity at the end of the
 burnup cycle, instantaneous power drop, and $^{135}$Xe concentration at its 
 extremum. To investigate the benefits of online fission gas removal on the 
 xenon poisoning effect, I repeated the postulated transient simulation for 
-different moments in time (e.g., \gls{BOL}, MOL \gls{EOL}) with a fully 
+different moments in time (e.g., \gls{BOL}, MOL, \gls{EOL}) with a fully 
 operational gas removal system ($\epsilon_{Xe}=0.915$). 
 
 Figure~\ref{fig:lf-tap-rho-kl100-eol-eoc} demonstrates a more notable xenon 
@@ -467,8 +467,8 @@ than $^{135}$Xe gain due to $^{135}$I decay throughout the transient.
 
 Table~\ref{tab:lf-rho-change-eps-1} shows that the \gls{TAP} reactor with 
 high gas removal efficiency experienced \emph{small effect of xenon poisoning} 
-during the transient, and it worsened toward the \gls{EOL}. Similar to the 
-analysis with inactive gas removal 
+during the transient, and it also worsened toward the \gls{EOL}. Similar to 
+the analysis with inactive gas removal 
 system, maximum negative reactivity insertion due to xenon poisoning worsens 
 toward the \gls{EOL} because $^{135}$Xe absorption cross section drops 
 dramatically as energy grows. Notably, 
@@ -627,7 +627,7 @@ In conclusion, I observed a negligible xenon poisoning in the \gls{TAP}
 reactor during the anticipated transient because it has a relatively hard 
 neutron energy spectrum even at the most thermal core configuration (all 
 moderator rods are inserted into the core). The harder spectrum gives 
-a small $^{135}$I/$^{135}$Xe concentration ratio which leads to a smaller 
+a small $^{135}$I/$^{135}$Xe concentration ratio which leads to a low
 $^{135}$Xe concentration peak after the shutdown. Notably, the fission gas 
 removal with high efficiency did not significantly change the xenon poisoning 
 effect because the $^{135}$Xe absorption cross section fell dramatically as 
@@ -713,9 +713,9 @@ This chapter demonstrated the short-term depletion simulations for the
 100\%] using SaltProc v1.0 and Serpent. I considered two different noble gas 
 removal scenarios: (1) no gas removal (e.g., $\epsilon_{Xe}=0$), 
 and (2) fully operational gas removal system (e.g., $\epsilon_{Xe}=0.915$). 
-The results in the literature report negative xenon poisoning effect for 
-conventional \glspl{LWR} reaches its extremum $\Delta\rho\approx-1500$ $pcm$ 
-in approximately 11 hours after shutdown. Such a vast reactivity drop 
+The results in the literature reported that negative xenon poisoning effect 
+for conventional \glspl{LWR} reaches its extremum $\Delta\rho\approx-1500$ 
+$pcm$ in approximately 11 hours after shutdown. Such a vast reactivity drop 
 complicates the \glspl{LWR} load-following.
 
 For the case with no gas removal ($\epsilon_{Xe}=0$), $^{135}$Xe 
@@ -761,7 +761,7 @@ required safety margins during postulated transients. The temperature feedback
 coefficients, void coefficient of reactivity, and control rod worth all remain 
 within stochastic uncertainty throughout the transient. Small elevation in 
 total temperature coefficient and void coefficient of reactivity during the 
-first hour after shutdown is due to rising $^{135}$Xe concentration raise and 
+first hour after shutdown is due to the $^{135}$Xe concentration raise and 
 corresponding short-term neutron spectrum hardening. In conclusion, the 
 \gls{TAP} \gls{MSR}, even without gas removal, is capable of the safe restart 
 after reducing power from 100\% to 0\% even when $^{135}$Xe concentration 
