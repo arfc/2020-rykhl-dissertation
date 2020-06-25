@@ -1,0 +1,142 @@
+%        File: arfc-beamer.tex
+%     Created: Sun May 5 10:00 PM 2013 C
+%
+
+
+%\documentclass[11pt,handout]{beamer}
+\documentclass[9pt]{beamer}
+\usetheme[white]{Illinois}
+%\title[short title]{long title}
+\title[Fuel processing simulation tool for liquid-fueled reactors]{Fuel 
+processing simulation tool for liquid-fueled nuclear reactors}
+%\subtitle[short subtitle]{long subtitle}
+%\subtitle[Short SubTitle]{Mostly Kittens}
+%\author[short name]{long name}
+\author[Andrei Rykhlevskii]{Andrei Rykhlevskii}
+%\date[short date]{long date}
+\date[07.01.2020]{July 1, 2020}
+%\institution[short name]{long name}
+\institute[UIUC]{University of Illinois at Urbana-Champaign}
+
+%\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{caption}  % allows center figures caption
+\usepackage{xspace}
+\usepackage{notoccite}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{subfigure}
+\usepackage{booktabs} % nice rules for tables
+\usepackage{microtype} % if using PDF
+\usepackage{bigints}
+\usepackage[absolute,overlay]{textpos}
+%\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{soul}
+\newcommand{\hlc}[2][yellow]{{%
+    \colorlet{foo}{#1}%
+    \sethlcolor{foo}\hl{#2}}%
+}
+\newcommand{\units}[1] {\:\text{#1}}%
+\newcommand{\SN}{S$_N$}%{S$_\text{N}$}%{$S_N$}%
+\DeclareMathOperator{\erf}{erf}
+%I need some complimentary error funcitons... 
+\DeclareMathOperator{\erfc}{erfc}
+%page numbers
+\setbeamertemplate{page number in head/foot}[appendixframenumber]
+\setbeamertemplate{caption}[numbered]
+%Those icons in the references are terrible looking
+\setbeamertemplate{bibliography item}[text]
+\setbeamercovered{dynamic}
+%%%% Acronym support
+
+\usepackage[acronym,toc]{glossaries}
+\include{acros}
+
+\makeglossaries
+
+%try to get rid of header on title page\dots
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% From uw-beamer Here's a handy bit of code to place at 
+%% the beginning of your presentation (after \begin{document}):
+\newcommand*{\alphabet}{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz}
+\newlength{\highlightheight}
+\newlength{\highlightdepth}
+\newlength{\highlightmargin}
+\setlength{\highlightmargin}{2pt}
+\settoheight{\highlightheight}{\alphabet}
+\settodepth{\highlightdepth}{\alphabet}
+\addtolength{\highlightheight}{\highlightmargin}
+\addtolength{\highlightdepth}{\highlightmargin}
+\addtolength{\highlightheight}{\highlightdepth}
+\newcommand*{\Highlight}{\rlap{\textcolor{HighlightBackground}{\rule[-\highlightdepth]{\linewidth}{\highlightheight}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Total slides number manual
+%\def\inserttotalframenumber{41}
+%%--------------------------------%%
+\begin{withoutheadline}
+\frame{
+  \titlepage
+}
+\end{withoutheadline}
+
+%%--------------------------------%%
+\AtBeginSection[]{
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[currentsection]
+\end{frame}
+}
+
+\section{Introduction}
+%\input{introduction}
+\section{Methodology}
+%\input{method}
+\section{Results}
+%\input{results_1}
+\input{results_2}
+%\section{Future work}
+%\input{proposal}
+\section{Conclusion}
+%\input{concl}
+%%--------------------------------%%
+%%--------------------------------%%
+\nocite{ASHRAF2019107115}
+\begin{frame}[allowframebreaks]
+  \frametitle{References}
+  \bibliographystyle{unsrt}
+  {\footnotesize \bibliography{../dissertation/thesisrefs} }
+
+\end{frame}
+
+%%--------------------------------%%
+%%---BACKUP SLIDES----------------%%
+%\begin{frame}
+%\frametitle{SaltProc architecture}
+%\vspace{-2mm}
+%\begin{figure}[ht!] % replace 't' with 'b' to \centering
+%\includegraphics[width=0.84\textwidth]{../dissertation/figures/ch2/saltproc_class_diagram.png}
+%	\caption{SaltProc v1.0 python package class diagram in UML notation 
+%		with examples of object instances.}
+%\end{figure}
+%\end{frame}	
+
+
+
+\end{document}
+
+
+
