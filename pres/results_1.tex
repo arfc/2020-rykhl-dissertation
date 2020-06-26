@@ -1,5 +1,6 @@
 \subsection{Lifetime-long depletion: MSBR}
 
+
 \begin{frame}
 \frametitle{Molten Salt Breeder Reactor (MSBR) design}
 
@@ -101,7 +102,7 @@ model \cite{rykhlevskii_full-core_2017}.}
 		\fontsize{7}{9}\selectfont
 		\begin{itemize}
 			\item Full-core Serpent model
-			\item Fine time resolution (\textbf{3-day} depletion steps)
+			\item Fine time resolution (\textbf{3-day} depletion step)
 			\item Slowly extracted elements are removed at the end of the 
 			cycle time (e.g., 50 days for RE)
 			\item FP removal efficiency \textbf{fixed, ideal}
@@ -140,13 +141,13 @@ model \cite{rykhlevskii_full-core_2017}.}
 
 \begin{frame}
 \frametitle{Fuel salt composition evolution in the MSBR}
-\begin{textblock*}{12.8cm}(0.07cm,2.6cm) % {block width} (coords)
+\begin{textblock*}{12.8cm}(0.03cm,2.6cm) % {block width} (coords)
 \begin{columns}
 	\column[t]{7cm}
 	\vspace{-0.35in}
 	\begin{figure}[t]
 		\hspace{-5mm}
-		\includegraphics[height=0.7\textheight]{../dissertation/figures/ch3/major_isotopes_adens.png}
+		\includegraphics[height=0.69\textheight]{../dissertation/figures/ch3/major_isotopes_adens.png}
 		\vspace{-0.15in}
 		\caption{Normalized number density of major isotopes in the salt
 			during 60 years of operation \cite{rykhlevskii_advanced_2018}.}
@@ -276,8 +277,8 @@ model \cite{rykhlevskii_full-core_2017}.}
 	\end{overprint}
 	\caption{An $XY$ section of the \gls{TAP} model with various 
 	moderator-to-fuel ratio. The violet color represents zirconium hydride, 
-	the yellow represents fuel 
-		salt.}
+	the yellow represents fuel salt \cite{chaube_tap_2019, 
+	rykhlevskii_milestone_2019}.}
 \end{figure}
 \end{textblock*}
 \end{frame}
@@ -294,11 +295,11 @@ model \cite{rykhlevskii_full-core_2017}.}
 		\begin{itemize}
 			\item Quarter-core Serpent model
 			\item Fine depletion resolution (\textbf{3-day})
+			\item 5\% LEU feed (UF$_4$) to maintain salt inventory
 			\item Xe removal efficiency $\epsilon_{Xe}=$\textcolor{green}{
 			0.03}, \textcolor{orange}{0.54}, and \textcolor{blue}{0.92} for 
 			mass transfer coefficient $K_L=$\textcolor{green}{0.085}, 
 			\textcolor{orange}{2.117}, and \textcolor{blue}{8.467}$mm/s$
-			\item 5\% LEU feed (UF$_4$) to maintain salt inventory
 		\end{itemize}
 	\end{block}
 	\vspace{-2mm}
@@ -336,6 +337,7 @@ model \cite{rykhlevskii_full-core_2017}.}
 \onslide<2>\centerline{\includegraphics[width=0.65\textwidth]{./images/tap_sp_z_1.png}}
 \onslide<3>\centerline{\includegraphics[width=0.67\textwidth]{../dissertation/figures/ch4/eps/spectrum_th_zoomed.png}}
 		\end{overprint}
+			\vspace{-3mm}
 		\caption{The neutron flux energy spectrum normalized by unit lethargy 
 		at the BOL and EOL. The neutron flux uncertainties $\sigma_{\Phi}$ are 
 		0.6\% and 0.18\% for the \gls{TAP} reactor and \gls{MSBR}, 
@@ -381,7 +383,8 @@ for K$_L$ = 8.4667 mm/s compared with less
 	\begin{columns}
 		\column[t]{5.5cm}
 		\vspace{-5mm}
-		\begin{figure}[hbp!] % replace 't' with 'b' to 
+		\visible<2->
+		{\begin{figure}[hbp!] % replace 't' with 'b' to 
 			\includegraphics[width=0.94\textwidth]{../dissertation/figures/ch5/tap_vs_pwr_spectrum_2.png}\\
 			\vspace{-5mm}
 			\hspace{+0.05mm}
@@ -389,13 +392,14 @@ for K$_L$ = 8.4667 mm/s compared with less
 			\vspace{-3mm}
 			\caption{Neutron spectra (upper) and $^{135}$I, $^{135}$Xe caption 
 			cross section (lower) \cite{rykhlevskii_impact_2019}.}
-		\end{figure}
+		\end{figure}}
 		
 		\column[t]{6cm}
 		\begin{textblock*}{7.3cm}(5.6cm,2.1cm) % {block width} (coords)
 		\begin{itemize}
-			\itemsep=0.3em
-			\item \textbf{Less effective} gas removal leads to \textbf{harder} 
+			\itemsep=1em
+			\item<1-> \textbf{Less effective} gas removal leads to 
+			\textbf{harder} 
 			spectrum
 			\begin{itemize}
 				\itemsep=0.5em
@@ -405,7 +409,7 @@ for K$_L$ = 8.4667 mm/s compared with less
 				\item Increased breeding of fissile Pu
 			\end{itemize}
 			
-			\item TAP spectrum \textbf{softens toward EOL}
+			\item<2-> TAP spectrum \textbf{softens toward EOL}
 			\begin{itemize}
 				\itemsep=0.5em
 				\item Reduced fissile Pu breeding after 11yrs
@@ -419,11 +423,113 @@ for K$_L$ = 8.4667 mm/s compared with less
 			\end{itemize} 
 		\end{itemize}
 	
-	{\par\small	These observations must be considered during the reactor 
+	\visible<3->{\par\small	These observations must be considered during the 
+	reactor 
 	designing, accident analysis, and safety justification.}
 		\end{textblock*}
 	
 	
+	\end{columns}
+\end{textblock*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Uncertainty propagation in depletion calculations (1/2)}
+\begin{textblock*}{12.4cm}(0.07cm,1.9cm) % {block width} (coords)
+	\begin{columns}
+		\column[t]{5.5cm}
+		\vspace{-3mm}
+		\visible<3->
+		{\begin{figure}[hbp!] % replace 't' with 'b' to 
+				\includegraphics[width=0.92\textwidth]{../dissertation/figures/uq/serpent_mass_std_u.png}\\
+				\vspace{-4.5mm}
+				\hspace{+0.3mm}
+				\includegraphics[width=0.91\textwidth]{../dissertation/figures/uq/serpent_mass_std_pu.png}
+				\vspace{-3.5mm}
+				\caption{Stochastic uncertainty in the uranium and plutonium 
+				isotopic inventory.}
+		\end{figure}}
+		
+		\column[t]{6cm}
+		\begin{textblock*}{7.2cm}(5.5cm,1.7cm) % {block width} (coords)
+			\begin{block}<1->{Sources of uncertainty in depletion calculations}
+			\begin{itemize}
+				\itemsep=0.3em
+				\item<2-> Stochastic uncertainty (Monte Carlo)
+				\begin{itemize}
+					\itemsep=0.5em
+					\item Serpent unable to provide statistical error in 
+					predicted composition
+					\item Depletion with Serpent \textbf{1000 times, only 
+					initial random seed changed}
+					\item The mean and standard deviation of isotopic 
+					concentration calculated from 1000 samples
+				\end{itemize}
+				
+			\end{itemize}
+			\end{block}
+			
+		\end{textblock*}
+
+	\end{columns}
+\end{textblock*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Uncertainty propagation in depletion calculations (2/2)}
+\begin{textblock*}{12.4cm}(0.07cm,1.9cm) % {block width} (coords)
+	\begin{columns}
+		\column[t]{5.5cm}
+		\vspace{-4mm}
+		\visible<2->
+		{\begin{figure}[hbp!] % replace 't' with 'b' to 
+				\includegraphics[width=0.9\textwidth]{../dissertation/figures/uq/scale_mass_std_u.png}\\
+				\vspace{-4.5mm}
+				\hspace{+0.1mm}
+				\includegraphics[width=0.9\textwidth]{../dissertation/figures/uq/scale_mass_std_pu.png}
+				\vspace{-3.5mm}
+				\caption{Nuclear data-related uncertainty \newline in U and Pu 
+				isotopic 
+				inventory.}
+		\end{figure}}
+		
+		\column[t]{6cm}
+		\begin{textblock*}{7.2cm}(5.5cm,1.7cm) % {block width} (coords)
+			\begin{block}<1->{Sources of uncertainty in depletion calculations}
+				\begin{itemize}
+					\itemsep=0.3em
+					\item<3> Stochastic uncertainty (Monte Carlo)
+					\begin{itemize}
+						\itemsep=0.5em
+						\item Serpent unable to provide statistical error in 
+						predicted composition
+						\item Depletion with Serpent \textbf{1000 times, only 
+							initial random seed changed}
+						\item The mean and standard deviation of isotopic 
+						concentration calculated from 1000 samples
+					\end{itemize}
+					
+					\item<1-> Uncertainty in the nuclear data
+					\begin{itemize}
+						\itemsep=0.5em
+						\item Nuclear data covariance propagated via 
+						depletion calculations using SCALE Sampler
+						\item Simple unit-cell model (NEWT)
+						\item Collection of random nuclear data files 
+						generated from a multivariate normal distribution and 
+						covariances
+						\item 800 random samples
+					\end{itemize} 
+				\end{itemize}
+			\end{block}
+			\visible<3->{\small \textbf{Takeaway:} Nuclear-data related 
+			uncertainty $\times100$ 
+			greater that 
+			stochastic}
+				
+		\end{textblock*}
+		
 	\end{columns}
 \end{textblock*}
 \end{frame}

@@ -1,15 +1,6 @@
 \begin{frame}
-\frametitle{Completed and future work}       
-\begin{textblock*}{12.5cm}(0.1cm,2.2cm) % {block width} (coords)
-	\begin{figure}[ht!] % replace 't' with 'b' to force it to 
-		\includegraphics[width=\textwidth]{./images/progress_chart_larger.pdf} 
-	\end{figure}
-\end{textblock*}
-\end{frame}
-
-\begin{frame}
-\frametitle{Conclusion}
-	\begin{textblock*}{12cm}(0.4cm,2cm) % {block width} (coords)
+\frametitle{Conclusions}
+\begin{textblock*}{12cm}(0.4cm,1.8cm) % {block width} (coords)
 	\begin{itemize}
 		\itemsep1em
 		\item Relevance
@@ -17,39 +8,66 @@
 			\itemsep0.5em
 			\item Fuel salt processing systems modeling in \glspl{MSR} based 
 			on \textbf{many assumptions and estimations}
-			\item This work will \textbf{more realistically} model salt 
-			processing system with a \textbf{focus on the gas removal system}  
-			of the prospective \gls{TAP} \gls{MSR}
+			\item \textbf{Realistic, multi-component} model salt 
+			processing system modeling capabilities are required for advanced 
+			\gls{MSR} analysis
 		\end{itemize} 
-		\item Preliminary results
+		\item The current work \textbf{contributes} to nuclear engineering 
+		community by providing \textbf{open-source tool for fuel depletion 
+		analysis in liquid-fueled nuclear system}
 			\begin{itemize}
-				\itemsep0.5em
-				\item Simple demonstration for \gls{MSBR} with 
-				\textbf{ideal/fixed	fission products removal efficiency}
-				\item \textbf{Multi-component} fuel reprocessing system 
-				modeling with \textbf{non-ideal/constant} 
-				efficiency
-				\item \textbf{Effect of fission product removal} on the core 
-				neutronics
+			\itemsep0.5em
+			\item Source code available at 
+			\url{https://github.com/arfc/saltproc/}
 			\end{itemize}
-		
-		\item Future work
-			\begin{itemize}
-				\itemsep0.5em
-				\item Add \textbf{variable geometry} and \textbf{dynamic 
-				removal efficiency capability}
-				\item Demonstrate and validate those capabilities for 
-				\textbf{lifetime-long depletion}
-				\item Simulate short-term transients to determine the 
-				\textbf{feasibility of load following}
-				\item Determine feasible \textbf{design parameters of the 
-				sparger}
-				\item Analyze \textbf{dynamics of the safety parameters} for 
-				long- and short-term cases
-			\end{itemize}
+		\item We demonstrated tool capabilities for \textbf{two MSRs at 
+		various time scales}
+		\begin{itemize}
+			\itemsep0.5em
+			\item Lifetime-long depletion with \textbf{ideal/realistic removal 
+			efficiency} and \textbf{variable geometry}
+			\item Short-term \textbf{load-following transient} simulation to 
+			evaluate \textbf{effect of online gas removal on xenon poisoning 
+			(iodine pit)}
+		\end{itemize}
+		\item We analyzed \textbf{safety parameters evolution} during long- 
+		and short-term cases and confirmed that the \textbf{critical safety 
+		margins are maintained}
+		\item Simplified UQ analysis shown that \textbf{stochastic error} in 
+		predicted composition is \textbf{negligible} comparing with 
+		\textbf{nuclear-data related error}
 	\end{itemize}
 \end{textblock*}
 \end{frame}
+
+\begin{frame}
+\frametitle{Future work}
+\begin{textblock*}{12cm}(0.4cm,2.2cm) % {block width} (coords)
+	\begin{block}{Possible future research effort}
+		\begin{enumerate}
+			\itemsep1em
+			\item Extend validation portfolio with other MSR designs (e.g., 
+			Single-fluid 
+			Double-zone Thorium Molten Salt Reactor (SD-TMSR))
+			\item Extend load-following simulations with realistic load 
+			profiles
+			\item Perform in-depth sensitivity analysis by varying gas removal 
+			efficiency to bound gas removal system design
+			\item Develop a fuel processing system model for SaltProc
+			for a \textbf{various commercial molten salt reactor concepts}
+			\begin{itemize}
+				\itemsep0.5em
+				\item Integral Small Modular Reactor from Terrestrial Energy
+				\item Small Modular Molten Salt Reactor from ThorCon
+				\item Liquid Fluoride Thorium Reactor from Flibeenergy 
+			\end{itemize}
+			\item Estimate long-term financial benefits from noble gas removal
+		\end{enumerate}
+	\end{block}
+\end{textblock*}
+\end{frame}
+
+
 
 \begin{frame}
 	\frametitle{Questions?}
