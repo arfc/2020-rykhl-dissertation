@@ -27,7 +27,7 @@
 
 
 \begin{frame}
-\frametitle{What is Xenon-135 poisoning? \cite{nuclear_power_production_2020}}
+\frametitle{What is $^{135}$Xe poisoning? \cite{nuclear_power_production_2020}}
 \animategraphics[loop,controls,width=1.07\linewidth]{0.5}{./images/anime/xe_pois-}{0}{11}
 \end{frame}
 
@@ -73,7 +73,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{TAP load-following simulation outcomes}
+\frametitle{TAP load-following simulation without gas removal outcomes}
 \begin{textblock*}{12.5cm}(0.1cm,2.1cm) % {block width} (coords)
 \begin{columns}
 	\column[t]{6.3cm}
@@ -114,7 +114,7 @@
 		body}			
 			\begin{itemize}
 				\item $\rho_X\approx-70\pm7$ $pcm$
-				\item $^{135}$Xe concentration change $+4$\%
+				\item<3-> $^{135}$Xe concentration change $+4$\%
 				\item<3-> $N_{^{135}I}/N_{^{135}Xe}\approx1.0$
 			\end{itemize}
 		\end{itemize}
@@ -187,6 +187,7 @@
 \vspace{-7mm}
 \begin{columns}
 	\column[t]{7cm}
+	\visible<2->{
 	\begin{figure}[t]
 	\centering
 $\begin{array}{r}
@@ -196,11 +197,11 @@ $\begin{array}{r}
 \end{array}$
 \vspace{-4mm}
 \caption{$\rho(t)$ during the transient ($\pm\sigma_{\rho}=10$$pcm$).}
-	\end{figure}
+	\end{figure}}
 	
 	\column[t]{5.5cm}
 	\begin{textblock*}{6.1cm}(6.3cm,2.1cm) % {block width} (coords)
-	\begin{block}{Analysis assumptions}
+	\begin{block}<1->{Analysis assumptions}
 				\fontsize{7}{9}\selectfont
 		\begin{enumerate}             
 			\item Load profile similar to TAP reactor
@@ -211,36 +212,24 @@ $\begin{array}{r}
 		\vspace{-4mm}
 	\end{block}
 
-	\begin{block}<1->{Key takeaways}
+	\begin{block}<2->{Key takeaways}
 				\fontsize{7}{9}\selectfont
 		\begin{itemize}
-			\item<1-> MSBR \textbf{cannot load-follow without gas removal:} 
+			\item MSBR \textbf{cannot load-follow without gas removal:} 
 			$\Delta\rho=-1490pcm$
-			\item<2-> Xenon poisoning is \textbf{milder toward EOL} due to 
+			\item Xenon poisoning is \textbf{milder toward EOL} due to 
 			spectrum \textbf{hardening}
-			\item<3-> Huge \textbf{positive reactivity insertion} for medium 
+			\item Huge \textbf{positive reactivity insertion} for medium 
 			and high removal efficiency
-			\item<4-> Even removal of \textbf{53.6\%} of Xe significantly 
-			reduced the effect of poisoning: \textbf{-161 $pcm$}
-			\item<5-> More effective removal (\textbf{91.5\%}) only 
-			slightly improves the neutronics: \textbf{-189 $pcm$}
+			\item Even removal of \textbf{53.6\%} of Xe significantly 
+			reduced the effect of poisoning: \textbf{-161$\pm10pcm$}
+			\item More effective removal (\textbf{91.5\%}) gave similar 
+			improvement: \textbf{-189$\pm10pcm$}
 		\end{itemize}
 		
 	\end{block}
 \end{textblock*}
 \end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Neutron energy spectrum MSBR vs TAP}
-\begin{textblock*}{12.6cm}(0.1cm,1.6cm) % {block width} (coords)
-	\begin{figure}[htp!] % replace 't' with 'b' to 
-	\centerline{\includegraphics[width=0.73\textwidth]{../dissertation/figures/ch6/msbr_vs_tap_spectrum.png}}
-		\vspace{-3mm}
-	\caption{The neutron flux energy spectrum normalized by unit lethargy for 
-	MSBR and TAP at BOL and EOL. }
-	\end{figure}
-\end{textblock*}
 \end{frame}
 
 \begin{frame}
@@ -280,5 +269,19 @@ $\begin{array}{r}
 			
 		\end{textblock*}
 	\end{columns}
+\end{textblock*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Neutron energy spectrum MSBR vs TAP}
+\begin{textblock*}{12.6cm}(0.1cm,1.6cm) % {block width} (coords)
+	\begin{figure}[htp!] % replace 't' with 'b' to 
+		\centerline{\includegraphics[width=0.73\textwidth]{../dissertation/figures/ch6/msbr_vs_tap_spectrum.png}}
+		\vspace{-3mm}
+		\caption{The neutron flux energy spectrum normalized by unit lethargy 
+		for 
+			MSBR and TAP at BOL and EOL. }
+	\end{figure}
 \end{textblock*}
 \end{frame}
