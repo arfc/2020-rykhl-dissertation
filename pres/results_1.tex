@@ -79,7 +79,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Graphite channels geometry}
+\frametitle{Graphite channel geometry}
 \begin{textblock*}{12.5cm}(0.02cm,2.0cm) % {block width} (coords)
 \begin{figure}[t]
 \includegraphics[width=1.02\textwidth]{./images/detailed_element_xz.png}
@@ -101,15 +101,14 @@ model \cite{rykhlevskii_full-core_2017}.}
 	\begin{block}{Analysis assumptions}
 		\fontsize{7}{9}\selectfont
 		\begin{itemize}
-			\item Full-core Serpent model
 			\item Fine time resolution (\textbf{3-day} depletion step)
-			%\item Slowly extracted elements are removed at the end of the 
-			%cycle time (e.g., 50 days for RE)
 			\item FP removal efficiency \textbf{fixed, ideal}
 			\item All $^{233}$Pa removed and \textbf{equal mass of $^{233}$U} 
 			fed to the core
 			\item Fresh fertile material feed ($^{232}$Th) to maintain salt 
 			inventory
+			\item Slowly extracted elements are removed at the end of the 
+			cycle time (e.g., 50 days for REs)
 		\end{itemize}
 	\end{block}
 	\vspace{-2mm}
@@ -117,8 +116,10 @@ model \cite{rykhlevskii_full-core_2017}.}
 	\fontsize{7}{9}\selectfont
 	\begin{itemize}
 		\item Strong absorbers ($^{234}$U) and fissile materials ($^{235}$U) 
-		are built-up
+		are built up
 		\item $k_{eff}$ stabilizes after $\approx6$ years
+		\item Quasi-equilibrium achieved after 
+		$\approx16$ years
 	\end{itemize}  
 	\end{block}  	
 	
@@ -141,31 +142,38 @@ model \cite{rykhlevskii_full-core_2017}.}
 
 \begin{frame}
 \frametitle{Fuel salt composition evolution in the MSBR}
-\begin{textblock*}{12.8cm}(0.03cm,2.6cm) % {block width} (coords)
+\begin{textblock*}{12.8cm}(0.025cm,2.6cm) % {block width} (coords)
 \begin{columns}
-	\column[t]{7cm}
+	\column[t]{6.5cm}
 	\vspace{-0.35in}
 	\begin{figure}[t]
-		\hspace{-5mm}
-		\includegraphics[height=0.69\textheight]{../dissertation/figures/ch3/major_isotopes_adens.png}
+	\begin{overprint}
+		\onslide<1>\includegraphics[height=0.65\textheight]{../dissertation/figures/ch3/major_isotopes_adens.png}
 		\vspace{-0.15in}
-		\caption{Normalized number density of major isotopes in the salt
+		\caption{Number density of major isotopes in the salt
 			during 60 years of operation \cite{rykhlevskii_advanced_2018}.}
+		\onslide<2->\includegraphics[height=0.65\textheight]{../dissertation/figures/ch3/spectrum.png}
+		\vspace{-0.15in}
+		\caption{Neutron energy spectrum normalized by lethargy for startup 
+		and equilibrium state \cite{rykhlevskii_advanced_2018}.}
+		
+	\end{overprint}
 	\end{figure}
 	
-	\column[t]{4.5cm}
+	\column[t]{5cm}
 	\fontsize{7}{9}\selectfont
 		\vspace{-3mm}
 	\begin{itemize}
-		\item<1-> Neutron poisons ($^{234}$U, $^{232}$Pa) accumulation has 
+		\item<1-> Neutron poison ($^{234}$U, $^{232}$Pa) accumulation has 
 		negative impact on neutronics
-		\item<1-> New fissile materials ($^{235}$U, $^{239}$Pu) improved core 
+		\item<1-> New fissile materials ($^{235}$U, $^{239}$Pu) improve core 
 		performance
 		\item<1-> $^{233}$U number density almost constant ($\Delta m<0.8\%$) 
-		after 16 years of operation
+		after 16 years of operation (quasi-equilibrium)
 		\item<1-> $^{232}$Th feed rate \textbf{2.4 kg/d is consistent with 
 		ORNL results (2.45 kg/d) \cite{betzler_personal_2017}}
-		\item<2-> Neutron spectrum \textbf{hardens toward EOL} causing:
+		\item<2-> Neutron spectrum \textbf{hardens (becomes faster) toward 
+		EOL} causing:
 		\setbeamerfont*{itemize/enumerate body}{size=\footnotesize}
 		\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate 
 		body}
@@ -184,11 +192,11 @@ model \cite{rykhlevskii_full-core_2017}.}
 
 
 \begin{frame}
-\frametitle{Effect of fission products removal}       
+\frametitle{Effect of fission product removal}       
 
 \begin{figure}[t] % replace 't' with 'b' to force it to 
 	\centering
-	\includegraphics[width=0.9\textwidth]{../dissertation/figures/ch3/keff_rem_cases.png}
+	\includegraphics[width=0.9\textwidth]{./images/keff_rem_cases.png}
 	 
 		\vspace{-3mm}
 	\caption{SaltProc-calculated effective multiplication factor for the 
@@ -267,7 +275,7 @@ model \cite{rykhlevskii_full-core_2017}.}
 \begin{textblock*}{12.6cm}(0.1cm,1.8cm) % {block width} (coords)
 \begin{figure}[htp!] % replace 't' with 'b' to 
 	\begin{overprint}
-		\onslide<1>\centerline{\includegraphics[height=0.75\textheight]{./images/347_base.png}}
+		\onslide<1>\centerline{\includegraphics[height=0.75\textheight]{./images/347_base_2.png}}
 		\onslide<2>\centerline{\includegraphics[height=0.75\textheight]{./images/406.png}}
 		\onslide<3>\centerline{\includegraphics[height=0.75\textheight]{./images/576.png}}
 		\onslide<4>\centerline{\includegraphics[height=0.75\textheight]{./images/633.png}}
@@ -296,10 +304,12 @@ model \cite{rykhlevskii_full-core_2017}.}
 			\item Quarter-core Serpent model
 			\item Fine depletion resolution (\textbf{3-day})
 			\item 5\% LEU feed (UF$_4$) to maintain salt inventory
-			\item Xe removal efficiency $\epsilon_{Xe}=$\textcolor{green}{
-			0.03}, \textcolor{orange}{0.54}, and \textcolor{blue}{0.92} for 
-			mass transfer coefficient $K_L=$\textcolor{green}{0.085}, 
-			\textcolor{orange}{2.117}, and \textcolor{blue}{8.467}$mm/s$
+			\item $\epsilon_{Xe}=$\textcolor{ao(english)}{
+			0.03}, \textcolor{orange}{0.54}, \textcolor{blue}{0.92} 
+			for\newline  
+			mass transfer coefficient \newline 
+			$K_L=$\textcolor{ao(english)}{0.085}, 
+			\textcolor{orange}{2.117}, \textcolor{blue}{8.467} [$mm/s$]
 		\end{itemize}
 	\end{block}
 	\vspace{-2mm}
@@ -307,7 +317,7 @@ model \cite{rykhlevskii_full-core_2017}.}
 		\fontsize{7}{9}\selectfont
 		\begin{itemize}
 			\item $^{235}$U is substituted with $^{239}$Pu
-			\item Poisonous $^{234}$U is built-up ($>$1t at EOL)
+			\item Poisonous $^{234}$U is built up ($>$1t at EOL)
 			\item Total U inventory decreased from 137 to 129t
 		\end{itemize}  
 	\end{block}  	
@@ -348,7 +358,7 @@ model \cite{rykhlevskii_full-core_2017}.}
 
 
 \begin{frame}
-\frametitle{Fuel salt composition evolution during the TAP operation (1/2)}
+\frametitle{Fuel salt composition evolution during TAP operation (1/2)}
 \begin{textblock*}{12.25cm}(0.25cm,1.8cm) % {block width} (coords)
 	\begin{figure}[htp!] % replace 't' with 'b' to 
 		\centering
@@ -363,7 +373,7 @@ for K$_L$ = 8.4667 mm/s compared with less
 \end{frame}
 
 \begin{frame}
-\frametitle{Fuel salt composition evolution during the TAP operation (2/2)}
+\frametitle{Fuel salt composition evolution during TAP operation (2/2)}
 \begin{textblock*}{12.25cm}(0.25cm,1.8cm) % {block width} (coords)
 	\begin{figure}[htp!] % replace 't' with 'b' to 
 		\centering
@@ -405,8 +415,8 @@ for K$_L$ = 8.4667 mm/s compared with less
 				\itemsep=0.5em
 				\item Shorter lifetime due to parasitic absorption
 				\item Lower $^{235}$U fission rate
-				\item Faster rate of $^{238}$U destruction (-50kg)
-				\item Increased breeding of fissile Pu
+				\item Faster $^{238}$U destruction rate (-50kg)
+				\item Increased fissile Pu breeding
 			\end{itemize}
 			
 			\item<2-> TAP spectrum \textbf{softens toward EOL}
@@ -423,9 +433,6 @@ for K$_L$ = 8.4667 mm/s compared with less
 			\end{itemize} 
 		\end{itemize}
 	
-	\visible<3->{\par\small	These observations must be considered during the 
-	reactor 
-	designing, accident analysis, and safety justification.}
 		\end{textblock*}
 	
 	
@@ -515,7 +522,7 @@ for K$_L$ = 8.4667 mm/s compared with less
 						\itemsep=0.5em
 						\item Nuclear data covariance propagated via 
 						depletion calculations using SCALE Sampler
-						\item Simple unit-cell model (NEWT)
+						\item Simple unit-cell model
 						\item Collection of random nuclear data files 
 						generated from a multivariate normal distribution and 
 						covariances
@@ -524,9 +531,7 @@ for K$_L$ = 8.4667 mm/s compared with less
 				\end{itemize}
 			\end{block}
 			\visible<3->{\small \textbf{Takeaway:} Nuclear-data related 
-			uncertainty $\times100$ 
-			greater that 
-			stochastic}
+			uncertainty $\times100$ greater than stochastic}
 				
 		\end{textblock*}
 		

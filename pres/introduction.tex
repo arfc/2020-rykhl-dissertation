@@ -6,11 +6,11 @@
 	\begin{overlayarea}{\linewidth}{20\baselineskip}
 		\begin{block}{Stationary Fuel}<1-4>
 			\begin{enumerate}
-				\item \textbf{Solid}
+				\item Solid
 				\begin{itemize}
 					\item Graphite block with TRISO fuel, clean salt works as 
-					coolant (Fluoride-Salt-Cooled High-Temperature Reactor 
-					(FHR))
+					coolant - Fluoride-Salt-Cooled High-Temperature Reactor 
+					(FHR)
 					\item Plate Fuel: hexagonal fuel assembly is similar in 
 					shape 
 					to a typical sodium-cooled reactor
@@ -21,17 +21,16 @@
 		
 		\begin{block}{Mobile Fuel}<2-4>
 			\begin{enumerate}
-				\item \textbf{Solid}
+				\item Solid
 				\begin{itemize}
 					\item<2-> Mobile solid fuel elements (pebbles) cooled by 
-					clean salt (PB-FHR by Kairos Power)
+					clean salt - PB-FHR by Kairos Power
 				\end{itemize}
-				\item<3-> \textbf{Liquid}
+				\item<3-> \colorbox{yellow}{\textbf{Liquid}}
 				\begin{itemize}
-					\item<3-> Without on-site fuel reprocessing facility 
-					(TerraPower \glsfirst{MCFR})
-					\item<4-> \textbf{With on-site fuel reprocessing} 
-					(\glsfirst{TAP} MSR, \glsfirst{MSBR})
+					\item<3-> \textbf{Nuclear fuel is dissolved in a molten 
+					salt and pumped between a critical core and heat 
+					exchanger} - \glsfirst{TAP} MSR, \glsfirst{MSBR}
 				\end{itemize}
 			\end{enumerate}
 		\end{block}
@@ -83,6 +82,14 @@
 \begin{frame}
 \frametitle{On-line fuel processing and on-line refueling pros and 
 cons}
+\vspace{-2mm}
+\begin{figure}[t]
+	\includegraphics[height=0.2\textwidth]{./images/dolan.jpg}
+		\vspace{-2mm}
+	\caption{Schematic of a single-fluid MSR with fuel processing 
+	(courtesy T. Dolan \cite{dolan_1_2017}).} 
+\end{figure}  
+	\vspace{-3mm}
 \begin{block}{Advantages}
 	\begin{enumerate}
 		\item Neutron economy
@@ -114,35 +121,9 @@ cons}
 	\end{figure}               
 \end{frame}
 
-\begin{comment}
-\begin{frame}
-\frametitle{On-line fuel salt reprocessing system functions}
-\begin{block}{Removing poisonous fission products}
-	\begin{itemize}
-		\item Noble gas (e.g., centrifugal gas separator)
-		\item Noble metal (e.g., large filter with nickel fibers)
-       \item Rare earth (separation based on different chemical potentials)
-		%\item Ideally, remove 100\% of target element but realistically, 
-		%30-90\%
-		\item Some valuable rare metals (Rh,Pd) may be recovered %%Rh - $5000, 
-%%%Pd - $1500, Pl - $900, Ir - $1480
-	\end{itemize}
-\end{block}
-
-\begin{block}{Injecting fresh fuel}
-	\begin{itemize}
-		\item Fissile material ($^{233}$U, $^{235}$U, $^{239}$Pu)
-		\item Fertile material ($^{232}$Th, $^{238}$U)
-		\item Maintain fuel salt inventory in the primary loop
-		\item Maintain reactor criticality (ideally, $k_{eff}=1.0$)
-	\end{itemize}
-\end{block}
-
-\end{frame}
-\end{comment}
 
 \begin{frame}
-\frametitle{Continuous vs batch-wise fuel processing  and refueling (1/3)}
+\frametitle{Continuous vs batch-wise fuel processing  and refueling}
 \vspace{-8mm}
 \begin{block}{Classic Bateman equation}
 	%Core material is circulated to or from the core at specific intervals:
@@ -167,7 +148,7 @@ cons}
 \end{frame}
 
 \begin{frame}
-\frametitle{Continuous vs batch-wise fuel processing  and refueling (2/3)}
+\frametitle{Continuous vs batch-wise fuel processing  and refueling}
 \vspace{-1.3mm}
 \begin{block}{Bateman equation with continuous removals and feed}
 	\begin{align}
@@ -196,9 +177,35 @@ cons}
 \end{block}
 \end{frame}
 
+\begin{frame}<1>[label=frame1]
+\frametitle{Continuous vs batch-wise fuel processing  and refueling}
+
+\begin{enumerate}
+	\itemsep2em
+	\item<1-> Continuous: removal and feed terms are added to the Bateman 
+	equation
+	\begin{itemize}
+		\itemsep1em
+		\item[$\mathbf{+}$] allows coarse burnup timesteps
+		\item[$\mathbf{-}$] requires a sophisticated algorithm for rebalancing 
+		the salt mass 
+	\end{itemize}
+	\item<3-> \colorbox{yellow}{\textbf{Batch-wise}}: burnup simulation stops 
+	and restarts with 
+	modified fuel composition
+	\begin{itemize}
+		\itemsep1em
+		\item[$\mathbf{+}$] composition calculation models removals and feeds 
+		at each stop/start
+		\item[$\mathbf{+}$] easy to balance the salt mass in the primary loop
+		\item[$\mathbf{-}$] requires very fine burnup timesteps
+	\end{itemize}
+\end{enumerate}
+
+\end{frame}
 
 \begin{frame}
-\frametitle{Continuous vs batch-wise fuel processing and refueling (3/3)}
+\frametitle{Continuous vs batch-wise fuel processing and refueling}
 \begin{block}{Batch-wise approach}
 	Core material is circulated to or from the core at specific 
 	intervals		
@@ -212,29 +219,7 @@ cons}
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Fuel salt reprocessing simulation approaches pros and cons}
-
-\begin{enumerate}
-	\itemsep2em
-	\item Continuous: removal and feed terms are added to the Bateman equation
-	\begin{itemize}
-		\itemsep1em
-		\item[$\mathbf{+}$] allows coarse burnup timesteps
-		\item[$\mathbf{-}$] requires a sophisticated algorithm for rebalancing 
-		the salt mass 
-	\end{itemize}
-	\item \textbf{Batch-wise}: burnup simulation stops and restarts with 
-	modified fuel composition
-	\begin{itemize}
-		\itemsep1em
-		\item[$\mathbf{+}$] composition calculation models removals and feeds 
-		at each stop/start
-		\item[$\mathbf{+}$] easy to balance the salt mass in the primary loop
-		\item[$\mathbf{-}$] requires very fine burnup timesteps
-	\end{itemize}
-\end{enumerate}
-\end{frame}
+\againframe<3->{frame1}
 
 
 \begin{frame}
@@ -260,14 +245,13 @@ cons}
         Separation efficiency & fixed & fixed & fixed & \textcolor{red}{function of many parameters} \\[3pt]
         Fuel reprocessing plant & ``black box'' & ``black box'' & ``black box'' & \textcolor{red}{realistic multi-component model} \\[3pt]
         Reactivity control & continuous& continuous & batch feed & 
-        \textcolor{red}{periodic adjustment of geometry and fissile material 
-        injection}\\[3pt]
+        \textcolor{red}{geometry adjustment\newline +batch feed}\\[3pt]
         Power level & \multicolumn{3}{c}{fixed}& \textcolor{red}{variable} 
         \\[3pt]
 		Thermal feedback & Doppler only & Not considered & Doppler only & 
 		Doppler$+$\textcolor{red}{density+thermal expansion}\\[3pt]
 		Void coefficient  & \multicolumn{3}{c}{Not considered} & 
-		\textcolor{red}{For BOL and EOL} \\[3pt]
+		\textcolor{red}{EOL and BOL} \\[3pt]
 		Control rod worth & \multicolumn{3}{c}{Not considered} & 
 		\textcolor{red}{Total} \\[3pt]
 		\hline
@@ -292,7 +276,7 @@ cons}
 	\begin{aligned}
 	\begin{bmatrix}
 	N^{in}_{0} \\ \vdots \\ N^{in}_{e} \\ \vdots \\ N^{in}_{E} \\
-	\end{bmatrix} 
+	\end{bmatrix}^T
 	\times
 	\begin{bmatrix}
 	\epsilon_{0} \\ \vdots \\ \epsilon_{e} \\ \vdots \\ \epsilon_{E} \\
@@ -319,7 +303,7 @@ cons}
   \frametitle{Research objectives}
                   \vspace*{-0.05in}
       The main objective of the current work is to develop the on-line  
-      reprocessing simulation package, SaltProc, for liquid-fueled reactors 
+      reprocessing simulation package, SaltProc, for liquid-fueled reactor     
       depletion simulations.
      \begin{block}{SaltProc desired capabilities:}<1-4>
          \begin{enumerate}
@@ -341,9 +325,10 @@ cons}
 			\item<2-4> \textbf{Lifetime-long} depletion with ideal/realistic 
 			$\epsilon_e$
 			\item<3-4> Short-term depletion \textbf{during load-following 
-			transient}
-			\item<4> Safety parameters ($\alpha_{T}, \alpha_{V}$, control rod 
-			worth) \textbf{evolution during long- and short-term operation}
+			transients}
+			\item<4> Safety parameter ($\alpha_{T}, \alpha_{V}$, 
+			$\rho_{CR}$) \textbf{evolution during long- and short-term 
+			operation}
 		\end{enumerate}
 	\end{block}
 \end{frame}

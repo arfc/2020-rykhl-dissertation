@@ -12,7 +12,7 @@ processing simulation tool for liquid-fueled nuclear reactors}
 %\subtitle[short subtitle]{long subtitle}
 %\subtitle[Short SubTitle]{Mostly Kittens}
 %\author[short name]{long name}
-\author[Andrei Rykhlevskii]{Andrei Rykhlevskii}
+\author[Andrei Rykhlevskii]{Andrei Rykhlevskii \\ Ph.D. Final Defense}
 %\date[short date]{long date}
 \date[07.01.2020]{July 1, 2020}
 %\institution[short name]{long name}
@@ -44,6 +44,8 @@ processing simulation tool for liquid-fueled nuclear reactors}
 }
 \newcommand{\units}[1] {\:\text{#1}}%
 \newcommand{\SN}{S$_N$}%{S$_\text{N}$}%{$S_N$}%
+\newcommand{\light}[1]{\textcolor{gray}{#1}}
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
 \DeclareMathOperator{\erf}{erf}
 %I need some complimentary error funcitons... 
 \DeclareMathOperator{\erfc}{erfc}
@@ -105,8 +107,7 @@ processing simulation tool for liquid-fueled nuclear reactors}
 \section{Introduction}
 \input{introduction}
 \section{Methodology}
-\input{method}
-\section{Results}
+\input{method}\section{Results}
 \input{results_1}
 \input{results_2}
 \section{Conclusions}
@@ -124,6 +125,63 @@ processing simulation tool for liquid-fueled nuclear reactors}
 %%--------------------------------%%
 %%---BACKUP SLIDES----------------%%
 \begin{frame}
+\frametitle{Potential Generation IV reactor systems 
+	\cite{abram_generation-iv_2008}}
+\begin{figure}[t]
+	\vspace*{-0.1in}
+	\includegraphics[height=0.7\textwidth]{./images/6_types.png}
+	\caption{\gls{MSR} design}
+\end{figure}            
+\end{frame}
+
+\begin{frame}
+\frametitle{Stationary and Mobile Solid fuel}
+\vspace*{-0.09in}
+\begin{figure}[t]
+	\hspace*{-0.35in}
+	\includegraphics[height=0.63\textwidth]{./images/solid_fuel.jpg}
+	\caption{TRISO fuel particle (top) and FHR fuel designs (bottom).} 
+\end{figure}   
+\end{frame}
+
+\begin{frame}
+\frametitle{Mobile, Non-Circulating, Liquid Fuel}
+\begin{figure}[t]
+	\vspace*{-0.09in}
+	\hspace*{-0.35in}
+	\includegraphics[height=0.6\textwidth]{./images/mcfr-crossection.jpg}
+	\caption{The TerraPower MCFR is an example of reactor design with 
+		\textbf{liquid, mobile, non-circulating} chloride salt fuel.}
+\end{figure}   
+
+\end{frame}
+
+\begin{frame}
+\frametitle{On-line fuel salt reprocessing system functions}
+\begin{block}{Removing poisonous fission products}
+	\begin{itemize}
+		\item Noble gas (e.g., centrifugal gas separator)
+		\item Noble metal (e.g., large filter with nickel fibers)
+		\item Rare earth (separation based on different chemical potentials)
+		\item Ideally, remove 100\% of target element but realistically, 
+		30-90\%
+		\item Some valuable rare metals (Rh,Pd) may be recovered %%Rh - $5000, 
+		%%%Pd - $1500, Pl - $900, Ir - $1480
+	\end{itemize}
+\end{block}
+
+\begin{block}{Injecting fresh fuel}
+	\begin{itemize}
+		\item Fissile material ($^{233}$U, $^{235}$U, $^{239}$Pu)
+		\item Fertile material ($^{232}$Th, $^{238}$U)
+		\item Maintain fuel salt inventory in the primary loop
+		\item Maintain reactor criticality (ideally, $k_{eff}=1.0$)
+	\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
 \frametitle{SaltProc architecture}
 \vspace{-2mm}
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
@@ -136,7 +194,7 @@ processing simulation tool for liquid-fueled nuclear reactors}
 
 \begin{frame}
 \frametitle{Extraction rate for various reactors}
-\begin{textblock*}{12.5cm}(0.5cm,1.6cm) % {block width} (coords)
+\begin{textblock*}{12.5cm}(0.3cm,1.6cm) % {block width} (coords)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htbp!]
 \fontsize{6}{9}\selectfont
@@ -207,6 +265,63 @@ Table~\ref{tab:reprocessing_list}
 \end{itemize}
 \end{textblock*}
 \end{frame}
+
+\begin{frame}
+\frametitle{Fuel processing system overview: rare earths and Pa removal}
+		\vspace{-2mm}
+	\begin{figure}[htp!] % replace 't' with 'b' to 
+		\centering
+			\includegraphics[width=0.57\textwidth]{../dissertation/figures/ch2/flowsheet.pdf}
+			\vspace{-2mm}
+		\caption{Liquid metal (Bi) extraction system for the \gls{MSBR} 
+		(reproduced from Sorensen \cite{sorensen_one-fluid_2006}).} 
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Uncertainty Quantification in depletion calculations}
+\vspace{-2mm}
+\begin{figure}[htp!] % replace 't' with 'b' to 
+	\centering
+	\includegraphics[width=1.05\textwidth]{../dissertation/figures/uq/majdi_scale_scheme.png}
+	\vspace{-2mm}
+	\caption{Flowchart of depletion uncertainty quantification 
+		using SCALE Sampler (figure courtesy of Majdi I. Radaideh 
+		\cite{radaideh_novel_2019}).} 
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Convergence study for the depletion timestep}
+\begin{textblock*}{12.4cm}(0.07cm,2.0cm) % {block width} (coords)
+	\begin{columns}
+		\column[t]{6.1cm}
+		\vspace{-6mm}
+		\begin{figure}[hbp!] % replace 't' with 'b' to 
+				\includegraphics[width=0.85\textwidth]{../dissertation/figures/ch4/u235_time_refinement.png}\\
+				\vspace{-4mm}
+				\hspace{+0.1mm}
+				\includegraphics[width=0.9\textwidth]{../dissertation/figures/ch4/pu239_time_refinement.png}
+				\vspace{-3mm}
+				\caption{SaltProc-calculated $^{235}$U and $^{239}$Pu content 
+				during operationfor different depletion time step sizes.}
+		\end{figure}
+		
+		\column[t]{5.5cm}
+			\begin{itemize}
+				\item $<1$\% error for U isotopic composition even for 
+				24-day step
+				\item $>0.5$\% error in $^{239}$Pu predicted mass for 6-day 
+				step
+				\item 6-day step caused total Pu mass overprediction by 
+				\textbf{9.6 kg} $>$ \textbf{Significant Quantity (8 kg)}
+			\end{itemize}
+		
+	\end{columns}
+\end{textblock*}
+\end{frame}
+
 
 
 

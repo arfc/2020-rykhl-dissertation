@@ -12,7 +12,7 @@
 	\end{figure}  
 	\vspace{-4mm}
 	
-	\visible<2->{\begin{block}{Physical constrains limiting power 
+	\visible<2->{\begin{block}{Physical constraints limiting power 
 	variations	in 
 				Light-Water	Reactors \cite{lokhov_technical_2011}:}
 			\begin{itemize}
@@ -46,25 +46,27 @@
 	\column[t]{6.3cm}
 	\begin{block}{Postulated load-following transient}
 		\begin{enumerate}             
-			\item operation on 100\% power	level for \textbf{$t_{eq}$} to 
-			reach $^{135}$Xe/$^{135}$I equilibrium
+			\item $P(t<t_{eq})=100$\% to reach $^{135}$Xe/$^{135}$I equilibrium
 			\item instantaneous power drop from 100 to 0\%
-			\item shutdown for \textbf{$t^{max}_{X}$} to reach the 
+			\item $P(t_{eq}<t<t^{max}_{X})=0$\% to reach the 
 			$^{135}$Xe peak
 			\item restart instantly from 0 to 100\%, and then operation on 
 			100\% for a few hours
 		\end{enumerate}
-			\vspace{-8mm}
+			\vspace{-3mm}
 	\end{block}
+		{\footnotesize
 		\begin{align}\label{eq:time-xe-max}
-		t^{max}_{X} &= \frac{1}{\lambda_X-\lambda_I}
+		t^{max}_{X} &= t_{eq} + \frac{1}{\lambda_X-\lambda_I}
 		log\left(\frac{\lambda_X(\lambda_I[X_0+I_0]-\lambda_XX_0)}{\lambda_I^2 
 		I_0}\right) \nonumber
-		\end{align}
+		\end{align}}
+				\vspace{-3mm}
 	\begin{block}{Simplifying assumptions}
 		\begin{itemize}
 			\item All control rods are fully withdrawn
-			\item Power adjusted by changing normalization in Serpent 2
+			\item Fission power adjusted by changing normalization in Serpent 
+			2 ($\overline{\phi}=0$)
 			\item 15-min depletion step
 		\end{itemize}
 		
@@ -73,7 +75,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{TAP load-following simulation without gas removal outcomes}
+\frametitle{TAP load-following simulation without gas removal}
 \begin{textblock*}{12.5cm}(0.1cm,2.1cm) % {block width} (coords)
 \begin{columns}
 	\column[t]{6.3cm}
@@ -123,7 +125,10 @@
 			\begin{itemize}
 				\item TAP \textbf{can load-follow} throughout whole
 			lifetime \textbf{without significant $^{135}$Xe poisoning}
-				\item Noble gas removal \textbf{unnecessary for load-following}
+				\item Noble gas removal \textbf{unnecessary for load-following 
+				in TAP}
+				\item Noble gas removal \textbf{beneficial for long-term 
+				performance}
 				\item Main reason - \textbf{relatively fast neutron spectrum} 
 				of TAP MSR
 			\end{itemize}
@@ -164,7 +169,7 @@
 			\begin{itemize}
 				\itemsep=0.8em
 				\item<1-> Fuel temperature coefficient ($\alpha_{T,F}$) 
-				weakened during first 3 hours when $^{135}$Xe concentration 
+				worsened during first 3 hours when $^{135}$Xe concentration 
 				peaked causing the spectrum hardening
 				\item<2-> $\alpha_V$ fluctuates in stochastic uncertainty 
 				range $\sigma_{\alpha_V}\pm4$ $pcm/$\%
@@ -184,23 +189,23 @@
 
 \begin{frame}
 \frametitle{Xenon poisoning effect during MSBR load-following}
-\vspace{-7mm}
+\vspace{-8mm}
 \begin{columns}
 	\column[t]{7cm}
 	\visible<2->{
 	\begin{figure}[t]
 	\centering
 $\begin{array}{r}
-\includegraphics[width=0.707\textwidth]{../dissertation/figures/ch6/kl1_rho.png}\vspace{-5mm}\\
-\includegraphics[width=0.69\textwidth]{../dissertation/figures/ch6/kl25_rho.png}\vspace{-5mm}\\
-\includegraphics[width=0.69\textwidth]{../dissertation/figures/ch6/kl100_rho.png}
+\includegraphics[width=0.717\textwidth]{../dissertation/figures/ch6/kl1_rho.png}\vspace{-5mm}\\
+\includegraphics[width=0.70\textwidth]{../dissertation/figures/ch6/kl25_rho.png}\vspace{-5mm}\\
+\includegraphics[width=0.70\textwidth]{../dissertation/figures/ch6/kl100_rho.png}
 \end{array}$
 \vspace{-4mm}
 \caption{$\rho(t)$ during the transient ($\pm\sigma_{\rho}=10$$pcm$).}
 	\end{figure}}
 	
 	\column[t]{5.5cm}
-	\begin{textblock*}{6.1cm}(6.3cm,2.1cm) % {block width} (coords)
+	\begin{textblock*}{6.1cm}(6.3cm,2cm) % {block width} (coords)
 	\begin{block}<1->{Analysis assumptions}
 				\fontsize{7}{9}\selectfont
 		\begin{enumerate}             
@@ -209,7 +214,7 @@ $\begin{array}{r}
 			\item 30-min depletion step
 			\item Low, medium, and high gas removal efficiency
 		\end{enumerate}
-		\vspace{-4mm}
+		\vspace{-1mm}
 	\end{block}
 
 	\begin{block}<2->{Key takeaways}
@@ -233,7 +238,7 @@ $\begin{array}{r}
 \end{frame}
 
 \begin{frame}
-\frametitle{Safety parameters evolution during load-following}
+\frametitle{Safety parameter evolution during load-following}
 \begin{textblock*}{12.5cm}(0.4cm,1.55cm) % {block width} (coords)
 	\begin{columns}
 		\column[t]{6.3cm}
@@ -244,11 +249,11 @@ $\begin{array}{r}
 				\caption{Temperature coefficients dynamics during the 
 				transient.}
 				\onslide<2>\includegraphics[width=0.87\linewidth]{./images/msbr_void_evo.png}
-				\vspace{-2mm}
+				\vspace{-1mm}
 				\caption{Void coefficient of reactivity ($\alpha_V$) dynamics
 					during the transient.}
 				\onslide<3->\includegraphics[width=0.87\linewidth]{./images/msbr_crw_evo.png}
-				\vspace{-2mm}
+				\vspace{-1mm}
 				\caption{Total control rod worth dynamics during 
 				the transient.}
 			\end{overprint}
@@ -259,10 +264,10 @@ $\begin{array}{r}
 			\begin{itemize}
 				\itemsep=0.8em
 				\item<1-> $\alpha_{T,ISO}$ worsens slightly as $^{135}$Xe 
-				concentration spiked and then improves quickly
+				concentration spikes and then improves quickly
 				\item<2-> $\alpha_V$ demonstrates similar behavior
-				\item<3-> CRW worsened after shutdown but then quickly 
-				recovered due to quick $^{135}$Xe removal
+				\item<3-> CRW worsens after shutdown but then quickly 
+				improves due to quick $^{135}$Xe removal
 				\item<4-> Total control rod worth is insufficient to shut down 
 				the reactor at any time during transient
 			\end{itemize}

@@ -3,7 +3,7 @@
 \begin{frame}
   \frametitle{Fuel salt reprocessing system overview: gas separation}
   Gaseous fission products (e.g., Xe, Kr) must be removed from the fuel salt 
-  to avoid reactor poisoning ($\Sigma_{a,^{135}Xe}=10^6\dots10^7$b). 
+  to avoid reactor poisoning ($\sigma_{a,^{135}Xe}=10^6\dots10^7$b). 
   
       \begin{columns}
       	\column[t]{4.0cm}
@@ -11,7 +11,7 @@
       \begin{enumerate}
       	\item[\textcolor{blue}{\textbullet}] bubble generator injects He 
       	bubbles in the salt stream
-      	\item[\textcolor{green}{\textbullet}] noble gas migrate to the He 
+      	\item[\textcolor{green}{\textbullet}] noble gases migrate to the He 
       	bubbles 
       	\item[\textcolor{red}{\textbullet}] gas separator discharges the 
       	poison-rich bubbles
@@ -21,8 +21,8 @@
      	\column[t]{8cm}
   \begin{figure}[t]
 	  \centering
-	  		\vspace{-1mm}
-		\includegraphics[width=\textwidth]{./images/msbr_gas_separation.pdf}
+	  		\vspace{-4mm}
+		\includegraphics[width=1.03\textwidth]{./images/msbr_gas_separation.pdf}
 	\caption{Schematic flow diagram of the \gls{MSBR} gas separation system 
 	(figure reproduced from Robertson \emph{et al.}  
 	\cite{robertson_conceptual_1971}).} 
@@ -47,10 +47,10 @@ H &= \mbox{Henry's law constant [$Pa\cdot mol^{-1}\cdot L$]} \nonumber \\
 d_b &= \mbox{helium bubble diameter [m]} \nonumber \\
 K_L &= \mbox{liquid phase mass transfer coefficient [m/s].} \nonumber
 \end{align}
-		\vspace{-6mm}
+		\vspace{-5mm}
   \begin{figure}[t]
-	\includegraphics[width=0.66\textwidth]{./images/pipeline_contactor.png}
-	\vspace{-3mm}
+	\includegraphics[width=0.77\textwidth]{./images/pipeline_contactor.png}
+	\vspace{-2mm}
 	\caption{Flow diagram for gas separator (figure reproduced from Peebles 
 		\emph{et al.} \cite{peebles_removal_1968}).}
 \end{figure}
@@ -58,31 +58,23 @@ K_L &= \mbox{liquid phase mass transfer coefficient [m/s].} \nonumber
 \end{frame}
 
 
-%\begin{frame}
-%\frametitle{Fuel processing system overview: rare earths and Pa removal}
-%		\vspace{-2mm}
-%	\begin{figure}[htp!] % replace 't' with 'b' to 
-%		\centering
-%			\includegraphics[width=0.57\textwidth]{../figures/flowsheet.pdf}
-%			\vspace{-2mm}
-%		\caption{Liquid metal (Bi) extraction system for the \gls{MSBR} 
-%		(reproduced from Sorensen \cite{sorensen_one-fluid_2006}).} 
-%	\end{figure}
-%\end{frame}
-
-
 \begin{frame}
 \frametitle{Fuel processing system overview: TAP concept}
-	\vspace{-2mm}
+\begin{textblock*}{12.4cm}(0.25cm,1.7cm) % {block width} (coords)
 \begin{figure}[htp!] % replace 't' with 'b' to 
-	\centering
-	\includegraphics[width=0.75\textwidth]{../dissertation/figures/ch4/tap_primary_loop.png}
-		\vspace{-2mm}
-	\caption{Simplified \gls{TAP} primary loop design including off-gas system 
+	\begin{columns}
+		\column{0.65\linewidth}
+			\hspace{+3mm}
+		\includegraphics[height=0.88\textheight]{../dissertation/figures/ch4/tap_primary_loop.png}
+		
+		\column{0.3\linewidth}
+		\caption{Simplified \gls{TAP} primary loop design including off-gas 
+		system 
 		(blue), nickel filter (orange) and liquid metal extraction system 
 		(green) \cite{transatomic_power_transatomic_2019}.}
+	\end{columns}
 \end{figure}
-
+\end{textblock*}
 \end{frame}
 
 
@@ -133,13 +125,15 @@ K_L &= \mbox{liquid phase mass transfer coefficient [m/s].} \nonumber
 
 \begin{frame}
 \frametitle{SaltProc flowchart}
-\vspace{-4mm}
+\begin{textblock*}{12.4cm}(0.07cm,1.7cm) % {block width} (coords)
 \begin{figure}[ht!] % replace 't' with 'b' to \centering
 	\centering
-	\includegraphics[width=1.08\textwidth]{../dissertation/figures/ch2/saltproc_flowchart.pdf}
+	\includegraphics[width=\textwidth]{../dissertation/figures/ch2/saltproc_flowchart.pdf}
 		\vspace{-4mm}
-	\caption{SaltProc v1.0 Python package flowchart.}
+	\caption{SaltProc v1.0 Python package flowchart with example of object 
+	instances.}
 \end{figure}
+\end{textblock*}
 
 \end{frame}
 
@@ -153,7 +147,7 @@ K_L &= \mbox{liquid phase mass transfer coefficient [m/s].} \nonumber
 	\begin{overprint}
 	\onslide<1>\includegraphics[height=0.85\textheight]{./images/tap_saltproc_var_eps.png}
 		\vspace{-2mm}
-    \caption{\textcolor{green}{\gls{TAP}} reprocessing scheme for 
+    \caption{\textcolor{cyan}{\gls{TAP}} reprocessing scheme for 
 	SaltProc demonstration.}
 	\onslide<2>\includegraphics[height=0.85\textheight]{./images/msbr_saltproc_var_eps.png}
 		\vspace{-2mm}
@@ -166,26 +160,23 @@ K_L &= \mbox{liquid phase mass transfer coefficient [m/s].} \nonumber
 
 
 \begin{frame}[fragile]
-\frametitle{DOT code used to describe TAP reprocessing system}
+\frametitle{DOT-code describing reprocessing system as a directed graph}
 \small
 \begin{verbatim}
 digraph fuel {
 ==============================================================================
-core_outlet -> sparger [label="100%", fontsize=20]
-sparger -> waste_sparger [label="60% of\nXe, Kr, H", fontsize=20]
-sparger -> entrainment_separator [label="100%", fontsize=20]
-entrainment_separator -> nickel_filter [label="100%", fontsize=20]
-entrainment_separator -> waste_entrainment_separator [label="97% of\nXe, Kr, 
-%H", fontsize=20]
-nickel_filter -> bypass [label="90%", fontsize=20]
-bypass -> heat_exchanger [label="90%", fontsize=20]
-nickel_filter -> waste_nickel_filter [label="100% of noble metals", 
-%fontsize=20]
-nickel_filter -> liquid_metal [label="10%", fontsize=20]
-liquid_metal -> heat_exchanger [label="10%", fontsize=20]
-liquid_metal -> waste_liquid_metal [label="57% of seminoble metals \n& RE", 
-%fontsize=20]
-heat_exchanger -> core_inlet [label="100%", fontsize=20]
+core_outlet -> sparger [label="100%"]
+sparger -> waste_sparger [label="60% of Xe, Kr, H"]
+sparger -> entrainment_separator [label="100%"]
+entrainment_separator -> nickel_filter [label="100%"]
+entrainment_separator -> waste_entrainment_separator [label="97% of Xe, Kr, H"]
+nickel_filter -> bypass [label="90%"]
+bypass -> heat_exchanger [label="90%"]
+nickel_filter -> waste_nickel_filter [label="100% of noble metals"]
+nickel_filter -> liquid_metal [label="10%"]
+liquid_metal -> heat_exchanger [label="10%"]
+liquid_metal -> waste_liquid_metal [label="57% of seminoble metals & RE"]
+heat_exchanger -> core_inlet [label="100%"]
 LEU_feed -> core_inlet
 ==============================================================================
 # Optional parameters to prettify plots
