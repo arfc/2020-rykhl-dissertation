@@ -17,7 +17,8 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{placeins}
-\usepackage{threeparttable,caption,tabularx,booktabs}
+\usepackage{threeparttable,tabularx,booktabs}
+\usepackage[singlelinecheck=false]{caption}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 \usepackage{array}
@@ -104,17 +105,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEDICATION
 %
-%\begin{dedication}
-%To my parents and my wife, Nelli, for their unconditional love and support.\\
-%To my daughters, Sofiya and Zoe, for being an inspiration.
-%\end{dedication}
+\begin{dedication}
+To my parents and my wife, Nelli, for their unconditional love and support.\\
+To my daughters, Sofiya and Zoe, for being an inspiration.
+\end{dedication}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ACKNOWLEDGMENTS
 %
 % Put acknowledgments in a file called "ack.tex" and it'll be inputted here.
-%\chapter*{Acknowledgments}
-%\input{ack}
+\chapter*{Acknowledgments}
+\input{ack}
 																			
 			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
