@@ -17,7 +17,8 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{placeins}
-\usepackage{threeparttable,caption,tabularx,booktabs}
+\usepackage{threeparttable,tabularx,booktabs}
+\usepackage[singlelinecheck=false]{caption}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 \usepackage{array}
@@ -104,17 +105,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEDICATION
 %
-%\begin{dedication}
-%Dedicated to the memory of my father, Igor Rykhlevskii, who always believed in my ability to %succeed in the academic arena.
-%\end{dedication}
+\begin{dedication}
+To my parents and my wife for their unconditional love and support.\\
+To my daughters, Sofiya and Zoe, for being an inspiration.
+\end{dedication}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ACKNOWLEDGMENTS
 %
 % Put acknowledgments in a file called "ack.tex" and it'll be inputted here.
-%\begin{acknowledgments}
-%\input{ack}
-%\end{acknowledgments}																																				
+\chapter*{Acknowledgments}
+\input{ack}
+																			
+			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TABLE OF CONTENTS
 %
